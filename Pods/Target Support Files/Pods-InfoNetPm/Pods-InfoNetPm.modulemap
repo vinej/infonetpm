@@ -1,0 +1,6 @@
+framework module Pods_InfoNetPm {
+  umbrella header "Pods-InfoNetPm-umbrella.h"
+
+  export *
+  module * { export * }
+}
