@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		5E0ABF1C1FCB51410011897E /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF1B1FCB51410011897E /* Activity.swift */; };
 		5E0ABF1E1FCB51DC0011897E /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF1D1FCB51DC0011897E /* Role.swift */; };
-		5E0ABF201FCB53430011897E /* SchemaDefenition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF1F1FCB53430011897E /* SchemaDefenition.swift */; };
-		5E0ABF221FCB53D40011897E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF211FCB53D40011897E /* Client.swift */; };
 		5E0ABF241FCB57F80011897E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5E0ABF231FCB57F80011897E /* README.md */; };
+		5E0ABF261FCB6CD90011897E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF251FCB6CD90011897E /* Document.swift */; };
 		5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59B861FCB40CC005841BB /* AppDelegate.swift */; };
 		5EC59B891FCB40CC005841BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59B881FCB40CC005841BB /* ViewController.swift */; };
 		5EC59B8C1FCB40CC005841BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EC59B8A1FCB40CC005841BB /* Main.storyboard */; };
@@ -34,9 +33,8 @@
 		113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InfoNetPm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0ABF1B1FCB51410011897E /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		5E0ABF1D1FCB51DC0011897E /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
-		5E0ABF1F1FCB53430011897E /* SchemaDefenition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaDefenition.swift; sourceTree = "<group>"; };
-		5E0ABF211FCB53D40011897E /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		5E0ABF231FCB57F80011897E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5E0ABF251FCB6CD90011897E /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		5EC59B831FCB40CC005841BB /* InfoNetPm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfoNetPm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC59B861FCB40CC005841BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EC59B881FCB40CC005841BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -143,8 +141,7 @@
 				5EC59BA01FCB43FC005841BB /* Task.swift */,
 				5E0ABF1B1FCB51410011897E /* Activity.swift */,
 				5E0ABF1D1FCB51DC0011897E /* Role.swift */,
-				5E0ABF1F1FCB53430011897E /* SchemaDefenition.swift */,
-				5E0ABF211FCB53D40011897E /* Client.swift */,
+				5E0ABF251FCB6CD90011897E /* Document.swift */,
 			);
 			name = Model;
 			path = "New Group";
@@ -293,13 +290,12 @@
 				5EC59BA91FCB43FC005841BB /* Task.swift in Sources */,
 				5E0ABF1C1FCB51410011897E /* Activity.swift in Sources */,
 				5EC59BA71FCB43FC005841BB /* Plan.swift in Sources */,
-				5E0ABF221FCB53D40011897E /* Client.swift in Sources */,
+				5E0ABF261FCB6CD90011897E /* Document.swift in Sources */,
 				5EC59BAF1FCB43FC005841BB /* RealmHelper.swift in Sources */,
 				5EC59BA81FCB43FC005841BB /* Comment.swift in Sources */,
 				5E0ABF1E1FCB51DC0011897E /* Role.swift in Sources */,
 				5EC59BAA1FCB43FC005841BB /* Company.swift in Sources */,
 				5EC59BAC1FCB43FC005841BB /* Project.swift in Sources */,
-				5E0ABF201FCB53430011897E /* SchemaDefenition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

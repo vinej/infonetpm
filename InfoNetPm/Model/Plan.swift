@@ -12,16 +12,21 @@ import RealmSwift
 
 public class Plan: Object {
     @objc dynamic var id = UUID().uuidString
+    @objc dynamic var status = "not started" //
+    @objc dynamic var project : Project?
+    
     @objc dynamic var isTemplate = false
     @objc dynamic var name = ""
-    @objc dynamic var startDate = ""
+    @objc dynamic var scheduleStartDate = Date()
+    @objc dynamic var schecdulEndDate = Date()
     @objc dynamic var budget = ""
     @objc dynamic var margin = 0
     @objc dynamic var risk = 0
     @objc dynamic var timezone = 0
-    @objc dynamic var project : Project?
-    @objc dynamic var dependantPlan : Plan?
+    @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
+    
+    let dependantPlans = List<Plan>()
     
     override public static func primaryKey() -> String? {
         return "id"

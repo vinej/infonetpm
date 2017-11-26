@@ -11,11 +11,14 @@ import RealmSwift
 
 public class Issue: Object {
     @objc dynamic var id = UUID().uuidString
+    @objc dynamic var status = "not started" //
+    @objc dynamic var task : Task?
+    
     @objc dynamic var title = ""
     @objc dynamic var desc = ""
     @objc dynamic var type = ""
     @objc dynamic var severity = ""
-    @objc dynamic var task : Task?
+    @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
 
     override public static func primaryKey() -> String? {
