@@ -11,6 +11,7 @@
 		5E0ABF1E1FCB51DC0011897E /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF1D1FCB51DC0011897E /* Role.swift */; };
 		5E0ABF201FCB53430011897E /* SchemaDefenition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF1F1FCB53430011897E /* SchemaDefenition.swift */; };
 		5E0ABF221FCB53D40011897E /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF211FCB53D40011897E /* Client.swift */; };
+		5E0ABF241FCB57F80011897E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5E0ABF231FCB57F80011897E /* README.md */; };
 		5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59B861FCB40CC005841BB /* AppDelegate.swift */; };
 		5EC59B891FCB40CC005841BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59B881FCB40CC005841BB /* ViewController.swift */; };
 		5EC59B8C1FCB40CC005841BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EC59B8A1FCB40CC005841BB /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		5E0ABF1D1FCB51DC0011897E /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		5E0ABF1F1FCB53430011897E /* SchemaDefenition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemaDefenition.swift; sourceTree = "<group>"; };
 		5E0ABF211FCB53D40011897E /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		5E0ABF231FCB57F80011897E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5EC59B831FCB40CC005841BB /* InfoNetPm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfoNetPm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC59B861FCB40CC005841BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EC59B881FCB40CC005841BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		5EC59B7A1FCB40CC005841BB = {
 			isa = PBXGroup;
 			children = (
+				5E0ABF231FCB57F80011897E /* README.md */,
 				5EC59B851FCB40CC005841BB /* InfoNetPm */,
 				5EC59B841FCB40CC005841BB /* Products */,
 				2A5BDB50200599EE3ADA7EB8 /* Pods */,
@@ -211,6 +214,7 @@
 			files = (
 				5EC59B911FCB40CC005841BB /* LaunchScreen.storyboard in Resources */,
 				5EC59B8E1FCB40CC005841BB /* Assets.xcassets in Resources */,
+				5E0ABF241FCB57F80011897E /* README.md in Resources */,
 				5EC59B991FCB4116005841BB /* Podfile in Resources */,
 				5EC59B8C1FCB40CC005841BB /* Main.storyboard in Resources */,
 			);

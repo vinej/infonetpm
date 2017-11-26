@@ -12,9 +12,9 @@ import RealmSwift
 
 public class Plan: Object {
     @objc dynamic var id = UUID().uuidString
+    @objc dynamic var isTemplate = false
     @objc dynamic var name = ""
     @objc dynamic var startDate = ""
-    @objc dynamic var endDate = ""
     @objc dynamic var budget = ""
     @objc dynamic var margin = 0
     @objc dynamic var risk = 0

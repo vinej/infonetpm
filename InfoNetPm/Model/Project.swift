@@ -12,6 +12,7 @@ import RealmSwift
 // Define your models like regular Swift classes
 public class Project: Object {
     @objc dynamic var id = UUID().uuidString
+    @objc dynamic var isTemplate = false
     @objc dynamic var name = ""
     @objc dynamic var company : Company?
     @objc dynamic var margin = 0
