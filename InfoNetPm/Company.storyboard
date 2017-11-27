@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="998" y="-347"/>
         </scene>
-        <!--Add/Edit Compny-->
+        <!--Edt a Compny-->
         <scene sceneID="N7o-Dd-ZF6">
             <objects>
-                <viewController title="Add/Edit Compny" id="3nu-OX-sab" sceneMemberID="viewController">
+                <viewController title="Edt a Compny" id="3nu-OX-sab" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yks-38-8cI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

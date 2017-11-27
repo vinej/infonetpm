@@ -13,7 +13,7 @@ import RealmSwift
 class CompanyViewController: UITableViewController {
     
     var list : Results<Object>? = nil
-    var current : Object? = nil
+    var company : Company? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,12 @@ class CompanyViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        current = list![indexPath.row]
+        company = list![indexPath.row] as! Company
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let theDestination = (segue.destination as! CompanyEditViewController)
+        theDestination.company = self.company as! Company
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
