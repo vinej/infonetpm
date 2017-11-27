@@ -39,7 +39,7 @@
 		B2BF25591FCC70EC001C65EB /* Company.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25581FCC70EC001C65EB /* Company.storyboard */; };
 		B2BF255B1FCC70FA001C65EB /* Role.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF255A1FCC70FA001C65EB /* Role.storyboard */; };
 		B2BF255D1FCC710C001C65EB /* Project.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF255C1FCC710C001C65EB /* Project.storyboard */; };
-		B2BF25621FCC7423001C65EB /* CompanyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25611FCC7423001C65EB /* CompanyTableViewController.swift */; };
+		B2BF25621FCC7423001C65EB /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25611FCC7423001C65EB /* CompanyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,7 +77,7 @@
 		B2BF25581FCC70EC001C65EB /* Company.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Company.storyboard; sourceTree = "<group>"; };
 		B2BF255A1FCC70FA001C65EB /* Role.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Role.storyboard; sourceTree = "<group>"; };
 		B2BF255C1FCC710C001C65EB /* Project.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Project.storyboard; sourceTree = "<group>"; };
-		B2BF25611FCC7423001C65EB /* CompanyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyTableViewController.swift; sourceTree = "<group>"; };
+		B2BF25611FCC7423001C65EB /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
 		E91D1DDF44207C7C11B65BFA /* Pods-InfoNetPm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfoNetPm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InfoNetPm/Pods-InfoNetPm.debug.xcconfig"; sourceTree = "<group>"; };
 		F0E3C428DDC6FA389F0B6A3D /* Pods-InfoNetPm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfoNetPm.release.xcconfig"; path = "Pods/Target Support Files/Pods-InfoNetPm/Pods-InfoNetPm.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,7 +181,7 @@
 		B2BF255E1FCC73D0001C65EB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B2BF25611FCC7423001C65EB /* CompanyTableViewController.swift */,
+				B2BF25611FCC7423001C65EB /* CompanyViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -336,7 +336,7 @@
 			files = (
 				5EC59BAD1FCB43FC005841BB /* Resource.swift in Sources */,
 				5EC59B891FCB40CC005841BB /* ViewController.swift in Sources */,
-				B2BF25621FCC7423001C65EB /* CompanyTableViewController.swift in Sources */,
+				B2BF25621FCC7423001C65EB /* CompanyViewController.swift in Sources */,
 				5EC59BAB1FCB43FC005841BB /* Issue.swift in Sources */,
 				5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */,
 				5EC59BAE1FCB43FC005841BB /* Address.swift in Sources */,

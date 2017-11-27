@@ -6,13 +6,29 @@
 //  Copyright © 2017 Info JYV Inc. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import RealmSwift
 
-class CompanyTableViewController: UITableViewController {
+class CompanyViewController: UITableViewController {
+    
+    var list : Results<Object>? = nil
+    var current : Object? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ßself.navigationController?.navigationBar.topItem?.title = "Define Data"
+        self.navigationController?.setToolbarHidden(false, animated: true)
+        list = RealmHelper.all(Company.self)
+        /*
+        if ((list?.count)! < 2) {
+            let cie2 = Company()
+            cie2.name = "infonetpm inc"
+            RealmHelper.new(cie2)
+        }
+        list = RealmHelper.all(Company.self)
+        */
+        
+        //self.navigationController?.navigationBar.topItem?.title = "Define Data"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,44 +46,50 @@ class CompanyTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return RealmHelper.count(Company.self)
     }
-
-    /*
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        current = list![indexPath.row]
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "companyCell", for: indexPath)
+        
+        let lbl = cell.viewWithTag(1) as! UILabel
 
-        // Configure the cell...
-
+        let cie = (list![indexPath.row] as! Company)
+        
+        lbl.text = "\(cie.name) : \(cie.id)"
+    
         return cell
     }
-    */
+    
 
-    /*
+  
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            RealmHelper.del(Company.self, list![indexPath.row])
+            list = RealmHelper.all(Company.self)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
-
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {

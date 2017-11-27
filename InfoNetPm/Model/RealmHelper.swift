@@ -39,9 +39,31 @@ public class RealmHelper {
         return object
     }
     
+    public static func del<T>(_ object : T.Type, _ objInstance : Object) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(objInstance)
+        }
+    }
+
+    public static func all<T>(_ object : T.Type) ->  Results<Object> {
+        let realm = try! Realm()
+        return realm.objects(object.self as! Object.Type)
+    }
+    
+    public static func count<T>(_ object : T.Type) ->  Int {
+        let realm = try! Realm()
+        return realm.objects(object.self as! Object.Type).count
+    }
+
     public static func filter<T>(_ object : T.Type, _ filter: String) ->  Results<Object> {
         let realm = try! Realm()
         return realm.objects(object.self as! Object.Type).filter(filter)
     }
+    
+    public static func get<T>(_ object : T.Type, id : String) -> Object {
+        return RealmHelper.filter(object.self, "id = \(id)").first!
+    }
+
 }
 
