@@ -8,14 +8,14 @@
 
 import UIKit
 import Eureka
+import aipm
 
-class ViewController: FormViewController {
+class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var a : Int = 12
-        var b : Int = 23
+
+        /*
         
         // Do any additional setup after loading the view, typically from a nib.
         var cie : Company
@@ -45,6 +45,7 @@ class ViewController: FormViewController {
                 $0.title = "Date Row"
                 $0.value = Date(timeIntervalSinceReferenceDate: 0)
         }
+ */
     }
     
     override func didReceiveMemoryWarning() {
