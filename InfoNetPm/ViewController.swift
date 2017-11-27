@@ -8,14 +8,31 @@
 
 import UIKit
 import Eureka
-import aipm
+import SwiftyBeaver
 
-class ViewController: FormViewController {
+let log = SwiftyBeaver.self
 
+class ViewController: UIViewController {
+
+    /*
+    @IBAction func defineData(_ sender: UIButton) {
+        log.info("Define Data")
+    }
+    
+    
+    @IBAction func designPlan(_ sender: UIButton) {
+        log.info("Design Plan")
+    }
+    
+    @IBAction func drivePlan(_ sender: UIButton) {
+        log.info("Drive Plan")
+    }
+     */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
+       /*
         // Do any additional setup after loading the view, typically from a nib.
         var cie : Company
         let myCieList = RealmHelper.filter(Company.self, "id != \"t\"")
@@ -44,7 +61,7 @@ class ViewController: FormViewController {
                 $0.title = "Date Row"
                 $0.value = Date(timeIntervalSinceReferenceDate: 0)
         }
- 
+ */
     }
     
     override func didReceiveMemoryWarning() {

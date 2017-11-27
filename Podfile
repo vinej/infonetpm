@@ -8,4 +8,5 @@ target 'InfoNetPm' do
   # Pods for InfoNetPm
   pod 'Eureka'
   pod 'RealmSwift'
+  pod 'SwiftyBeaver'
 end
