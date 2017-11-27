@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E0ABF1C1FCB51410011897E /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF1B1FCB51410011897E /* Activity.swift */; };
-		5E0ABF1E1FCB51DC0011897E /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF1D1FCB51DC0011897E /* Role.swift */; };
 		5E0ABF241FCB57F80011897E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5E0ABF231FCB57F80011897E /* README.md */; };
-		5E0ABF261FCB6CD90011897E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF251FCB6CD90011897E /* Document.swift */; };
 		5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59B861FCB40CC005841BB /* AppDelegate.swift */; };
 		5EC59B891FCB40CC005841BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59B881FCB40CC005841BB /* ViewController.swift */; };
 		5EC59B8C1FCB40CC005841BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EC59B8A1FCB40CC005841BB /* Main.storyboard */; };
@@ -27,14 +24,27 @@
 		5EC59BAE1FCB43FC005841BB /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA51FCB43FC005841BB /* Address.swift */; };
 		5EC59BAF1FCB43FC005841BB /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA61FCB43FC005841BB /* RealmHelper.swift */; };
 		9A338E0B981DA06054C4EC8B /* Pods_InfoNetPm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */; };
+		B2BF25341FCC5A48001C65EB /* Audit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25331FCC5A48001C65EB /* Audit.swift */; };
+		B2BF25371FCC5B2D001C65EB /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25361FCC5B2D001C65EB /* Activity.swift */; };
+		B2BF25391FCC5B3D001C65EB /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25381FCC5B3D001C65EB /* Document.swift */; };
+		B2BF253B1FCC5B4B001C65EB /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF253A1FCC5B4B001C65EB /* Role.swift */; };
+		B2BF25491FCC64AE001C65EB /* Synchonize.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25481FCC64AE001C65EB /* Synchonize.storyboard */; };
+		B2BF254B1FCC64C3001C65EB /* ChatRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF254A1FCC64C3001C65EB /* ChatRoom.storyboard */; };
+		B2BF254D1FCC64DB001C65EB /* Administration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF254C1FCC64DB001C65EB /* Administration.storyboard */; };
+		B2BF254F1FCC6518001C65EB /* DefineData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF254E1FCC6518001C65EB /* DefineData.storyboard */; };
+		B2BF25511FCC6526001C65EB /* DesignPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25501FCC6526001C65EB /* DesignPlan.storyboard */; };
+		B2BF25531FCC6539001C65EB /* DrivePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25521FCC6539001C65EB /* DrivePlan.storyboard */; };
+		B2BF25551FCC6551001C65EB /* DesignTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25541FCC6550001C65EB /* DesignTask.storyboard */; };
+		B2BF25571FCC655E001C65EB /* DesignIssue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25561FCC655E001C65EB /* DesignIssue.storyboard */; };
+		B2BF25591FCC70EC001C65EB /* Company.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25581FCC70EC001C65EB /* Company.storyboard */; };
+		B2BF255B1FCC70FA001C65EB /* Role.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF255A1FCC70FA001C65EB /* Role.storyboard */; };
+		B2BF255D1FCC710C001C65EB /* Project.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF255C1FCC710C001C65EB /* Project.storyboard */; };
+		B2BF25621FCC7423001C65EB /* CompanyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25611FCC7423001C65EB /* CompanyTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InfoNetPm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E0ABF1B1FCB51410011897E /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
-		5E0ABF1D1FCB51DC0011897E /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		5E0ABF231FCB57F80011897E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		5E0ABF251FCB6CD90011897E /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		5EC59B831FCB40CC005841BB /* InfoNetPm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfoNetPm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC59B861FCB40CC005841BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EC59B881FCB40CC005841BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +62,22 @@
 		5EC59BA41FCB43FC005841BB /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = InfoNetPm/Model/Resource.swift; sourceTree = SOURCE_ROOT; };
 		5EC59BA51FCB43FC005841BB /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Address.swift; path = InfoNetPm/Model/Address.swift; sourceTree = SOURCE_ROOT; };
 		5EC59BA61FCB43FC005841BB /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmHelper.swift; path = InfoNetPm/Model/RealmHelper.swift; sourceTree = SOURCE_ROOT; };
+		B2BF25331FCC5A48001C65EB /* Audit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Audit.swift; path = InfoNetPm/Model/Audit.swift; sourceTree = SOURCE_ROOT; };
+		B2BF25361FCC5B2D001C65EB /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Activity.swift; path = InfoNetPm/Model/Activity.swift; sourceTree = SOURCE_ROOT; };
+		B2BF25381FCC5B3D001C65EB /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = InfoNetPm/Model/Document.swift; sourceTree = SOURCE_ROOT; };
+		B2BF253A1FCC5B4B001C65EB /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Role.swift; path = InfoNetPm/Model/Role.swift; sourceTree = SOURCE_ROOT; };
+		B2BF25481FCC64AE001C65EB /* Synchonize.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Synchonize.storyboard; sourceTree = "<group>"; };
+		B2BF254A1FCC64C3001C65EB /* ChatRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRoom.storyboard; sourceTree = "<group>"; };
+		B2BF254C1FCC64DB001C65EB /* Administration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Administration.storyboard; sourceTree = "<group>"; };
+		B2BF254E1FCC6518001C65EB /* DefineData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DefineData.storyboard; sourceTree = "<group>"; };
+		B2BF25501FCC6526001C65EB /* DesignPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DesignPlan.storyboard; sourceTree = "<group>"; };
+		B2BF25521FCC6539001C65EB /* DrivePlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DrivePlan.storyboard; sourceTree = "<group>"; };
+		B2BF25541FCC6550001C65EB /* DesignTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DesignTask.storyboard; sourceTree = "<group>"; };
+		B2BF25561FCC655E001C65EB /* DesignIssue.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DesignIssue.storyboard; sourceTree = "<group>"; };
+		B2BF25581FCC70EC001C65EB /* Company.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Company.storyboard; sourceTree = "<group>"; };
+		B2BF255A1FCC70FA001C65EB /* Role.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Role.storyboard; sourceTree = "<group>"; };
+		B2BF255C1FCC710C001C65EB /* Project.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Project.storyboard; sourceTree = "<group>"; };
+		B2BF25611FCC7423001C65EB /* CompanyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyTableViewController.swift; sourceTree = "<group>"; };
 		E91D1DDF44207C7C11B65BFA /* Pods-InfoNetPm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfoNetPm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InfoNetPm/Pods-InfoNetPm.debug.xcconfig"; sourceTree = "<group>"; };
 		F0E3C428DDC6FA389F0B6A3D /* Pods-InfoNetPm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfoNetPm.release.xcconfig"; path = "Pods/Target Support Files/Pods-InfoNetPm/Pods-InfoNetPm.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +133,7 @@
 		5EC59B851FCB40CC005841BB /* InfoNetPm */ = {
 			isa = PBXGroup;
 			children = (
+				B2BF255E1FCC73D0001C65EB /* View */,
 				5EC59B981FCB4116005841BB /* Podfile */,
 				5EC59B9D1FCB43CF005841BB /* Model */,
 				5EC59B861FCB40CC005841BB /* AppDelegate.swift */,
@@ -115,6 +142,17 @@
 				5EC59B8D1FCB40CC005841BB /* Assets.xcassets */,
 				5EC59B8F1FCB40CC005841BB /* LaunchScreen.storyboard */,
 				5EC59B921FCB40CC005841BB /* Info.plist */,
+				B2BF25481FCC64AE001C65EB /* Synchonize.storyboard */,
+				B2BF254A1FCC64C3001C65EB /* ChatRoom.storyboard */,
+				B2BF254C1FCC64DB001C65EB /* Administration.storyboard */,
+				B2BF254E1FCC6518001C65EB /* DefineData.storyboard */,
+				B2BF25501FCC6526001C65EB /* DesignPlan.storyboard */,
+				B2BF25521FCC6539001C65EB /* DrivePlan.storyboard */,
+				B2BF25541FCC6550001C65EB /* DesignTask.storyboard */,
+				B2BF25561FCC655E001C65EB /* DesignIssue.storyboard */,
+				B2BF25581FCC70EC001C65EB /* Company.storyboard */,
+				B2BF255A1FCC70FA001C65EB /* Role.storyboard */,
+				B2BF255C1FCC710C001C65EB /* Project.storyboard */,
 			);
 			path = InfoNetPm;
 			sourceTree = "<group>";
@@ -122,6 +160,8 @@
 		5EC59B9D1FCB43CF005841BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B2BF253A1FCC5B4B001C65EB /* Role.swift */,
+				B2BF25381FCC5B3D001C65EB /* Document.swift */,
 				5EC59BA51FCB43FC005841BB /* Address.swift */,
 				5EC59B9F1FCB43FC005841BB /* Comment.swift */,
 				5EC59BA11FCB43FC005841BB /* Company.swift */,
@@ -131,12 +171,19 @@
 				5EC59BA61FCB43FC005841BB /* RealmHelper.swift */,
 				5EC59BA41FCB43FC005841BB /* Resource.swift */,
 				5EC59BA01FCB43FC005841BB /* Task.swift */,
-				5E0ABF1B1FCB51410011897E /* Activity.swift */,
-				5E0ABF1D1FCB51DC0011897E /* Role.swift */,
-				5E0ABF251FCB6CD90011897E /* Document.swift */,
+				B2BF25361FCC5B2D001C65EB /* Activity.swift */,
+				B2BF25331FCC5A48001C65EB /* Audit.swift */,
 			);
 			name = Model;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		B2BF255E1FCC73D0001C65EB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B2BF25611FCC7423001C65EB /* CompanyTableViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,9 +248,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2BF255D1FCC710C001C65EB /* Project.storyboard in Resources */,
+				B2BF25591FCC70EC001C65EB /* Company.storyboard in Resources */,
+				B2BF25531FCC6539001C65EB /* DrivePlan.storyboard in Resources */,
+				B2BF254B1FCC64C3001C65EB /* ChatRoom.storyboard in Resources */,
+				B2BF25511FCC6526001C65EB /* DesignPlan.storyboard in Resources */,
 				5EC59B911FCB40CC005841BB /* LaunchScreen.storyboard in Resources */,
+				B2BF25491FCC64AE001C65EB /* Synchonize.storyboard in Resources */,
+				B2BF25551FCC6551001C65EB /* DesignTask.storyboard in Resources */,
 				5EC59B8E1FCB40CC005841BB /* Assets.xcassets in Resources */,
+				B2BF25571FCC655E001C65EB /* DesignIssue.storyboard in Resources */,
+				B2BF254D1FCC64DB001C65EB /* Administration.storyboard in Resources */,
 				5E0ABF241FCB57F80011897E /* README.md in Resources */,
+				B2BF255B1FCC70FA001C65EB /* Role.storyboard in Resources */,
+				B2BF254F1FCC6518001C65EB /* DefineData.storyboard in Resources */,
 				5EC59B991FCB4116005841BB /* Podfile in Resources */,
 				5EC59B8C1FCB40CC005841BB /* Main.storyboard in Resources */,
 			);
@@ -278,16 +336,18 @@
 			files = (
 				5EC59BAD1FCB43FC005841BB /* Resource.swift in Sources */,
 				5EC59B891FCB40CC005841BB /* ViewController.swift in Sources */,
+				B2BF25621FCC7423001C65EB /* CompanyTableViewController.swift in Sources */,
 				5EC59BAB1FCB43FC005841BB /* Issue.swift in Sources */,
 				5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */,
 				5EC59BAE1FCB43FC005841BB /* Address.swift in Sources */,
 				5EC59BA91FCB43FC005841BB /* Task.swift in Sources */,
-				5E0ABF1C1FCB51410011897E /* Activity.swift in Sources */,
+				B2BF25371FCC5B2D001C65EB /* Activity.swift in Sources */,
+				B2BF253B1FCC5B4B001C65EB /* Role.swift in Sources */,
 				5EC59BA71FCB43FC005841BB /* Plan.swift in Sources */,
-				5E0ABF261FCB6CD90011897E /* Document.swift in Sources */,
+				B2BF25391FCC5B3D001C65EB /* Document.swift in Sources */,
+				B2BF25341FCC5A48001C65EB /* Audit.swift in Sources */,
 				5EC59BAF1FCB43FC005841BB /* RealmHelper.swift in Sources */,
 				5EC59BA81FCB43FC005841BB /* Comment.swift in Sources */,
-				5E0ABF1E1FCB51DC0011897E /* Role.swift in Sources */,
 				5EC59BAA1FCB43FC005841BB /* Company.swift in Sources */,
 				5EC59BAC1FCB43FC005841BB /* Project.swift in Sources */,
 			);

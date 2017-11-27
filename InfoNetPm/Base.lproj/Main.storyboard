@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--InfoNetPM-->
         <scene sceneID="pnC-Jy-6se">
             <objects>
-                <navigationController id="wXq-co-xH6" sceneMemberID="viewController">
+                <navigationController title="InfoNetPM" id="wXq-co-xH6" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fAZ-Bv-fdM">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-1613" y="-18"/>
         </scene>
-        <!--INFONETJYV : MASTER MENU-->
+        <!--Info Net PM-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InfoNetPm" sceneMemberID="viewController">
+                <viewController title="Info Net PM" id="BYZ-38-t0r" customClass="ViewController" customModule="InfoNetPm" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,102 +39,112 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Define Data"/>
                                 <connections>
-                                    <segue destination="ih0-bn-iA6" kind="show" id="EVu-Du-qgn"/>
+                                    <segue destination="RBW-cU-y6d" kind="show" id="mXM-Lj-Z2C"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkj-ts-mxx">
-                                <rect key="frame" x="16" y="252" width="343" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9S5-2T-AnG">
+                                <rect key="frame" x="16" y="252" width="81" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Design Plan"/>
-                                <connections>
-                                    <segue destination="psR-ds-4s3" kind="show" id="EZN-nn-HJt"/>
-                                </connections>
-                            </button>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yU3-20-RYo">
-                                <rect key="frame" x="16" y="337" width="343" height="30"/>
+                                <rect key="frame" x="16" y="245" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Drive Plan"/>
                                 <connections>
-                                    <segue destination="y0b-xJ-pmJ" kind="show" id="vxU-KJ-xJD"/>
+                                    <segue destination="J9q-8w-MGi" kind="show" id="T1O-ZO-OUj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkj-ts-mxx">
+                                <rect key="frame" x="16" y="194" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Design Plan"/>
+                                <connections>
+                                    <segue destination="tHS-5i-v6h" kind="show" id="8HC-rX-TgY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41G-jz-6Ot">
+                                <rect key="frame" x="16" y="359" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Synchronized"/>
+                                <connections>
+                                    <segue destination="mOF-LN-UZS" kind="show" id="Fd6-8O-IXn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGn-2X-i29">
+                                <rect key="frame" x="16" y="302" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Enter Plan Chat Room"/>
+                                <connections>
+                                    <segue destination="sY6-o0-mAx" kind="show" id="7tf-GI-ifF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHJ-0c-rTu">
+                                <rect key="frame" x="16" y="410" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Administration"/>
+                                <connections>
+                                    <segue destination="QND-9v-q8Q" kind="show" id="NY3-1J-rLf"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="INFONETJYV : MASTER MENU" prompt="Choose an option" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="736-8U-rD4">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="1TE-U7-QaZ"/>
+                    <navigationItem key="navigationItem" title="INFONETPM : MASTER MENU" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="736-8U-rD4">
+                        <barButtonItem key="backBarButtonItem" title="Info Net PM" id="1TE-U7-QaZ"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-703.20000000000005" y="-43.628185907046479"/>
+            <point key="canvasLocation" x="-857" y="-18"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="kAh-kB-2Bn">
+        <!--Synchonize-->
+        <scene sceneID="qXw-5j-jNL">
             <objects>
-                <viewController id="psR-ds-4s3" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aTc-MG-Pmb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c57-J7-uzo">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Design"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Jd3-Dh-8Dd"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vru-jp-RR9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Synchonize" id="mOF-LN-UZS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KmK-jx-6NV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="110" y="-893"/>
+            <point key="canvasLocation" x="-211" y="1"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="hyc-Jt-9DD">
+        <!--Administration-->
+        <scene sceneID="Ypt-NT-Qq6">
             <objects>
-                <viewController id="ih0-bn-iA6" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eeZ-on-gMU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqh-cl-3WL">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Define"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="cx5-mf-GOk"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XS1-6V-HRU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Administration" id="QND-9v-q8Q" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EIe-wh-IhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="109.59999999999999" y="-129.08545727136433"/>
+            <point key="canvasLocation" x="-194" y="58"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="KlY-Ax-iaz">
+        <!--ChatRoom-->
+        <scene sceneID="TOK-g1-GAG">
             <objects>
-                <viewController id="y0b-xJ-pmJ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HH1-sY-wu6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHQ-bg-ED2">
-                                <rect key="frame" x="164" y="250" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Execute"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="61X-MN-bLn"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VVD-dT-TwR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="ChatRoom" id="sY6-o0-mAx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DFl-wH-AaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="92" y="515"/>
+            <point key="canvasLocation" x="-215" y="-50"/>
+        </scene>
+        <!--DefineData-->
+        <scene sceneID="Vxq-Mm-j0p">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DefineData" id="RBW-cU-y6d" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P5x-8A-24b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-213" y="-214"/>
+        </scene>
+        <!--DesignPlan-->
+        <scene sceneID="tVL-d7-v2L">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DesignPlan" id="tHS-5i-v6h" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sN6-ne-G2c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-213" y="-157"/>
+        </scene>
+        <!--DrivePlan-->
+        <scene sceneID="B3K-bI-v4g">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DrivePlan" id="J9q-8w-MGi" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1RW-IS-wMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-221" y="-103"/>
         </scene>
     </scenes>
 </document>
