@@ -8,16 +8,34 @@
 
 import UIKit
 import RealmSwift
+import Eureka
 import SwiftyBeaver
 
-class CompanyEditViewController: UIViewController {
+class CompanyEditViewController: FormViewController {
 
     var company : Company? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        log.info(company?.name)
-        // Do any additional setup after loading the view.
+
+        form +++ Section("Section1")
+            <<< TextRow(){ row in
+                row.title = "Name"
+                row.placeholder = "Company name"
+                row.value = cie.name
+                }.onChange { row in
+                    RealmHelper.update(cie, "name", row.value)
+            }
+            
+            <<< PhoneRow(){
+                $0.title = "Phone Row"
+                $0.placeholder = "And numbers here"
+            }
+            +++ Section("Section2")
+            <<< DateRow(){
+                $0.title = "Date Row"
+                $0.value = Date(timeIntervalSinceReferenceDate: 0)
+        }
     }
 
     override func didReceiveMemoryWarning() {

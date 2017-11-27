@@ -18,23 +18,6 @@ class CompanyViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
-        list = RealmHelper.all(Company.self)
-        /*
-        if ((list?.count)! < 2) {
-            let cie2 = Company()
-            cie2.name = "infonetpm inc"
-            RealmHelper.new(cie2)
-        }
-        list = RealmHelper.all(Company.self)
-        */
-        
-        //self.navigationController?.navigationBar.topItem?.title = "Define Data"
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,12 +38,12 @@ class CompanyViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        company = list![indexPath.row] as! Company
+        company = list![indexPath.row] as? Company
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let theDestination = (segue.destination as! CompanyEditViewController)
-        theDestination.company = self.company as! Company
+        theDestination.company = self.company
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
