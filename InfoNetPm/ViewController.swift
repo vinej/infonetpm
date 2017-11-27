@@ -10,13 +10,12 @@ import UIKit
 import Eureka
 import aipm
 
-class ViewController: UIViewController {
+class ViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        /*
-        
+       
         // Do any additional setup after loading the view, typically from a nib.
         var cie : Company
         let myCieList = RealmHelper.filter(Company.self, "id != \"t\"")
@@ -45,7 +44,7 @@ class ViewController: UIViewController {
                 $0.title = "Date Row"
                 $0.value = Date(timeIntervalSinceReferenceDate: 0)
         }
- */
+ 
     }
     
     override func didReceiveMemoryWarning() {

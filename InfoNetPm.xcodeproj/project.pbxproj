@@ -11,7 +11,6 @@
 		5E0ABF1E1FCB51DC0011897E /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF1D1FCB51DC0011897E /* Role.swift */; };
 		5E0ABF241FCB57F80011897E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5E0ABF231FCB57F80011897E /* README.md */; };
 		5E0ABF261FCB6CD90011897E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0ABF251FCB6CD90011897E /* Document.swift */; };
-		5E87D3931FCB89EA008CA243 /* aipm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E87D3941FCB89EA008CA243 /* aipm.framework */; };
 		5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59B861FCB40CC005841BB /* AppDelegate.swift */; };
 		5EC59B891FCB40CC005841BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59B881FCB40CC005841BB /* ViewController.swift */; };
 		5EC59B8C1FCB40CC005841BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EC59B8A1FCB40CC005841BB /* Main.storyboard */; };
@@ -36,7 +35,6 @@
 		5E0ABF1D1FCB51DC0011897E /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		5E0ABF231FCB57F80011897E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5E0ABF251FCB6CD90011897E /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		5E87D3941FCB89EA008CA243 /* aipm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = aipm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC59B831FCB40CC005841BB /* InfoNetPm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfoNetPm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC59B861FCB40CC005841BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EC59B881FCB40CC005841BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,7 +61,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E87D3931FCB89EA008CA243 /* aipm.framework in Frameworks */,
 				9A338E0B981DA06054C4EC8B /* Pods_InfoNetPm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,7 +80,6 @@
 		4C718987EAF44453AD957D4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5E87D3941FCB89EA008CA243 /* aipm.framework */,
 				113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */,
 			);
 			name = Frameworks;
