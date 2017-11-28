@@ -36,7 +36,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Un0-eb-rCs" kind="show" identifier="sequeEditCompany" id="tad-x6-MUC"/>
+                                    <segue destination="Un0-eb-rCs" kind="show" identifier="segueEditCompany" id="tad-x6-MUC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -49,7 +49,7 @@
                         <barButtonItem width="319" id="poV-tD-hQY"/>
                         <barButtonItem title="New" width="82" id="Vgj-9k-SeP">
                             <connections>
-                                <segue destination="3nu-OX-sab" kind="show" id="v5j-iU-ScL"/>
+                                <segue destination="3nu-OX-sab" kind="show" identifier="segueNewCompany" id="v5j-iU-ScL"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -64,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="20" y="-1.3493253373313345"/>
         </scene>
-        <!--Add a company-->
+        <!--Edit a company-->
         <scene sceneID="8V1-rw-APJ">
             <objects>
-                <viewController title="Add a company" id="Un0-eb-rCs" sceneMemberID="viewController">
+                <viewController title="Edit a company" id="Un0-eb-rCs" customClass="CompanyEditViewController" customModule="InfoNetPm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bh7-qX-o7M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="998" y="-347"/>
         </scene>
-        <!--Edt a Compny-->
+        <!--New Compny-->
         <scene sceneID="N7o-Dd-ZF6">
             <objects>
-                <viewController title="Edt a Compny" id="3nu-OX-sab" sceneMemberID="viewController">
+                <viewController title="New Compny" id="3nu-OX-sab" customClass="CompanyNewViewController" customModule="InfoNetPm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yks-38-8cI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

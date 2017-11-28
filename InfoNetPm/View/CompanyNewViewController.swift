@@ -1,8 +1,8 @@
 //
-//  CompanyEditViewController.swift
+//  CompanyNewViewController.swift
 //  InfoNetPm
 //
-//  Created by Jean-Yves Vinet on 2017-11-27.
+//  Created by jyv on 11/27/17.
 //  Copyright © 2017 Info JYV Inc. All rights reserved.
 //
 
@@ -11,13 +11,14 @@ import RealmSwift
 import Eureka
 import SwiftyBeaver
 
-class CompanyEditViewController: FormViewController {
-
+class CompanyNewViewController: FormViewController {
+    
     var company : Company? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        RealmHelper.isCompanyDirty = true
+        
         form +++ Section("Section Company")
             <<< TextRow(){ row in
                 row.title = "Name"
@@ -25,7 +26,6 @@ class CompanyEditViewController: FormViewController {
                 row.value = company?.name
                 }.onChange { row in
                     RealmHelper.update(self.company!, "name", row.value)
-                    RealmHelper.isCompanyDirty = true
             }
             
             <<< TextRow(){ row in
@@ -34,24 +34,23 @@ class CompanyEditViewController: FormViewController {
                 row.placeholder = "And type here"
                 }.onChange { row in
                     RealmHelper.update(self.company!, "type", row.value)
-                    RealmHelper.isCompanyDirty = true
-            }
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

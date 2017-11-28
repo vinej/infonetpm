@@ -18,6 +18,16 @@ class CompanyViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setToolbarHidden(false, animated: true)
+        list = RealmHelper.all(Company.self)
+    }
+    
+    // return from a view, the load is not launch, so reload on dirty
+    override func viewWillAppear(_ animated: Bool) {
+        if (RealmHelper.isCompanyDirty) {
+            list = RealmHelper.all(Company.self)
+            self.tableView.reloadData()
+            RealmHelper.isCompanyDirty = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,16 +44,25 @@ class CompanyViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return RealmHelper.count(Company.self)
+        return list!.count
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        company = list![indexPath.row] as? Company
+        //company = list![indexPath.row] as? Company
+        //self.performSegue(withIdentifier: "segueEditCompany", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let theDestination = (segue.destination as! CompanyEditViewController)
-        theDestination.company = self.company
+        if (segue.identifier == "segueEditCompany") {
+            let indexPath = tableView.indexPathForSelectedRow
+            company = list![(indexPath?.row)!] as? Company
+            let theDestination = (segue.destination as! CompanyEditViewController)
+            theDestination.company = self.company
+        } else {
+            let theDestination = (segue.destination as! CompanyNewViewController)
+            let newCompagnie = RealmHelper.new(Company())
+            theDestination.company = newCompagnie as? Company
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,7 +89,7 @@ class CompanyViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            RealmHelper.del(Company.self, list![indexPath.row])
+            RealmHelper.del(list![indexPath.row])
             list = RealmHelper.all(Company.self)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {

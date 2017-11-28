@@ -10,6 +10,9 @@ import Foundation
 import RealmSwift
 
 public class RealmHelper {
+    
+    public static var isCompanyDirty = false
+    
     public static func update<T>(_ object : Object, _ field: String, _ value: T!, _ allowNil : Bool = false) {
         let realm = try! Realm()
         try! realm.write {
@@ -28,21 +31,23 @@ public class RealmHelper {
             } else {
                 object[field]=value
             }
+
         }
     }
-    
+
     public static func new(_ object: Object) -> Object{
         let realm = try! Realm()
         try! realm.write {
             realm.add(object)
+
         }
         return object
     }
     
-    public static func del<T>(_ object : T.Type, _ objInstance : Object) {
+    public static func del(_ object : Object) {
         let realm = try! Realm()
         try! realm.write {
-            realm.delete(objInstance)
+            realm.delete(object)
         }
     }
 
