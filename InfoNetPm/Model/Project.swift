@@ -16,11 +16,15 @@ public class Project: Object {
     @objc dynamic var Company : Company?
     
     @objc dynamic var isTemplate = false
-    @objc dynamic var name = ""
-    @objc dynamic var margin = 0
-    @objc dynamic var startDate = ""
-    @objc dynamic var endDate = ""
-    @objc dynamic var budget = ""
+    @objc dynamic var code = ""
+    @objc dynamic var desc = ""
+    
+    // financial info
+    @objc dynamic var expectedMargin = 0.0
+    @objc dynamic var scheduleStartDate = Date()
+    @objc dynamic var scheduleEndDate = Date()
+    @objc dynamic var initialBudget = 0.0
+    @objc dynamic var contingencyBudget = 0.0
     @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
   

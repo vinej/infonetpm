@@ -10,9 +10,14 @@ import RealmSwift
 import Eureka
 import SwiftyBeaver
 
-class CompanyEditViewController: FormViewController {
+class CompanyEditViewController: BaseEditViewController {
 
     @objc var company : Company? = nil
+    var companyName = "company"
+    
+    override func setInternalObject(_ object : Object) {
+        company = object as? Company
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +29,7 @@ class CompanyEditViewController: FormViewController {
                 row.value = company?.name
                 }.onChange { row in
                     RealmHelper.update(self.company!, #keyPath(Company.name), row.value)
-                    RealmHelper.isCompanyDirty = true
+                    RealmHelper.setDirty(#keyPath(company), true)
                 }
             
             <<< TextRow(){ row in
@@ -33,8 +38,7 @@ class CompanyEditViewController: FormViewController {
                 row.placeholder = "Type of the company"
                 }.onChange { row in
                     RealmHelper.update(self.company!, #keyPath(Company.type), row.value)
-                    RealmHelper.isCompanyDirty = true
-                }
+                    RealmHelper.setDirty(#keyPath(company), true)                }
         
             form +++ Section("Section Address")
                 
@@ -44,8 +48,7 @@ class CompanyEditViewController: FormViewController {
                 row.placeholder = "Enter your address"
                 }.onChange { row in
                     RealmHelper.update(self.company!.address!, #keyPath(Address.street), row.value)
-                    RealmHelper.isCompanyDirty = true
-                }
+                    RealmHelper.setDirty(#keyPath(company), true)                }
                 
             <<< TextRow (){ row in
                 row.title = "City"
@@ -53,7 +56,7 @@ class CompanyEditViewController: FormViewController {
                 row.placeholder = "Enter your city"
                 }.onChange { row in
                     RealmHelper.update(self.company!.address!, #keyPath(Address.city), row.value)
-                    RealmHelper.isCompanyDirty = true
+                    RealmHelper.setDirty(#keyPath(company), true)
             }
             
             <<< PopoverSelectorRow<String>() { row in
@@ -64,7 +67,7 @@ class CompanyEditViewController: FormViewController {
                 }.onChange { row in
                     if (row.value != "" && row.value != nil && row.value != RealmHelper.cancel && row.value != RealmHelper.empty) {
                         RealmHelper.update((self.company?.address!)!, #keyPath(Address.state), row.value)
-                        RealmHelper.isCompanyDirty = true
+                        RealmHelper.setDirty(#keyPath(company), true)
                     } else {
                         // onChange will be called again
                         if (row.value == RealmHelper.empty) {
@@ -82,7 +85,7 @@ class CompanyEditViewController: FormViewController {
                 }.onChange { row in
                     if (row.value != "" && row.value != nil && row.value != RealmHelper.cancel && row.value != RealmHelper.empty) {
                         RealmHelper.update((self.company?.address!)!, #keyPath(Address.country), row.value)
-                        RealmHelper.isCompanyDirty = true
+                        RealmHelper.setDirty(#keyPath(company), true)
                     } else {
                         // onChange will be called again
                         if (row.value == RealmHelper.empty) {
@@ -110,8 +113,7 @@ class CompanyEditViewController: FormViewController {
                 row.placeholder = "Enter your postal/zip code"
                 }.onChange { row in
                     RealmHelper.update(self.company!.address!, #keyPath(Address.postalcode), row.value)
-                    RealmHelper.isCompanyDirty = true
-                }
+                    RealmHelper.setDirty(#keyPath(company), true)                }
  
                 <<< PhoneRow(){ row in
                     row.title = "Phone"
@@ -119,8 +121,7 @@ class CompanyEditViewController: FormViewController {
                     row.placeholder = "Enter your phone"
                     }.onChange { row in
                         RealmHelper.update(self.company!.address!, #keyPath(Address.phone), row.value)
-                        RealmHelper.isCompanyDirty = true
-                }
+                        RealmHelper.setDirty(#keyPath(company), true)                   }
         
                 <<< PhoneRow(){ row in
                     row.title = "Phone Home"
@@ -128,7 +129,7 @@ class CompanyEditViewController: FormViewController {
                     row.placeholder = "Enter your phone at home"
                     }.onChange { row in
                         RealmHelper.update(self.company!.address!, #keyPath(Address.phoneHome), row.value)
-                        RealmHelper.isCompanyDirty = true
+                        RealmHelper.setDirty(#keyPath(company), true)
                     }
         
                 <<< EmailRow(){ row in
@@ -137,7 +138,7 @@ class CompanyEditViewController: FormViewController {
                     row.placeholder = "Enter your email"
                     }.onChange { row in
                         RealmHelper.update(self.company!.address!, #keyPath(Address.email), row.value)
-                        RealmHelper.isCompanyDirty = true
+                        RealmHelper.setDirty(#keyPath(company), true)
                     }
         
                 <<< EmailRow(){ row in
@@ -146,9 +147,8 @@ class CompanyEditViewController: FormViewController {
                     row.placeholder = "Enter your email at home"
                     }.onChange { row in
                         RealmHelper.update(self.company!.address!, #keyPath(Address.emailHome), row.value)
-                        RealmHelper.isCompanyDirty = true
-        }
-        
+                        RealmHelper.setDirty(#keyPath(company), true)
+                    }
     }
 
     override func didReceiveMemoryWarning() {

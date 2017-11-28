@@ -19,21 +19,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="companyCell" rowHeight="44" id="YH5-mu-j1n">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="edit" rowHeight="44" id="YH5-mu-j1n">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YH5-mu-j1n" id="Ems-OR-2t5">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwX-am-U1c">
-                                            <rect key="frame" x="16" y="5" width="343" height="34"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="Un0-eb-rCs" kind="show" identifier="segueEditCompany" id="tad-x6-MUC"/>
@@ -46,8 +37,8 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem width="319" id="poV-tD-hQY"/>
-                        <barButtonItem title="New" width="82" id="Vgj-9k-SeP">
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="ePx-EE-8Vh"/>
+                        <barButtonItem systemItem="compose" id="Vgj-9k-SeP">
                             <connections>
                                 <segue destination="Un0-eb-rCs" kind="show" identifier="segueNewCompany" id="KcL-Rx-L7S"/>
                             </connections>

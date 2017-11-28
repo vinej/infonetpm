@@ -24,6 +24,8 @@
 		5EC59BAE1FCB43FC005841BB /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA51FCB43FC005841BB /* Address.swift */; };
 		5EC59BAF1FCB43FC005841BB /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA61FCB43FC005841BB /* RealmHelper.swift */; };
 		9A338E0B981DA06054C4EC8B /* Pods_InfoNetPm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */; };
+		B25427AA1FCDFEF30057A3F2 /* ProjectEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427A91FCDFEF30057A3F2 /* ProjectEditViewController.swift */; };
+		B25427AC1FCE06A00057A3F2 /* BaseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */; };
 		B2BF25341FCC5A48001C65EB /* Audit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25331FCC5A48001C65EB /* Audit.swift */; };
 		B2BF25371FCC5B2D001C65EB /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25361FCC5B2D001C65EB /* Activity.swift */; };
 		B2BF25391FCC5B3D001C65EB /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25381FCC5B3D001C65EB /* Document.swift */; };
@@ -41,6 +43,8 @@
 		B2BF255D1FCC710C001C65EB /* Project.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF255C1FCC710C001C65EB /* Project.storyboard */; };
 		B2BF25621FCC7423001C65EB /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25611FCC7423001C65EB /* CompanyViewController.swift */; };
 		B2BF25641FCCBD6A001C65EB /* CompanyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25631FCCBD6A001C65EB /* CompanyEditViewController.swift */; };
+		B2DA62211FCDE2440040803A /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA62201FCDE2440040803A /* ProjectViewController.swift */; };
+		B2DA62231FCDEFF40040803A /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA62221FCDEFF40040803A /* BaseTableViewController.swift */; };
 		B2DDC2151FCDCBDE00119895 /* EurekaHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDC2141FCDCBDE00119895 /* EurekaHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +68,8 @@
 		5EC59BA41FCB43FC005841BB /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = InfoNetPm/Model/Resource.swift; sourceTree = SOURCE_ROOT; };
 		5EC59BA51FCB43FC005841BB /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Address.swift; path = InfoNetPm/Model/Address.swift; sourceTree = SOURCE_ROOT; };
 		5EC59BA61FCB43FC005841BB /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmHelper.swift; path = InfoNetPm/Model/RealmHelper.swift; sourceTree = SOURCE_ROOT; };
+		B25427A91FCDFEF30057A3F2 /* ProjectEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditViewController.swift; sourceTree = "<group>"; };
+		B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditViewController.swift; sourceTree = "<group>"; };
 		B2BF25331FCC5A48001C65EB /* Audit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Audit.swift; path = InfoNetPm/Model/Audit.swift; sourceTree = SOURCE_ROOT; };
 		B2BF25361FCC5B2D001C65EB /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Activity.swift; path = InfoNetPm/Model/Activity.swift; sourceTree = SOURCE_ROOT; };
 		B2BF25381FCC5B3D001C65EB /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = InfoNetPm/Model/Document.swift; sourceTree = SOURCE_ROOT; };
@@ -81,6 +87,8 @@
 		B2BF255C1FCC710C001C65EB /* Project.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Project.storyboard; sourceTree = "<group>"; };
 		B2BF25611FCC7423001C65EB /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
 		B2BF25631FCCBD6A001C65EB /* CompanyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyEditViewController.swift; sourceTree = "<group>"; };
+		B2DA62201FCDE2440040803A /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		B2DA62221FCDEFF40040803A /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		B2DDC2141FCDCBDE00119895 /* EurekaHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaHelper.swift; sourceTree = "<group>"; };
 		E91D1DDF44207C7C11B65BFA /* Pods-InfoNetPm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfoNetPm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InfoNetPm/Pods-InfoNetPm.debug.xcconfig"; sourceTree = "<group>"; };
 		F0E3C428DDC6FA389F0B6A3D /* Pods-InfoNetPm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfoNetPm.release.xcconfig"; path = "Pods/Target Support Files/Pods-InfoNetPm/Pods-InfoNetPm.release.xcconfig"; sourceTree = "<group>"; };
@@ -188,6 +196,10 @@
 			children = (
 				B2BF25611FCC7423001C65EB /* CompanyViewController.swift */,
 				B2BF25631FCCBD6A001C65EB /* CompanyEditViewController.swift */,
+				B2DA62201FCDE2440040803A /* ProjectViewController.swift */,
+				B2DA62221FCDEFF40040803A /* BaseTableViewController.swift */,
+				B25427A91FCDFEF30057A3F2 /* ProjectEditViewController.swift */,
+				B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,6 +337,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-InfoNetPm/Pods-InfoNetPm-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome/FontAwesome.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
@@ -332,6 +346,8 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
@@ -350,15 +366,19 @@
 			files = (
 				5EC59BAD1FCB43FC005841BB /* Resource.swift in Sources */,
 				5EC59B891FCB40CC005841BB /* ViewController.swift in Sources */,
+				B2DA62231FCDEFF40040803A /* BaseTableViewController.swift in Sources */,
 				B2BF25621FCC7423001C65EB /* CompanyViewController.swift in Sources */,
 				5EC59BAB1FCB43FC005841BB /* Issue.swift in Sources */,
+				B25427AC1FCE06A00057A3F2 /* BaseEditViewController.swift in Sources */,
 				5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */,
 				5EC59BAE1FCB43FC005841BB /* Address.swift in Sources */,
 				B2BF25641FCCBD6A001C65EB /* CompanyEditViewController.swift in Sources */,
 				5EC59BA91FCB43FC005841BB /* Task.swift in Sources */,
 				B2BF25371FCC5B2D001C65EB /* Activity.swift in Sources */,
+				B25427AA1FCDFEF30057A3F2 /* ProjectEditViewController.swift in Sources */,
 				B2BF253B1FCC5B4B001C65EB /* Role.swift in Sources */,
 				B2DDC2151FCDCBDE00119895 /* EurekaHelper.swift in Sources */,
+				B2DA62211FCDE2440040803A /* ProjectViewController.swift in Sources */,
 				5EC59BA71FCB43FC005841BB /* Plan.swift in Sources */,
 				B2BF25391FCC5B3D001C65EB /* Document.swift in Sources */,
 				B2BF25341FCC5A48001C65EB /* Audit.swift in Sources */,

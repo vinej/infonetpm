@@ -13,14 +13,14 @@
         <!--Project-->
         <scene sceneID="kWA-bK-d0k">
             <objects>
-                <tableViewController title="Project" id="GXj-K8-TTQ" sceneMemberID="viewController">
+                <tableViewController title="Project" id="GXj-K8-TTQ" customClass="ProjectViewController" customModule="InfoNetPm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uEm-8N-QzH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="DJv-TY-EfJ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="edit" id="DJv-TY-EfJ">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DJv-TY-EfJ" id="E9b-xe-gn4">
@@ -38,10 +38,10 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem width="327" id="Xyr-Ni-fel"/>
-                        <barButtonItem title="New" id="GUT-NC-qX4">
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="d6I-67-Q9O"/>
+                        <barButtonItem systemItem="compose" id="GUT-NC-qX4">
                             <connections>
-                                <segue destination="LA6-DB-JZ2" kind="show" id="Wrw-5c-sNz"/>
+                                <segue destination="LA6-DB-JZ2" kind="show" identifier="segueNewProject" id="Wrw-5c-sNz"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -49,12 +49,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zj7-SX-D1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10" y="-9"/>
+            <point key="canvasLocation" x="8.8000000000000007" y="-9.4452773613193415"/>
         </scene>
-        <!--View Controller-->
+        <!--Project Edit View Controller-->
         <scene sceneID="4Wp-Zu-EP2">
             <objects>
-                <viewController id="LA6-DB-JZ2" sceneMemberID="viewController">
+                <viewController id="LA6-DB-JZ2" customClass="ProjectEditViewController" customModule="InfoNetPm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hw0-S6-ile">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

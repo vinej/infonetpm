@@ -11,7 +11,15 @@ import RealmSwift
 
 public class RealmHelper {
     
-    public static var isCompanyDirty = false
+    public static var isObjectDirty = [String: Bool]()
+    
+    public static func isDirty( _ objectName : String) -> Bool {
+        return isObjectDirty[objectName] != nil ? isObjectDirty[objectName]! : false
+    }
+    
+    public static func setDirty( _ objectName : String, _ value : Bool) {
+        isObjectDirty[objectName] = value
+    }
     
     public static let cancel = "* cancel *"
     public static let empty = "* empty *"
