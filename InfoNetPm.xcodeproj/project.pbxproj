@@ -23,7 +23,6 @@
 		5EC59BAD1FCB43FC005841BB /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA41FCB43FC005841BB /* Resource.swift */; };
 		5EC59BAE1FCB43FC005841BB /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA51FCB43FC005841BB /* Address.swift */; };
 		5EC59BAF1FCB43FC005841BB /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA61FCB43FC005841BB /* RealmHelper.swift */; };
-		5EF876F81FCCD9A4001B11FB /* CompanyNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF876F71FCCD9A4001B11FB /* CompanyNewViewController.swift */; };
 		9A338E0B981DA06054C4EC8B /* Pods_InfoNetPm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */; };
 		B2BF25341FCC5A48001C65EB /* Audit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25331FCC5A48001C65EB /* Audit.swift */; };
 		B2BF25371FCC5B2D001C65EB /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25361FCC5B2D001C65EB /* Activity.swift */; };
@@ -64,7 +63,6 @@
 		5EC59BA41FCB43FC005841BB /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = InfoNetPm/Model/Resource.swift; sourceTree = SOURCE_ROOT; };
 		5EC59BA51FCB43FC005841BB /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Address.swift; path = InfoNetPm/Model/Address.swift; sourceTree = SOURCE_ROOT; };
 		5EC59BA61FCB43FC005841BB /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmHelper.swift; path = InfoNetPm/Model/RealmHelper.swift; sourceTree = SOURCE_ROOT; };
-		5EF876F71FCCD9A4001B11FB /* CompanyNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyNewViewController.swift; sourceTree = "<group>"; };
 		B2BF25331FCC5A48001C65EB /* Audit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Audit.swift; path = InfoNetPm/Model/Audit.swift; sourceTree = SOURCE_ROOT; };
 		B2BF25361FCC5B2D001C65EB /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Activity.swift; path = InfoNetPm/Model/Activity.swift; sourceTree = SOURCE_ROOT; };
 		B2BF25381FCC5B3D001C65EB /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = InfoNetPm/Model/Document.swift; sourceTree = SOURCE_ROOT; };
@@ -187,7 +185,6 @@
 			children = (
 				B2BF25611FCC7423001C65EB /* CompanyViewController.swift */,
 				B2BF25631FCCBD6A001C65EB /* CompanyEditViewController.swift */,
-				5EF876F71FCCD9A4001B11FB /* CompanyNewViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -347,7 +344,6 @@
 				5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */,
 				5EC59BAE1FCB43FC005841BB /* Address.swift in Sources */,
 				B2BF25641FCCBD6A001C65EB /* CompanyEditViewController.swift in Sources */,
-				5EF876F81FCCD9A4001B11FB /* CompanyNewViewController.swift in Sources */,
 				5EC59BA91FCB43FC005841BB /* Task.swift in Sources */,
 				B2BF25371FCC5B2D001C65EB /* Activity.swift in Sources */,
 				B2BF253B1FCC5B4B001C65EB /* Role.swift in Sources */,

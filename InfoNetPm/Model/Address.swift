@@ -13,7 +13,7 @@ public class Address: Object {
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var country = ""
     @objc dynamic var province = ""
-    @objc dynamic var adress = ""
+    @objc dynamic var address = ""
     @objc dynamic var postalCode = ""
     @objc dynamic var telephoneHome = ""
     @objc dynamic var emailHome = ""

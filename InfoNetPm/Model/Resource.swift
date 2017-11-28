@@ -19,7 +19,7 @@ public class Resource: Object {
     @objc dynamic var hoursByDay = 0
     @objc dynamic var email = ""
     @objc dynamic var telephone = ""
-    @objc dynamic var address: Address?
+    @objc dynamic var address: Address? = Address()
     @objc dynamic var company: Company?
     
     override public static func primaryKey() -> String? {

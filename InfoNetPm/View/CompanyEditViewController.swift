@@ -36,6 +36,16 @@ class CompanyEditViewController: FormViewController {
                     RealmHelper.update(self.company!, "type", row.value)
                     RealmHelper.isCompanyDirty = true
             }
+        
+            <<< TextRow(){ row in
+                row.title = "Country"
+                row.value = company?.address?.country
+                row.placeholder = "And type here"
+                }.onChange { row in
+                    RealmHelper.update(self.company!.address!, "country", row.value)
+                    RealmHelper.isCompanyDirty = true
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,3 +65,4 @@ class CompanyEditViewController: FormViewController {
     */
 
 }
+

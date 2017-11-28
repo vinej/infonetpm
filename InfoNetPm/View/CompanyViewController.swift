@@ -13,7 +13,6 @@ import RealmSwift
 class CompanyViewController: UITableViewController {
     
     var list : Results<Object>? = nil
-    var company : Company? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,21 +46,14 @@ class CompanyViewController: UITableViewController {
         return list!.count
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //company = list![indexPath.row] as? Company
-        //self.performSegue(withIdentifier: "segueEditCompany", sender: self)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let theDestination = (segue.destination as! CompanyEditViewController)
         if (segue.identifier == "segueEditCompany") {
             let indexPath = tableView.indexPathForSelectedRow
-            company = list![(indexPath?.row)!] as? Company
-            let theDestination = (segue.destination as! CompanyEditViewController)
-            theDestination.company = self.company
+            theDestination.company = list![(indexPath?.row)!] as? Company
         } else {
-            let theDestination = (segue.destination as! CompanyNewViewController)
-            let newCompagnie = RealmHelper.new(Company())
-            theDestination.company = newCompagnie as? Company
+            RealmHelper.isCompanyDirty = true
+            theDestination.company = (RealmHelper.new(Company()) as! Company)
         }
     }
     
@@ -78,7 +70,6 @@ class CompanyViewController: UITableViewController {
     }
     
 
-  
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.

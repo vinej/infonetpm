@@ -49,7 +49,7 @@
                         <barButtonItem width="319" id="poV-tD-hQY"/>
                         <barButtonItem title="New" width="82" id="Vgj-9k-SeP">
                             <connections>
-                                <segue destination="3nu-OX-sab" kind="show" identifier="segueNewCompany" id="v5j-iU-ScL"/>
+                                <segue destination="Un0-eb-rCs" kind="show" identifier="segueNewCompany" id="KcL-Rx-L7S"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -77,22 +77,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="twD-Az-gL5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="998" y="-347"/>
-        </scene>
-        <!--New Compny-->
-        <scene sceneID="N7o-Dd-ZF6">
-            <objects>
-                <viewController title="New Compny" id="3nu-OX-sab" customClass="CompanyNewViewController" customModule="InfoNetPm" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yks-38-8cI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Kf4-9y-mzu"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wO3-br-7Ei" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="998" y="515"/>
+            <point key="canvasLocation" x="902" y="-1"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="KcL-Rx-L7S"/>
+    </inferredMetricsTieBreakers>
 </document>
