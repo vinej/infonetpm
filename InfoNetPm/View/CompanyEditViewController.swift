@@ -5,7 +5,6 @@
 //  Created by Jean-Yves Vinet on 2017-11-27.
 //  Copyright © 2017 Info JYV Inc. All rights reserved.
 //
-
 import UIKit
 import RealmSwift
 import Eureka
@@ -13,7 +12,7 @@ import SwiftyBeaver
 
 class CompanyEditViewController: FormViewController {
 
-    var company : Company? = nil
+    @objc var company : Company? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,26 +23,130 @@ class CompanyEditViewController: FormViewController {
                 row.placeholder = "Company name"
                 row.value = company?.name
                 }.onChange { row in
-                    RealmHelper.update(self.company!, "name", row.value)
+                    RealmHelper.update(self.company!, #keyPath(Company.name), row.value)
                     RealmHelper.isCompanyDirty = true
-            }
+                }
             
             <<< TextRow(){ row in
                 row.title = "Type"
                 row.value = company?.type
-                row.placeholder = "And type here"
+                row.placeholder = "Type of the company"
                 }.onChange { row in
-                    RealmHelper.update(self.company!, "type", row.value)
+                    RealmHelper.update(self.company!, #keyPath(Company.type), row.value)
+                    RealmHelper.isCompanyDirty = true
+                }
+        
+            form +++ Section("Section Address")
+                
+            <<< TextAreaRow (){ row in
+                row.title = "Address"
+                row.value = company?.address?.street
+                row.placeholder = "Enter your address"
+                }.onChange { row in
+                    RealmHelper.update(self.company!.address!, #keyPath(Address.street), row.value)
+                    RealmHelper.isCompanyDirty = true
+                }
+                
+            <<< TextRow (){ row in
+                row.title = "City"
+                row.value = company?.address?.city
+                row.placeholder = "Enter your city"
+                }.onChange { row in
+                    RealmHelper.update(self.company!.address!, #keyPath(Address.city), row.value)
                     RealmHelper.isCompanyDirty = true
             }
-        
-            <<< TextRow(){ row in
-                row.title = "Country"
-                row.value = company?.address?.country
-                row.placeholder = "And type here"
+            
+            <<< PopoverSelectorRow<String>() { row in
+                row.title = "State/Province/Region"
+                row.options = [RealmHelper.empty,RealmHelper.cancel, "Quebec","Chennai","Bangalore", "New-York"]
+                row.value = company?.address?.state
+                row.selectorTitle = "Choose your State/Province/Region"
                 }.onChange { row in
-                    RealmHelper.update(self.company!.address!, "country", row.value)
+                    if (row.value != "" && row.value != nil && row.value != RealmHelper.cancel && row.value != RealmHelper.empty) {
+                        RealmHelper.update((self.company?.address!)!, #keyPath(Address.state), row.value)
+                        RealmHelper.isCompanyDirty = true
+                    } else {
+                        // onChange will be called again
+                        if (row.value == RealmHelper.empty) {
+                            RealmHelper.update((self.company?.address!)!, #keyPath(Address.state) , "")
+                        }
+                        row.value = self.company?.address?.state
+                    }
+                }
+                
+            <<< PopoverSelectorRow<String>() { row in
+                row.title = "Country"
+                row.options = [RealmHelper.empty,RealmHelper.cancel, "Canada","India","United State"]
+                row.value = company?.address?.country
+                row.selectorTitle = "Choose your country"
+                }.onChange { row in
+                    if (row.value != "" && row.value != nil && row.value != RealmHelper.cancel && row.value != RealmHelper.empty) {
+                        RealmHelper.update((self.company?.address!)!, #keyPath(Address.country), row.value)
+                        RealmHelper.isCompanyDirty = true
+                    } else {
+                        // onChange will be called again
+                        if (row.value == RealmHelper.empty) {
+                            RealmHelper.update((self.company?.address!)!, #keyPath(Address.country) , "")
+                        }
+                        row.value = self.company?.address?.country
+                    }
+                }
+            
+            /*
+            <<< ActionSheetRow<String>() { row in
+                row.title = "Country"
+                row.selectorTitle = "Choose your country"
+                row.options = ["Canada", "India"]
+                row.value = company?.address?.country
+                }.onChange { row in
+                    RealmHelper.update((self.company?.address!)!, #keyPath(Address.country), row.value)
                     RealmHelper.isCompanyDirty = true
+            }
+            */
+                
+            <<< TextRow(){ row in
+                row.title = "Postal/Zip code"
+                row.value = company?.address?.postalcode
+                row.placeholder = "Enter your postal/zip code"
+                }.onChange { row in
+                    RealmHelper.update(self.company!.address!, #keyPath(Address.postalcode), row.value)
+                    RealmHelper.isCompanyDirty = true
+                }
+ 
+                <<< PhoneRow(){ row in
+                    row.title = "Phone"
+                    row.value = company?.address?.phone
+                    row.placeholder = "Enter your phone"
+                    }.onChange { row in
+                        RealmHelper.update(self.company!.address!, #keyPath(Address.phone), row.value)
+                        RealmHelper.isCompanyDirty = true
+                }
+        
+                <<< PhoneRow(){ row in
+                    row.title = "Phone Home"
+                    row.value = company?.address?.phoneHome
+                    row.placeholder = "Enter your phone at home"
+                    }.onChange { row in
+                        RealmHelper.update(self.company!.address!, #keyPath(Address.phoneHome), row.value)
+                        RealmHelper.isCompanyDirty = true
+                    }
+        
+                <<< EmailRow(){ row in
+                    row.title = "Email"
+                    row.value = company?.address?.email
+                    row.placeholder = "Enter your email"
+                    }.onChange { row in
+                        RealmHelper.update(self.company!.address!, #keyPath(Address.email), row.value)
+                        RealmHelper.isCompanyDirty = true
+                    }
+        
+                <<< EmailRow(){ row in
+                    row.title = "Email Home"
+                    row.value = company?.address?.emailHome
+                    row.placeholder = "Enter your email at home"
+                    }.onChange { row in
+                        RealmHelper.update(self.company!.address!, #keyPath(Address.emailHome), row.value)
+                        RealmHelper.isCompanyDirty = true
         }
         
     }
@@ -53,7 +156,6 @@ class CompanyEditViewController: FormViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

@@ -64,7 +64,7 @@ class CompanyViewController: UITableViewController {
 
         let cie = (list![indexPath.row] as! Company)
         
-        lbl.text = "\(cie.name) : \(cie.id)"
+        lbl.text = "\(cie.name) : \(cie.address?.email ?? "")"
     
         return cell
     }

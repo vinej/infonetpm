@@ -13,6 +13,9 @@ public class RealmHelper {
     
     public static var isCompanyDirty = false
     
+    public static let cancel = "* cancel *"
+    public static let empty = "* empty *"
+    
     public static func update<T>(_ object : Object, _ field: String, _ value: T!, _ allowNil : Bool = false) {
         let realm = try! Realm()
         try! realm.write {
