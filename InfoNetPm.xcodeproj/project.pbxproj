@@ -26,6 +26,8 @@
 		9A338E0B981DA06054C4EC8B /* Pods_InfoNetPm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */; };
 		B25427AA1FCDFEF30057A3F2 /* ProjectEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427A91FCDFEF30057A3F2 /* ProjectEditViewController.swift */; };
 		B25427AC1FCE06A00057A3F2 /* BaseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */; };
+		B25427AE1FCF2EF00057A3F2 /* RoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AD1FCF2EF00057A3F2 /* RoleViewController.swift */; };
+		B25427B01FCF311A0057A3F2 /* RoleEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AF1FCF311A0057A3F2 /* RoleEditViewController.swift */; };
 		B2BF25341FCC5A48001C65EB /* Audit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25331FCC5A48001C65EB /* Audit.swift */; };
 		B2BF25371FCC5B2D001C65EB /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25361FCC5B2D001C65EB /* Activity.swift */; };
 		B2BF25391FCC5B3D001C65EB /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25381FCC5B3D001C65EB /* Document.swift */; };
@@ -70,6 +72,8 @@
 		5EC59BA61FCB43FC005841BB /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmHelper.swift; path = InfoNetPm/Model/RealmHelper.swift; sourceTree = SOURCE_ROOT; };
 		B25427A91FCDFEF30057A3F2 /* ProjectEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditViewController.swift; sourceTree = "<group>"; };
 		B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditViewController.swift; sourceTree = "<group>"; };
+		B25427AD1FCF2EF00057A3F2 /* RoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleViewController.swift; sourceTree = "<group>"; };
+		B25427AF1FCF311A0057A3F2 /* RoleEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleEditViewController.swift; sourceTree = "<group>"; };
 		B2BF25331FCC5A48001C65EB /* Audit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Audit.swift; path = InfoNetPm/Model/Audit.swift; sourceTree = SOURCE_ROOT; };
 		B2BF25361FCC5B2D001C65EB /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Activity.swift; path = InfoNetPm/Model/Activity.swift; sourceTree = SOURCE_ROOT; };
 		B2BF25381FCC5B3D001C65EB /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = InfoNetPm/Model/Document.swift; sourceTree = SOURCE_ROOT; };
@@ -200,6 +204,8 @@
 				B2DA62221FCDEFF40040803A /* BaseTableViewController.swift */,
 				B25427A91FCDFEF30057A3F2 /* ProjectEditViewController.swift */,
 				B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */,
+				B25427AD1FCF2EF00057A3F2 /* RoleViewController.swift */,
+				B25427AF1FCF311A0057A3F2 /* RoleEditViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 				5EC59B891FCB40CC005841BB /* ViewController.swift in Sources */,
 				B2DA62231FCDEFF40040803A /* BaseTableViewController.swift in Sources */,
 				B2BF25621FCC7423001C65EB /* CompanyViewController.swift in Sources */,
+				B25427AE1FCF2EF00057A3F2 /* RoleViewController.swift in Sources */,
 				5EC59BAB1FCB43FC005841BB /* Issue.swift in Sources */,
 				B25427AC1FCE06A00057A3F2 /* BaseEditViewController.swift in Sources */,
 				5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */,
@@ -377,6 +384,7 @@
 				B2BF25371FCC5B2D001C65EB /* Activity.swift in Sources */,
 				B25427AA1FCDFEF30057A3F2 /* ProjectEditViewController.swift in Sources */,
 				B2BF253B1FCC5B4B001C65EB /* Role.swift in Sources */,
+				B25427B01FCF311A0057A3F2 /* RoleEditViewController.swift in Sources */,
 				B2DDC2151FCDCBDE00119895 /* EurekaHelper.swift in Sources */,
 				B2DA62211FCDE2440040803A /* ProjectViewController.swift in Sources */,
 				5EC59BA71FCB43FC005841BB /* Plan.swift in Sources */,
