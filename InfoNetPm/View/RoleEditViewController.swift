@@ -36,7 +36,7 @@ class RoleEditViewController: BaseEditViewController {
             <<< TextRow(){ row in
                 row.title = "Description"
                 row.placeholder = "Role description"
-                row.value = role?.name
+                row.value = role?.desc
                 }.onChange { row in
                     RealmHelper.update(self.role!, #keyPath(Role.desc), row.value)
                     RealmHelper.setDirty(#keyPath(role), true)
@@ -45,7 +45,7 @@ class RoleEditViewController: BaseEditViewController {
             <<< DecimalRow(){ row in
                 row.title = "Rate by hour"
                 row.placeholder = "Rate by hour"
-                row.value = role?.rateByHour
+                row.value = role?.rateByHour == 0 ? nil : role?.rateByHour
                 }.onChange { row in
                     RealmHelper.update(self.role!, #keyPath(Role.rateByHour), row.value)
                     RealmHelper.setDirty(#keyPath(role), true)
@@ -54,7 +54,7 @@ class RoleEditViewController: BaseEditViewController {
             <<< DecimalRow(){ row in
                 row.title = "Expected cost by hour"
                 row.placeholder = "Expected cost by hour"
-                row.value = role?.expectedCostByHour
+                row.value = role?.expectedCostByHour == 0 ? nil : role?.expectedCostByHour
                 }.onChange { row in
                     RealmHelper.update(self.role!, #keyPath(Role.expectedCostByHour), row.value)
                     RealmHelper.setDirty(#keyPath(role), true)

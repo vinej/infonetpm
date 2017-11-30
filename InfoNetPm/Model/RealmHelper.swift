@@ -29,13 +29,14 @@ public class RealmHelper {
         try! realm.write {
             if (value == nil) {
                 if (!allowNil) {
-                    switch(value) {
-                    case is String 	: object[field] = ""
-                    case is Bool : object[field] = false
-                    case is Int : object[field] = 0
-                    case is Float : object[field] = 0.0
-                    case is Double : object[field] = 0.0
-                    case is Date : object[field] = Date()
+                    let stype = "\(type(of: value))"
+                    switch(stype) {
+                    case "Optional<Double>" : object[field] = 0.0
+                    case "Optional<String>" : object[field] = ""
+                    case "Optional<Bool>" : object[field] = false
+                    case "Optional<Int>" : object[field] = 0
+                    case "Optional<Float>" : object[field] = 0.0
+                    case "OPtional<Date>" : object[field] = Date()
                     default : object[field] = ""
                     }
                 }
