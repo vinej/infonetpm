@@ -7,6 +7,19 @@ PODS:
   - Realm/Headers (3.0.2)
   - RealmSwift (3.0.2):
     - Realm (= 3.0.2)
+  - SwifterSwift (4.1.0):
+    - SwifterSwift/AppKit (= 4.1.0)
+    - SwifterSwift/CoreGraphics (= 4.1.0)
+    - SwifterSwift/CoreLocation (= 4.1.0)
+    - SwifterSwift/Foundation (= 4.1.0)
+    - SwifterSwift/SwiftStdlib (= 4.1.0)
+    - SwifterSwift/UIKit (= 4.1.0)
+  - SwifterSwift/AppKit (4.1.0)
+  - SwifterSwift/CoreGraphics (4.1.0)
+  - SwifterSwift/CoreLocation (4.1.0)
+  - SwifterSwift/Foundation (4.1.0)
+  - SwifterSwift/SwiftStdlib (4.1.0)
+  - SwifterSwift/UIKit (4.1.0)
   - SwiftyBeaver (1.4.3)
 
 DEPENDENCIES:
@@ -14,6 +27,7 @@ DEPENDENCIES:
   - FontAwesome
   - FontAwesome.swift
   - RealmSwift
+  - SwifterSwift
   - SwiftyBeaver
 
 SPEC CHECKSUMS:
@@ -22,8 +36,9 @@ SPEC CHECKSUMS:
   FontAwesome.swift: b4e4c8ccbbecb12f9b592bc533ff237af3706667
   Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
   RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
+  SwifterSwift: 4d962b5d653760b85266832aff6ab6d08c1b7974
   SwiftyBeaver: e10b1668e0512229c36c34769b97eed3dfae2ca3
 
-PODFILE CHECKSUM: eb013b8464a18eb6a9d28e6817f26efe56e01434
+PODFILE CHECKSUM: 2943dff665485a1cd637a76f25edd037c546c0d5
 
 COCOAPODS: 1.3.1

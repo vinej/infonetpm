@@ -9,6 +9,7 @@ target 'InfoNetPm' do
   pod 'Eureka'
   pod 'RealmSwift'
   pod 'SwiftyBeaver'
+  pod 'SwifterSwift'
   pod 'FontAwesome'
   pod 'FontAwesome.swift'
 end
