@@ -45,6 +45,9 @@
 		B2DA62211FCDE2440040803A /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA62201FCDE2440040803A /* ProjectViewController.swift */; };
 		B2DA62231FCDEFF40040803A /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA62221FCDEFF40040803A /* BaseTableViewController.swift */; };
 		B2DDC2151FCDCBDE00119895 /* EurekaHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDC2141FCDCBDE00119895 /* EurekaHelper.swift */; };
+		B2E30F941FD1AA5B0098031F /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E30F911FD1AA5A0098031F /* Activity.swift */; };
+		B2E30F951FD1AA5B0098031F /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E30F921FD1AA5B0098031F /* Role.swift */; };
+		B2E30F961FD1AA5B0098031F /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E30F931FD1AA5B0098031F /* Document.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +91,9 @@
 		B2DA62201FCDE2440040803A /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		B2DA62221FCDEFF40040803A /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		B2DDC2141FCDCBDE00119895 /* EurekaHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaHelper.swift; sourceTree = "<group>"; };
+		B2E30F911FD1AA5A0098031F /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Activity.swift; path = InfoNetPm/Model/Activity.swift; sourceTree = SOURCE_ROOT; };
+		B2E30F921FD1AA5B0098031F /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Role.swift; path = InfoNetPm/Model/Role.swift; sourceTree = SOURCE_ROOT; };
+		B2E30F931FD1AA5B0098031F /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = InfoNetPm/Model/Document.swift; sourceTree = SOURCE_ROOT; };
 		E91D1DDF44207C7C11B65BFA /* Pods-InfoNetPm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfoNetPm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InfoNetPm/Pods-InfoNetPm.debug.xcconfig"; sourceTree = "<group>"; };
 		F0E3C428DDC6FA389F0B6A3D /* Pods-InfoNetPm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InfoNetPm.release.xcconfig"; path = "Pods/Target Support Files/Pods-InfoNetPm/Pods-InfoNetPm.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +177,9 @@
 		5EC59B9D1FCB43CF005841BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B2E30F911FD1AA5A0098031F /* Activity.swift */,
+				B2E30F931FD1AA5B0098031F /* Document.swift */,
+				B2E30F921FD1AA5B0098031F /* Role.swift */,
 				5EC59BA51FCB43FC005841BB /* Address.swift */,
 				5EC59B9F1FCB43FC005841BB /* Comment.swift */,
 				5EC59BA11FCB43FC005841BB /* Company.swift */,
@@ -371,6 +380,8 @@
 				5EC59BAB1FCB43FC005841BB /* Issue.swift in Sources */,
 				B25427AC1FCE06A00057A3F2 /* BaseEditViewController.swift in Sources */,
 				5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */,
+				B2E30F961FD1AA5B0098031F /* Document.swift in Sources */,
+				B2E30F951FD1AA5B0098031F /* Role.swift in Sources */,
 				5EC59BAE1FCB43FC005841BB /* Address.swift in Sources */,
 				B2BF25641FCCBD6A001C65EB /* CompanyEditViewController.swift in Sources */,
 				5EC59BA91FCB43FC005841BB /* Task.swift in Sources */,
@@ -383,6 +394,7 @@
 				5EC59BAF1FCB43FC005841BB /* RealmHelper.swift in Sources */,
 				5EC59BA81FCB43FC005841BB /* Comment.swift in Sources */,
 				5EC59BAA1FCB43FC005841BB /* Company.swift in Sources */,
+				B2E30F941FD1AA5B0098031F /* Activity.swift in Sources */,
 				5EC59BAC1FCB43FC005841BB /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,6 +551,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K8CV9YB45G;
+				"DEVELOPMENT_TEAM[sdk=*]" = K8CV9YB45G;
 				INFOPLIST_FILE = InfoNetPm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = infojyv.InfoNetPm;
