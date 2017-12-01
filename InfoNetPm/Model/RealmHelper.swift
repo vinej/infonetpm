@@ -34,6 +34,13 @@ public class RealmHelper {
         }
         return listSelection
     }
+    
+    public static func getSelectionIndex(_ value : String)  -> Int {
+        if (value == self.empty) { return 0 }
+        if (value == self.cancel) { return 1 }
+        let index = value.index(of: ":") ?? value.endIndex
+        return Int(value[..<index])! + 1
+    }
 
     public static func update<T>(_ object : Object, _ field: String, _ value: T!, _ allowNil : Bool = false) {
         let realm = try! Realm()

@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 import RealmSwift
 import Eureka
+import SwifterSwift
 
 class ProjectEditViewController: BaseEditViewController {
     
     @objc var project : Project? = nil
     var projectName = "project"
     var companyList : Results<Object>? = nil
+    static var isSecondOnChange = false
     
     override func setInternalObject(_ object : Object) {
         project = object as? Project
@@ -28,28 +30,28 @@ class ProjectEditViewController: BaseEditViewController {
         form +++ Section("Section Project")
             <<< PopoverSelectorRow<String>() { row in
                 row.title = "Company"
-                row.options = RealmHelper.toSelection(companyList!, "name")
-                row.value = project?.Company != nil ? project?.Company?.name : ""
-                
+                row.options = Company.getOptions(companyList!)
+                row.value = project?.company != nil ? project?.company?.name : ""
                 row.selectorTitle = "Choose a company"
                 }.onChange { row in
-                    if (row.value != "" && row.value != nil && row.value != RealmHelper.cancel && row.value != RealmHelper.empty) {
-                        // get the index path (index - 1)
-                        let svalue = row.value as! String ?? ""
-                        let index = svalue.index(of: ":") ?? svalue.endIndex
-                        let idx = Int(svalue[..<index])
-                        let company = self.companyList![idx!] as! Company
-                        
-                        RealmHelper.update((self.project?.Company)!, #keyPath(project.Company), company)
-                        RealmHelper.setDirty(#keyPath(project), true)
-                    } else {
-                        // onChange will be called again
-                        if (row.value == RealmHelper.empty) {
-                            RealmHelper.update((self.project?.Company)!, #keyPath(project.Company), "#nil#")
-                        }
-                        //row.value = self.company?.address?.country
+                    if (ProjectEditViewController.isSecondOnChange) {
+                        ProjectEditViewController.isSecondOnChange = false
+                        return
                     }
-            }
+                    if (row.value != nil && row.value != RealmHelper.empty && row.value != RealmHelper.cancel)  {
+                        Project.saveCompany(self.project!, Company.getCompany(row.value!))
+                        RealmHelper.setDirty(#keyPath(project), true)
+                     } else {
+                        if (row.value == RealmHelper.empty) {
+                            Project.saveEmptyCompany(self.project!)
+                            RealmHelper.setDirty(#keyPath(project), true)
+                        }
+                    }
+                    // set the flag to not do twice the onChange
+                    ProjectEditViewController.isSecondOnChange = true
+                    row.value = self.project?.company != nil ? self.project?.company?.name : ""
+                }
+            
             
             <<< TextRow(){ row in
                 row.title = "Code"
