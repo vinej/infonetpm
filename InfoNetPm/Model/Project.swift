@@ -35,17 +35,17 @@ public class Project: Object {
         return "id"
     }
     
-    public static func saveCompany(_ project  : Project, _ company : Company) {
+    public func saveCompany(_ company : Company) {
         let realm = try! Realm()
         try! realm.write {
-            project.company = company
+            self.company = company
         }
     }
     
-    public static func saveEmptyCompany(_ project  : Project) {
+    public func saveEmptyCompany() {
         let realm = try! Realm()
         try! realm.write {
-            project.company = nil
+            self.company = nil
         }
     }
 }

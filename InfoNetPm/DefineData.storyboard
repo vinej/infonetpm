@@ -49,6 +49,14 @@
                                     <segue destination="GKT-ag-htA" kind="show" id="u8B-Dm-PDo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipy-ck-J0U">
+                                <rect key="frame" x="16" y="298" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Resource"/>
+                                <connections>
+                                    <segue destination="HZt-1t-jmc" kind="show" id="igX-Pf-NOf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="rag-Kt-EmT"/>
@@ -81,6 +89,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xmB-uA-pB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="796" y="-67"/>
+        </scene>
+        <!--Resource-->
+        <scene sceneID="hYw-Uy-tt6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Resource" id="HZt-1t-jmc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="drH-IR-YiX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="810" y="6"/>
         </scene>
     </scenes>
 </document>

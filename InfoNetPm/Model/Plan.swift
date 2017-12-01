@@ -12,7 +12,7 @@ import RealmSwift
 
 public class Plan: Object {
     @objc dynamic var id = UUID().uuidString
-    @objc dynamic var status = "not started" //
+    @objc dynamic var status = "NotStarted" //
     @objc dynamic var project : Project?
     
     @objc dynamic var isTemplate = false

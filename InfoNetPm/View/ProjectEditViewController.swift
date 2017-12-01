@@ -57,11 +57,11 @@ class ProjectEditViewController: BaseEditViewController {
                         return
                     }
                     if (row.value != nil && row.value != RealmHelper.empty && row.value != RealmHelper.cancel)  {
-                        Project.saveCompany(self.project!, Company.getCompany(row.value!))
+                        self.project?.saveCompany(Company.getCompany(row.value!))
                         RealmHelper.setDirty(#keyPath(project), true)
                      } else {
                         if (row.value == RealmHelper.empty) {
-                            Project.saveEmptyCompany(self.project!)
+                            self.project?.saveEmptyCompany()
                             RealmHelper.setDirty(#keyPath(project), true)
                         }
                     }
@@ -89,7 +89,7 @@ class ProjectEditViewController: BaseEditViewController {
                     RealmHelper.setDirty(#keyPath(project), true)
                 }
         
-        form +++ Section("Section Financial")
+            form +++ Section("Section Financial")
             
             <<< DecimalRow(){ row in
                 row.title = "Initial Budget"

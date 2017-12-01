@@ -102,6 +102,5 @@ public class RealmHelper {
     public static func get<T>(_ object : T.Type, id : String) -> Object {
         return RealmHelper.filter(object.self, "id = %@", id).first!
     }
-
 }
 
