@@ -9,10 +9,11 @@
 import Foundation
 import RealmSwift
 
+
 // Define your models like regular Swift classes
 public class Project: Object {
     @objc dynamic var id = UUID().uuidString
-    @objc dynamic var status = "not started" //
+    @objc dynamic var status = "NotStarted"
     @objc dynamic var company : Company?
     
     @objc dynamic var isTemplate = false

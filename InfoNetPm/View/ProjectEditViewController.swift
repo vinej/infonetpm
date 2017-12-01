@@ -29,6 +29,24 @@ class ProjectEditViewController: BaseEditViewController {
         
         form +++ Section("Section Project")
             <<< PopoverSelectorRow<String>() { row in
+                row.title = "Status"
+                row.options = [RealmHelper.empty,RealmHelper.cancel, "NotStarted","Started","OnHold", "Completed"]
+                row.value = project?.status
+                row.selectorTitle = "Select the status"
+                }.onChange { row in
+                    if (row.value != "" && row.value != nil && row.value != RealmHelper.cancel && row.value != RealmHelper.empty) {
+                        RealmHelper.update(self.project!, #keyPath(Project.status), row.value)
+                        RealmHelper.setDirty(#keyPath(project), true)
+                    } else {
+                        // onChange will be called again
+                        if (row.value == RealmHelper.empty) {
+                            RealmHelper.update(self.project!, #keyPath(Project.status) , "")
+                        }
+                        row.value = self.project?.status
+                    }
+            }
+            
+            <<< PopoverSelectorRow<String>() { row in
                 row.title = "Company"
                 row.options = Company.getOptions(companyList!)
                 row.value = project?.company != nil ? project?.company?.name : ""
@@ -70,7 +88,51 @@ class ProjectEditViewController: BaseEditViewController {
                     RealmHelper.update(self.project!, #keyPath(Project.desc), row.value)
                     RealmHelper.setDirty(#keyPath(project), true)
                 }
-
+        
+        form +++ Section("Section Financial")
+            
+            <<< DecimalRow(){ row in
+                row.title = "Initial Budget"
+                row.placeholder = "Initial Budget"
+                row.value = project?.initialBudget == 0 ? nil : project?.initialBudget
+                }.onChange { row in
+                    RealmHelper.update(self.project!, #keyPath(Project.initialBudget), row.value)
+                    RealmHelper.setDirty(#keyPath(project), true)
+                }
+            
+            <<< DecimalRow(){ row in
+                row.title = "Contingency Budget"
+                row.placeholder = "Contingency Budget"
+                row.value = project?.contingencyBudget == 0 ? nil : project?.contingencyBudget
+                }.onChange { row in
+                    RealmHelper.update(self.project!, #keyPath(Project.contingencyBudget), row.value)
+                    RealmHelper.setDirty(#keyPath(project), true)
+            }
+            
+            <<< DecimalRow(){ row in
+                row.title = "Expected Margin"
+                row.placeholder = "Expected margin"
+                row.value = project?.expectedMargin == 0 ? nil : project?.expectedMargin
+                }.onChange { row in
+                    RealmHelper.update(self.project!, #keyPath(Project.expectedMargin), row.value)
+                    RealmHelper.setDirty(#keyPath(project), true)
+            }
+            
+            <<< DateTimeInlineRow(){ row in
+                row.title = "Schedule Start Date"
+                row.value = project?.scheduleStartDate
+                }.onChange { row in
+                    RealmHelper.update(self.project!, #keyPath(Project.scheduleStartDate), row.value)
+                    RealmHelper.setDirty(#keyPath(project), true)
+                }
+        
+            <<< DateTimeInlineRow(){ row in
+                row.title = "Schedule End Date"
+                row.value = project?.scheduleEndDate
+                }.onChange { row in
+                    RealmHelper.update(self.project!, #keyPath(Project.scheduleEndDate), row.value)
+                    RealmHelper.setDirty(#keyPath(project), true)
+                }
     }
 }
 
