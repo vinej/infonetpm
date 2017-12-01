@@ -9,11 +9,12 @@
 import Foundation
 import RealmSwift
 
+
 // Define your models like regular Swift classes
 public class Project: Object {
     @objc dynamic var id = UUID().uuidString
-    @objc dynamic var status = "not started" //
-    @objc dynamic var Company : Company?
+    @objc dynamic var status = "NotStarted"
+    @objc dynamic var company : Company?
     
     @objc dynamic var isTemplate = false
     @objc dynamic var code = ""
@@ -32,5 +33,19 @@ public class Project: Object {
     
     override public static func primaryKey() -> String? {
         return "id"
+    }
+    
+    public static func saveCompany(_ project  : Project, _ company : Company) {
+        let realm = try! Realm()
+        try! realm.write {
+            project.company = company
+        }
+    }
+    
+    public static func saveEmptyCompany(_ project  : Project) {
+        let realm = try! Realm()
+        try! realm.write {
+            project.company = nil
+        }
     }
 }

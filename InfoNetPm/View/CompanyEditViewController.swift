@@ -23,6 +23,16 @@ class CompanyEditViewController: BaseEditViewController {
         super.viewDidLoad()
 
         form +++ Section("Section Company")
+            
+            <<< TextRow(){ row in
+                row.title = "Code"
+                row.placeholder = "Company code (unique)"
+                row.value = company?.code
+                }.onChange { row in
+                    RealmHelper.update(self.company!, #keyPath(Company.code), row.value)
+                    RealmHelper.setDirty(#keyPath(company), true)
+                }
+            
             <<< TextRow(){ row in
                 row.title = "Name"
                 row.placeholder = "Company name"
