@@ -13,7 +13,6 @@ class RoleViewController: BaseTableViewController, InternalObjectProtocol {
     
     override func setInternalObject() {
         self.objectType = Role.self
-        self.objectName = "role"
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

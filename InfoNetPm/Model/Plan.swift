@@ -14,7 +14,7 @@ public class Plan: Object {
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var status = "NotStarted" //
     @objc dynamic var project : Project?
-    
+    @objc dynamic var timeZone = 0.0
     @objc dynamic var isTemplate = false
     @objc dynamic var name = ""
     @objc dynamic var scheduleStartDate = Date()

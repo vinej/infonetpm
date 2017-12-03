@@ -14,7 +14,6 @@ class ProjectViewController: BaseTableViewController, InternalObjectProtocol {
     
     override func setInternalObject() {
         self.objectType = Project.self
-        self.objectName = "project"
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

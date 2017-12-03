@@ -13,9 +13,9 @@ import SwiftyBeaver
 class CompanyEditViewController: BaseEditViewController {
 
     @objc var company : Company? = nil
-    var companyName = "company"
     
     override func setInternalObject(_ object : Object) {
+        super.setInternalObject(object)
         company = object as? Company
     }
     
@@ -30,7 +30,7 @@ class CompanyEditViewController: BaseEditViewController {
                 row.value = company?.code
                 }.onChange { row in
                     RealmHelper.update(self.company!, #keyPath(Company.code), row.value)
-                    RealmHelper.setDirty(#keyPath(company), true)
+                    RealmHelper.setDirty(self.objectName, true)
                 }
             
             <<< TextRow(){ row in
@@ -39,7 +39,7 @@ class CompanyEditViewController: BaseEditViewController {
                 row.value = company?.name
                 }.onChange { row in
                     RealmHelper.update(self.company!, #keyPath(Company.name), row.value)
-                    RealmHelper.setDirty(#keyPath(company), true)
+                    RealmHelper.setDirty(self.objectName, true)
                 }
             
             <<< TextRow(){ row in
@@ -48,7 +48,7 @@ class CompanyEditViewController: BaseEditViewController {
                 row.placeholder = "Type of the company"
                 }.onChange { row in
                     RealmHelper.update(self.company!, #keyPath(Company.type), row.value)
-                    RealmHelper.setDirty(#keyPath(company), true)                }
+                    RealmHelper.setDirty(self.objectName, true)                }
         
             form +++ Section("Section Address")
                 
@@ -58,7 +58,7 @@ class CompanyEditViewController: BaseEditViewController {
                 row.placeholder = "Enter your address"
                 }.onChange { row in
                     RealmHelper.update(self.company!.address!, #keyPath(Address.street), row.value)
-                    RealmHelper.setDirty(#keyPath(company), true)                }
+                    RealmHelper.setDirty(self.objectName, true)                }
                 
             <<< TextRow (){ row in
                 row.title = "City"
@@ -66,7 +66,7 @@ class CompanyEditViewController: BaseEditViewController {
                 row.placeholder = "Enter your city"
                 }.onChange { row in
                     RealmHelper.update(self.company!.address!, #keyPath(Address.city), row.value)
-                    RealmHelper.setDirty(#keyPath(company), true)
+                    RealmHelper.setDirty(self.objectName, true)
             }
             
             <<< PopoverSelectorRow<String>() { row in
@@ -77,11 +77,12 @@ class CompanyEditViewController: BaseEditViewController {
                 }.onChange { row in
                     if (row.value != "" && row.value != nil && row.value != RealmHelper.cancel && row.value != RealmHelper.empty) {
                         RealmHelper.update((self.company?.address!)!, #keyPath(Address.state), row.value)
-                        RealmHelper.setDirty(#keyPath(company), true)
+                        RealmHelper.setDirty(self.objectName, true)
                     } else {
                         // onChange will be called again
                         if (row.value == RealmHelper.empty) {
                             RealmHelper.update((self.company?.address!)!, #keyPath(Address.state) , "")
+                            RealmHelper.setDirty(self.objectName, true)
                         }
                         row.value = self.company?.address?.state
                     }
@@ -95,11 +96,12 @@ class CompanyEditViewController: BaseEditViewController {
                 }.onChange { row in
                     if (row.value != "" && row.value != nil && row.value != RealmHelper.cancel && row.value != RealmHelper.empty) {
                         RealmHelper.update((self.company?.address!)!, #keyPath(Address.country), row.value)
-                        RealmHelper.setDirty(#keyPath(company), true)
+                        RealmHelper.setDirty(self.objectName, true)
                     } else {
                         // onChange will be called again
                         if (row.value == RealmHelper.empty) {
                             RealmHelper.update((self.company?.address!)!, #keyPath(Address.country) , "")
+                            RealmHelper.setDirty(self.objectName, true)
                         }
                         row.value = self.company?.address?.country
                     }
@@ -123,7 +125,7 @@ class CompanyEditViewController: BaseEditViewController {
                 row.placeholder = "Enter your postal/zip code"
                 }.onChange { row in
                     RealmHelper.update(self.company!.address!, #keyPath(Address.postalcode), row.value)
-                    RealmHelper.setDirty(#keyPath(company), true)                }
+                    RealmHelper.setDirty(self.objectName, true)                }
  
                 <<< PhoneRow(){ row in
                     row.title = "Phone"
@@ -131,7 +133,8 @@ class CompanyEditViewController: BaseEditViewController {
                     row.placeholder = "Enter your phone"
                     }.onChange { row in
                         RealmHelper.update(self.company!.address!, #keyPath(Address.phone), row.value)
-                        RealmHelper.setDirty(#keyPath(company), true)                   }
+                        RealmHelper.setDirty(self.objectName, true)
+                    }
         
                 <<< PhoneRow(){ row in
                     row.title = "Phone Home"
@@ -139,7 +142,7 @@ class CompanyEditViewController: BaseEditViewController {
                     row.placeholder = "Enter your phone at home"
                     }.onChange { row in
                         RealmHelper.update(self.company!.address!, #keyPath(Address.phoneHome), row.value)
-                        RealmHelper.setDirty(#keyPath(company), true)
+                        RealmHelper.setDirty(self.objectName, true)
                     }
         
                 <<< EmailRow(){ row in
@@ -148,7 +151,7 @@ class CompanyEditViewController: BaseEditViewController {
                     row.placeholder = "Enter your email"
                     }.onChange { row in
                         RealmHelper.update(self.company!.address!, #keyPath(Address.email), row.value)
-                        RealmHelper.setDirty(#keyPath(company), true)
+                        RealmHelper.setDirty(self.objectName, true)
                     }
         
                 <<< EmailRow(){ row in
@@ -157,7 +160,7 @@ class CompanyEditViewController: BaseEditViewController {
                     row.placeholder = "Enter your email at home"
                     }.onChange { row in
                         RealmHelper.update(self.company!.address!, #keyPath(Address.emailHome), row.value)
-                        RealmHelper.setDirty(#keyPath(company), true)
+                        RealmHelper.setDirty(self.objectName, true)
                     }
     }
 

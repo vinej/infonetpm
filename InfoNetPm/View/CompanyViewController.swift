@@ -14,7 +14,6 @@ class CompanyViewController: BaseTableViewController, InternalObjectProtocol {
     
     override func setInternalObject() {
         self.objectType = Company.self
-        self.objectName = "company"
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -25,4 +24,5 @@ class CompanyViewController: BaseTableViewController, InternalObjectProtocol {
     
         return cell
     }
+
 }

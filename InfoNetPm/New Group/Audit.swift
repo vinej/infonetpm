@@ -15,7 +15,6 @@ public class Audit: Object {
     @objc dynamic var dateCreated = Date()
     @objc dynamic var userCreated = ""
     @objc dynamic var objectName = ""
-    @objc dynamic var fieldName = ""
-    @objc dynamic var fieldType = ""
-    @objc dynamic var fieldValue : Any?
+    @objc dynamic var auditAction = ""
+    @objc dynamic var objectString = ""
 }

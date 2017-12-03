@@ -14,7 +14,6 @@ class ResourceViewController: BaseTableViewController, InternalObjectProtocol {
 
     override func setInternalObject() {
         self.objectType = Resource.self
-        self.objectName = "resource"
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

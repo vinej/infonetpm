@@ -15,11 +15,11 @@ import SwifterSwift
 class ProjectEditViewController: BaseEditViewController {
     
     @objc var project : Project? = nil
-    var projectName = "project"
     var companyList : Results<Object>? = nil
     static var isSecondOnChange = false
     
     override func setInternalObject(_ object : Object) {
+        super.setInternalObject(object)
         project = object as? Project
     }
     
@@ -36,11 +36,12 @@ class ProjectEditViewController: BaseEditViewController {
                 }.onChange { row in
                     if (row.value != "" && row.value != nil && row.value != RealmHelper.cancel && row.value != RealmHelper.empty) {
                         RealmHelper.update(self.project!, #keyPath(Project.status), row.value)
-                        RealmHelper.setDirty(#keyPath(project), true)
+                        RealmHelper.setDirty(self.objectName, true)
                     } else {
                         // onChange will be called again
                         if (row.value == RealmHelper.empty) {
                             RealmHelper.update(self.project!, #keyPath(Project.status) , "")
+                            RealmHelper.setDirty(self.objectName, true)
                         }
                         row.value = self.project?.status
                     }
@@ -57,12 +58,12 @@ class ProjectEditViewController: BaseEditViewController {
                         return
                     }
                     if (row.value != nil && row.value != RealmHelper.empty && row.value != RealmHelper.cancel)  {
-                        self.project?.saveCompany(Company.getCompany(row.value!))
-                        RealmHelper.setDirty(#keyPath(project), true)
+                        RealmHelper.saveCompany(self.project,Company.getCompany(row.value!))
+                        RealmHelper.setDirty(self.objectName, true)
                      } else {
                         if (row.value == RealmHelper.empty) {
-                            self.project?.saveEmptyCompany()
-                            RealmHelper.setDirty(#keyPath(project), true)
+                            RealmHelper.saveEmptyCompany(self.project!)
+                            RealmHelper.setDirty(self.objectName, true)
                         }
                     }
                     // set the flag to not do twice the onChange
@@ -77,7 +78,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.value = project?.code
                 }.onChange { row in
                     RealmHelper.update(self.project!, #keyPath(Project.code), row.value)
-                    RealmHelper.setDirty(#keyPath(project), true)
+                    RealmHelper.setDirty(self.objectName, true)
                 }
         
             <<< TextAreaRow(){ row in
@@ -86,7 +87,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.value = project?.desc
                 }.onChange { row in
                     RealmHelper.update(self.project!, #keyPath(Project.desc), row.value)
-                    RealmHelper.setDirty(#keyPath(project), true)
+                    RealmHelper.setDirty(self.objectName, true)
                 }
         
             form +++ Section("Section Financial")
@@ -97,7 +98,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.value = project?.initialBudget == 0 ? nil : project?.initialBudget
                 }.onChange { row in
                     RealmHelper.update(self.project!, #keyPath(Project.initialBudget), row.value)
-                    RealmHelper.setDirty(#keyPath(project), true)
+                    RealmHelper.setDirty(self.objectName, true)
                 }
             
             <<< DecimalRow(){ row in
@@ -106,8 +107,8 @@ class ProjectEditViewController: BaseEditViewController {
                 row.value = project?.contingencyBudget == 0 ? nil : project?.contingencyBudget
                 }.onChange { row in
                     RealmHelper.update(self.project!, #keyPath(Project.contingencyBudget), row.value)
-                    RealmHelper.setDirty(#keyPath(project), true)
-            }
+                    RealmHelper.setDirty(self.objectName, true)
+                }
             
             <<< DecimalRow(){ row in
                 row.title = "Expected Margin"
@@ -115,15 +116,15 @@ class ProjectEditViewController: BaseEditViewController {
                 row.value = project?.expectedMargin == 0 ? nil : project?.expectedMargin
                 }.onChange { row in
                     RealmHelper.update(self.project!, #keyPath(Project.expectedMargin), row.value)
-                    RealmHelper.setDirty(#keyPath(project), true)
-            }
+                    RealmHelper.setDirty(self.objectName, true)
+                }
             
             <<< DateTimeInlineRow(){ row in
                 row.title = "Schedule Start Date"
                 row.value = project?.scheduleStartDate
                 }.onChange { row in
                     RealmHelper.update(self.project!, #keyPath(Project.scheduleStartDate), row.value)
-                    RealmHelper.setDirty(#keyPath(project), true)
+                    RealmHelper.setDirty(self.objectName, true)
                 }
         
             <<< DateTimeInlineRow(){ row in
@@ -131,7 +132,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.value = project?.scheduleEndDate
                 }.onChange { row in
                     RealmHelper.update(self.project!, #keyPath(Project.scheduleEndDate), row.value)
-                    RealmHelper.setDirty(#keyPath(project), true)
+                    RealmHelper.setDirty(self.objectName, true)
                 }
     }
 }

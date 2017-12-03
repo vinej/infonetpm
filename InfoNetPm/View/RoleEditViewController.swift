@@ -14,9 +14,9 @@ import SwiftyBeaver
 class RoleEditViewController: BaseEditViewController {
     
     @objc var role : Role? = nil
-    var roleName = "role"
     
     override func setInternalObject(_ object : Object) {
+        super.setInternalObject(object)
         role = object as? Role
     }
     
@@ -30,7 +30,7 @@ class RoleEditViewController: BaseEditViewController {
                 row.value = role?.name
                 }.onChange { row in
                     RealmHelper.update(self.role!, #keyPath(Role.name), row.value)
-                    RealmHelper.setDirty(#keyPath(role), true)
+                    RealmHelper.setDirty(self.objectName, true)
                 }
             
             <<< TextRow(){ row in
@@ -39,7 +39,7 @@ class RoleEditViewController: BaseEditViewController {
                 row.value = role?.desc
                 }.onChange { row in
                     RealmHelper.update(self.role!, #keyPath(Role.desc), row.value)
-                    RealmHelper.setDirty(#keyPath(role), true)
+                    RealmHelper.setDirty(self.objectName, true)
                 }
         
             <<< DecimalRow(){ row in
@@ -48,7 +48,7 @@ class RoleEditViewController: BaseEditViewController {
                 row.value = role?.rateByHour == 0 ? nil : role?.rateByHour
                 }.onChange { row in
                     RealmHelper.update(self.role!, #keyPath(Role.rateByHour), row.value)
-                    RealmHelper.setDirty(#keyPath(role), true)
+                    RealmHelper.setDirty(self.objectName, true)
                 }
         
             <<< DecimalRow(){ row in
@@ -57,7 +57,7 @@ class RoleEditViewController: BaseEditViewController {
                 row.value = role?.expectedCostByHour == 0 ? nil : role?.expectedCostByHour
                 }.onChange { row in
                     RealmHelper.update(self.role!, #keyPath(Role.expectedCostByHour), row.value)
-                    RealmHelper.setDirty(#keyPath(role), true)
+                    RealmHelper.setDirty(self.objectName, true)
                 }
     }
 }

@@ -12,7 +12,20 @@ import RealmSwift
 import Eureka
 
 class BaseEditViewController: FormViewController {
-    public func setInternalObject(_ object : Object) {
 
+    var objectName = "not set"
+    @objc var object : Object? = nil
+    
+    public func setInternalObject(_ object : Object) {
+        self.object = object
+        self.objectName = "\(type(of: object))"
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if (RealmHelper.isDirty(objectName))
+        {
+            RealmHelper.audit(self.object!)
+        }
     }
 }

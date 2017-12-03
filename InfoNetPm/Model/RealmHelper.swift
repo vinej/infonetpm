@@ -9,9 +9,18 @@
 import Foundation
 import RealmSwift
 
+public enum AuditAction {
+    case Del
+    case New
+    case Update
+}
+
 public class RealmHelper {
     
     public static var isObjectDirty = [String: Bool]()
+    public static var lastObject : Object? = nil
+    public static var lastObjectName = "not set"
+    public static let fieldAuditSeperator = "|"
     
     public static func isDirty( _ objectName : String) -> Bool {
         return isObjectDirty[objectName] != nil ? isObjectDirty[objectName]! : false
@@ -41,22 +50,36 @@ public class RealmHelper {
         let index = value.index(of: ":") ?? value.endIndex
         return Int(value[..<index])! + 1
     }
+    
+    public static func getAudit(_ object : Object, _ auditAction: AuditAction) -> Audit
+    {
+        // transaction must be created by the caller
+        let audit = Audit()
+        audit.dateCreated = Date.init(timeIntervalSinceNow: 0)
+        audit.userCreated = NSUserName()
+        audit.auditAction = "\(auditAction)"
+        audit.objectName = "\(type(of: object))"
+        audit.objectString = object.description.replacingOccurrences(of: "\n\t", with: fieldAuditSeperator)
+        return audit
+    }
 
     public static func update<T>(_ object : Object, _ field: String, _ value: T!, _ allowNil : Bool = false) {
+        let stype = "\(type(of: value))"
         let realm = try! Realm()
         try! realm.write {
             if (value == nil) {
                 if (!allowNil) {
-                    let stype = "\(type(of: value))"
                     switch(stype) {
-                    case "Optional<Double>" : object[field] = 0.0
-                    case "Optional<String>" : object[field] = ""
-                    case "Optional<Bool>" : object[field] = false
-                    case "Optional<Int>" : object[field] = 0
-                    case "Optional<Float>" : object[field] = 0.0
-                    case "OPtional<Date>" : object[field] = Date()
-                    default : object[field] = value
+                        case "Optional<Double>" : object[field] = 0.0
+                        case "Optional<String>" : object[field] = ""
+                        case "Optional<Bool>" :  object[field] = false
+                        case "Optional<Int>" : object[field] = 0
+                        case "Optional<Float>" : object[field] = 0.0
+                        case "OPtional<Date>" : object[field] = Date()
+                        default : object[field] = value
                     }
+
+
                 }
             } else {
                 if ( String(describing: value) == "Optional<#nil#>"  ) {
@@ -64,14 +87,34 @@ public class RealmHelper {
                 }
                 object[field] = value
             }
-
+        }
+        
+        // need that to add a audit before leaving the app
+        RealmHelper.lastObject = object
+        RealmHelper.lastObjectName = "\(type(of: object))"
+    }
+    
+    public static func saveCompany(_ object : Object?, _ company : Company) {
+        let realm = try! Realm()
+        try! realm.write {
+            var obj = object as! BaseCompany
+            obj.company = company
         }
     }
-
+    
+    public static func saveEmptyCompany(_ object : Object) {
+        let realm = try! Realm()
+        try! realm.write {
+            var obj = object as! BaseCompany
+            obj.company = nil
+        }
+    }
+    
     public static func new(_ object: Object) -> Object{
         let realm = try! Realm()
         try! realm.write {
             realm.add(object)
+            realm.add(RealmHelper.getAudit(object, AuditAction.New))
 
         }
         return object
@@ -80,10 +123,18 @@ public class RealmHelper {
     public static func del(_ object : Object) {
         let realm = try! Realm()
         try! realm.write {
+            realm.add(RealmHelper.getAudit(object, AuditAction.Del))
             realm.delete(object)
         }
     }
 
+    public static func audit(_ object : Object) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(RealmHelper.getAudit(object, AuditAction.Update))
+        }
+    }
+    
     public static func all<T>(_ object : T.Type) ->  Results<Object> {
         let realm = try! Realm()
         return realm.objects(object.self as! Object.Type)
