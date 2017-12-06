@@ -27,6 +27,8 @@ public class Project: Object, BaseCompany{
     @objc dynamic var scheduleEndDate = Date()
     @objc dynamic var initialBudget = 0.0
     @objc dynamic var contingencyBudget = 0.0
+    @objc dynamic var timezone = 0.0
+
     @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
   
