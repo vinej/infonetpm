@@ -14,6 +14,7 @@ public class Audit: Object {
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var dateCreated = Date()
     @objc dynamic var userCreated = ""
+    @objc dynamic var objectId = ""
     @objc dynamic var objectName = ""
     @objc dynamic var auditAction = ""
     @objc dynamic var objectString = ""

@@ -25,7 +25,8 @@ class BaseEditViewController: FormViewController {
         super.viewWillDisappear(animated)
         if (RealmHelper.isDirty(objectName))
         {
-            RealmHelper.audit(self.object!)
+            RealmHelper.audit(self.object!, RealmHelper.lastObjectDate)
+            RealmHelper.setDirty(objectName, false)
         }
     }
 }

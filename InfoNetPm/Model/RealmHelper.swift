@@ -20,6 +20,8 @@ public class RealmHelper {
     public static var isObjectDirty = [String: Bool]()
     public static var lastObject : Object? = nil
     public static var lastObjectName = "not set"
+    public static var lastObjectDate = Date()
+
     public static let fieldAuditSeperator = "|"
     
     public static func isDirty( _ objectName : String) -> Bool {
@@ -51,7 +53,7 @@ public class RealmHelper {
         return Int(value[..<index])! + 1
     }
     
-    public static func getAudit(_ object : Object, _ auditAction: AuditAction) -> Audit
+    public static func getAudit(_ object : Object, _ auditAction: AuditAction, _ date : Date) -> Audit
     {
         // transaction must be created by the caller
         let audit = Audit()
@@ -59,6 +61,7 @@ public class RealmHelper {
         audit.userCreated = NSUserName()
         audit.auditAction = "\(auditAction)"
         audit.objectName = "\(type(of: object))"
+        audit.objectId = object["id"] as! String
         audit.objectString = object.description.replacingOccurrences(of: "\n\t", with: fieldAuditSeperator)
         return audit
     }
@@ -92,6 +95,7 @@ public class RealmHelper {
         // need that to add a audit before leaving the app
         RealmHelper.lastObject = object
         RealmHelper.lastObjectName = "\(type(of: object))"
+        RealmHelper.lastObjectDate = Date()
     }
     
     public static func saveCompany(_ object : Object?, _ company : Company) {
@@ -114,7 +118,7 @@ public class RealmHelper {
         let realm = try! Realm()
         try! realm.write {
             realm.add(object)
-            realm.add(RealmHelper.getAudit(object, AuditAction.New))
+            realm.add(RealmHelper.getAudit(object, AuditAction.New, Date()))
 
         }
         return object
@@ -123,15 +127,15 @@ public class RealmHelper {
     public static func del(_ object : Object) {
         let realm = try! Realm()
         try! realm.write {
-            realm.add(RealmHelper.getAudit(object, AuditAction.Del))
+            realm.add(RealmHelper.getAudit(object, AuditAction.Del, Date()))
             realm.delete(object)
         }
     }
 
-    public static func audit(_ object : Object) {
+    public static func audit(_ object : Object, _ date: Date) {
         let realm = try! Realm()
         try! realm.write {
-            realm.add(RealmHelper.getAudit(object, AuditAction.Update))
+            realm.add(RealmHelper.getAudit(object, AuditAction.Update, date))
         }
     }
     

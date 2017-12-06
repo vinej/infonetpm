@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func audit() {
         if (RealmHelper.lastObject != nil && RealmHelper.isDirty(RealmHelper.lastObjectName)) {
             RealmHelper.setDirty(RealmHelper.lastObjectName, false)
-            RealmHelper.audit(RealmHelper.lastObject!)
+            RealmHelper.audit(RealmHelper.lastObject!, RealmHelper.lastObjectDate)
         }
     }
 }
