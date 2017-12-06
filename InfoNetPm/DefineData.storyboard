@@ -61,6 +61,9 @@
                                 <rect key="frame" x="164" y="347" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Plan"/>
+                                <connections>
+                                    <segue destination="6dR-Kk-vdV" kind="show" id="EjM-GA-Hjw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,7 +80,7 @@
                 <viewControllerPlaceholder storyboardName="Company" id="cbR-W2-JQc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMU-kC-oRQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="820" y="-210"/>
+            <point key="canvasLocation" x="809" y="-210"/>
         </scene>
         <!--Project-->
         <scene sceneID="KnO-QX-DXm">
@@ -85,7 +88,7 @@
                 <viewControllerPlaceholder storyboardName="Project" id="uQR-lH-tUp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="am9-Uk-j6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="810" y="-144"/>
+            <point key="canvasLocation" x="798" y="-142"/>
         </scene>
         <!--Role-->
         <scene sceneID="CKu-z7-wtL">
@@ -93,7 +96,7 @@
                 <viewControllerPlaceholder storyboardName="Role" id="GKT-ag-htA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xmB-uA-pB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="796" y="-67"/>
+            <point key="canvasLocation" x="785" y="-67"/>
         </scene>
         <!--Resource-->
         <scene sceneID="hYw-Uy-tt6">
@@ -102,6 +105,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="drH-IR-YiX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="810" y="6"/>
+        </scene>
+        <!--DefinePlan-->
+        <scene sceneID="bcH-q4-0JH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DefinePlan" id="6dR-Kk-vdV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CKF-hR-Uli" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="816" y="84"/>
         </scene>
     </scenes>
 </document>

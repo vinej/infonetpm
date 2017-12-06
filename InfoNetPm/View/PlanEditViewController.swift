@@ -18,7 +18,7 @@ class PlanEditViewController: BaseEditViewController {
     
     override func setInternalObject(_ object : Object) {
         super.setInternalObject(object)
-        plan = object as? {Plan}
+        plan = object as? Plan
     }
     
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class PlanEditViewController: BaseEditViewController {
             
             <<< PopoverSelectorRow<String>() { row in
                 row.title = "Plan"
-                row.options = Project.getOptions(companyList!)
+                row.options = Project.getOptions(projectList!)
                 row.value = plan?.project != nil ? plan?.project?.code : ""
                 row.selectorTitle = "Choose a project"
                 }.onChange { row in
@@ -66,7 +66,7 @@ class PlanEditViewController: BaseEditViewController {
                     }
                     // set the flag to not do twice the onChange
                     PlanEditViewController.isSecondOnChange = true
-                    row.value = self.plan?.project != nil ? self.plan?.project?.name : ""
+                    row.value = self.plan?.project != nil ? self.plan?.project?.code : ""
                 }
             
             <<< TextRow(){ row in
@@ -90,7 +90,7 @@ class PlanEditViewController: BaseEditViewController {
             <<< DecimalRow(){ row in
                 row.title = "Time Zone"
                 row.placeholder = "Time Zone"
-                row.value = plan?.timezone == 0 ? nil : plan?.timezone
+                row.value = plan?.timezone == 0.0 ? nil : plan?.timezone
                 }.onChange { row in
                     RealmHelper.update(self.plan!, #keyPath(Plan.timezone), row.value)
                     RealmHelper.setDirty(self.objectName, true)
@@ -101,7 +101,7 @@ class PlanEditViewController: BaseEditViewController {
             <<< DecimalRow(){ row in
                 row.title = "Initial Budget"
                 row.placeholder = "Initial Budget"
-                row.value = plan?.initialBudget == 0 ? nil : plan?.initialBudget
+                row.value = plan?.initialBudget == 0.0 ? nil : plan?.initialBudget
                 }.onChange { row in
                     RealmHelper.update(self.plan!, #keyPath(Plan.initialBudget), row.value)
                     RealmHelper.setDirty(self.objectName, true)
@@ -110,7 +110,7 @@ class PlanEditViewController: BaseEditViewController {
             <<< DecimalRow(){ row in
                 row.title = "Contingency Budget"
                 row.placeholder = "Contingency Budget"
-                row.value = plan?.contingencyBudget == 0 ? nil : plan?.contingencyBudget
+                row.value = plan?.contingencyBudget == 0.0 ? nil : plan?.contingencyBudget
                 }.onChange { row in
                     RealmHelper.update(self.plan!, #keyPath(Plan.contingencyBudget), row.value)
                     RealmHelper.setDirty(self.objectName, true)
@@ -119,7 +119,7 @@ class PlanEditViewController: BaseEditViewController {
             <<< DecimalRow(){ row in
                 row.title = "Expected Margin"
                 row.placeholder = "Expected margin"
-                row.value = plan?.expectedMargin == 0 ? nil : plan?.expectedMargin
+                row.value = plan?.expectedMargin == 0.0 ? nil : plan?.expectedMargin
                 }.onChange { row in
                     RealmHelper.update(self.plan!, #keyPath(Plan.expectedMargin), row.value)
                     RealmHelper.setDirty(self.objectName, true)

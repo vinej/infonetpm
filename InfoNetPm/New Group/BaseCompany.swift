@@ -14,3 +14,6 @@ protocol BaseCompany {
     var company : Company? { get set}
 }
 
+protocol BaseProject {
+    var project : Project? { get set}
+}

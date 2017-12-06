@@ -114,6 +114,22 @@ public class RealmHelper {
         }
     }
     
+    public static func saveProject(_ object : Object?, _ project : Project) {
+        let realm = try! Realm()
+        try! realm.write {
+            var obj = object as! BaseProject
+            obj.project = project
+        }
+    }
+    
+    public static func saveEmptyProject(_ object : Object) {
+        let realm = try! Realm()
+        try! realm.write {
+            var obj = object as! BaseProject
+            obj.project = nil
+        }
+    }
+    
     public static func new(_ object: Object) -> Object{
         let realm = try! Realm()
         try! realm.write {
