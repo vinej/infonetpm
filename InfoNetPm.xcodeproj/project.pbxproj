@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5E0ABF241FCB57F80011897E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5E0ABF231FCB57F80011897E /* README.md */; };
-		5E136FFD1FD3046E004F2180 /* BaseCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E136FFC1FD3046E004F2180 /* BaseCompany.swift */; };
 		5E136FFF1FD308BC004F2180 /* Audit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E136FFE1FD308BC004F2180 /* Audit.swift */; };
 		5E1370011FD30FBE004F2180 /* AuditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1370001FD30FBE004F2180 /* AuditViewController.swift */; };
 		5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59B861FCB40CC005841BB /* AppDelegate.swift */; };
@@ -61,7 +60,6 @@
 /* Begin PBXFileReference section */
 		113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InfoNetPm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0ABF231FCB57F80011897E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		5E136FFC1FD3046E004F2180 /* BaseCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCompany.swift; sourceTree = "<group>"; };
 		5E136FFE1FD308BC004F2180 /* Audit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audit.swift; sourceTree = "<group>"; };
 		5E1370001FD30FBE004F2180 /* AuditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditViewController.swift; sourceTree = "<group>"; };
 		5EC59B831FCB40CC005841BB /* InfoNetPm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfoNetPm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,7 +205,6 @@
 				5EC59BA61FCB43FC005841BB /* RealmHelper.swift */,
 				5EC59BA41FCB43FC005841BB /* Resource.swift */,
 				5EC59BA01FCB43FC005841BB /* Task.swift */,
-				5E136FFC1FD3046E004F2180 /* BaseCompany.swift */,
 				5E136FFE1FD308BC004F2180 /* Audit.swift */,
 			);
 			name = Model;
@@ -401,7 +398,6 @@
 				5EC59BAD1FCB43FC005841BB /* Resource.swift in Sources */,
 				5EC59B891FCB40CC005841BB /* ViewController.swift in Sources */,
 				B2DA62231FCDEFF40040803A /* BaseTableViewController.swift in Sources */,
-				5E136FFD1FD3046E004F2180 /* BaseCompany.swift in Sources */,
 				B2BF25621FCC7423001C65EB /* CompanyViewController.swift in Sources */,
 				B27AF4841FD88F1F00B42E57 /* PlanViewController.swift in Sources */,
 				B25427AE1FCF2EF00057A3F2 /* RoleViewController.swift in Sources */,

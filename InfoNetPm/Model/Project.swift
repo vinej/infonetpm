@@ -9,9 +9,15 @@
 import Foundation
 import RealmSwift
 
+/*
+protocol BaseProject {
+    var project : Project? { get set}
+}
+*/
 
+ 
 // Define your models like regular Swift classes
-public class Project: Object, BaseCompany{
+public class Project: Object {
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var status = "NotStarted"
     @objc dynamic var company : Company?

@@ -38,11 +38,11 @@ class ResourceEditViewController: BaseEditViewController {
                     return
                 }
                 if (row.value != nil && row.value != RealmHelper.empty && row.value != RealmHelper.cancel)  {
-                    RealmHelper.saveCompany(self.resource,Company.getCompany(row.value!))
+                    RealmHelper.saveChildObject(self.resource,Company.getCompany(row.value!))
                     RealmHelper.setDirty(self.objectName, true)
                 } else {
                     if (row.value == RealmHelper.empty) {
-                        RealmHelper.saveEmptyCompany(self.resource!)
+                        RealmHelper.saveEmptyChildObject(self.resource!, "company")
                         RealmHelper.setDirty(self.objectName, true)
                     }
                 }

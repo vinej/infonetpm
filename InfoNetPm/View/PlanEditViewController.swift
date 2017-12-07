@@ -46,7 +46,7 @@ class PlanEditViewController: BaseEditViewController {
                 }
             
             <<< PopoverSelectorRow<String>() { row in
-                row.title = "Plan"
+                row.title = "Project"
                 row.options = Project.getOptions(projectList!)
                 row.value = plan?.project != nil ? plan?.project?.code : ""
                 row.selectorTitle = "Choose a project"
@@ -56,11 +56,11 @@ class PlanEditViewController: BaseEditViewController {
                         return
                     }
                     if (row.value != nil && row.value != RealmHelper.empty && row.value != RealmHelper.cancel)  {
-                        RealmHelper.saveProject(self.plan,Project.getProject(row.value!))
+                        RealmHelper.saveChildObject(self.plan,Project.getProject(row.value!))
                         RealmHelper.setDirty(self.objectName, true)
                     } else {
                         if (row.value == RealmHelper.empty) {
-                            RealmHelper.saveEmptyProject(self.plan!)
+                            RealmHelper.saveEmptyChildObject(self.plan!, "project")
                             RealmHelper.setDirty(self.objectName, true)
                         }
                     }
@@ -74,7 +74,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Code"
                 row.value = plan?.code
                 }.onChange { row in
-                    RealmHelper.update(self.plan!, #keyPath(plan.code), row.value)
+                    RealmHelper.update(self.plan!, #keyPath(Plan.code), row.value)
                     RealmHelper.setDirty(self.objectName, true)
                 }
             

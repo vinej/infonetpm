@@ -98,6 +98,22 @@ public class RealmHelper {
         RealmHelper.lastObjectDate = Date()
     }
     
+    public static func saveChildObject(_ parentObject : Object?,  _ object : Object) {
+        let realm = try! Realm()
+        try! realm.write {
+            let objectName = "\(type(of: object))".lowercased()
+            parentObject![objectName] = object
+        }
+    }
+    
+    public static func saveEmptyChildObject(_ parentObject : Object, _ objectName: String) {
+        let realm = try! Realm()
+        try! realm.write {
+            parentObject[objectName] = nil
+        }
+    }
+    
+    /*
     public static func saveCompany(_ object : Object?, _ company : Company) {
         let realm = try! Realm()
         try! realm.write {
@@ -129,6 +145,7 @@ public class RealmHelper {
             obj.project = nil
         }
     }
+    */
     
     public static func new(_ object: Object) -> Object{
         let realm = try! Realm()

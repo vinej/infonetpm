@@ -58,11 +58,11 @@ class ProjectEditViewController: BaseEditViewController {
                         return
                     }
                     if (row.value != nil && row.value != RealmHelper.empty && row.value != RealmHelper.cancel)  {
-                        RealmHelper.saveCompany(self.project,Company.getCompany(row.value!))
+                        RealmHelper.saveChildObject(self.project, Company.getCompany(row.value!))
                         RealmHelper.setDirty(self.objectName, true)
                      } else {
                         if (row.value == RealmHelper.empty) {
-                            RealmHelper.saveEmptyCompany(self.project!)
+                            RealmHelper.saveEmptyChildObject(self.project!, "company")
                             RealmHelper.setDirty(self.objectName, true)
                         }
                     }

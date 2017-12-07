@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 
-public class Resource: Object, BaseCompany{
+public class Resource: Object {
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var lastName = ""
     @objc dynamic var firstName = ""

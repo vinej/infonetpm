@@ -1,6 +1,13 @@
 import Foundation
 import RealmSwift
 
+/*
+// Define your models like regular Swift classes
+protocol BaseCompany {
+    var company : Company? { get set}
+}
+*/
+
 public class Company: Object {
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var code = ""
