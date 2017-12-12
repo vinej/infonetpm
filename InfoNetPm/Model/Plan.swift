@@ -33,5 +33,14 @@ public class Plan: Object {
         return "id"
     }
     
-    
+    public static func getOptions(_ list : Results<Object>) -> [String] {
+        var listSelection = RealmHelper.defaultSelection
+        var index = 1
+        for rec in list {
+            let pln = rec as! Plan
+            listSelection.append( "\(pln.code ) | \(pln.desc )")
+            index = index + 1
+        }
+        return listSelection
+    }
 }

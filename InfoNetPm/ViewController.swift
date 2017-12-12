@@ -68,5 +68,15 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func choosePlan(_ sender: Any) {
+        let popOverVC = UIStoryboard(name: "DesignPlan", bundle: nil).instantiateViewController(withIdentifier: "sbChoosePlanID") as! ChoosePopupPlanViewController
+        //popOverVC.modalPresentationStyle = .pageSheet
+        //self.present(popOverVC, animated: false, completion: nil)
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+    }
 }
 
