@@ -24,6 +24,7 @@ class ChoosePopupPlanViewController: BasePopupViewController {
     override func actionOnClose() {
         let storyboard: UIStoryboard = UIStoryboard(name: "DesignPlan", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DesignPlanViewController") as! DesignPlanViewController
+        vc.title = "Design Plan: \(currentPlan)"
         self.navigationController?.pushViewController(vc)
     }
     
