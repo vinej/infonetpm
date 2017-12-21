@@ -16,6 +16,11 @@ class AuditViewController: BaseTableViewController, InternalObjectProtocol {
         self.objectType = Audit.self
     }
     
+    override public func loadData() {
+        // get yhe data order by 'dateCreated' desc
+        list = RealmHelper.all(self.objectType).sorted(byKeyPath: "dateCreated", ascending: false)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath)
         

@@ -25,6 +25,10 @@ class BaseTableViewController: UITableViewController {
             throw NSError(domain: "my error description", code: 01 )
         }
     
+        public func loadData() {
+            list = RealmHelper.all(self.objectType)
+        }
+    
         override func viewDidLoad() {
             super.viewDidLoad()
             do {
@@ -36,7 +40,7 @@ class BaseTableViewController: UITableViewController {
             }
             self.objectName = objectType.description().splitted(by : ".")[1]
             self.navigationController?.setToolbarHidden(false, animated: true)
-            list = RealmHelper.all(self.objectType)
+            self.loadData()
         }
         
         // return from a view, the load is not launch, so reload on dirty

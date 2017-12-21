@@ -14,13 +14,14 @@ import Eureka
 class BaseEditViewController: FormViewController {
 
     var objectName = "not set"
+    var objectStatus = "not loaded"
     @objc var object : Object? = nil
     
     public func setInternalObject(_ object : Object) {
         self.object = object
         self.objectName = "\(type(of: object))"
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if (RealmHelper.isDirty(objectName))
@@ -29,4 +30,5 @@ class BaseEditViewController: FormViewController {
             RealmHelper.lastObject = nil
         }
     }
+ 
 }
