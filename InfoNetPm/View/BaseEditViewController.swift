@@ -26,7 +26,7 @@ class BaseEditViewController: FormViewController {
         if (RealmHelper.isDirty(objectName))
         {
             RealmHelper.audit(self.object!, RealmHelper.lastObjectDate)
-            RealmHelper.setDirty(objectName, false)
+            RealmHelper.lastObject = nil
         }
     }
 }

@@ -17,7 +17,7 @@ public enum AuditAction {
 
 public class RealmHelper {
     
-    public static var isObjectDirty = [String: Bool]()
+    public static var objectDirtyArray = [String: Bool]()
     public static var lastObject : Object? = nil
     public static var lastObjectName = "not set"
     public static var lastObjectDate = Date()
@@ -25,11 +25,11 @@ public class RealmHelper {
     public static let fieldAuditSeperator = "|"
     
     public static func isDirty( _ objectName : String) -> Bool {
-        return isObjectDirty[objectName] != nil ? isObjectDirty[objectName]! : false
+        return objectDirtyArray[objectName] != nil ? objectDirtyArray[objectName]! : false
     }
     
     public static func setDirty( _ objectName : String, _ value : Bool) {
-        isObjectDirty[objectName] = value
+        objectDirtyArray[objectName] = value
     }
     
     public static let cancel = "* cancel *"

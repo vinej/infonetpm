@@ -53,7 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func audit() {
         if (RealmHelper.lastObject != nil && RealmHelper.isDirty(RealmHelper.lastObjectName)) {
+            // note: let the dirty flag to true, because the flag will be changed by the master view
             RealmHelper.setDirty(RealmHelper.lastObjectName, false)
+            // set the lastObject to nil, because we don't want to audit another time
+            RealmHelper.lastObject = nil
             RealmHelper.audit(RealmHelper.lastObject!, RealmHelper.lastObjectDate)
         }
     }

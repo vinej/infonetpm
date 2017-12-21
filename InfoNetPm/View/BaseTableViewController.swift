@@ -34,6 +34,7 @@ class BaseTableViewController: UITableViewController {
                 log.debug("Caught NSError: \(error.localizedDescription), \(error.domain), \(error.code)")
                 exit(01)
             }
+            self.objectName = objectType.description().splitted(by : ".")[1]
             self.navigationController?.setToolbarHidden(false, animated: true)
             list = RealmHelper.all(self.objectType)
         }
