@@ -22,6 +22,16 @@ class BaseEditViewController: FormViewController {
         self.objectName = "\(type(of: object))"
     }
     
+    /*
+    deinit {
+        if (RealmHelper.isDirty(objectName))
+        {
+            RealmHelper.audit(self.object!, RealmHelper.lastObjectDate)
+            RealmHelper.lastObject = nil
+        }
+    }
+     */
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if (RealmHelper.isDirty(objectName))
@@ -30,5 +40,4 @@ class BaseEditViewController: FormViewController {
             RealmHelper.lastObject = nil
         }
     }
- 
 }
