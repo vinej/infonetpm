@@ -18,8 +18,10 @@ public class Company: Object {
         return "id"
     }
     
+    
+    /*
     public static func getOptions(_ list : Results<Object>) -> [String] {
-        var listSelection = RealmHelper.defaultSelection
+        var listSelection = DB.defaultSelection
         var index = 1
         for rec in list {
             let cie = rec as! Company
@@ -32,6 +34,7 @@ public class Company: Object {
     public static func getCompany( _ value : String) -> Company {
         let index = value.firstIndex(of: "|")
         let code = value.slicing(from: 0, to: index! - 1)
-        return RealmHelper.filter(Company.self, "code = %@", code!).first as! Company
+        return DB.filter(Company.self, "code = %@", code!).first as! Company
     }
+    */
 }

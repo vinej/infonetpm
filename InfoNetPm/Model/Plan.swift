@@ -16,6 +16,7 @@ public class Plan: Object {
     @objc dynamic var project : Project?
     @objc dynamic var isTemplate = false
     @objc dynamic var code = ""
+    @objc dynamic var name = ""
     @objc dynamic var desc = ""
     @objc dynamic var scheduleStartDate = Date()
     @objc dynamic var scheduleEndDate = Date()
@@ -33,8 +34,9 @@ public class Plan: Object {
         return "id"
     }
     
+    /*
     public static func getOptions(_ list : Results<Object>) -> [String] {
-        var listSelection = RealmHelper.defaultSelection
+        var listSelection = DB.defaultSelection
         var index = 1
         for rec in list {
             let pln = rec as! Plan
@@ -43,4 +45,6 @@ public class Plan: Object {
         }
         return listSelection
     }
+    */
+    
 }

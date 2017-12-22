@@ -52,12 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func audit() {
-        if (RealmHelper.lastObject != nil && RealmHelper.isDirty(RealmHelper.lastObjectName)) {
+        if (DB.lastObject != nil && DB.isDirty(DB.lastObjectName)) {
             // note: let the dirty flag to true, because the flag will be changed by the master view
-            RealmHelper.setDirty(RealmHelper.lastObjectName, false)
+            DB.setDirty(DB.lastObjectName, false)
             // set the lastObject to nil, because we don't want to audit another time
-            RealmHelper.lastObject = nil
-            RealmHelper.audit(RealmHelper.lastObject!, RealmHelper.lastObjectDate)
+            DB.lastObject = nil
+            DB.audit(DB.lastObject!, DB.lastObjectDate)
         }
     }
 }

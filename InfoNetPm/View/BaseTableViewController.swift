@@ -26,7 +26,7 @@ class BaseTableViewController: UITableViewController {
         }
     
         public func loadData() {
-            list = RealmHelper.all(self.objectType)
+            list = DB.all(self.objectType)
         }
     
         override func viewDidLoad() {
@@ -46,10 +46,10 @@ class BaseTableViewController: UITableViewController {
         // return from a view, the load is not launch, so reload on dirty
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-            if (RealmHelper.isDirty(self.objectName)) {
-                list = RealmHelper.all(self.objectType)
+            if (DB.isDirty(self.objectName)) {
+                list = DB.all(self.objectType)
                 self.tableView.reloadData()
-                RealmHelper.setDirty(self.objectName, false)
+                DB.setDirty(self.objectName, false)
             }
         }
         
@@ -74,8 +74,8 @@ class BaseTableViewController: UITableViewController {
                 let indexPath = tableView.indexPathForSelectedRow
                 theDestination.setInternalObject(self.list![(indexPath?.row)!])
             } else {
-                RealmHelper.setDirty(objectName, true)
-                theDestination.setInternalObject((RealmHelper.new(self.objectType.init()) ))
+                DB.setDirty(objectName, true)
+                theDestination.setInternalObject((DB.new(self.objectType.init()) ))
             }
         }
         
@@ -89,8 +89,8 @@ class BaseTableViewController: UITableViewController {
         override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
             if editingStyle == .delete {
                 // Delete the row from the data source
-                RealmHelper.del(list![indexPath.row])
-                list = RealmHelper.all(objectType)
+                DB.del(list![indexPath.row])
+                list = DB.all(objectType)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             } else if editingStyle == .insert {
                 // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

@@ -17,10 +17,12 @@ public class Activity: Object {
     @objc dynamic var plan : Plan?
 
     @objc dynamic var isTemplate = false
+    @objc dynamic var code = ""
     @objc dynamic var name = ""
-    @objc dynamic var duration = 0
+    @objc dynamic var duration = 0.0
     @objc dynamic var role : Role?
     @objc dynamic var resource : Resource?
+    @objc dynamic var backupResource : Resource?
     @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
     

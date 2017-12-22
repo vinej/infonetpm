@@ -25,6 +25,7 @@ public class Project: Object {
 
     @objc dynamic var isTemplate = false
     @objc dynamic var code = ""
+    @objc dynamic var name = ""
     @objc dynamic var desc = ""
     
     // financial info
@@ -44,8 +45,9 @@ public class Project: Object {
         return "id"
     }
     
+    /*
     public static func getOptions(_ list : Results<Object>) -> [String] {
-        var listSelection = RealmHelper.defaultSelection
+        var listSelection = DB.defaultSelection
         var index = 1
         for rec in list {
             let prj = rec as! Project
@@ -58,6 +60,8 @@ public class Project: Object {
     public static func getProject( _ value : String) -> Project {
         let index = value.firstIndex(of: "|")
         let code = value.slicing(from: 0, to: index! - 1)
-        return RealmHelper.filter(Project.self, "code = %@", code!).first as! Project
+        return DB.filter(Project.self, "code = %@", code!).first as! Project
     }
+     */
+    
 }

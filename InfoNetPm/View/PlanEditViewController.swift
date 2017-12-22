@@ -23,23 +23,21 @@ class PlanEditViewController: BaseEditViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        projectList = RealmHelper.all(Project.self)
+        projectList = DB.all(Project.self)
         
         form +++ Section("Section Resoure")
             <<< PopoverSelectorRow<String>() { row in
                 row.title = "Status"
-                row.options = [RealmHelper.empty,RealmHelper.cancel, "NotStarted","Started","OnHold", "Completed"]
+                row.options = [DB.empty,DB.cancel, "NotStarted","Started","OnHold", "Completed"]
                 row.value = plan?.status
                 row.selectorTitle = "Select the status"
                 }.onChange { row in
-                    if (row.value != "" && row.value != nil && row.value != RealmHelper.cancel && row.value != RealmHelper.empty) {
-                        RealmHelper.update(self.plan!, #keyPath(Plan.status), row.value)
-                        RealmHelper.setDirty(self.objectName, true)
+                    if (row.value != "" && row.value != nil && row.value != DB.cancel && row.value != DB.empty) {
+                        DB.update(self.objectName, self.plan!, #keyPath(Plan.status), row.value)
                     } else {
                         // onChange will be called again
-                        if (row.value == RealmHelper.empty) {
-                            RealmHelper.update(self.plan!, #keyPath(Plan.status) , "")
-                            RealmHelper.setDirty(self.objectName, true)
+                        if (row.value == DB.empty) {
+                            DB.update(self.objectName, self.plan!, #keyPath(Plan.status) , "")
                         }
                         row.value = self.plan?.status
                     }
@@ -47,7 +45,7 @@ class PlanEditViewController: BaseEditViewController {
             
             <<< PopoverSelectorRow<String>() { row in
                 row.title = "Project"
-                row.options = Project.getOptions(projectList!)
+                row.options = DB.getOptions(projectList!)
                 row.value = plan?.project != nil ? plan?.project?.code : ""
                 row.selectorTitle = "Choose a project"
                 }.onChange { row in
@@ -55,13 +53,11 @@ class PlanEditViewController: BaseEditViewController {
                         PlanEditViewController.isSecondOnChange = false
                         return
                     }
-                    if (row.value != nil && row.value != RealmHelper.empty && row.value != RealmHelper.cancel)  {
-                        RealmHelper.saveChildObject(self.plan,Project.getProject(row.value!))
-                        RealmHelper.setDirty(self.objectName, true)
+                    if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
+                        DB.saveChildObject(self.plan, DB.getObject(Project.self, "code", row.value!)!)
                     } else {
-                        if (row.value == RealmHelper.empty) {
-                            RealmHelper.saveEmptyChildObject(self.plan!, "project")
-                            RealmHelper.setDirty(self.objectName, true)
+                        if (row.value == DB.empty) {
+                            DB.saveEmptyChildObject(self.plan!, "project")
                         }
                     }
                     // set the flag to not do twice the onChange
@@ -74,8 +70,15 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Code"
                 row.value = plan?.code
                 }.onChange { row in
-                    RealmHelper.update(self.plan!, #keyPath(Plan.code), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.plan!, #keyPath(Plan.code), row.value)
+                }
+            
+            <<< TextRow(){ row in
+                row.title = "Name"
+                row.placeholder = "Name"
+                row.value = plan?.name
+                }.onChange { row in
+                    DB.update(self.objectName, self.plan!, #keyPath(Plan.name), row.value)
                 }
             
             <<< TextRow(){ row in
@@ -83,8 +86,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Description"
                 row.value = plan?.desc
                 }.onChange { row in
-                    RealmHelper.update(self.plan!, #keyPath(Plan.desc), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.plan!, #keyPath(Plan.desc), row.value)
                 }
         
             <<< DecimalRow(){ row in
@@ -92,8 +94,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Time Zone"
                 row.value = plan?.timezone == 0.0 ? nil : plan?.timezone
                 }.onChange { row in
-                    RealmHelper.update(self.plan!, #keyPath(Plan.timezone), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.plan!, #keyPath(Plan.timezone), row.value)
                 }
             
             form +++ Section("Section Financial")
@@ -103,8 +104,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Initial Budget"
                 row.value = plan?.initialBudget == 0.0 ? nil : plan?.initialBudget
                 }.onChange { row in
-                    RealmHelper.update(self.plan!, #keyPath(Plan.initialBudget), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.plan!, #keyPath(Plan.initialBudget), row.value)
                 }
             
             <<< DecimalRow(){ row in
@@ -112,8 +112,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Contingency Budget"
                 row.value = plan?.contingencyBudget == 0.0 ? nil : plan?.contingencyBudget
                 }.onChange { row in
-                    RealmHelper.update(self.plan!, #keyPath(Plan.contingencyBudget), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.plan!, #keyPath(Plan.contingencyBudget), row.value)
                 }
             
             <<< DecimalRow(){ row in
@@ -121,8 +120,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Expected margin"
                 row.value = plan?.expectedMargin == 0.0 ? nil : plan?.expectedMargin
                 }.onChange { row in
-                    RealmHelper.update(self.plan!, #keyPath(Plan.expectedMargin), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.plan!, #keyPath(Plan.expectedMargin), row.value)
                 }
             
             
@@ -130,16 +128,14 @@ class PlanEditViewController: BaseEditViewController {
                 row.title = "Schedule Start Date"
                 row.value = plan?.scheduleStartDate
                 }.onChange { row in
-                    RealmHelper.update(self.plan!, #keyPath(Plan.scheduleStartDate), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.plan!, #keyPath(Plan.scheduleStartDate), row.value)
                 }
             
             <<< DateTimeInlineRow(){ row in
                 row.title = "Schedule End Date"
                 row.value = plan?.scheduleEndDate
                 }.onChange { row in
-                    RealmHelper.update(self.plan!, #keyPath(Plan.scheduleEndDate), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.plan!, #keyPath(Plan.scheduleEndDate), row.value)
                 }
     }
 }

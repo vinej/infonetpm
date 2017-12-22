@@ -30,13 +30,13 @@ class ChoosePopupPlanViewController: BasePopupViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        planList = RealmHelper.all(Plan.self)
+        planList = DB.all(Plan.self)
         
         form +++ Section("Choose a plan to design")
             
             <<< PopoverSelectorRow<String>() { row in
                 row.title = "Plan"
-                row.options = Plan.getOptions(planList!)
+                row.options = DB.getOptions(planList!)
                 row.value = ""
                 row.selectorTitle = "Choose a plan to design"
                 }.onChange { row in
@@ -44,10 +44,10 @@ class ChoosePopupPlanViewController: BasePopupViewController {
                         PlanEditViewController.isSecondOnChange = false
                         return
                     }
-                    if (row.value != nil && row.value != RealmHelper.empty && row.value != RealmHelper.cancel)  {
+                    if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
                         self.currentPlan = row.value!
                     } else {
-                        if (row.value == RealmHelper.empty) {
+                        if (row.value == DB.empty) {
                             self.currentPlan = ""
                         }
                     }

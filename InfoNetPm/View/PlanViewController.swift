@@ -19,7 +19,7 @@ class PlanViewController: BaseTableViewController, InternalObjectProtocol {
         let cell = tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath)
         
         let plan = (list![indexPath.row] as! Plan)
-        cell.textLabel?.text = "\(plan.code) : \(plan.desc)"
+        cell.textLabel?.text = "\(plan.code) : \(plan.name)"
         
         
         return cell

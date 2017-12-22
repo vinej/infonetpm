@@ -34,10 +34,10 @@ class BaseEditViewController: FormViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if (RealmHelper.isDirty(objectName))
+        if (DB.isDirty(objectName))
         {
-            RealmHelper.audit(self.object!, RealmHelper.lastObjectDate)
-            RealmHelper.lastObject = nil
+            DB.audit(self.object!, DB.lastObjectDate)
+            DB.lastObject = nil
         }
     }
 }

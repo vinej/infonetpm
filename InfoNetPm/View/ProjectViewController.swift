@@ -20,7 +20,7 @@ class ProjectViewController: BaseTableViewController, InternalObjectProtocol {
         let cell = tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath)
 
         let prj = (list![indexPath.row] as! Project)
-        cell.textLabel?.text = "\(prj.code) : \(prj.desc)"
+        cell.textLabel?.text = "\(prj.code) : \(prj.name)"
         
         return cell
     }

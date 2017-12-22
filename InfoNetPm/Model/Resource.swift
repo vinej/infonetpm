@@ -12,6 +12,7 @@ import RealmSwift
 
 public class Resource: Object {
     @objc dynamic var id = UUID().uuidString
+    @objc dynamic var code = ""
     @objc dynamic var lastName = ""
     @objc dynamic var firstName = ""
     @objc dynamic var initial = ""

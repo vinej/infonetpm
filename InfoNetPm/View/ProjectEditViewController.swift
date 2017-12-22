@@ -25,23 +25,21 @@ class ProjectEditViewController: BaseEditViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        companyList = RealmHelper.all(Company.self)
+        companyList = DB.all(Company.self)
         
         form +++ Section("Section Project")
             <<< PopoverSelectorRow<String>() { row in
                 row.title = "Status"
-                row.options = [RealmHelper.empty,RealmHelper.cancel, "NotStarted","Started","OnHold", "Completed"]
+                row.options = [DB.empty,DB.cancel, "NotStarted","Started","OnHold", "Completed"]
                 row.value = project?.status
                 row.selectorTitle = "Select the status"
                 }.onChange { row in
-                    if (row.value != "" && row.value != nil && row.value != RealmHelper.cancel && row.value != RealmHelper.empty) {
-                        RealmHelper.update(self.project!, #keyPath(Project.status), row.value)
-                        RealmHelper.setDirty(self.objectName, true)
+                    if (row.value != "" && row.value != nil && row.value != DB.cancel && row.value != DB.empty) {
+                        DB.update(self.objectName, self.project!, #keyPath(Project.status), row.value)
                     } else {
                         // onChange will be called again
-                        if (row.value == RealmHelper.empty) {
-                            RealmHelper.update(self.project!, #keyPath(Project.status) , "")
-                            RealmHelper.setDirty(self.objectName, true)
+                        if (row.value == DB.empty) {
+                            DB.update(self.objectName, self.project!, #keyPath(Project.status) , "")
                         }
                         row.value = self.project?.status
                     }
@@ -49,7 +47,7 @@ class ProjectEditViewController: BaseEditViewController {
             
             <<< PopoverSelectorRow<String>() { row in
                 row.title = "Company"
-                row.options = Company.getOptions(companyList!)
+                row.options = DB.getOptions(companyList!)
                 row.value = project?.company != nil ? project?.company?.name : ""
                 row.selectorTitle = "Choose a company"
                 }.onChange { row in
@@ -57,13 +55,11 @@ class ProjectEditViewController: BaseEditViewController {
                         ProjectEditViewController.isSecondOnChange = false
                         return
                     }
-                    if (row.value != nil && row.value != RealmHelper.empty && row.value != RealmHelper.cancel)  {
-                        RealmHelper.saveChildObject(self.project, Company.getCompany(row.value!))
-                        RealmHelper.setDirty(self.objectName, true)
+                    if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
+                        DB.saveChildObject(self.project, DB.getObject(Company.self, "code", row.value!)!)
                      } else {
-                        if (row.value == RealmHelper.empty) {
-                            RealmHelper.saveEmptyChildObject(self.project!, "company")
-                            RealmHelper.setDirty(self.objectName, true)
+                        if (row.value == DB.empty) {
+                            DB.saveEmptyChildObject(self.project!, "company")
                         }
                     }
                     // set the flag to not do twice the onChange
@@ -77,17 +73,23 @@ class ProjectEditViewController: BaseEditViewController {
                 row.placeholder = "Project code"
                 row.value = project?.code
                 }.onChange { row in
-                    RealmHelper.update(self.project!, #keyPath(Project.code), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.project!, #keyPath(Project.code), row.value)
                 }
         
+            <<< TextRow(){ row in
+                row.title = "Name"
+                row.placeholder = "Project name"
+                row.value = project?.name
+                }.onChange { row in
+                    DB.update(self.objectName, self.project!, #keyPath(Project.name), row.value)
+            }
+            
             <<< TextAreaRow(){ row in
                 row.title = "Description"
                 row.placeholder = "Project description"
                 row.value = project?.desc
                 }.onChange { row in
-                    RealmHelper.update(self.project!, #keyPath(Project.desc), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.project!, #keyPath(Project.desc), row.value)
                 }
         
             <<< DecimalRow(){ row in
@@ -95,8 +97,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.placeholder = "Time Zone"
                 row.value = project?.timezone == 0 ? nil : project?.timezone
                 }.onChange { row in
-                    RealmHelper.update(self.project!, #keyPath(Project.timezone), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.project!, #keyPath(Project.timezone), row.value)
                 }
         
             form +++ Section("Section Financial")
@@ -106,8 +107,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.placeholder = "Initial Budget"
                 row.value = project?.initialBudget == 0 ? nil : project?.initialBudget
                 }.onChange { row in
-                    RealmHelper.update(self.project!, #keyPath(Project.initialBudget), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.project!, #keyPath(Project.initialBudget), row.value)
                 }
             
             <<< DecimalRow(){ row in
@@ -115,8 +115,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.placeholder = "Contingency Budget"
                 row.value = project?.contingencyBudget == 0 ? nil : project?.contingencyBudget
                 }.onChange { row in
-                    RealmHelper.update(self.project!, #keyPath(Project.contingencyBudget), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.project!, #keyPath(Project.contingencyBudget), row.value)
                 }
             
             <<< DecimalRow(){ row in
@@ -124,24 +123,21 @@ class ProjectEditViewController: BaseEditViewController {
                 row.placeholder = "Expected margin"
                 row.value = project?.expectedMargin == 0 ? nil : project?.expectedMargin
                 }.onChange { row in
-                    RealmHelper.update(self.project!, #keyPath(Project.expectedMargin), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.project!, #keyPath(Project.expectedMargin), row.value)
                 }
             
             <<< DateTimeInlineRow(){ row in
                 row.title = "Schedule Start Date"
                 row.value = project?.scheduleStartDate
                 }.onChange { row in
-                    RealmHelper.update(self.project!, #keyPath(Project.scheduleStartDate), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.project!, #keyPath(Project.scheduleStartDate), row.value)
                 }
         
             <<< DateTimeInlineRow(){ row in
                 row.title = "Schedule End Date"
                 row.value = project?.scheduleEndDate
                 }.onChange { row in
-                    RealmHelper.update(self.project!, #keyPath(Project.scheduleEndDate), row.value)
-                    RealmHelper.setDirty(self.objectName, true)
+                    DB.update(self.objectName, self.project!, #keyPath(Project.scheduleEndDate), row.value)
                 }
     }
 }
