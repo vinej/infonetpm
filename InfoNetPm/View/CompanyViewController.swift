@@ -20,7 +20,7 @@ class CompanyViewController: BaseTableViewController, InternalObjectProtocol {
         let cell = tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath)
 
         let cie = (list![indexPath.row] as! Company)
-        cell.textLabel?.text = "\(cie.code) : \(cie.name ?? "")"
+        cell.textLabel?.text = "\(cie.code) : \(cie.name )"
     
         return cell
     }

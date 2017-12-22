@@ -10,8 +10,8 @@ import RealmSwift
 import Eureka
 import SwiftyBeaver
 
+
 class ActivityEditViewController: BaseEditViewController {
-    
     @objc var activity : Activity? = nil
     var roleList : Results<Object>? = nil
     var ressourceList : Results<Object>? = nil
@@ -23,6 +23,7 @@ class ActivityEditViewController: BaseEditViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         roleList = DB.all(Role.self)
         ressourceList = DB.all(Resource.self)
         
@@ -53,7 +54,7 @@ class ActivityEditViewController: BaseEditViewController {
         
             <<< PopoverSelectorRow<String>() { row in
                 row.title = "Role"
-                row.options = DB.getOptions(roleList!, "name", "descrition")
+                row.options = DB.getOptions(roleList!, "name", "desc")
                 row.value = activity?.role != nil ? activity?.role?.name : ""
                 row.selectorTitle = "Choose a role"
                 }.onChange { row in
@@ -62,7 +63,7 @@ class ActivityEditViewController: BaseEditViewController {
                         return
                     }
                     if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
-                        DB.saveChildObject(self.activity, DB.getObject(Role.self, "name", row.value!)!)
+                        DB.saveChildObject(self.activity, DB.getObject(Role.self, "name", row.value!))
                     } else {
                         if (row.value == DB.empty) {
                             DB.saveEmptyChildObject(self.activity!, "role")
@@ -75,7 +76,7 @@ class ActivityEditViewController: BaseEditViewController {
         
             <<< PopoverSelectorRow<String>() { row in
                 row.title = "Ressource"
-                row.options = DB.getOptions(roleList!, "code", "lastName", "firstName")
+                row.options = DB.getOptions(ressourceList!, "code", "lastName", "firstName")
                 row.value = activity?.resource != nil ? activity?.resource?.code : ""
                 row.selectorTitle = "Choose a resource"
                 }.onChange { row in
@@ -84,7 +85,7 @@ class ActivityEditViewController: BaseEditViewController {
                         return
                     }
                     if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
-                        DB.saveChildObject(self.activity, DB.getObject(Resource.self, "code", row.value!)!)
+                        DB.saveChildObject(self.activity, DB.getObject(Resource.self, "code", row.value!))
                     } else {
                         if (row.value == DB.empty) {
                             DB.saveEmptyChildObject(self.activity!, "resource")
@@ -97,7 +98,7 @@ class ActivityEditViewController: BaseEditViewController {
         
             <<< PopoverSelectorRow<String>() { row in
                 row.title = "Backup Ressource"
-                row.options = DB.getOptions(roleList!, "code", "lastName", "firstName")
+                row.options = DB.getOptions(ressourceList!, "code", "lastName", "firstName")
                 row.value = activity?.backupResource != nil ? activity?.backupResource?.code : ""
                 row.selectorTitle = "Choose a resource"
                 }.onChange { row in
@@ -106,7 +107,7 @@ class ActivityEditViewController: BaseEditViewController {
                         return
                     }
                     if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
-                        DB.saveChildObject(self.activity, DB.getObject(Resource.self, "code", row.value!)!)
+                        DB.saveChildObject(self.activity, DB.getObject(Resource.self, "code", row.value!))
                     } else {
                         if (row.value == DB.empty) {
                             DB.saveEmptyChildObject(self.activity!, "backupResource")

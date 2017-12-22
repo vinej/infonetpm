@@ -12,6 +12,21 @@ import RealmSwift
 
 class ActivityViewController: BaseTableViewController, InternalObjectProtocol {
     
+    @IBOutlet var btnDone: UIBarButtonItem!
+    
+    @IBOutlet var btnEdit: UIBarButtonItem!
+    
+    @IBAction func setEditMode(_ sender: Any) {
+        self.tableView.isEditing =  true
+        btnEdit.isEnabled = false
+        btnDone.isEnabled = true
+    }
+    @IBAction func SetStandardMode(_ sender: Any) {
+        self.tableView.isEditing = false
+        btnEdit.isEnabled = true
+        btnDone.isEnabled = false
+    }
+    
     override func setInternalObject() {
         self.objectType = Activity.self
     }
@@ -23,6 +38,15 @@ class ActivityViewController: BaseTableViewController, InternalObjectProtocol {
         cell.textLabel?.text = "\(act.code) : \(act.name) : \(act.duration)"
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let actS = (list![sourceIndexPath.row] as! Activity)
+        let actD = (list![destinationIndexPath.row] as! Activity)
+    }
+    
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
 }

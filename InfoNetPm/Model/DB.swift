@@ -53,10 +53,10 @@ public class DB {
         return listSelection
     }
     
-    public static func getObject<T>(_ obj : T.Type, _ field:  String, _ value : String) -> Object? {
+    public static func getObject<T>(_ obj : T.Type, _ field:  String, _ value : String) -> Object {
         let index = value.firstIndex(of: "|")
         let code = value.slicing(from: 0, to: index! - 1)
-        return DB.filter(obj.self, "\(field) = %@", code!).first as! Object
+        return (DB.filter(obj.self, "\(field) = %@", code!).first)!
     }
     
     public static func toSelection(_ list : Results<Object>, _ field : String) -> [String] {

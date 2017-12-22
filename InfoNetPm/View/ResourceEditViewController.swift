@@ -38,7 +38,7 @@ class ResourceEditViewController: BaseEditViewController {
                     return
                 }
                 if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
-                    DB.saveChildObject(self.resource, DB.getObject(Company.self, "code", row.value!)!)
+                    DB.saveChildObject(self.resource, DB.getObject(Company.self, "code", row.value!))
                 } else {
                     if (row.value == DB.empty) {
                         DB.saveEmptyChildObject(self.resource!, "company")

@@ -18,48 +18,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Define Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPg-fR-9Km">
-                                <rect key="frame" x="16" y="20" width="343" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0E-of-NrA">
-                                <rect key="frame" x="16" y="131" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0E-of-NrA">
+                                <rect key="frame" x="16" y="20" width="343" height="30"/>
                                 <state key="normal" title="Company"/>
                                 <connections>
                                     <segue destination="cbR-W2-JQc" kind="show" id="4M7-ck-TUO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5g-0i-kx1">
-                                <rect key="frame" x="16" y="187" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5g-0i-kx1">
+                                <rect key="frame" x="16" y="58" width="343" height="30"/>
                                 <state key="normal" title="Project"/>
                                 <connections>
                                     <segue destination="uQR-lH-tUp" kind="show" id="3Og-Xa-Itb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uD0-7z-NGc">
-                                <rect key="frame" x="16" y="243" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uD0-7z-NGc">
+                                <rect key="frame" x="16" y="134" width="343" height="30"/>
                                 <state key="normal" title="Role"/>
                                 <connections>
                                     <segue destination="GKT-ag-htA" kind="show" id="u8B-Dm-PDo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipy-ck-J0U">
-                                <rect key="frame" x="16" y="291" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipy-ck-J0U">
+                                <rect key="frame" x="16" y="96" width="343" height="30"/>
                                 <state key="normal" title="Resource"/>
                                 <connections>
                                     <segue destination="HZt-1t-jmc" kind="show" id="igX-Pf-NOf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ew-E2-54I">
-                                <rect key="frame" x="164" y="347" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ew-E2-54I">
+                                <rect key="frame" x="16" y="172" width="343" height="30"/>
                                 <state key="normal" title="Plan"/>
                                 <connections>
                                     <segue destination="6dR-Kk-vdV" kind="show" id="EjM-GA-Hjw"/>
@@ -67,12 +55,32 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="h5g-0i-kx1" firstAttribute="top" secondItem="H0E-of-NrA" secondAttribute="bottom" constant="8" id="1Dd-ha-xuS"/>
+                            <constraint firstItem="rag-Kt-EmT" firstAttribute="trailing" secondItem="uD0-7z-NGc" secondAttribute="trailing" constant="16" id="95u-Pq-ZgV"/>
+                            <constraint firstItem="rag-Kt-EmT" firstAttribute="trailing" secondItem="H0E-of-NrA" secondAttribute="trailing" constant="16" id="Aed-fL-YAN"/>
+                            <constraint firstItem="rag-Kt-EmT" firstAttribute="trailing" secondItem="h5g-0i-kx1" secondAttribute="trailing" constant="16" id="Bzp-Ta-GQ7"/>
+                            <constraint firstItem="h5g-0i-kx1" firstAttribute="top" secondItem="H0E-of-NrA" secondAttribute="bottom" constant="8" id="CaS-M8-jRJ"/>
+                            <constraint firstItem="H0E-of-NrA" firstAttribute="top" secondItem="rag-Kt-EmT" secondAttribute="top" id="I0D-7G-JV2"/>
+                            <constraint firstItem="uD0-7z-NGc" firstAttribute="top" secondItem="Ipy-ck-J0U" secondAttribute="bottom" constant="8" id="NtQ-bP-Dhe"/>
+                            <constraint firstItem="3Ew-E2-54I" firstAttribute="top" secondItem="uD0-7z-NGc" secondAttribute="bottom" constant="8" id="Srd-O4-iCb"/>
+                            <constraint firstItem="H0E-of-NrA" firstAttribute="leading" secondItem="rag-Kt-EmT" secondAttribute="leading" constant="16" id="ama-rp-8rg"/>
+                            <constraint firstItem="rag-Kt-EmT" firstAttribute="trailing" secondItem="3Ew-E2-54I" secondAttribute="trailing" constant="16" id="dwr-qR-PgG"/>
+                            <constraint firstItem="uD0-7z-NGc" firstAttribute="leading" secondItem="rag-Kt-EmT" secondAttribute="leading" constant="16" id="i1b-51-qGU"/>
+                            <constraint firstItem="Ipy-ck-J0U" firstAttribute="top" secondItem="h5g-0i-kx1" secondAttribute="bottom" constant="8" id="jxJ-0u-bdW"/>
+                            <constraint firstItem="3Ew-E2-54I" firstAttribute="leading" secondItem="rag-Kt-EmT" secondAttribute="leading" constant="16" id="kas-jR-8rA"/>
+                            <constraint firstItem="Ipy-ck-J0U" firstAttribute="leading" secondItem="rag-Kt-EmT" secondAttribute="leading" constant="16" id="lFh-jP-23y"/>
+                            <constraint firstItem="h5g-0i-kx1" firstAttribute="leading" secondItem="rag-Kt-EmT" secondAttribute="leading" constant="16" id="lPx-23-DB6"/>
+                            <constraint firstItem="rag-Kt-EmT" firstAttribute="trailing" secondItem="Ipy-ck-J0U" secondAttribute="trailing" constant="16" id="tOP-fs-FJn"/>
+                            <constraint firstItem="uD0-7z-NGc" firstAttribute="top" secondItem="Ipy-ck-J0U" secondAttribute="bottom" constant="8" id="uMX-d2-o66"/>
+                            <constraint firstItem="Ipy-ck-J0U" firstAttribute="top" secondItem="h5g-0i-kx1" secondAttribute="bottom" constant="8" id="ydM-8W-kUO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rag-Kt-EmT"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c65-HV-pq4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="169" y="-67"/>
+            <point key="canvasLocation" x="168.80000000000001" y="-67.016491754122939"/>
         </scene>
         <!--Company-->
         <scene sceneID="XgY-Ek-e03">

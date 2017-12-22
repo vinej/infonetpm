@@ -54,7 +54,7 @@ class PlanEditViewController: BaseEditViewController {
                         return
                     }
                     if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
-                        DB.saveChildObject(self.plan, DB.getObject(Project.self, "code", row.value!)!)
+                        DB.saveChildObject(self.plan, DB.getObject(Project.self, "code", row.value!))
                     } else {
                         if (row.value == DB.empty) {
                             DB.saveEmptyChildObject(self.plan!, "project")
