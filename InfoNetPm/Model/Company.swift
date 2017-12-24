@@ -14,6 +14,14 @@ public class Company: Object {
     @objc dynamic var name = ""
     @objc dynamic var type = ""  // client, service provider, thirs party service
     @objc dynamic var address: Address? = Address()
+    
+    @objc dynamic var createdBy = ""
+    @objc dynamic var createdDate = Date()
+    @objc dynamic var updatedBy = ""
+    @objc dynamic var updatedDate = Date()
+    
+    @objc dynamic var order = 0.0
+    
     override public static func primaryKey() -> String? {
         return "id"
     }

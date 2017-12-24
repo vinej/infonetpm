@@ -36,6 +36,8 @@ public class DB {
     
     public static let cancel = "<CANCEL>"
     public static let empty = "<CLEAR>"
+    public static let orderField = "order"
+    
     public static let defaultSelection : [String] = [DB.empty,DB.cancel]
     
     
@@ -80,8 +82,8 @@ public class DB {
     {
         // transaction must be created by the caller
         let audit = Audit()
-        audit.dateCreated = Date.init(timeIntervalSinceNow: 0)
-        audit.userCreated = NSUserName()
+        audit.createdDate = Date.init(timeIntervalSinceNow: 0)
+        audit.createdBy = NSUserName()
         audit.auditAction = "\(auditAction)"
         audit.objectName = "\(type(of: object))"
         audit.objectId = object["id"] as! String
@@ -89,7 +91,7 @@ public class DB {
         return audit
     }
 
-    public static func update<T>(_ objectName : String, _ object : Object, _ field: String, _ value: T!, _ isAllowNil : Bool = false, _ isSetDirty : Bool = true) {
+    public static func update<T>(_ object : Object, _ field: String, _ value: T!, _ isAllowNil : Bool = false, _ isSetDirty : Bool = true) {
         let stype = "\(type(of: value))"
         let realm = try! Realm()
         try! realm.write {
@@ -104,8 +106,6 @@ public class DB {
                         case "OPtional<Date>" : object[field] = Date()
                         default : object[field] = value
                     }
-
-
                 }
             } else {
                 if ( String(describing: value) == "Optional<#nil#>"  ) {
@@ -113,6 +113,9 @@ public class DB {
                 }
                 object[field] = value
             }
+            
+            object["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
+            object["updatedBy"] = NSUserName()
         }
         
         // need that to add a audit before leaving the app
@@ -120,7 +123,25 @@ public class DB {
         DB.lastObjectName = "\(type(of: object))"
         DB.lastObjectDate = Date()
         if (isSetDirty) {
-            DB.setDirty(objectName, true)
+            DB.setDirty("\(type(of: object))", true)
+        }
+    }
+    
+    public static func updateSubObject<T>(_ object : Object, _ subObject : Object, _ field: String, _ value: T!, _ isAllowNil : Bool = false, _ isSetDirty : Bool = true)
+    {
+        update(subObject, field, value, isAllowNil, isSetDirty)
+        let realm = try! Realm()
+        try! realm.write {
+            object["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
+            object["updatedBy"] = NSUserName()
+        }
+        
+        // need that to add a audit before leaving the app
+        DB.lastObject = object
+        DB.lastObjectName = "\(type(of: object))"
+        DB.lastObjectDate = Date()
+        if (isSetDirty) {
+            DB.setDirty("\(type(of: object))", true)
         }
     }
     
@@ -129,6 +150,8 @@ public class DB {
         try! realm.write {
             let objectName = "\(type(of: object))".lowercased()
             parentObject![objectName] = object
+            parentObject!["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
+            parentObject!["updatedBy"] = NSUserName()
             if (isSetDirty) {
                 DB.setDirty("\(type(of: parentObject))", true)
             }
@@ -139,6 +162,8 @@ public class DB {
         let realm = try! Realm()
         try! realm.write {
             parentObject[objectName] = nil
+            parentObject["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
+            parentObject["updatedBy"] = NSUserName()
             if (isSetDirty) {
                 DB.setDirty("\(type(of: parentObject))", true)
             }
@@ -150,10 +175,15 @@ public class DB {
         try! realm.write {
             realm.add(object)
             realm.add(DB.getAudit(object, AuditAction.New, Date()))
+            object["createdDate"] = Date.init(timeIntervalSinceNow: 0)
+            object["createdBy"] = NSUserName()
+            object["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
+            object["updatedBy"] = NSUserName()
+            
+            object["order"] = jdFromNow()
             if (isSetDirty) {
                 DB.setDirty("\(type(of: object))", true)
             }
-
         }
         return object
     }
@@ -165,6 +195,28 @@ public class DB {
             realm.delete(object)
             if (isSetDirty) {
                 DB.setDirty("\(type(of: object))", true)
+            }
+        }
+    }
+    
+    public static func changedOrder(_ src : Object, _ dest : Object, _ destNext : Object?, _ isSetDirty : Bool = true) {
+        let realm = try! Realm()
+        var orderDest = 0.0
+        var orderDestNext = 0.0
+        if (destNext == nil || dest != destNext) {
+            orderDest = (dest[orderField] as! Double)
+            if (destNext == nil) {
+                orderDestNext = (dest[orderField] as! Double) + 1
+            } else {
+                orderDestNext = (destNext![orderField] as! Double)
+            }
+        } else {
+            orderDest = 0.0
+        }
+        try! realm.write {
+            src[orderField] = (orderDestNext - orderDest) / 2.0 + orderDest
+            if (isSetDirty) {
+                DB.setDirty("\(type(of: src))", true)
             }
         }
     }

@@ -26,7 +26,7 @@ class AuditViewController: BaseTableViewController, InternalObjectProtocol {
         
         let audit = (list![indexPath.row] as! Audit)
         if let theLabel0 = cell.viewWithTag(99) as? UILabel {
-            theLabel0.text = "\(audit.auditAction) : \(audit.objectName) : \(audit.dateCreated) : : \(audit.userCreated)"
+            theLabel0.text = "\(audit.auditAction) : \(audit.objectName) : \(audit.createdDate) : : \(audit.createdBy)"
         }
         
         //cell.textLabel?.text = "\(audit.auditAction) : \(audit.objectName) : \(audit.dateCreated) : : \(audit.userCreated)"

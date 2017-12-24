@@ -33,7 +33,7 @@ class ActivityEditViewController: BaseEditViewController {
                 row.placeholder = "Activity Code"
                 row.value = activity?.code
                 }.onChange { row in
-                    DB.update(self.objectName, self.activity!, #keyPath(Activity.code), row.value)
+                    DB.update(self.activity!, #keyPath(Activity.code), row.value)
             }
             
             <<< TextRow(){ row in
@@ -41,7 +41,7 @@ class ActivityEditViewController: BaseEditViewController {
                 row.placeholder = "Activity Name"
                 row.value = activity?.name
                 }.onChange { row in
-                    DB.update(self.objectName, self.activity!, #keyPath(Activity.name), row.value)
+                    DB.update(self.activity!, #keyPath(Activity.name), row.value)
             }
             
             <<< DecimalRow(){ row in
@@ -49,7 +49,7 @@ class ActivityEditViewController: BaseEditViewController {
                 row.value = activity?.duration
                 row.placeholder = "Duration of the activity"
                 }.onChange { row in
-                    DB.update(self.objectName, self.activity!, #keyPath(Activity.duration), row.value)
+                    DB.update(self.activity!, #keyPath(Activity.duration), row.value)
                 }
         
             <<< PopoverSelectorRow<String>() { row in

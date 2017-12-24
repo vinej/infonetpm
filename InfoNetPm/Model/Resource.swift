@@ -24,6 +24,13 @@ public class Resource: Object {
     @objc dynamic var telephone = ""
     @objc dynamic var address: Address? = Address()
     @objc dynamic var company: Company?
+
+    @objc dynamic var createdBy = ""
+    @objc dynamic var createdDate = Date()
+    @objc dynamic var updatedBy = ""
+    @objc dynamic var updatedDate = Date()
+    
+    @objc dynamic var order = 0.0
     
     override public static func primaryKey() -> String? {
         return "id"

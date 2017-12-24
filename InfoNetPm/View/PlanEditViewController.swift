@@ -33,11 +33,11 @@ class PlanEditViewController: BaseEditViewController {
                 row.selectorTitle = "Select the status"
                 }.onChange { row in
                     if (row.value != "" && row.value != nil && row.value != DB.cancel && row.value != DB.empty) {
-                        DB.update(self.objectName, self.plan!, #keyPath(Plan.status), row.value)
+                        DB.update(self.plan!, #keyPath(Plan.status), row.value)
                     } else {
                         // onChange will be called again
                         if (row.value == DB.empty) {
-                            DB.update(self.objectName, self.plan!, #keyPath(Plan.status) , "")
+                            DB.update(self.plan!, #keyPath(Plan.status) , "")
                         }
                         row.value = self.plan?.status
                     }
@@ -70,7 +70,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Code"
                 row.value = plan?.code
                 }.onChange { row in
-                    DB.update(self.objectName, self.plan!, #keyPath(Plan.code), row.value)
+                    DB.update(self.plan!, #keyPath(Plan.code), row.value)
                 }
             
             <<< TextRow(){ row in
@@ -78,7 +78,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Name"
                 row.value = plan?.name
                 }.onChange { row in
-                    DB.update(self.objectName, self.plan!, #keyPath(Plan.name), row.value)
+                    DB.update(self.plan!, #keyPath(Plan.name), row.value)
                 }
             
             <<< TextRow(){ row in
@@ -86,7 +86,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Description"
                 row.value = plan?.desc
                 }.onChange { row in
-                    DB.update(self.objectName, self.plan!, #keyPath(Plan.desc), row.value)
+                    DB.update(self.plan!, #keyPath(Plan.desc), row.value)
                 }
         
             <<< DecimalRow(){ row in
@@ -94,7 +94,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Time Zone"
                 row.value = plan?.timezone == 0.0 ? nil : plan?.timezone
                 }.onChange { row in
-                    DB.update(self.objectName, self.plan!, #keyPath(Plan.timezone), row.value)
+                    DB.update(self.plan!, #keyPath(Plan.timezone), row.value)
                 }
             
             form +++ Section("Section Financial")
@@ -104,7 +104,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Initial Budget"
                 row.value = plan?.initialBudget == 0.0 ? nil : plan?.initialBudget
                 }.onChange { row in
-                    DB.update(self.objectName, self.plan!, #keyPath(Plan.initialBudget), row.value)
+                    DB.update(self.plan!, #keyPath(Plan.initialBudget), row.value)
                 }
             
             <<< DecimalRow(){ row in
@@ -112,7 +112,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Contingency Budget"
                 row.value = plan?.contingencyBudget == 0.0 ? nil : plan?.contingencyBudget
                 }.onChange { row in
-                    DB.update(self.objectName, self.plan!, #keyPath(Plan.contingencyBudget), row.value)
+                    DB.update(self.plan!, #keyPath(Plan.contingencyBudget), row.value)
                 }
             
             <<< DecimalRow(){ row in
@@ -120,7 +120,7 @@ class PlanEditViewController: BaseEditViewController {
                 row.placeholder = "Expected margin"
                 row.value = plan?.expectedMargin == 0.0 ? nil : plan?.expectedMargin
                 }.onChange { row in
-                    DB.update(self.objectName, self.plan!, #keyPath(Plan.expectedMargin), row.value)
+                    DB.update(self.plan!, #keyPath(Plan.expectedMargin), row.value)
                 }
             
             
@@ -128,14 +128,14 @@ class PlanEditViewController: BaseEditViewController {
                 row.title = "Schedule Start Date"
                 row.value = plan?.scheduleStartDate
                 }.onChange { row in
-                    DB.update(self.objectName, self.plan!, #keyPath(Plan.scheduleStartDate), row.value)
+                    DB.update(self.plan!, #keyPath(Plan.scheduleStartDate), row.value)
                 }
             
             <<< DateTimeInlineRow(){ row in
                 row.title = "Schedule End Date"
                 row.value = plan?.scheduleEndDate
                 }.onChange { row in
-                    DB.update(self.objectName, self.plan!, #keyPath(Plan.scheduleEndDate), row.value)
+                    DB.update(self.plan!, #keyPath(Plan.scheduleEndDate), row.value)
                 }
     }
 }

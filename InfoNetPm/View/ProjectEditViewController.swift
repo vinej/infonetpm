@@ -35,11 +35,11 @@ class ProjectEditViewController: BaseEditViewController {
                 row.selectorTitle = "Select the status"
                 }.onChange { row in
                     if (row.value != "" && row.value != nil && row.value != DB.cancel && row.value != DB.empty) {
-                        DB.update(self.objectName, self.project!, #keyPath(Project.status), row.value)
+                        DB.update(self.project!, #keyPath(Project.status), row.value)
                     } else {
                         // onChange will be called again
                         if (row.value == DB.empty) {
-                            DB.update(self.objectName, self.project!, #keyPath(Project.status) , "")
+                            DB.update(self.project!, #keyPath(Project.status) , "")
                         }
                         row.value = self.project?.status
                     }
@@ -73,7 +73,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.placeholder = "Project code"
                 row.value = project?.code
                 }.onChange { row in
-                    DB.update(self.objectName, self.project!, #keyPath(Project.code), row.value)
+                    DB.update(self.project!, #keyPath(Project.code), row.value)
                 }
         
             <<< TextRow(){ row in
@@ -81,7 +81,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.placeholder = "Project name"
                 row.value = project?.name
                 }.onChange { row in
-                    DB.update(self.objectName, self.project!, #keyPath(Project.name), row.value)
+                    DB.update(self.project!, #keyPath(Project.name), row.value)
             }
             
             <<< TextAreaRow(){ row in
@@ -89,7 +89,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.placeholder = "Project description"
                 row.value = project?.desc
                 }.onChange { row in
-                    DB.update(self.objectName, self.project!, #keyPath(Project.desc), row.value)
+                    DB.update(self.project!, #keyPath(Project.desc), row.value)
                 }
         
             <<< DecimalRow(){ row in
@@ -97,7 +97,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.placeholder = "Time Zone"
                 row.value = project?.timezone == 0 ? nil : project?.timezone
                 }.onChange { row in
-                    DB.update(self.objectName, self.project!, #keyPath(Project.timezone), row.value)
+                    DB.update(self.project!, #keyPath(Project.timezone), row.value)
                 }
         
             form +++ Section("Section Financial")
@@ -107,7 +107,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.placeholder = "Initial Budget"
                 row.value = project?.initialBudget == 0 ? nil : project?.initialBudget
                 }.onChange { row in
-                    DB.update(self.objectName, self.project!, #keyPath(Project.initialBudget), row.value)
+                    DB.update(self.project!, #keyPath(Project.initialBudget), row.value)
                 }
             
             <<< DecimalRow(){ row in
@@ -115,7 +115,7 @@ class ProjectEditViewController: BaseEditViewController {
                 row.placeholder = "Contingency Budget"
                 row.value = project?.contingencyBudget == 0 ? nil : project?.contingencyBudget
                 }.onChange { row in
-                    DB.update(self.objectName, self.project!, #keyPath(Project.contingencyBudget), row.value)
+                    DB.update(self.project!, #keyPath(Project.contingencyBudget), row.value)
                 }
             
             <<< DecimalRow(){ row in
@@ -123,21 +123,21 @@ class ProjectEditViewController: BaseEditViewController {
                 row.placeholder = "Expected margin"
                 row.value = project?.expectedMargin == 0 ? nil : project?.expectedMargin
                 }.onChange { row in
-                    DB.update(self.objectName, self.project!, #keyPath(Project.expectedMargin), row.value)
+                    DB.update(self.project!, #keyPath(Project.expectedMargin), row.value)
                 }
             
             <<< DateTimeInlineRow(){ row in
                 row.title = "Schedule Start Date"
                 row.value = project?.scheduleStartDate
                 }.onChange { row in
-                    DB.update(self.objectName, self.project!, #keyPath(Project.scheduleStartDate), row.value)
+                    DB.update(self.project!, #keyPath(Project.scheduleStartDate), row.value)
                 }
         
             <<< DateTimeInlineRow(){ row in
                 row.title = "Schedule End Date"
                 row.value = project?.scheduleEndDate
                 }.onChange { row in
-                    DB.update(self.objectName, self.project!, #keyPath(Project.scheduleEndDate), row.value)
+                    DB.update(self.project!, #keyPath(Project.scheduleEndDate), row.value)
                 }
     }
 }

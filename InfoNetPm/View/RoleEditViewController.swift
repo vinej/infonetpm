@@ -29,7 +29,7 @@ class RoleEditViewController: BaseEditViewController {
                 row.placeholder = "Role name"
                 row.value = role?.name
                 }.onChange { row in
-                    DB.update(self.objectName, self.role!, #keyPath(Role.name), row.value)
+                    DB.update(self.role!, #keyPath(Role.name), row.value)
                 }
             
             <<< TextRow(){ row in
@@ -37,7 +37,7 @@ class RoleEditViewController: BaseEditViewController {
                 row.placeholder = "Role description"
                 row.value = role?.desc
                 }.onChange { row in
-                    DB.update(self.objectName, self.role!, #keyPath(Role.desc), row.value)
+                    DB.update(self.role!, #keyPath(Role.desc), row.value)
                 }
         
             <<< DecimalRow(){ row in
@@ -45,7 +45,7 @@ class RoleEditViewController: BaseEditViewController {
                 row.placeholder = "Rate by hour"
                 row.value = role?.rateByHour == 0 ? nil : role?.rateByHour
                 }.onChange { row in
-                    DB.update(self.objectName, self.role!, #keyPath(Role.rateByHour), row.value)
+                    DB.update(self.role!, #keyPath(Role.rateByHour), row.value)
                 }
         
             <<< DecimalRow(){ row in
@@ -53,7 +53,7 @@ class RoleEditViewController: BaseEditViewController {
                 row.placeholder = "Expected cost by hour"
                 row.value = role?.expectedCostByHour == 0 ? nil : role?.expectedCostByHour
                 }.onChange { row in
-                    DB.update(self.objectName, self.role!, #keyPath(Role.expectedCostByHour), row.value)
+                    DB.update(self.role!, #keyPath(Role.expectedCostByHour), row.value)
                 }
     }
 }

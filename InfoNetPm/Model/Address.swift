@@ -21,6 +21,13 @@ public class Address: Object {
     @objc dynamic var phoneHome = ""
     @objc dynamic var emailHome = ""
     
+    @objc dynamic var createdBy = ""
+    @objc dynamic var createdDate = Date()
+    @objc dynamic var updatedBy = ""
+    @objc dynamic var updatedDate = Date()
+    
+    @objc dynamic var order = 0.0
+    
     override public static func primaryKey() -> String? {
         return "id"
     }

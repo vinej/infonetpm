@@ -25,7 +25,14 @@ public class Activity: Object {
     @objc dynamic var backupResource : Resource?
     @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
+
+    @objc dynamic var createdBy = ""
+    @objc dynamic var createdDate = Date()
+    @objc dynamic var updatedBy = ""
+    @objc dynamic var updatedDate = Date()
     
+    @objc dynamic var order = 0.0
+
     let dependantActivities = List<Activity>()
     
     override public static func primaryKey() -> String? {

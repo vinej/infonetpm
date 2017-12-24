@@ -38,7 +38,14 @@ public class Project: Object {
 
     @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
-  
+    
+    @objc dynamic var createdBy = ""
+    @objc dynamic var createdDate = Date()
+    @objc dynamic var updatedBy = ""
+    @objc dynamic var updatedDate = Date()
+    
+    @objc dynamic var order = 0.0
+    
     let dependantProjects = List<Project>()
     
     override public static func primaryKey() -> String? {

@@ -27,6 +27,13 @@ public class Plan: Object {
     @objc dynamic var timezone = 0.0
     @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
+
+    @objc dynamic var createdBy = ""
+    @objc dynamic var createdDate = Date()
+    @objc dynamic var updatedBy = ""
+    @objc dynamic var updatedDate = Date()
+    
+    @objc dynamic var order = 0.0
     
     let dependantPlans = List<Plan>()
     

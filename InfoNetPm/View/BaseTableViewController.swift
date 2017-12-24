@@ -26,7 +26,8 @@ class BaseTableViewController: UITableViewController {
         }
     
         public func loadData() {
-            list = DB.all(self.objectType)
+            list = DB.all(self.objectType).sorted(byKeyPath: "order", ascending: true)
+            //list = DB.all(self.objectType)
         }
     
         override func viewDidLoad() {
@@ -66,6 +67,18 @@ class BaseTableViewController: UITableViewController {
         override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             // #warning Incomplete implementation, return the number of rows
             return list!.count
+        }
+    
+        override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+            let objS = (list![sourceIndexPath.row] )
+            var objDNext : Object? = nil
+            if (destinationIndexPath.row == (list?.count)! - 1) {
+                objDNext = nil
+            } else {
+                objDNext = (list![destinationIndexPath.row + 1] )
+            }
+            let objD = (list![destinationIndexPath.row] )
+            DB.changedOrder(objS, objD, objDNext)
         }
         
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
