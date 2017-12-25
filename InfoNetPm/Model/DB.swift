@@ -191,7 +191,12 @@ public class DB {
     
     public static func new<T>(_ objectType : T.Type,_ object: Object, _ isSetDirty: Bool = true) -> Object{
         let realm = try! Realm()
-        let nextOrder = DB.getNextOrder(objectType)
+        var nextOrder = 0.0
+        if (objectType == Order.self) {
+            nextOrder = 0
+        } else {
+            nextOrder = DB.getNextOrder(objectType)
+        }
         try! realm.write {
             realm.add(object)
             realm.add(DB.getAudit(object, AuditAction.New, Date()))
