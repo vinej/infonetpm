@@ -18,7 +18,7 @@ class AuditViewController: BaseTableViewController, InternalObjectProtocol {
     
     override public func loadData() {
         // get yhe data order by 'dateCreated' desc
-        list = DB.all(self.objectType).sorted(byKeyPath: "dateCreated", ascending: false)
+        list = DB.all(self.objectType).sorted(byKeyPath: "createdDate", ascending: false)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

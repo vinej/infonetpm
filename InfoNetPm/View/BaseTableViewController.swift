@@ -26,12 +26,10 @@ class BaseTableViewController: UITableViewController {
         }
     
         public func loadData() {
-            list = DB.all(self.objectType).sorted(byKeyPath: "order", ascending: true)
-            //list = DB.all(self.objectType)
+            list = DB.all(self.objectType).sorted(byKeyPath: "updatedDate", ascending: false)
         }
     
         override func viewDidLoad() {
-            super.viewDidLoad()
             do {
                 try self.setInternalObject()
             }
@@ -41,14 +39,18 @@ class BaseTableViewController: UITableViewController {
             }
             self.objectName = objectType.description().splitted(by : ".")[1]
             self.navigationController?.setToolbarHidden(false, animated: true)
+            super.viewDidLoad()
             self.loadData()
+            DB.setDirty(self.objectName, false)
         }
         
         // return from a view, the load is not launch, so reload on dirty
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             if (DB.isDirty(self.objectName)) {
-                list = DB.all(self.objectType)
+                // relad the list
+                self.loadData()
+                // reload the view to show all rows
                 self.tableView.reloadData()
                 DB.setDirty(self.objectName, false)
             }
@@ -71,14 +73,33 @@ class BaseTableViewController: UITableViewController {
     
         override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
             let objS = (list![sourceIndexPath.row] )
-            var objDNext : Object? = nil
-            if (destinationIndexPath.row == (list?.count)! - 1) {
-                objDNext = nil
-            } else {
-                objDNext = (list![destinationIndexPath.row + 1] )
+            var objD : Object?
+            var objDNext: Object?
+            
+            // if order of src < order of dest, we must put the row after the destination
+            if (sourceIndexPath.row < destinationIndexPath.row) {
+                // the src is moved after the last row, so the next is nil
+                objD = (list![destinationIndexPath.row])
+                if (destinationIndexPath.row == list!.count - 1) {
+                    objDNext = nil
+                } else {
+                    objDNext = (list![destinationIndexPath.row + 1] )
+                }
             }
-            let objD = (list![destinationIndexPath.row] )
-            DB.changedOrder(objS, objD, objDNext)
+            // if the order of > order of dest, we must put the roe before the destination
+            else {
+                objDNext = (list![destinationIndexPath.row] )
+                if (destinationIndexPath.row == 0) {
+                    objD = nil
+                } else {
+                    objD = (list![destinationIndexPath.row - 1] )
+                }
+            }
+            DB.changedOrder(Activity.self, objS, objD, objDNext)
+            // relad the list, because the order changed
+            self.loadData()
+            // need that to refresh the record record in the list
+            self.tableView.reloadData()
         }
         
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,7 +109,7 @@ class BaseTableViewController: UITableViewController {
                 theDestination.setInternalObject(self.list![(indexPath?.row)!])
             } else {
                 DB.setDirty(objectName, true)
-                theDestination.setInternalObject((DB.new(self.objectType.init()) ))
+                theDestination.setInternalObject((DB.new(self.objectType, self.objectType.init()) ))
             }
         }
         
@@ -103,7 +124,7 @@ class BaseTableViewController: UITableViewController {
             if editingStyle == .delete {
                 // Delete the row from the data source
                 DB.del(list![indexPath.row])
-                list = DB.all(objectType)
+                self.loadData()
                 tableView.deleteRows(at: [indexPath], with: .fade)
             } else if editingStyle == .insert {
                 // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

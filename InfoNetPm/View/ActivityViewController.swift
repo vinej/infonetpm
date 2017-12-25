@@ -26,6 +26,10 @@ class ActivityViewController: BaseTableViewController, InternalObjectProtocol {
         btnDone.isEnabled = false
     }
     
+    override public func loadData() {
+        list = DB.allByOrder(self.objectType)
+    }
+
     override func setInternalObject() {
         self.objectType = Activity.self
     }
@@ -34,7 +38,7 @@ class ActivityViewController: BaseTableViewController, InternalObjectProtocol {
         let cell = tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath)
         
         let act = (list![indexPath.row] as! Activity)
-        cell.textLabel?.text = "\(act.code) : \(act.name) : \(act.duration)"
+        cell.textLabel?.text = "\(act.code) : \(act.order) : \(act.duration)"
         
         return cell
     }

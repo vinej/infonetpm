@@ -37,9 +37,28 @@ public class DB {
     public static let cancel = "<CANCEL>"
     public static let empty = "<CLEAR>"
     public static let orderField = "order"
+    public static let orderIncrement = 10.0
+    
     
     public static let defaultSelection : [String] = [DB.empty,DB.cancel]
     
+    public static func getNextOrder<T>(_ objectType : T.Type) -> Double {
+        let realm = try! Realm()
+        var nextOrder = 0.0
+        let order : Order
+        if (DB.count(Order.self) == 0) {
+            order = DB.new(Order.self, Order()) as! Order
+        } else {
+            order = DB.all(Order.self).first as! Order
+        }
+        
+        try! realm.write {
+            let objectName = "\(objectType)".lowercased()
+            nextOrder = order[objectName] as! Double
+            order[objectName] = nextOrder + DB.orderIncrement
+        }
+        return nextOrder
+    }
     
     public static func getOptions(_ list : Results<Object>, _ code:  String = "code", _ name : String = "name", _ name2 : String = "") -> [String] {
         var listSelection = DB.defaultSelection
@@ -170,8 +189,9 @@ public class DB {
         }
     }
     
-    public static func new(_ object: Object, _ isSetDirty: Bool = true) -> Object{
+    public static func new<T>(_ objectType : T.Type,_ object: Object, _ isSetDirty: Bool = true) -> Object{
         let realm = try! Realm()
+        let nextOrder = DB.getNextOrder(objectType)
         try! realm.write {
             realm.add(object)
             realm.add(DB.getAudit(object, AuditAction.New, Date()))
@@ -180,7 +200,7 @@ public class DB {
             object["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
             object["updatedBy"] = NSUserName()
             
-            object["order"] = jdFromNow()
+            object["order"] = nextOrder
             if (isSetDirty) {
                 DB.setDirty("\(type(of: object))", true)
             }
@@ -199,26 +219,38 @@ public class DB {
         }
     }
     
-    public static func changedOrder(_ src : Object, _ dest : Object, _ destNext : Object?, _ isSetDirty : Bool = true) {
+    public static func changedOrder<T>(_ objectType : T.Type, _ src : Object, _ dest : Object?, _ destNext : Object?, _ isSetDirty : Bool = true) {
         let realm = try! Realm()
         var orderDest = 0.0
         var orderDestNext = 0.0
-        if (destNext == nil || dest != destNext) {
-            orderDest = (dest[orderField] as! Double)
-            if (destNext == nil) {
-                orderDestNext = (dest[orderField] as! Double) + 1
-            } else {
-                orderDestNext = (destNext![orderField] as! Double)
-            }
-        } else {
+        
+        if (dest == nil) {
+            // the src is moved befor the first row
             orderDest = 0.0
+            orderDestNext = (destNext![orderField] as! Double)
+        } else if (destNext == nil) {
+            // the src is moved after the last row
+            orderDest = (dest![orderField] as! Double)
+            orderDestNext = DB.getNextOrder(objectType)
+        } else {
+            // the src is moved between 2 existing rows
+            orderDest = (dest![orderField] as! Double)
+            orderDestNext = (destNext![orderField] as! Double)
         }
+        
         try! realm.write {
+            // find the middle between the previous row and the next row,
             src[orderField] = (orderDestNext - orderDest) / 2.0 + orderDest
             if (isSetDirty) {
                 DB.setDirty("\(type(of: src))", true)
             }
         }
+
+        if (isSetDirty) {
+            DB.setDirty("\(type(of: src))", true)
+        }
+        DB.audit(src, Date())
+        DB.lastObject = nil
     }
 
     public static func audit(_ object : Object, _ date: Date) {
@@ -227,7 +259,12 @@ public class DB {
             realm.add(DB.getAudit(object, AuditAction.Update, date))
         }
     }
-    
+
+    public static func allByOrder<T>(_ object : T.Type) ->  Results<Object> {
+        let realm = try! Realm()
+        return realm.objects(object.self as! Object.Type).sorted(byKeyPath: "order", ascending: true)
+    }
+
     public static func all<T>(_ object : T.Type) ->  Results<Object> {
         let realm = try! Realm()
         return realm.objects(object.self as! Object.Type)

@@ -27,14 +27,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYA-gy-Qnm">
-                                            <rect key="frame" x="16" y="11" width="343" height="23"/>
+                                            <rect key="frame" x="16" y="11" width="343" height="14.5"/>
                                             <color key="backgroundColor" red="0.45085787770000002" green="0.98829740290000001" blue="0.83763033149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0C-Pr-Mgo" userLabel="objectInfo">
-                                            <rect key="frame" x="16" y="43" width="343" height="102"/>
+                                            <rect key="frame" x="16" y="35" width="343" height="110"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -42,14 +42,14 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="fYA-gy-Qnm" firstAttribute="leading" secondItem="FcG-5w-17S" secondAttribute="leadingMargin" id="Hm3-ak-1jU"/>
-                                        <constraint firstItem="d0C-Pr-Mgo" firstAttribute="bottom" secondItem="FcG-5w-17S" secondAttribute="bottomMargin" id="QJ5-2N-ebp"/>
-                                        <constraint firstItem="d0C-Pr-Mgo" firstAttribute="leading" secondItem="FcG-5w-17S" secondAttribute="leadingMargin" id="bDl-mg-s16"/>
-                                        <constraint firstItem="d0C-Pr-Mgo" firstAttribute="top" secondItem="fYA-gy-Qnm" secondAttribute="bottom" constant="9" id="emS-dI-XKk"/>
-                                        <constraint firstItem="d0C-Pr-Mgo" firstAttribute="trailing" secondItem="FcG-5w-17S" secondAttribute="trailingMargin" id="iFI-D2-H3q"/>
-                                        <constraint firstItem="fYA-gy-Qnm" firstAttribute="top" secondItem="FcG-5w-17S" secondAttribute="topMargin" id="iXl-ND-Oe4"/>
-                                        <constraint firstItem="fYA-gy-Qnm" firstAttribute="trailing" secondItem="FcG-5w-17S" secondAttribute="trailingMargin" id="mOZ-In-nAk"/>
-                                        <constraint firstItem="d0C-Pr-Mgo" firstAttribute="top" secondItem="fYA-gy-Qnm" secondAttribute="bottom" constant="8" id="yZc-G1-iqq"/>
+                                        <constraint firstItem="fYA-gy-Qnm" firstAttribute="top" secondItem="FcG-5w-17S" secondAttribute="topMargin" id="3P9-vx-WJP"/>
+                                        <constraint firstItem="d0C-Pr-Mgo" firstAttribute="bottom" secondItem="FcG-5w-17S" secondAttribute="bottomMargin" id="732-n9-IWp"/>
+                                        <constraint firstItem="d0C-Pr-Mgo" firstAttribute="top" secondItem="fYA-gy-Qnm" secondAttribute="bottom" constant="9.5" id="MaA-QA-Wnk"/>
+                                        <constraint firstItem="fYA-gy-Qnm" firstAttribute="leading" secondItem="FcG-5w-17S" secondAttribute="leadingMargin" id="XrD-sl-8Uc"/>
+                                        <constraint firstItem="d0C-Pr-Mgo" firstAttribute="trailing" secondItem="FcG-5w-17S" secondAttribute="trailingMargin" id="dbA-RO-pay"/>
+                                        <constraint firstItem="fYA-gy-Qnm" firstAttribute="trailing" secondItem="FcG-5w-17S" secondAttribute="trailingMargin" id="gJq-TG-JJd"/>
+                                        <constraint firstItem="d0C-Pr-Mgo" firstAttribute="leading" secondItem="FcG-5w-17S" secondAttribute="leadingMargin" id="wfP-1H-Cx4"/>
+                                        <constraint firstItem="d0C-Pr-Mgo" firstAttribute="top" secondItem="fYA-gy-Qnm" secondAttribute="bottom" constant="9" id="yrl-fX-nUe"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
