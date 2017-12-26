@@ -101,15 +101,24 @@ class BaseTableViewController: UITableViewController {
             // need that to refresh the record record in the list
             self.tableView.reloadData()
         }
-        
+    
+        // use to set additionnal information to the object before editing
+        func setDataBeforeEdit(_ object: Object) {
+            return
+        }
+    
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             let theDestination = (segue.destination as! BaseEditViewController)
             if (segue.identifier?.starts(with: "segueEdit"))! {
                 let indexPath = tableView.indexPathForSelectedRow
-                theDestination.setInternalObject(self.list![(indexPath?.row)!])
+                let currentObj = self.list![(indexPath?.row)!]
+                self.setDataBeforeEdit(currentObj);
+                theDestination.setInternalObject(currentObj)
             } else {
                 DB.setDirty(objectName, true)
-                theDestination.setInternalObject((DB.new(self.objectType, self.objectType.init()) ))
+                let currentObj = DB.new(self.objectType, self.objectType.init())
+                self.setDataBeforeEdit(currentObj)
+                theDestination.setInternalObject(currentObj)
             }
         }
         

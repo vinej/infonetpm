@@ -10,6 +10,7 @@
 		5E0ABF241FCB57F80011897E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5E0ABF231FCB57F80011897E /* README.md */; };
 		5E136FFF1FD308BC004F2180 /* Audit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E136FFE1FD308BC004F2180 /* Audit.swift */; };
 		5E1370011FD30FBE004F2180 /* AuditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1370001FD30FBE004F2180 /* AuditViewController.swift */; };
+		5E17D5331FF2038D008B457E /* DefineDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17D5321FF2038D008B457E /* DefineDataViewController.swift */; };
 		5E47F3F21FEF49B6008E484A /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E47F3F11FEF49B6008E484A /* DateHelper.swift */; };
 		5E85DAA21FED61A700573088 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E85DAA11FED61A700573088 /* ActivityViewController.swift */; };
 		5E85DAA41FED621D00573088 /* ActiviyEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E85DAA31FED621D00573088 /* ActiviyEditTableViewController.swift */; };
@@ -47,7 +48,7 @@
 		B2BF254B1FCC64C3001C65EB /* ChatRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF254A1FCC64C3001C65EB /* ChatRoom.storyboard */; };
 		B2BF254D1FCC64DB001C65EB /* Administration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF254C1FCC64DB001C65EB /* Administration.storyboard */; };
 		B2BF254F1FCC6518001C65EB /* DefineData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF254E1FCC6518001C65EB /* DefineData.storyboard */; };
-		B2BF25511FCC6526001C65EB /* DesignPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25501FCC6526001C65EB /* DesignPlan.storyboard */; };
+		B2BF25511FCC6526001C65EB /* DefineActivity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25501FCC6526001C65EB /* DefineActivity.storyboard */; };
 		B2BF25531FCC6539001C65EB /* DrivePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25521FCC6539001C65EB /* DrivePlan.storyboard */; };
 		B2BF25551FCC6551001C65EB /* DesignTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25541FCC6550001C65EB /* DesignTask.storyboard */; };
 		B2BF25571FCC655E001C65EB /* DesignIssue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25561FCC655E001C65EB /* DesignIssue.storyboard */; };
@@ -69,6 +70,7 @@
 		5E0ABF231FCB57F80011897E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5E136FFE1FD308BC004F2180 /* Audit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audit.swift; sourceTree = "<group>"; };
 		5E1370001FD30FBE004F2180 /* AuditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditViewController.swift; sourceTree = "<group>"; };
+		5E17D5321FF2038D008B457E /* DefineDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineDataViewController.swift; sourceTree = "<group>"; };
 		5E47F3F11FEF49B6008E484A /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		5E85DAA11FED61A700573088 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		5E85DAA31FED621D00573088 /* ActiviyEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiviyEditTableViewController.swift; sourceTree = "<group>"; };
@@ -107,7 +109,7 @@
 		B2BF254A1FCC64C3001C65EB /* ChatRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRoom.storyboard; sourceTree = "<group>"; };
 		B2BF254C1FCC64DB001C65EB /* Administration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Administration.storyboard; sourceTree = "<group>"; };
 		B2BF254E1FCC6518001C65EB /* DefineData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DefineData.storyboard; sourceTree = "<group>"; };
-		B2BF25501FCC6526001C65EB /* DesignPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DesignPlan.storyboard; sourceTree = "<group>"; };
+		B2BF25501FCC6526001C65EB /* DefineActivity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DefineActivity.storyboard; sourceTree = "<group>"; };
 		B2BF25521FCC6539001C65EB /* DrivePlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DrivePlan.storyboard; sourceTree = "<group>"; };
 		B2BF25541FCC6550001C65EB /* DesignTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DesignTask.storyboard; sourceTree = "<group>"; };
 		B2BF25561FCC655E001C65EB /* DesignIssue.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DesignIssue.storyboard; sourceTree = "<group>"; };
@@ -191,7 +193,7 @@
 				B2BF254A1FCC64C3001C65EB /* ChatRoom.storyboard */,
 				B2BF254C1FCC64DB001C65EB /* Administration.storyboard */,
 				B2BF254E1FCC6518001C65EB /* DefineData.storyboard */,
-				B2BF25501FCC6526001C65EB /* DesignPlan.storyboard */,
+				B2BF25501FCC6526001C65EB /* DefineActivity.storyboard */,
 				B2BF25521FCC6539001C65EB /* DrivePlan.storyboard */,
 				B2BF25541FCC6550001C65EB /* DesignTask.storyboard */,
 				B2BF25561FCC655E001C65EB /* DesignIssue.storyboard */,
@@ -247,6 +249,7 @@
 				B29846B41FE0708A000B6A7F /* DesignPlanViewController.swift */,
 				5E85DAA11FED61A700573088 /* ActivityViewController.swift */,
 				5E85DAA31FED621D00573088 /* ActiviyEditTableViewController.swift */,
+				5E17D5321FF2038D008B457E /* DefineDataViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -326,7 +329,7 @@
 				B2BF25591FCC70EC001C65EB /* Company.storyboard in Resources */,
 				B2BF25531FCC6539001C65EB /* DrivePlan.storyboard in Resources */,
 				B2BF254B1FCC64C3001C65EB /* ChatRoom.storyboard in Resources */,
-				B2BF25511FCC6526001C65EB /* DesignPlan.storyboard in Resources */,
+				B2BF25511FCC6526001C65EB /* DefineActivity.storyboard in Resources */,
 				5EC59B911FCB40CC005841BB /* LaunchScreen.storyboard in Resources */,
 				B2BF25491FCC64AE001C65EB /* Synchonize.storyboard in Resources */,
 				B2BF25551FCC6551001C65EB /* DesignTask.storyboard in Resources */,
@@ -445,6 +448,7 @@
 				B27AF4861FD8938600B42E57 /* PlanEditViewController.swift in Sources */,
 				5EC59BAF1FCB43FC005841BB /* DB.swift in Sources */,
 				B29846B11FE032D2000B6A7F /* ChoosePopupPlanViewController.swift in Sources */,
+				5E17D5331FF2038D008B457E /* DefineDataViewController.swift in Sources */,
 				B23376F41FD1AE93006CD61F /* ResourceViewController.swift in Sources */,
 				5EC59BA81FCB43FC005841BB /* Comment.swift in Sources */,
 				5EC59BAA1FCB43FC005841BB /* Company.swift in Sources */,

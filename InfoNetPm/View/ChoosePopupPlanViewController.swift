@@ -22,9 +22,10 @@ class ChoosePopupPlanViewController: BasePopupViewController {
     }
     
     override func actionOnClose() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "DesignPlan", bundle: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "DefineActivity", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ActivityViewController") as! ActivityViewController
-        vc.title = "Design Plan: \(currentPlan)"
+        let plan = DB.getObject(Plan.self, "code = %@", currentPlan) as! Plan
+        vc.setPlan(plan)
         self.navigationController?.pushViewController(vc)
     }
     
@@ -38,25 +39,23 @@ class ChoosePopupPlanViewController: BasePopupViewController {
                 row.title = "Plan"
                 row.options = DB.getOptions(planList!, "code", "desc")
                 row.value = ""
-                row.selectorTitle = "Choose a plan to design"
+                row.selectorTitle = "Choose a plan to add activities"
                 }.onChange { row in
                     if (PlanEditViewController.isSecondOnChange) {
                         PlanEditViewController.isSecondOnChange = false
                         return
                     }
-                    if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
+                    if (row.value != nil && row.value != "" && row.value != DB.empty && row.value != DB.cancel)  {
                         self.currentPlan = row.value!
                     } else {
                         if (row.value == DB.empty) {
                             self.currentPlan = ""
                         }
                     }
-                    // set the flag to not do twice the onChange
-                    PlanEditViewController.isSecondOnChange = true
                     row.value = self.currentPlan
             }
         
-            <<< ButtonRow("Design/Review a plan") { (row: ButtonRow) in
+            <<< ButtonRow("OK") { (row: ButtonRow) in
                 row.title = row.tag
                 }
                 .onCellSelection({ (cell, row) in

@@ -15,14 +15,21 @@ class PlanViewController: BaseTableViewController, InternalObjectProtocol {
         self.objectType = Plan.self
     }
     
+    override func loadData() {
+        list = DB.filter(self.objectType, "isTemplate = %@", true).sorted(byKeyPath: "updatedDate", ascending: false)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath)
         
         let plan = (list![indexPath.row] as! Plan)
         cell.textLabel?.text = "\(plan.code) : \(plan.name)"
         
-        
         return cell
+    }
+    
+    override func setDataBeforeEdit(_ object: Object) {
+        DB.update(object, "isTemplate", true)
     }
 }
 

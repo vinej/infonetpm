@@ -63,7 +63,7 @@ class ActivityEditViewController: BaseEditViewController {
                         return
                     }
                     if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
-                        DB.saveChildObject(self.activity, DB.getObject(Role.self, "name", row.value!))
+                        DB.saveChildObject(self.activity, DB.getObject(Role.self, "name = %@", row.value!))
                     } else {
                         if (row.value == DB.empty) {
                             DB.saveEmptyChildObject(self.activity!, "role")
@@ -75,7 +75,7 @@ class ActivityEditViewController: BaseEditViewController {
             }
         
             <<< PopoverSelectorRow<String>() { row in
-                row.title = "Ressource"
+                row.title = "Resource"
                 row.options = DB.getOptions(ressourceList!, "code", "lastName", "firstName")
                 row.value = activity?.resource != nil ? activity?.resource?.code : ""
                 row.selectorTitle = "Choose a resource"
@@ -85,7 +85,7 @@ class ActivityEditViewController: BaseEditViewController {
                         return
                     }
                     if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
-                        DB.saveChildObject(self.activity, DB.getObject(Resource.self, "code", row.value!))
+                        DB.saveChildObject(self.activity, DB.getObject(Resource.self, "code = %@", row.value!))
                     } else {
                         if (row.value == DB.empty) {
                             DB.saveEmptyChildObject(self.activity!, "resource")
@@ -97,7 +97,7 @@ class ActivityEditViewController: BaseEditViewController {
                 }
         
             <<< PopoverSelectorRow<String>() { row in
-                row.title = "Backup Ressource"
+                row.title = "Backup Resource"
                 row.options = DB.getOptions(ressourceList!, "code", "lastName", "firstName")
                 row.value = activity?.backupResource != nil ? activity?.backupResource?.code : ""
                 row.selectorTitle = "Choose a resource"
@@ -107,7 +107,7 @@ class ActivityEditViewController: BaseEditViewController {
                         return
                     }
                     if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
-                        DB.saveChildObject("backupResource", self.activity, DB.getObject(Resource.self, "code", row.value!))
+                        DB.saveChildObject("backupResource", self.activity, DB.getObject(Resource.self, "code = %@", row.value!))
                     } else {
                         if (row.value == DB.empty) {
                             DB.saveEmptyChildObject(self.activity!, "backupResource")

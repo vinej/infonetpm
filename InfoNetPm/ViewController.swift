@@ -70,7 +70,7 @@ class ViewController: UIViewController {
     }
     /*
     @IBAction func choosePlan(_ sender: Any) {
-        let popOverVC = UIStoryboard(name: "DesignPlan", bundle: nil).instantiateViewController(withIdentifier: "sbChoosePlanID") as! ChoosePopupPlanViewController
+        let popOverVC = UIStoryboard(name: "Define Activity", bundle: nil).instantiateViewController(withIdentifier: "sbChoosePlanID") as! ChoosePopupPlanViewController
         //popOverVC.modalPresentationStyle = .pageSheet
         //self.present(popOverVC, animated: false, completion: nil)
         self.addChildViewController(popOverVC)

@@ -13,7 +13,7 @@
         <!--Define Data-->
         <scene sceneID="sJ8-Vt-6LJ">
             <objects>
-                <viewController title="Define Data" id="sAb-xc-taK" sceneMemberID="viewController">
+                <viewController title="Define Data" id="sAb-xc-taK" customClass="DefineDataViewController" customModule="InfoNetPm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0q-JU-cRj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,15 +48,23 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ew-E2-54I">
                                 <rect key="frame" x="16" y="172" width="343" height="30"/>
-                                <state key="normal" title="Plan"/>
+                                <state key="normal" title="Template Plan"/>
                                 <connections>
                                     <segue destination="6dR-Kk-vdV" kind="show" id="EjM-GA-Hjw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnk-Oe-57l">
+                                <rect key="frame" x="16" y="210" width="343" height="30"/>
+                                <state key="normal" title="Template activity"/>
+                                <connections>
+                                    <action selector="choosePlan:" destination="sAb-xc-taK" eventType="touchDown" id="MML-v8-jGg"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="h5g-0i-kx1" firstAttribute="top" secondItem="H0E-of-NrA" secondAttribute="bottom" constant="8" id="1Dd-ha-xuS"/>
+                            <constraint firstItem="tnk-Oe-57l" firstAttribute="leading" secondItem="rag-Kt-EmT" secondAttribute="leading" constant="16" id="7RR-dB-Y9e"/>
                             <constraint firstItem="rag-Kt-EmT" firstAttribute="trailing" secondItem="uD0-7z-NGc" secondAttribute="trailing" constant="16" id="95u-Pq-ZgV"/>
                             <constraint firstItem="rag-Kt-EmT" firstAttribute="trailing" secondItem="H0E-of-NrA" secondAttribute="trailing" constant="16" id="Aed-fL-YAN"/>
                             <constraint firstItem="rag-Kt-EmT" firstAttribute="trailing" secondItem="h5g-0i-kx1" secondAttribute="trailing" constant="16" id="Bzp-Ta-GQ7"/>
@@ -65,9 +73,11 @@
                             <constraint firstItem="uD0-7z-NGc" firstAttribute="top" secondItem="Ipy-ck-J0U" secondAttribute="bottom" constant="8" id="NtQ-bP-Dhe"/>
                             <constraint firstItem="3Ew-E2-54I" firstAttribute="top" secondItem="uD0-7z-NGc" secondAttribute="bottom" constant="8" id="Srd-O4-iCb"/>
                             <constraint firstItem="H0E-of-NrA" firstAttribute="leading" secondItem="rag-Kt-EmT" secondAttribute="leading" constant="16" id="ama-rp-8rg"/>
+                            <constraint firstItem="rag-Kt-EmT" firstAttribute="trailing" secondItem="tnk-Oe-57l" secondAttribute="trailing" constant="16" id="brS-4I-q34"/>
                             <constraint firstItem="rag-Kt-EmT" firstAttribute="trailing" secondItem="3Ew-E2-54I" secondAttribute="trailing" constant="16" id="dwr-qR-PgG"/>
                             <constraint firstItem="uD0-7z-NGc" firstAttribute="leading" secondItem="rag-Kt-EmT" secondAttribute="leading" constant="16" id="i1b-51-qGU"/>
                             <constraint firstItem="Ipy-ck-J0U" firstAttribute="top" secondItem="h5g-0i-kx1" secondAttribute="bottom" constant="8" id="jxJ-0u-bdW"/>
+                            <constraint firstItem="tnk-Oe-57l" firstAttribute="top" secondItem="3Ew-E2-54I" secondAttribute="bottom" constant="8" id="kPy-UL-SgQ"/>
                             <constraint firstItem="3Ew-E2-54I" firstAttribute="leading" secondItem="rag-Kt-EmT" secondAttribute="leading" constant="16" id="kas-jR-8rA"/>
                             <constraint firstItem="Ipy-ck-J0U" firstAttribute="leading" secondItem="rag-Kt-EmT" secondAttribute="leading" constant="16" id="lFh-jP-23y"/>
                             <constraint firstItem="h5g-0i-kx1" firstAttribute="leading" secondItem="rag-Kt-EmT" secondAttribute="leading" constant="16" id="lPx-23-DB6"/>

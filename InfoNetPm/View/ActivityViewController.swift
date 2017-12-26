@@ -14,12 +14,19 @@ class ActivityViewController: BaseTableViewController, InternalObjectProtocol {
     
     @IBOutlet var btnDone: UIBarButtonItem!
     @IBOutlet var btnEdit: UIBarButtonItem!
+    var plan : Plan? = nil
+    
+    public func setPlan(_ plan : Plan) {
+        self.plan = plan
+        self.title = "Activities for plan : \(plan.code)"
+    }
     
     @IBAction func setEditMode(_ sender: Any) {
         self.tableView.isEditing =  true
         btnEdit.isEnabled = false
         btnDone.isEnabled = true
     }
+    
     @IBAction func SetStandardMode(_ sender: Any) {
         self.tableView.isEditing = false
         btnEdit.isEnabled = true
@@ -27,7 +34,11 @@ class ActivityViewController: BaseTableViewController, InternalObjectProtocol {
     }
     
     override public func loadData() {
-        list = DB.allByOrder(self.objectType)
+        list = DB.allByOrder(self.objectType, "plan.code = %@", (self.plan?.code)!)
+    }
+    
+    override func setDataBeforeEdit(_ object: Object) {
+        DB.update(object, "plan", plan)
     }
 
     override func setInternalObject() {

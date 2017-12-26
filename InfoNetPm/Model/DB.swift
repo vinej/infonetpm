@@ -77,7 +77,7 @@ public class DB {
     public static func getObject<T>(_ obj : T.Type, _ field:  String, _ value : String) -> Object {
         let index = value.firstIndex(of: "|")
         let code = value.slicing(from: 0, to: index! - 1)
-        return (DB.filter(obj.self, "\(field) = %@", code!).first)!
+        return (DB.filter(obj.self, "\(field)", code!).first)!
     }
     
     public static func toSelection(_ list : Results<Object>, _ field : String) -> [String] {
@@ -274,6 +274,11 @@ public class DB {
         return realm.objects(object.self as! Object.Type).sorted(byKeyPath: "order", ascending: true)
     }
 
+    public static func allByOrder<T>(_ object : T.Type, _ field : String, _ filter: String) ->  Results<Object> {
+        let realm = try! Realm()
+        return realm.objects(object.self as! Object.Type).filter(field, filter ).sorted(byKeyPath: "order", ascending: true)
+    }
+
     public static func all<T>(_ object : T.Type) ->  Results<Object> {
         let realm = try! Realm()
         return realm.objects(object.self as! Object.Type)
@@ -284,7 +289,7 @@ public class DB {
         return realm.objects(object.self as! Object.Type).count
     }
 
-    public static func filter<T>(_ object : T.Type, _ field : String, _ filter: String) ->  Results<Object> {
+    public static func filter<T>(_ object : T.Type, _ field : String, _ filter: Any) ->  Results<Object> {
         let realm = try! Realm()
         return realm.objects(object.self as! Object.Type).filter(field, filter )
     }
