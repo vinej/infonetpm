@@ -107,7 +107,7 @@ class ActivityEditViewController: BaseEditViewController {
                         return
                     }
                     if (row.value != nil && row.value != DB.empty && row.value != DB.cancel)  {
-                        DB.saveChildObject(self.activity, DB.getObject(Resource.self, "code", row.value!))
+                        DB.saveChildObject("backupResource", self.activity, DB.getObject(Resource.self, "code", row.value!))
                     } else {
                         if (row.value == DB.empty) {
                             DB.saveEmptyChildObject(self.activity!, "backupResource")

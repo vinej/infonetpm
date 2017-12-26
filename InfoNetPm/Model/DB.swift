@@ -165,9 +165,13 @@ public class DB {
     }
     
     public static func saveChildObject( _ parentObject : Object?,  _ object : Object, _ isSetDirty: Bool = true) {
+        let objectName = "\(type(of: object))".lowercased()
+        DB.saveChildObject(objectName, parentObject, object)
+    }
+    
+    public static func saveChildObject(_ objectName : String, _ parentObject : Object?,  _ object : Object, _ isSetDirty: Bool = true) {
         let realm = try! Realm()
         try! realm.write {
-            let objectName = "\(type(of: object))".lowercased()
             parentObject![objectName] = object
             parentObject!["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
             parentObject!["updatedBy"] = NSUserName()
