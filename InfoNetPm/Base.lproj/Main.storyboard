@@ -43,14 +43,14 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yU3-20-RYo">
                                 <rect key="frame" x="20" y="166" width="288" height="30"/>
-                                <state key="normal" title="Drive Plan"/>
+                                <state key="normal" title="Show plan activities"/>
                                 <connections>
                                     <segue destination="J9q-8w-MGi" kind="show" id="T1O-ZO-OUj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkj-ts-mxx">
                                 <rect key="frame" x="20" y="128" width="288" height="30"/>
-                                <state key="normal" title="Execute a new plan"/>
+                                <state key="normal" title="Launch a plan"/>
                                 <connections>
                                     <segue destination="vxy-rQ-dKJ" kind="show" id="HRV-tI-Lck"/>
                                 </connections>

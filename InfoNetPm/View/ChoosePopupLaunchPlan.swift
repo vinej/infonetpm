@@ -1,0 +1,74 @@
+//
+//  ChoosePopupLaunchPlan.swift
+//  InfoNetPm
+//
+//  Created by jyv on 12/31/17.
+//  Copyright © 2017 Info JYV Inc. All rights reserved.
+//
+
+import UIKit
+import RealmSwift
+import Eureka
+import SwiftyBeaver
+
+class ChoosePopupLaunchPlanViewController: BasePopupViewController {
+    
+    var currentPlan = ""
+    var planList : Results<Object>? = nil
+    var startDate = Date()
+    static var isSecondOnChange = false
+    
+    override func setInternalObject(_ object : Object) {
+        super.setInternalObject(object)
+    }
+    
+    override func actionOnClose() {
+        let plan = DB.getObject(Plan.self, "code = %@", currentPlan) as! Plan
+        let fields : [String] = ["scheduleStartDate", "status"]
+        let tmpPlan = Plan()
+        tmpPlan.status = "Started"
+        tmpPlan.scheduleEndDate = startDate
+        DB.updateRecord(plan, fields, tmpPlan)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        planList = DB.all(Plan.self)
+        
+        form +++ Section("Plan launcher")
+            
+            <<< PopoverSelectorRow<String>() { row in
+                row.title = "Choose a plan to launch"
+                row.options = DB.getOptions(planList!, "code", "desc")
+                row.value = ""
+                row.selectorTitle = "Choose a plan to add activities"
+                }.onChange { row in
+                    if (PlanEditViewController.isSecondOnChange) {
+                        PlanEditViewController.isSecondOnChange = false
+                        return
+                    }
+                    if (row.value != nil && row.value != "" && row.value != DB.empty && row.value != DB.cancel)  {
+                        self.currentPlan = row.value!
+                    } else {
+                        if (row.value == DB.empty) {
+                            self.currentPlan = ""
+                        }
+                    }
+                    row.value = self.currentPlan
+            }
+            
+            <<< DateTimeInlineRow(){ row in
+                row.title = "Schedule Start Date"
+                row.value = self.startDate
+                }.onChange { row in
+                    self.startDate = row.value!
+            }
+            
+            <<< ButtonRow("OK") { (row: ButtonRow) in
+                row.title = row.tag
+                }
+                .onCellSelection({ (cell, row) in
+                    self.removeAnimate() })
+    }
+}
+

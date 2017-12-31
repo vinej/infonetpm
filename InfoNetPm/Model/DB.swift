@@ -109,32 +109,36 @@ public class DB {
         audit.objectString = object.description.replacingOccurrences(of: "\n\t", with: fieldAuditSeperator)
         return audit
     }
+    
+    public static func setField<T>(_ object : Object, _ field: String, _ value: T!, _ isAllowNil : Bool = false) {
+        let stype = "\(type(of: value))"
+        if (value == nil) {
+            if (!isAllowNil) {
+                switch(stype) {
+                case "Optional<Double>" : object[field] = 0.0
+                case "Optional<String>" : object[field] = ""
+                case "Optional<Bool>" :  object[field] = false
+                case "Optional<Int>" : object[field] = 0
+                case "Optional<Float>" : object[field] = 0.0
+                case "OPtional<Date>" : object[field] = Date()
+                default : object[field] = value
+                }
+            }
+        } else {
+            if ( String(describing: value) == "Optional<#nil#>"  ) {
+                object[field] = nil
+            }
+            object[field] = value
+        }
+        
+        object["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
+        object["updatedBy"] = NSUserName()
+    }
 
     public static func update<T>(_ object : Object, _ field: String, _ value: T!, _ isAllowNil : Bool = false, _ isSetDirty : Bool = true) {
-        let stype = "\(type(of: value))"
         let realm = try! Realm()
         try! realm.write {
-            if (value == nil) {
-                if (!isAllowNil) {
-                    switch(stype) {
-                        case "Optional<Double>" : object[field] = 0.0
-                        case "Optional<String>" : object[field] = ""
-                        case "Optional<Bool>" :  object[field] = false
-                        case "Optional<Int>" : object[field] = 0
-                        case "Optional<Float>" : object[field] = 0.0
-                        case "OPtional<Date>" : object[field] = Date()
-                        default : object[field] = value
-                    }
-                }
-            } else {
-                if ( String(describing: value) == "Optional<#nil#>"  ) {
-                    object[field] = nil
-                }
-                object[field] = value
-            }
-            
-            object["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
-            object["updatedBy"] = NSUserName()
+            DB.setField(object, field, value, isAllowNil)
         }
         
         // need that to add a audit before leaving the app
@@ -146,6 +150,30 @@ public class DB {
         }
     }
     
+    public static func setLastObject(_ object : Object) {
+        // need that to add a audit before leaving the app
+        DB.lastObject = object
+        DB.lastObjectName = "\(type(of: object))"
+        DB.lastObjectDate = Date()
+    }
+    
+    public static func updateRecord(_ object : Object, _ fieldArray : [String], _ record : Object, _ isAllowNil : Bool = false, _ isSetDirty : Bool = true)
+    {
+        let realm = try! Realm()
+        try! realm.write {
+            for field in fieldArray {
+                DB.setField(object, field, record[field], isAllowNil)
+            }
+        }
+        
+        DB.setLastObject(object)
+
+        if (isSetDirty) {
+            DB.setDirty("\(type(of: object))", true)
+        }
+        
+    }
+    
     public static func updateSubObject<T>(_ object : Object, _ subObject : Object, _ field: String, _ value: T!, _ isAllowNil : Bool = false, _ isSetDirty : Bool = true)
     {
         update(subObject, field, value, isAllowNil, isSetDirty)
@@ -155,10 +183,8 @@ public class DB {
             object["updatedBy"] = NSUserName()
         }
         
-        // need that to add a audit before leaving the app
-        DB.lastObject = object
-        DB.lastObjectName = "\(type(of: object))"
-        DB.lastObjectDate = Date()
+        DB.setLastObject(object)
+        
         if (isSetDirty) {
             DB.setDirty("\(type(of: object))", true)
         }

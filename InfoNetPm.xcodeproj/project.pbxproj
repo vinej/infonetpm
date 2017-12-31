@@ -29,6 +29,7 @@
 		5EC59BAD1FCB43FC005841BB /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA41FCB43FC005841BB /* Resource.swift */; };
 		5EC59BAE1FCB43FC005841BB /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA51FCB43FC005841BB /* Address.swift */; };
 		5EC59BAF1FCB43FC005841BB /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA61FCB43FC005841BB /* DB.swift */; };
+		5ED3C2871FF953C600E14139 /* ChoosePopupLaunchPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED3C2861FF953C600E14139 /* ChoosePopupLaunchPlan.swift */; };
 		5EE2C21A1FF17DFA00FE00E2 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE2C2191FF17DFA00FE00E2 /* Order.swift */; };
 		9A338E0B981DA06054C4EC8B /* Pods_InfoNetPm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */; };
 		B23376F21FD1ADE8006CD61F /* Resource.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23376F11FD1ADE8006CD61F /* Resource.storyboard */; };
@@ -91,6 +92,7 @@
 		5EC59BA41FCB43FC005841BB /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = InfoNetPm/Model/Resource.swift; sourceTree = SOURCE_ROOT; };
 		5EC59BA51FCB43FC005841BB /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Address.swift; path = InfoNetPm/Model/Address.swift; sourceTree = SOURCE_ROOT; };
 		5EC59BA61FCB43FC005841BB /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DB.swift; path = InfoNetPm/Model/DB.swift; sourceTree = SOURCE_ROOT; };
+		5ED3C2861FF953C600E14139 /* ChoosePopupLaunchPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePopupLaunchPlan.swift; sourceTree = "<group>"; };
 		5EE2C2191FF17DFA00FE00E2 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		B23376F11FD1ADE8006CD61F /* Resource.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resource.storyboard; sourceTree = "<group>"; };
 		B23376F31FD1AE93006CD61F /* ResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				5E85DAA11FED61A700573088 /* ActivityViewController.swift */,
 				5E85DAA31FED621D00573088 /* ActiviyEditTableViewController.swift */,
 				5E17D5321FF2038D008B457E /* DefineDataViewController.swift */,
+				5ED3C2861FF953C600E14139 /* ChoosePopupLaunchPlan.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				5E85DAA41FED621D00573088 /* ActiviyEditTableViewController.swift in Sources */,
 				5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */,
 				5E85DAA21FED61A700573088 /* ActivityViewController.swift in Sources */,
+				5ED3C2871FF953C600E14139 /* ChoosePopupLaunchPlan.swift in Sources */,
 				B2E30F961FD1AA5B0098031F /* Document.swift in Sources */,
 				B2E30F951FD1AA5B0098031F /* Role.swift in Sources */,
 				5EC59BAE1FCB43FC005841BB /* Address.swift in Sources */,
