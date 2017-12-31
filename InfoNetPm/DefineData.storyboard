@@ -48,14 +48,14 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ew-E2-54I">
                                 <rect key="frame" x="16" y="172" width="343" height="30"/>
-                                <state key="normal" title="Template Plan"/>
+                                <state key="normal" title="Plan"/>
                                 <connections>
                                     <segue destination="6dR-Kk-vdV" kind="show" id="EjM-GA-Hjw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnk-Oe-57l">
                                 <rect key="frame" x="16" y="210" width="343" height="30"/>
-                                <state key="normal" title="Template activity"/>
+                                <state key="normal" title="Activity"/>
                                 <connections>
                                     <action selector="choosePlan:" destination="sAb-xc-taK" eventType="touchDown" id="MML-v8-jGg"/>
                                 </connections>

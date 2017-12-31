@@ -13,27 +13,36 @@ import RealmSwift
 public class Activity: Object {
 
     @objc dynamic var id = UUID().uuidString
-    @objc dynamic var status = "not started" //
+    @objc dynamic var status = "not started" // started, success, failed
     @objc dynamic var plan : Plan?
 
-    @objc dynamic var isTemplate = false
     @objc dynamic var code = ""
     @objc dynamic var name = ""
+    
+    @objc dynamic var type = ""         // switch, slider, text, segmented
+    @objc dynamic var typeInfo = ""
+    @objc dynamic var minType = 0.0
+    @objc dynamic var maxType = 100.0
+    @objc dynamic var incrType = 1.0
+
     @objc dynamic var duration = 0.0
+    @objc dynamic var fixeStartDate = Date()
     @objc dynamic var role : Role?
     @objc dynamic var resource : Resource?
     @objc dynamic var backupResource : Resource?
+
+    @objc dynamic var order = 0.0
+
+    let dependentActivities = List<Activity>()
+    let issues = List<Issue>()
     @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
+    
 
     @objc dynamic var createdBy = ""
     @objc dynamic var createdDate = Date()
     @objc dynamic var updatedBy = ""
     @objc dynamic var updatedDate = Date()
-    
-    @objc dynamic var order = 0.0
-
-    let dependantActivities = List<Activity>()
     
     override public static func primaryKey() -> String? {
         return "id"

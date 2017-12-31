@@ -36,7 +36,7 @@ class ChoosePopupPlanViewController: BasePopupViewController {
         form +++ Section("Choose a plan to design")
             
             <<< PopoverSelectorRow<String>() { row in
-                row.title = "Plan"
+                row.title = "Choose a plan for activities"
                 row.options = DB.getOptions(planList!, "code", "desc")
                 row.value = ""
                 row.selectorTitle = "Choose a plan to add activities"

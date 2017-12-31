@@ -50,7 +50,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkj-ts-mxx">
                                 <rect key="frame" x="20" y="128" width="288" height="30"/>
-                                <state key="normal" title="Design Plan"/>
+                                <state key="normal" title="Execute a new plan"/>
                                 <connections>
                                     <segue destination="vxy-rQ-dKJ" kind="show" id="HRV-tI-Lck"/>
                                 </connections>
