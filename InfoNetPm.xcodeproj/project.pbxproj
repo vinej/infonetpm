@@ -30,6 +30,7 @@
 		5EC59BAE1FCB43FC005841BB /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA51FCB43FC005841BB /* Address.swift */; };
 		5EC59BAF1FCB43FC005841BB /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA61FCB43FC005841BB /* DB.swift */; };
 		5ED3C2871FF953C600E14139 /* ChoosePopupLaunchPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED3C2861FF953C600E14139 /* ChoosePopupLaunchPlan.swift */; };
+		5ED3C2891FF97E8B00E14139 /* LaunchPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ED3C2881FF97E8B00E14139 /* LaunchPlan.storyboard */; };
 		5EE2C21A1FF17DFA00FE00E2 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE2C2191FF17DFA00FE00E2 /* Order.swift */; };
 		9A338E0B981DA06054C4EC8B /* Pods_InfoNetPm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */; };
 		B23376F21FD1ADE8006CD61F /* Resource.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23376F11FD1ADE8006CD61F /* Resource.storyboard */; };
@@ -93,6 +94,7 @@
 		5EC59BA51FCB43FC005841BB /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Address.swift; path = InfoNetPm/Model/Address.swift; sourceTree = SOURCE_ROOT; };
 		5EC59BA61FCB43FC005841BB /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DB.swift; path = InfoNetPm/Model/DB.swift; sourceTree = SOURCE_ROOT; };
 		5ED3C2861FF953C600E14139 /* ChoosePopupLaunchPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePopupLaunchPlan.swift; sourceTree = "<group>"; };
+		5ED3C2881FF97E8B00E14139 /* LaunchPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchPlan.storyboard; sourceTree = "<group>"; };
 		5EE2C2191FF17DFA00FE00E2 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		B23376F11FD1ADE8006CD61F /* Resource.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resource.storyboard; sourceTree = "<group>"; };
 		B23376F31FD1AE93006CD61F /* ResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				B2BF255C1FCC710C001C65EB /* Project.storyboard */,
 				B23376F11FD1ADE8006CD61F /* Resource.storyboard */,
 				B27AF4811FD88E6300B42E57 /* DefinePlan.storyboard */,
+				5ED3C2881FF97E8B00E14139 /* LaunchPlan.storyboard */,
 			);
 			path = InfoNetPm;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				B2BF254F1FCC6518001C65EB /* DefineData.storyboard in Resources */,
 				B27AF4821FD88E6300B42E57 /* DefinePlan.storyboard in Resources */,
 				5EC59B991FCB4116005841BB /* Podfile in Resources */,
+				5ED3C2891FF97E8B00E14139 /* LaunchPlan.storyboard in Resources */,
 				5EC59B8C1FCB40CC005841BB /* Main.storyboard in Resources */,
 				B23376F21FD1ADE8006CD61F /* Resource.storyboard in Resources */,
 			);

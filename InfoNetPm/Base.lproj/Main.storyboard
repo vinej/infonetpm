@@ -52,7 +52,7 @@
                                 <rect key="frame" x="20" y="128" width="288" height="30"/>
                                 <state key="normal" title="Launch a plan"/>
                                 <connections>
-                                    <segue destination="vxy-rQ-dKJ" kind="show" id="HRV-tI-Lck"/>
+                                    <segue destination="LhE-KR-sg4" kind="presentation" modalPresentationStyle="pageSheet" id="GA6-ch-HOK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41G-jz-6Ot">
@@ -140,19 +140,19 @@
             </objects>
             <point key="canvasLocation" x="-213" y="-214"/>
         </scene>
-        <!--DesignPlan-->
-        <scene sceneID="LAs-4m-kN2">
+        <!--LaunchPlan-->
+        <scene sceneID="h9R-zh-WrQ">
             <objects>
-                <viewControllerPlaceholder storyboardName="DesignPlan" id="vxy-rQ-dKJ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nXV-Pf-q49" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="LaunchPlan" id="LhE-KR-sg4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BDH-Xw-C5V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-195" y="-158"/>
+            <point key="canvasLocation" x="-150" y="-160"/>
         </scene>
         <!--DrivePlan-->
         <scene sceneID="B3K-bI-v4g">
             <objects>
-                <viewControllerPlaceholder storyboardName="DrivePlan" id="J9q-8w-MGi" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RW-IS-wMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="DrivePlan" id="J9q-8w-MGi" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="-221" y="-103"/>
         </scene>
