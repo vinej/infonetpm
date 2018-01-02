@@ -13,7 +13,8 @@ import RealmSwift
 public class Activity: Object {
 
     @objc dynamic var id = UUID().uuidString
-    @objc dynamic var status = "not started" // started, success, failed
+    @objc dynamic var status = "NotStarted" // "NotStarted", "Success", "Failed"
+    @objc dynamic var workFlow = "NotStarted" // NotStarted, Started, "Completed", "OnHold"
     @objc dynamic var plan : Plan?
 
     @objc dynamic var code = ""
@@ -27,6 +28,8 @@ public class Activity: Object {
 
     @objc dynamic var duration = 0.0
     @objc dynamic var fixeStartDate = Date()
+    @objc dynamic var startDate = Date()
+    @objc dynamic var endDate = Date()
     @objc dynamic var role : Role?
     @objc dynamic var resource : Resource?
     @objc dynamic var backupResource : Resource?

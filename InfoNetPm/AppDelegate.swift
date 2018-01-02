@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // add the destinations to SwiftyBeaver
         log.addDestination(console)
+        DB.addTestData()
         return true
     }
 

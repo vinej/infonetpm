@@ -323,5 +323,68 @@ public class DB {
     public static func get<T>(_ object : T.Type, id : String) -> Object {
         return DB.filter(object.self, "id = %@", id).first!
     }
+    
+    public static func addTestData() {
+        
+        
+        if (DB.count(Company.self) > 0) {
+            return
+        }
+    
+        var company = Company()
+        company.code = "CGI"
+        company.name = "CGI"
+        company.type = "Service"
+        company = DB.new(Company.self, company) as! Company
+
+        var project = Project()
+        project.code = "prj1"
+        project.company = company
+        project.desc = "Migration"
+        project = DB.new(Project.self, project) as! Project
+        
+        var resource = Resource()
+        resource.code = "vinej"
+        resource.lastName = "Vinet"
+        resource.firstName = "Jean-Yves"
+        resource.company = company
+        resource.email = "jyvinet@hotmail.ca"
+        resource = DB.new(Resource.self, resource) as! Resource
+        
+        var role = Role()
+        role.name = "Analyst"
+        role.desc = "analyst"
+        role.rateByHour = 50.0
+        role = DB.new(Role.self, role) as! Role
+        
+        var plan = Plan()
+        plan.project = project
+        plan.isTemplate = true;
+        plan.code = "Plan01"
+        plan.desc = "Plan01"
+        plan = DB.new(Plan.self, plan) as! Plan
+        
+        var act1 = Activity()
+        act1.plan = plan
+        act1.code = "Test BA"
+        act1.duration = 30.0
+        act1.workFlow = "NotStarted"
+        act1.status = "NotStarted"
+        act1.role = role
+        act1.resource = resource
+        act1.order = 1000
+        act1 = DB.new(Activity.self, act1) as! Activity
+        
+        var act2 = Activity()
+        act2.plan = plan
+        act2.code = "Test migration"
+        act2.duration = 10.0
+        act2.workFlow = "NotStarted"
+        act2.status = "NotStarted"
+        act2.role = role
+        act2.resource = resource
+        act2.order = 1100
+        act2 = DB.new(Activity.self, act2) as! Activity
+    }
 }
 

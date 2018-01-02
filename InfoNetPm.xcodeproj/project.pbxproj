@@ -11,6 +11,7 @@
 		5E136FFF1FD308BC004F2180 /* Audit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E136FFE1FD308BC004F2180 /* Audit.swift */; };
 		5E1370011FD30FBE004F2180 /* AuditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1370001FD30FBE004F2180 /* AuditViewController.swift */; };
 		5E17D5331FF2038D008B457E /* DefineDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17D5321FF2038D008B457E /* DefineDataViewController.swift */; };
+		5E3916BA1FFBF19F0093E43A /* BaseShowTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3916B91FFBF19F0093E43A /* BaseShowTableViewController.swift */; };
 		5E47F3F21FEF49B6008E484A /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E47F3F11FEF49B6008E484A /* DateHelper.swift */; };
 		5E85DAA21FED61A700573088 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E85DAA11FED61A700573088 /* ActivityViewController.swift */; };
 		5E85DAA41FED621D00573088 /* ActiviyEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E85DAA31FED621D00573088 /* ActiviyEditTableViewController.swift */; };
@@ -31,6 +32,7 @@
 		5EC59BAF1FCB43FC005841BB /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC59BA61FCB43FC005841BB /* DB.swift */; };
 		5ED3C2871FF953C600E14139 /* ChoosePopupLaunchPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED3C2861FF953C600E14139 /* ChoosePopupLaunchPlan.swift */; };
 		5ED3C2891FF97E8B00E14139 /* LaunchPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ED3C2881FF97E8B00E14139 /* LaunchPlan.storyboard */; };
+		5EDBA2781FFBDF01006A65E1 /* ShowPlanActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDBA2771FFBDF01006A65E1 /* ShowPlanActivitiesViewController.swift */; };
 		5EE2C21A1FF17DFA00FE00E2 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE2C2191FF17DFA00FE00E2 /* Order.swift */; };
 		9A338E0B981DA06054C4EC8B /* Pods_InfoNetPm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */; };
 		B23376F21FD1ADE8006CD61F /* Resource.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23376F11FD1ADE8006CD61F /* Resource.storyboard */; };
@@ -73,6 +75,7 @@
 		5E136FFE1FD308BC004F2180 /* Audit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audit.swift; sourceTree = "<group>"; };
 		5E1370001FD30FBE004F2180 /* AuditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditViewController.swift; sourceTree = "<group>"; };
 		5E17D5321FF2038D008B457E /* DefineDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineDataViewController.swift; sourceTree = "<group>"; };
+		5E3916B91FFBF19F0093E43A /* BaseShowTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShowTableViewController.swift; sourceTree = "<group>"; };
 		5E47F3F11FEF49B6008E484A /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		5E85DAA11FED61A700573088 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		5E85DAA31FED621D00573088 /* ActiviyEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiviyEditTableViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 		5EC59BA61FCB43FC005841BB /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DB.swift; path = InfoNetPm/Model/DB.swift; sourceTree = SOURCE_ROOT; };
 		5ED3C2861FF953C600E14139 /* ChoosePopupLaunchPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePopupLaunchPlan.swift; sourceTree = "<group>"; };
 		5ED3C2881FF97E8B00E14139 /* LaunchPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchPlan.storyboard; sourceTree = "<group>"; };
+		5EDBA2771FFBDF01006A65E1 /* ShowPlanActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPlanActivitiesViewController.swift; sourceTree = "<group>"; };
 		5EE2C2191FF17DFA00FE00E2 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		B23376F11FD1ADE8006CD61F /* Resource.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resource.storyboard; sourceTree = "<group>"; };
 		B23376F31FD1AE93006CD61F /* ResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +260,8 @@
 				5E85DAA31FED621D00573088 /* ActiviyEditTableViewController.swift */,
 				5E17D5321FF2038D008B457E /* DefineDataViewController.swift */,
 				5ED3C2861FF953C600E14139 /* ChoosePopupLaunchPlan.swift */,
+				5EDBA2771FFBDF01006A65E1 /* ShowPlanActivitiesViewController.swift */,
+				5E3916B91FFBF19F0093E43A /* BaseShowTableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -431,6 +437,7 @@
 				B2DA62231FCDEFF40040803A /* BaseTableViewController.swift in Sources */,
 				B2BF25621FCC7423001C65EB /* CompanyViewController.swift in Sources */,
 				B27AF4841FD88F1F00B42E57 /* PlanViewController.swift in Sources */,
+				5E3916BA1FFBF19F0093E43A /* BaseShowTableViewController.swift in Sources */,
 				B25427AE1FCF2EF00057A3F2 /* RoleViewController.swift in Sources */,
 				B29846B31FE04360000B6A7F /* BasePopupViewController.swift in Sources */,
 				5E47F3F21FEF49B6008E484A /* DateHelper.swift in Sources */,
@@ -451,6 +458,7 @@
 				5E136FFF1FD308BC004F2180 /* Audit.swift in Sources */,
 				5E1370011FD30FBE004F2180 /* AuditViewController.swift in Sources */,
 				B2DDC2151FCDCBDE00119895 /* EurekaHelper.swift in Sources */,
+				5EDBA2781FFBDF01006A65E1 /* ShowPlanActivitiesViewController.swift in Sources */,
 				B2DA62211FCDE2440040803A /* ProjectViewController.swift in Sources */,
 				5EC59BA71FCB43FC005841BB /* Plan.swift in Sources */,
 				B27AF4861FD8938600B42E57 /* PlanEditViewController.swift in Sources */,

@@ -17,6 +17,8 @@ protocol InternalObjectProtocol {
 class BaseTableViewController: UITableViewController {
 
         var list : Results<Object>? = nil
+        var currentObject : Object? = nil
+    
         var objectType = Object.self                  // dummy, must be overrided
         var objectName = #keyPath(Object.description) // dummy, must be overrided
     
@@ -45,16 +47,6 @@ class BaseTableViewController: UITableViewController {
         }
         
         // return from a view, the load is not launch, so reload on dirty
-        override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            if (DB.isDirty(self.objectName)) {
-                // relad the list
-                self.loadData()
-                // reload the view to show all rows
-                self.tableView.reloadData()
-                DB.setDirty(self.objectName, false)
-            }
-        }
         
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
@@ -104,6 +96,7 @@ class BaseTableViewController: UITableViewController {
     
         // use to set additionnal information to the object before editing
         func setDataBeforeEdit(_ object: Object) {
+            currentObject = object
             return
         }
     
