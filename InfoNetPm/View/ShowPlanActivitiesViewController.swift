@@ -16,27 +16,24 @@ import UIKit
 import RealmSwift
 
 class ShowPlanActivitiesViewController: BaseShowTableViewController, InternalObjectProtocol {
-    
+
     @IBAction func startedAtChanged(_ sender: Any) {
         let swStartedAt : UISwitch = sender as! UISwitch
-        let indexPath = tableView.indexPathForSelectedRow
-        let cell = tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath!)
-        let swEndedAt = cell.contentView.viewWithTag(2) as! UISwitch
-        
+        let indexPath = tableView.indexPath(for: swStartedAt.superview?.superview as! UITableViewCell)
+
         if (swStartedAt.isOn) {
-            if (self.currentObject != nil) {
-                let activity = currentObject as! Activity
-                let tmpAct = Activity()
-                tmpAct.workFlow = "Started"
-                tmpAct.status = "Running"
-                tmpAct.startDate = Date()
-                swEndedAt.isOn = true
-                swEndedAt.isEnabled = true
-                DB.updateRecord(activity, ["workFlow","startDate","status"], tmpAct)
-            }
+            let activity = list![(indexPath?.row)!] as! Activity
+            let tmpAct = Activity()
+            tmpAct.workFlow = "Started"
+            tmpAct.status = "Running"
+            tmpAct.startDate = Date()
+            DB.updateRecord(activity, ["workFlow","startDate","status"], tmpAct)
         }
-        
         tableView.reloadData()
+    }
+    
+    override public func loadData() {
+        list = DB.all(self.objectType).sorted(byKeyPath: "order", ascending: false)
     }
     
     @IBAction func endedAtChanged(_ sender: Any) {
@@ -44,6 +41,7 @@ class ShowPlanActivitiesViewController: BaseShowTableViewController, InternalObj
     
     @IBAction func successChanged(_ sender: Any) {
     }
+
     
     override func setInternalObject() {
         self.objectType = Activity.self
@@ -53,6 +51,7 @@ class ShowPlanActivitiesViewController: BaseShowTableViewController, InternalObj
         let swStartedAt = cell.contentView.viewWithTag(1) as! UISwitch
         let swEndedAt = cell.contentView.viewWithTag(2) as! UISwitch
         let segSuccess = cell.contentView.viewWithTag(3) as! UISegmentedControl
+        
         let lblStartedAt = cell.contentView.viewWithTag(4) as! UILabel
         let lblEndedAt = cell.contentView.viewWithTag(5) as! UILabel
 
@@ -119,17 +118,15 @@ class ShowPlanActivitiesViewController: BaseShowTableViewController, InternalObj
         let cell = tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath)
         
         configureCell(cell, indexPath.row)
-        //let act = (list![indexPath.row] as! Activity)
-        //cell.textLabel?.text = "\(act.code) : \(act.name )"
+        //setUnSelectedCell(cell, indexPath.row)
         
         return cell
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.contentSize.height = 130
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.middle)
+        
     }
 }
 

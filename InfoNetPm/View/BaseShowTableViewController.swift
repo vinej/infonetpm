@@ -61,13 +61,12 @@ class BaseShowTableViewController: UITableViewController {
     
     // use to set additionnal information to the object before editing
     func setDataBeforeEdit(_ object: Object) {
-        currentObject = object
+        //currentObject = object
         return
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPath = tableView.indexPathForSelectedRow
-        currentObject = self.list![(indexPath?.row)!]
+        self.currentObject = self.list![(indexPath.row)]
     }
     
     // Override to support conditional editing of the table view.
