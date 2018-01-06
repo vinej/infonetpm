@@ -46,10 +46,10 @@ class ActivityEditViewController: BaseEditViewController {
         
             <<< DecimalRow(){ row in
                 row.title = "Duration in minute"
-                row.value = activity?.duration
-                row.placeholder = "Duration of the activity"
+                row.value = activity?.expectedDuration
+                row.placeholder = "Expected Duration of the activity"
                 }.onChange { row in
-                    DB.update(self.activity!, #keyPath(Activity.duration), row.value)
+                    DB.update(self.activity!, #keyPath(Activity.expectedDuration), row.value)
             }
             
             form +++ Section("Activity type")

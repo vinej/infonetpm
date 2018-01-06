@@ -21,13 +21,49 @@ class ShowPlanActivitiesViewController: BaseShowTableViewController, InternalObj
         let swStartedAt : UISwitch = sender as! UISwitch
         let indexPath = tableView.indexPath(for: swStartedAt.superview?.superview as! UITableViewCell)
 
+        let activity = list![(indexPath?.row)!] as! Activity
+        let tmpAct = Activity()
+        
         if (swStartedAt.isOn) {
-            let activity = list![(indexPath?.row)!] as! Activity
-            let tmpAct = Activity()
-            tmpAct.workFlow = "Started"
-            tmpAct.status = "Running"
+            // create a history record to keep track of the time
+            tmpAct.workFlow = "\(ActivityWorkflow.Started)"
             tmpAct.startDate = Date()
-            DB.updateRecord(activity, ["workFlow","startDate","status"], tmpAct)
+            DB.updateRecord(activity, [#keyPath(Activity.workFlow),
+                                       #keyPath(Activity.startDate)], tmpAct)
+            
+            var ahist = ActivityHistory()
+            ahist.startDate = activity.startDate
+            ahist.endDate = activity.startDate  // same as start date, because we don't know the end date
+            ahist.workFlow = tmpAct.workFlow    // current workflow
+            ahist.duration = 0.0                // will be calculate later
+            ahist.resourceStart = activity.resource
+            ahist = DB.new(ActivityHistory.self, ahist) as! ActivityHistory
+            DB.addSubObjectActivityHistory(Activity.self, activity, "activityHistory", ahist)
+            
+        } else {
+            // a started workfow could be put on hold
+            tmpAct.workFlow = "\(ActivityWorkflow.OnHold)"
+            tmpAct.endDate = Date()
+            // total duration since beginning
+            tmpAct.totalDuration = activity.totalDuration + (tmpAct.endDate.timeIntervalSince(activity.startDate) / 60)
+            DB.updateRecord(activity, [#keyPath(Activity.workFlow),
+                                       #keyPath(Activity.endDate),
+                                       #keyPath(Activity.totalDuration)
+                ],tmpAct)
+            
+            // put the activity on hold, because it's not completed yet
+            // update the history activity, the last one into the list
+            let ahist = activity.activityHistory[activity.activityHistory.count - 1]
+            let tmpHist = ActivityHistory()
+            tmpHist.endDate = tmpAct.endDate
+            tmpHist.duration = tmpAct.endDate.timeIntervalSince(activity.startDate) / 60
+            tmpHist.workFlow = activity.workFlow
+            tmpHist.resourceEnd = activity.resource
+            DB.updateRecord(ahist, [#keyPath(ActivityHistory.endDate),
+                                    #keyPath(ActivityHistory.duration),
+                                    #keyPath(ActivityHistory.workFlow),
+                                    #keyPath(ActivityHistory.resourceEnd),
+                                    ], tmpHist)
         }
         tableView.reloadData()
     }
@@ -63,9 +99,9 @@ class ShowPlanActivitiesViewController: BaseShowTableViewController, InternalObj
         let lblres = cell.contentView.viewWithTag(11) as! UILabel
         let activity = list![row] as! Activity
 
-        lblstatus.text = activity.status
+        lblstatus.text = activity.workFlow
         lblcode.text = activity.code
-        lblduration.text = "\(activity.duration) min."
+        lblduration.text = "\(activity.totalDuration) min."
         lblrole.text = activity.role?.name
         lblres.text = activity.resource?.code
         
@@ -83,10 +119,20 @@ class ShowPlanActivitiesViewController: BaseShowTableViewController, InternalObj
         case "Started":
             lblStartedAt.text = "\(activity.startDate)"
             swStartedAt.isOn = true
-            swStartedAt.isEnabled = false
+            swStartedAt.isEnabled = true
             lblEndedAt.text = "..."
             swEndedAt.isOn = false
             swEndedAt.isEnabled = true
+            segSuccess.isEnabled = false
+            segSuccess.setEnabled(false, forSegmentAt: 0)
+            segSuccess.setEnabled(false, forSegmentAt: 1)
+        case "OnHold":
+            lblStartedAt.text = ""
+            swStartedAt.isOn = false
+            swStartedAt.isEnabled = true
+            lblEndedAt.text = "\(activity.endDate)"
+            swEndedAt.isOn = false
+            swEndedAt.isEnabled = false
             segSuccess.isEnabled = false
             segSuccess.setEnabled(false, forSegmentAt: 0)
             segSuccess.setEnabled(false, forSegmentAt: 1)

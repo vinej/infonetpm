@@ -243,6 +243,18 @@ public class DB {
         return object
     }
     
+    public static func addSubObjectActivityHistory<T>(_ objectType : T.Type,_ object: Object, _ subObjectName : String, _ subObject : Object, _ isSetDirty: Bool = true) {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            let tmp = object[subObjectName] as! List<ActivityHistory>
+            tmp.append(subObject as! ActivityHistory)
+            if (isSetDirty) {
+                DB.setDirty("\(type(of: object))", true)
+            }
+        }
+    }
+    
     public static func del(_ object : Object, _ isSetDirty : Bool = true) {
         let realm = try! Realm()
         try! realm.write {
@@ -367,9 +379,9 @@ public class DB {
         var act1 = Activity()
         act1.plan = plan
         act1.code = "Test BA"
-        act1.duration = 30.0
-        act1.workFlow = "NotStarted"
-        act1.status = "NotStarted"
+        act1.expectedDuration = 30.0
+        act1.status = "\(ActivitiyStatus.NotSet)"
+        act1.workFlow = "\(ActivityWorkflow.NotStarted)"
         act1.role = role
         act1.resource = resource
         act1.order = 1000
@@ -378,9 +390,9 @@ public class DB {
         var act2 = Activity()
         act2.plan = plan
         act2.code = "Test migration"
-        act2.duration = 10.0
-        act2.workFlow = "NotStarted"
-        act2.status = "NotStarted"
+        act2.expectedDuration = 10.0
+        act2.status = "\(ActivitiyStatus.NotSet)"
+        act2.workFlow = "\(ActivityWorkflow.NotStarted)"
         act2.role = role
         act2.resource = resource
         act2.order = 1100

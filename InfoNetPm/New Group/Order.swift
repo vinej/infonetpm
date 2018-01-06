@@ -23,7 +23,8 @@ public class Order: Object {
     @objc dynamic var project = 1000.0
     @objc dynamic var task = 1000.0
     @objc dynamic var resource = 1000.0
-    
+    @objc dynamic var activityhistory = 1000.0
+
     
     @objc dynamic var createdBy = ""
     @objc dynamic var createdDate = Date()

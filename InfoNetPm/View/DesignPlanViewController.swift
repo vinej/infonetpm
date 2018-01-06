@@ -29,7 +29,7 @@ class DesignPlanViewController: BaseTableViewController, InternalObjectProtocol 
         let cell = tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath)
         
         let act = (list![indexPath.row] as! Activity)
-        cell.textLabel?.text = "\(act.name) : \(act.duration)"
+        cell.textLabel?.text = "\(act.name) : \(act.expectedDuration)"
         
         
         return cell
