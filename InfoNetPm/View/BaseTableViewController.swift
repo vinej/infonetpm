@@ -31,6 +31,19 @@ class BaseTableViewController: UITableViewController {
             list = DB.all(self.objectType).sorted(byKeyPath: "updatedDate", ascending: false)
         }
     
+        func internalReloadData(_ forceLoad: Bool) {
+            if (DB.isDirty(self.objectName) || forceLoad) {
+                self.loadData()
+                self.tableView.reloadData()
+                DB.setDirty(self.objectName, false)
+            }
+        }
+    
+        override func viewDidAppear(_ animated: Bool) {
+            super.viewDidDisappear(animated)
+            self.internalReloadData(false)
+        }
+    
         override func viewDidLoad() {
             do {
                 try self.setInternalObject()
@@ -42,8 +55,7 @@ class BaseTableViewController: UITableViewController {
             self.objectName = objectType.description().splitted(by : ".")[1]
             self.navigationController?.setToolbarHidden(false, animated: true)
             super.viewDidLoad()
-            self.loadData()
-            DB.setDirty(self.objectName, false)
+            self.internalReloadData(true)
         }
         
         // return from a view, the load is not launch, so reload on dirty
@@ -89,9 +101,7 @@ class BaseTableViewController: UITableViewController {
             }
             DB.changedOrder(Activity.self, objS, objD, objDNext)
             // relad the list, because the order changed
-            self.loadData()
-            // need that to refresh the record record in the list
-            self.tableView.reloadData()
+            self.internalReloadData(true)
         }
     
         // use to set additionnal information to the object before editing
