@@ -12,7 +12,9 @@ import SwiftyBeaver
 
 let log = SwiftyBeaver.self
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
+    
+    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
 
     /*
     @IBAction func defineData(_ sender: UIButton) {

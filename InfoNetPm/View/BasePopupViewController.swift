@@ -51,7 +51,7 @@ class BasePopupViewController: BaseEditViewController {
             }, completion:{(finished : Bool)  in
                 if (finished)
                 {
-                    self.view.removeFromSuperview()
+                    //self.view.removeFromSuperview()
                     self.actionOnClose()
                 }
             });

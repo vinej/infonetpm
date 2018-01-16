@@ -32,8 +32,9 @@ class ChoosePopupLaunchPlanViewController: BasePopupViewController {
         let alert = UIAlertController(title: "Plan started!", message: "Enter the plan chat room to follow the activities", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
             (_)in
-            self.dismiss(animated: true, completion: nil)
-            //self.performSegue(withIdentifier: "unwindToMenuFromLaunchPlan", sender: self)
+            //self.view.removeFromSuperview()
+            //self.dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: "unwindToMenuFromLaunchPlan", sender: self)
         })
         
         alert.addAction(OKAction)

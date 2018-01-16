@@ -57,8 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // note: let the dirty flag to true, because the flag will be changed by the master view
             DB.setDirty(DB.lastObjectName, false)
             // set the lastObject to nil, because we don't want to audit another time
-            DB.lastObject = nil
             DB.audit(DB.lastObject!, DB.lastObjectDate)
+            DB.lastObject = nil
         }
     }
 }
