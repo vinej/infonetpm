@@ -230,7 +230,7 @@ public class DB {
             object[UPDATE_BY] = NSUserName()
             object[VERSION] = -1
             object[ORDER] = nextOrder
-            updateInternalField(object)
+            updateInternalFields(object)
             if (isSetDirty) {
                 DB.setDirty("\(type(of: object))", true)
             }
@@ -247,7 +247,7 @@ public class DB {
         let realm = try! Realm()
         try! realm.write {
             parentObject![objectName] = object
-            updateInternalField(object)
+            updateInternalFields(object)
             if (isSetDirty) {
                 DB.setDirty("\(type(of: parentObject))", true)
             }
@@ -258,7 +258,7 @@ public class DB {
         let realm = try! Realm()
         try! realm.write {
             parentObject[objectName] = nil
-            updateInternalField(parentObject)
+            updateInternalFields(parentObject)
             if (isSetDirty) {
                 DB.setDirty("\(type(of: parentObject))", true)
             }
@@ -309,14 +309,14 @@ public class DB {
         try! realm.write {
             DB.setField(object, field, value, isAllowNil)
             DB.setField(object, field, value, isAllowNil)
-            updateInternalField(object)
+            updateInternalFields(object)
             if (isSetDirty) {
                 DB.setDirty("\(type(of: object))", true)
             }
         }
     }
     
-    public static func updateInternalField(_ object : Object) {
+    public static func updateInternalFields(_ object : Object) {
         object[UPDATE_DATE] = Date.init(timeIntervalSinceNow: 0)
         object[UPDATE_BY] = NSUserName()
         object[VERSION] = (object[VERSION] as! Int) + 1
@@ -332,7 +332,7 @@ public class DB {
             for field in fieldArray {
                 DB.setField(object, field, record[field], isAllowNil)
             }
-            updateInternalField(object)
+            updateInternalFields(object)
             if (isSetDirty) {
                 DB.setDirty("\(type(of: object))", true)
             }
@@ -344,7 +344,7 @@ public class DB {
         update(subObject, field, value, isAllowNil, isSetDirty)
         let realm = try! Realm()
         try! realm.write {
-            updateInternalField(object)
+            updateInternalFields(object)
             if (isSetDirty) {
                 DB.setDirty("\(type(of: object))", true)
             }
