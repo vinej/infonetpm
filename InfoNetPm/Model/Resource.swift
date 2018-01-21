@@ -10,8 +10,7 @@ import Foundation
 import RealmSwift
 
 
-public class Resource: Object {
-    @objc dynamic var id = UUID().uuidString
+public class Resource: IPM {
     @objc dynamic var code = ""
     @objc dynamic var lastName = ""
     @objc dynamic var firstName = ""
@@ -24,15 +23,4 @@ public class Resource: Object {
     @objc dynamic var telephone = ""
     @objc dynamic var address: Address? = Address()
     @objc dynamic var company: Company?
-
-    @objc dynamic var createdBy = ""
-    @objc dynamic var createdDate = Date()
-    @objc dynamic var updatedBy = ""
-    @objc dynamic var updatedDate = Date()
-    
-    @objc dynamic var order = 0.0
-    
-    override public static func primaryKey() -> String? {
-        return "id"
-    }
 }

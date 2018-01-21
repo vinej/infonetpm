@@ -26,9 +26,8 @@ public enum ActivityWorkflow {
 }
 
 // Define your models like regular Swift classes
-public class Activity: Object {
+public class Activity: IPM {
 
-    @objc dynamic var id = UUID().uuidString
     @objc dynamic var status = "\(ActivitiyStatus.NotSet)"
     @objc dynamic var workFlow = "\(ActivityWorkflow.NotStarted)"
     @objc dynamic var plan : Plan?
@@ -58,16 +57,6 @@ public class Activity: Object {
     let issues = List<Issue>()
     @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
-    
-    // system fields
-    @objc dynamic var order = 0.0
-    @objc dynamic var createdBy = ""
-    @objc dynamic var createdDate = Date()
-    @objc dynamic var updatedBy = ""
-    @objc dynamic var updatedDate = Date()
-    
-    override public static func primaryKey() -> String? {
-        return "id"
-    }
+
 }
 

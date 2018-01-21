@@ -9,8 +9,7 @@
 import Foundation
 import RealmSwift
 
-public class Issue: Object {
-    @objc dynamic var id = UUID().uuidString
+public class Issue: IPM {
     @objc dynamic var status = "not started" //
     @objc dynamic var task : Task?
     
@@ -20,15 +19,4 @@ public class Issue: Object {
     @objc dynamic var severity = ""
     @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
-
-    @objc dynamic var createdBy = ""
-    @objc dynamic var createdDate = Date()
-    @objc dynamic var updatedBy = ""
-    @objc dynamic var updatedDate = Date()
-    
-    @objc dynamic var order = 0.0
-    
-    override public static func primaryKey() -> String? {
-        return "id"
-    }
 }

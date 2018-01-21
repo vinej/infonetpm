@@ -10,21 +10,9 @@ import Foundation
 import RealmSwift
 
 // Define your models like regular Swift classes
-public class Role: Object {
-    @objc dynamic var id = UUID().uuidString
+public class Role: IPM {
     @objc dynamic var name = ""
     @objc dynamic var desc = ""
     @objc dynamic var rateByHour = 0.0
     @objc dynamic var expectedCostByHour = 0.0
-
-    @objc dynamic var createdBy = ""
-    @objc dynamic var createdDate = Date()
-    @objc dynamic var updatedBy = ""
-    @objc dynamic var updatedDate = Date()
-    
-    @objc dynamic var order = 0.0
-    
-    override public static func primaryKey() -> String? {
-        return "id"
-    }
 }

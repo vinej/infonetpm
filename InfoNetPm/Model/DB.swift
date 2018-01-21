@@ -28,6 +28,18 @@ public class DB {
     public static var lastObjectDate = Date()
     public static let fieldAuditSeperator = "|"
     
+    @objc dynamic var order = 0.0
+    public static let  CREATE_BY = "createdBy"
+    public static let  CREATE_DATE = "createdDate"
+    public static let  UPDATE_BY = "updatedBy"
+    public static let  UPDATE_DATE = "updatedDate"
+    public static let  VERSION = "version"
+    public static let  ORDER = "order"
+    public static let  IS_SYNC = "isSync"
+
+    public static let orderIncrement = 10.0 // default increment for order field
+    /*************/
+    
     /* dirty flag for syncho */
     public static var isNeedSynchronization = false
 
@@ -48,10 +60,7 @@ public class DB {
     public static let defaultSelection : [String] = [DB.empty,DB.cancel]
     /*************/
 
-    /* Order field */
-    public static let orderField = "order"  // database order field name : order
-    public static let orderIncrement = 10.0 // default increment for order field
-    /*************/
+
     
     
     public static func all<T>(_ object : T.Type) ->  Results<Object> {
@@ -78,20 +87,20 @@ public class DB {
         if (dest == nil) {
             // the src is moved befor the first row
             orderDest = 0.0
-            orderDestNext = (destNext![orderField] as! Double)
+            orderDestNext = (destNext![ORDER] as! Double)
         } else if (destNext == nil) {
             // the src is moved after the last row
-            orderDest = (dest![orderField] as! Double)
+            orderDest = (dest![ORDER] as! Double)
             orderDestNext = DB.getNextOrder(objectType)
         } else {
             // the src is moved between 2 existing rows
-            orderDest = (dest![orderField] as! Double)
-            orderDestNext = (destNext![orderField] as! Double)
+            orderDest = (dest![ORDER] as! Double)
+            orderDestNext = (destNext![ORDER] as! Double)
         }
         
         try! realm.write {
             // find the middle between the previous row and the next row,
-            src[orderField] = (orderDestNext - orderDest) / 2.0 + orderDest
+            src[ORDER] = (orderDestNext - orderDest) / 2.0 + orderDest
             if (isSetDirty) {
                 DB.setDirty("\(type(of: src))", true)
             }
@@ -161,8 +170,6 @@ public class DB {
         return audit
     }
     
-
-    
     public static func getNextOrder<T>(_ objectType : T.Type) -> Double {
         let realm = try! Realm()
         var nextOrder = 0.0
@@ -201,8 +208,6 @@ public class DB {
         return (DB.filter(obj.self, "\(field)", code!).first)!
     }
     
-
-    
     public static func getSelectionIndex(_ value : String)  -> Int {
         if (value == self.empty) { return 0 }
         if (value == self.cancel) { return 1 }
@@ -221,12 +226,11 @@ public class DB {
         try! realm.write {
             realm.add(object)
             realm.add(DB.getAudit(object, AuditAction.New, Date()))
-            object["createdDate"] = Date.init(timeIntervalSinceNow: 0)
-            object["createdBy"] = NSUserName()
-            object["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
-            object["updatedBy"] = NSUserName()
-            
-            object["order"] = nextOrder
+            object[CREATE_DATE] = Date.init(timeIntervalSinceNow: 0)
+            object[UPDATE_BY] = NSUserName()
+            object[VERSION] = -1
+            object[ORDER] = nextOrder
+            updateInternalField(object)
             if (isSetDirty) {
                 DB.setDirty("\(type(of: object))", true)
             }
@@ -243,8 +247,7 @@ public class DB {
         let realm = try! Realm()
         try! realm.write {
             parentObject![objectName] = object
-            parentObject!["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
-            parentObject!["updatedBy"] = NSUserName()
+            updateInternalField(object)
             if (isSetDirty) {
                 DB.setDirty("\(type(of: parentObject))", true)
             }
@@ -255,8 +258,7 @@ public class DB {
         let realm = try! Realm()
         try! realm.write {
             parentObject[objectName] = nil
-            parentObject["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
-            parentObject["updatedBy"] = NSUserName()
+            updateInternalField(parentObject)
             if (isSetDirty) {
                 DB.setDirty("\(type(of: parentObject))", true)
             }
@@ -283,9 +285,6 @@ public class DB {
             }
             object[field] = value
         }
-        
-        object["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
-        object["updatedBy"] = NSUserName()
     }
     
     public static func setLastObject(_ object : Object) {
@@ -309,15 +308,21 @@ public class DB {
         let realm = try! Realm()
         try! realm.write {
             DB.setField(object, field, value, isAllowNil)
+            DB.setField(object, field, value, isAllowNil)
+            updateInternalField(object)
+            if (isSetDirty) {
+                DB.setDirty("\(type(of: object))", true)
+            }
         }
+    }
+    
+    public static func updateInternalField(_ object : Object) {
+        object[UPDATE_DATE] = Date.init(timeIntervalSinceNow: 0)
+        object[UPDATE_BY] = NSUserName()
+        object[VERSION] = (object[VERSION] as! Int) + 1
+        object[IS_SYNC] = false
         
-        // need that to add a audit before leaving the app
-        DB.lastObject = object
-        DB.lastObjectName = "\(type(of: object))"
-        DB.lastObjectDate = Date()
-        if (isSetDirty) {
-            DB.setDirty("\(type(of: object))", true)
-        }
+        DB.setLastObject(object)
     }
     
     public static func updateRecord(_ object : Object, _ fieldArray : [String], _ record : Object, _ isAllowNil : Bool = false, _ isSetDirty : Bool = true)
@@ -327,13 +332,11 @@ public class DB {
             for field in fieldArray {
                 DB.setField(object, field, record[field], isAllowNil)
             }
+            updateInternalField(object)
+            if (isSetDirty) {
+                DB.setDirty("\(type(of: object))", true)
+            }
         }
-        DB.setLastObject(object)
-
-        if (isSetDirty) {
-            DB.setDirty("\(type(of: object))", true)
-        }
-        
     }
     
     public static func updateSubObject<T>(_ object : Object, _ subObject : Object, _ field: String, _ value: T!, _ isAllowNil : Bool = false, _ isSetDirty : Bool = true)
@@ -341,26 +344,23 @@ public class DB {
         update(subObject, field, value, isAllowNil, isSetDirty)
         let realm = try! Realm()
         try! realm.write {
-            object["updatedDate"] = Date.init(timeIntervalSinceNow: 0)
-            object["updatedBy"] = NSUserName()
-        }
-        
-        DB.setLastObject(object)
-        
-        if (isSetDirty) {
-            DB.setDirty("\(type(of: object))", true)
+            updateInternalField(object)
+            if (isSetDirty) {
+                DB.setDirty("\(type(of: object))", true)
+            }
         }
     }
     
     
     /* test data */
     public static func addTestData() {
-        
-        
-        if (DB.count(Company.self) > 0) {
+        if (DB.count(Status.self) > 0) {
             return
         }
-    
+        
+        var status = Status()
+        status = DB.new(Status.self, status) as! Status
+        
         var company = Company()
         company.code = "CGI"
         company.name = "CGI"

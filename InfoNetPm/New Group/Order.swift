@@ -10,8 +10,7 @@ import Foundation
 import RealmSwift
 
 // Define your models like regular Swift classes
-public class Order: Object {
-    @objc dynamic var id = UUID().uuidString
+public class Order: IPM {
     @objc dynamic var activity = 1000.0
     @objc dynamic var role = 1000.0
     @objc dynamic var addres = 1000.0
@@ -24,12 +23,6 @@ public class Order: Object {
     @objc dynamic var task = 1000.0
     @objc dynamic var resource = 1000.0
     @objc dynamic var activityhistory = 1000.0
+    @objc dynamic var status = 1000.0
 
-    
-    @objc dynamic var createdBy = ""
-    @objc dynamic var createdDate = Date()
-    @objc dynamic var updatedBy = ""
-    @objc dynamic var updatedDate = Date()
-    
-    @objc dynamic var order = 0.0
 }

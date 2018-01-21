@@ -10,8 +10,7 @@
 import Foundation
 import RealmSwift
 
-public class Plan: Object {
-    @objc dynamic var id = UUID().uuidString
+public class Plan: IPM {
     @objc dynamic var status = "NotStarted" //
     @objc dynamic var project : Project?
     @objc dynamic var isTemplate = false
@@ -27,31 +26,6 @@ public class Plan: Object {
     @objc dynamic var timezone = 0.0
     @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
-
-    @objc dynamic var createdBy = ""
-    @objc dynamic var createdDate = Date()
-    @objc dynamic var updatedBy = ""
-    @objc dynamic var updatedDate = Date()
-    
-    @objc dynamic var order = 0.0
     
     let dependantPlans = List<Plan>()
-    
-    override public static func primaryKey() -> String? {
-        return "id"
-    }
-    
-    /*
-    public static func getOptions(_ list : Results<Object>) -> [String] {
-        var listSelection = DB.defaultSelection
-        var index = 1
-        for rec in list {
-            let pln = rec as! Plan
-            listSelection.append( "\(pln.code ) | \(pln.desc )")
-            index = index + 1
-        }
-        return listSelection
-    }
-    */
-    
 }

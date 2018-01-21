@@ -17,8 +17,7 @@ protocol BaseProject {
 
  
 // Define your models like regular Swift classes
-public class Project: Object {
-    @objc dynamic var id = UUID().uuidString
+public class Project: IPM {
     @objc dynamic var status = "NotStarted"
     @objc dynamic var company : Company?
     @objc dynamic var defaultTimeZone = 0.0
@@ -39,36 +38,5 @@ public class Project: Object {
     @objc dynamic var document : Document?
     @objc dynamic var comment : Comment?
     
-    @objc dynamic var createdBy = ""
-    @objc dynamic var createdDate = Date()
-    @objc dynamic var updatedBy = ""
-    @objc dynamic var updatedDate = Date()
-    
-    @objc dynamic var order = 0.0
-    
     let dependantProjects = List<Project>()
-    
-    override public static func primaryKey() -> String? {
-        return "id"
-    }
-    
-    /*
-    public static func getOptions(_ list : Results<Object>) -> [String] {
-        var listSelection = DB.defaultSelection
-        var index = 1
-        for rec in list {
-            let prj = rec as! Project
-            listSelection.append( "\(prj.code ) | \(prj.desc )")
-            index = index + 1
-        }
-        return listSelection
-    }
-    
-    public static func getProject( _ value : String) -> Project {
-        let index = value.firstIndex(of: "|")
-        let code = value.slicing(from: 0, to: index! - 1)
-        return DB.filter(Project.self, "code = %@", code!).first as! Project
-    }
-     */
-    
 }

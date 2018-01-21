@@ -11,6 +11,8 @@
 		5E0ABF241FCB57F80011897E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5E0ABF231FCB57F80011897E /* README.md */; };
 		5E0FADD92014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FADD82014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift */; };
 		5E0FADDB2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FADDA2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift */; };
+		5E0FADDD201533D10062F2E6 /* IPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FADDC201533D10062F2E6 /* IPM.swift */; };
+		5E0FADDF20153FC20062F2E6 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FADDE20153FC20062F2E6 /* Status.swift */; };
 		5E136FFF1FD308BC004F2180 /* Audit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E136FFE1FD308BC004F2180 /* Audit.swift */; };
 		5E1370011FD30FBE004F2180 /* AuditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1370001FD30FBE004F2180 /* AuditViewController.swift */; };
 		5E17D5331FF2038D008B457E /* DefineDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17D5321FF2038D008B457E /* DefineDataViewController.swift */; };
@@ -78,6 +80,8 @@
 		5E0ABF231FCB57F80011897E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5E0FADD82014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePopupPlanActivitiesViewController.swift; sourceTree = "<group>"; };
 		5E0FADDA2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePopupBasePlanViewController.swift; sourceTree = "<group>"; };
+		5E0FADDC201533D10062F2E6 /* IPM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPM.swift; sourceTree = "<group>"; };
+		5E0FADDE20153FC20062F2E6 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		5E136FFE1FD308BC004F2180 /* Audit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audit.swift; sourceTree = "<group>"; };
 		5E1370001FD30FBE004F2180 /* AuditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditViewController.swift; sourceTree = "<group>"; };
 		5E17D5321FF2038D008B457E /* DefineDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineDataViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +243,8 @@
 				5E136FFE1FD308BC004F2180 /* Audit.swift */,
 				5EE2C2191FF17DFA00FE00E2 /* Order.swift */,
 				5E0137A82001379500A2A65A /* ActivityHistory.swift */,
+				5E0FADDC201533D10062F2E6 /* IPM.swift */,
+				5E0FADDE20153FC20062F2E6 /* Status.swift */,
 			);
 			name = Model;
 			path = "New Group";
@@ -455,6 +461,7 @@
 				5E85DAA41FED621D00573088 /* ActiviyEditTableViewController.swift in Sources */,
 				5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */,
 				5E85DAA21FED61A700573088 /* ActivityViewController.swift in Sources */,
+				5E0FADDD201533D10062F2E6 /* IPM.swift in Sources */,
 				5ED3C2871FF953C600E14139 /* ChoosePopupLaunchPlan.swift in Sources */,
 				B2E30F961FD1AA5B0098031F /* Document.swift in Sources */,
 				B2E30F951FD1AA5B0098031F /* Role.swift in Sources */,
@@ -478,6 +485,7 @@
 				B23376F41FD1AE93006CD61F /* ResourceViewController.swift in Sources */,
 				5E0137A92001379500A2A65A /* ActivityHistory.swift in Sources */,
 				5EC59BA81FCB43FC005841BB /* Comment.swift in Sources */,
+				5E0FADDF20153FC20062F2E6 /* Status.swift in Sources */,
 				5EC59BAA1FCB43FC005841BB /* Company.swift in Sources */,
 				5E0FADD92014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift in Sources */,
 				5EE2C21A1FF17DFA00FE00E2 /* Order.swift in Sources */,
