@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5E0137A92001379500A2A65A /* ActivityHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0137A82001379500A2A65A /* ActivityHistory.swift */; };
 		5E0ABF241FCB57F80011897E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5E0ABF231FCB57F80011897E /* README.md */; };
+		5E0FADD92014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FADD82014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift */; };
+		5E0FADDB2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FADDA2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift */; };
 		5E136FFF1FD308BC004F2180 /* Audit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E136FFE1FD308BC004F2180 /* Audit.swift */; };
 		5E1370011FD30FBE004F2180 /* AuditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1370001FD30FBE004F2180 /* AuditViewController.swift */; };
 		5E17D5331FF2038D008B457E /* DefineDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17D5321FF2038D008B457E /* DefineDataViewController.swift */; };
@@ -74,6 +76,8 @@
 		113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InfoNetPm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0137A82001379500A2A65A /* ActivityHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHistory.swift; sourceTree = "<group>"; };
 		5E0ABF231FCB57F80011897E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5E0FADD82014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePopupPlanActivitiesViewController.swift; sourceTree = "<group>"; };
+		5E0FADDA2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePopupBasePlanViewController.swift; sourceTree = "<group>"; };
 		5E136FFE1FD308BC004F2180 /* Audit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audit.swift; sourceTree = "<group>"; };
 		5E1370001FD30FBE004F2180 /* AuditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditViewController.swift; sourceTree = "<group>"; };
 		5E17D5321FF2038D008B457E /* DefineDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineDataViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 				5ED3C2861FF953C600E14139 /* ChoosePopupLaunchPlan.swift */,
 				5EDBA2771FFBDF01006A65E1 /* ShowPlanActivitiesViewController.swift */,
 				5E3916B91FFBF19F0093E43A /* BaseShowTableViewController.swift */,
+				5E0FADD82014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift */,
+				5E0FADDA2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 				B2DDC2151FCDCBDE00119895 /* EurekaHelper.swift in Sources */,
 				5EDBA2781FFBDF01006A65E1 /* ShowPlanActivitiesViewController.swift in Sources */,
 				B2DA62211FCDE2440040803A /* ProjectViewController.swift in Sources */,
+				5E0FADDB2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift in Sources */,
 				5EC59BA71FCB43FC005841BB /* Plan.swift in Sources */,
 				B27AF4861FD8938600B42E57 /* PlanEditViewController.swift in Sources */,
 				5EC59BAF1FCB43FC005841BB /* DB.swift in Sources */,
@@ -472,6 +479,7 @@
 				5E0137A92001379500A2A65A /* ActivityHistory.swift in Sources */,
 				5EC59BA81FCB43FC005841BB /* Comment.swift in Sources */,
 				5EC59BAA1FCB43FC005841BB /* Company.swift in Sources */,
+				5E0FADD92014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift in Sources */,
 				5EE2C21A1FF17DFA00FE00E2 /* Order.swift in Sources */,
 				B29846B51FE0708A000B6A7F /* DesignPlanViewController.swift in Sources */,
 				B2E30F941FD1AA5B0098031F /* Activity.swift in Sources */,

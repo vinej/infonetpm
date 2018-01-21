@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -136,7 +137,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="58.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="078-1h-P7Q" customClass="FontAwesomeImageView" customModule="FontAwesome_swift">
+                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="078-1h-P7Q" customClass="FontAwesomeImageView" customModule="FontAwesome_swift">
                                                     <rect key="frame" x="0.0" y="5" width="45" height="45"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
@@ -146,21 +147,25 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Show Activities" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gfw-gH-yRP">
-                                                    <rect key="frame" x="45" y="5" width="274" height="45"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLl-DA-2sE">
+                                                    <rect key="frame" x="46" y="5" width="274" height="45"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                    <state key="normal" title="Activities">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="choosePlan:" destination="pBW-tX-kTa" eventType="touchDown" id="1zr-Xd-Fdp"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="078-1h-P7Q" firstAttribute="top" secondItem="Wow-Ca-h2O" secondAttribute="topMargin" constant="-6" id="6Ou-MK-ZPw"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="078-1h-P7Q" secondAttribute="bottom" constant="-1" id="8s1-uP-450"/>
-                                                <constraint firstItem="078-1h-P7Q" firstAttribute="leading" secondItem="Wow-Ca-h2O" secondAttribute="leading" id="JJQ-hK-TfH"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Gfw-gH-yRP" secondAttribute="trailing" constant="-15" id="amZ-IL-eso"/>
-                                                <constraint firstItem="078-1h-P7Q" firstAttribute="top" secondItem="Gfw-gH-yRP" secondAttribute="top" id="c8n-g7-59q"/>
-                                                <constraint firstItem="Gfw-gH-yRP" firstAttribute="leading" secondItem="Wow-Ca-h2O" secondAttribute="leadingMargin" constant="29" id="fgy-hd-so4"/>
-                                                <constraint firstItem="078-1h-P7Q" firstAttribute="centerY" secondItem="Gfw-gH-yRP" secondAttribute="centerY" id="uga-ke-Tk6"/>
+                                                <constraint firstItem="078-1h-P7Q" firstAttribute="top" secondItem="WLl-DA-2sE" secondAttribute="top" id="LYy-gb-5w9"/>
+                                                <constraint firstItem="WLl-DA-2sE" firstAttribute="leading" secondItem="078-1h-P7Q" secondAttribute="trailing" constant="1" id="P95-WR-6zb"/>
+                                                <constraint firstItem="078-1h-P7Q" firstAttribute="leading" secondItem="Wow-Ca-h2O" secondAttribute="leading" id="dh4-xE-oM4"/>
+                                                <constraint firstAttribute="trailing" secondItem="WLl-DA-2sE" secondAttribute="trailing" id="eYu-x3-63l"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="078-1h-P7Q" secondAttribute="bottom" constant="-2" id="gZJ-T2-CPX"/>
+                                                <constraint firstItem="078-1h-P7Q" firstAttribute="top" secondItem="Wow-Ca-h2O" secondAttribute="topMargin" constant="-6" id="mde-AV-yUw"/>
+                                                <constraint firstItem="078-1h-P7Q" firstAttribute="bottom" secondItem="WLl-DA-2sE" secondAttribute="bottom" id="mnu-pd-F48"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <userDefinedRuntimeAttributes>
@@ -168,9 +173,6 @@
                                                 <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="J9q-8w-MGi" kind="show" id="Lqh-by-Frb"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="JLO-gb-x6c">
                                         <rect key="frame" x="0.0" y="179" width="320" height="60"/>
@@ -179,7 +181,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Show Audit Log" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hCu-Ps-AVN">
+                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Audit Log" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hCu-Ps-AVN">
                                                     <rect key="frame" x="45" y="5" width="274" height="45"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="31"/>
@@ -256,13 +258,27 @@
             </objects>
             <point key="canvasLocation" x="233" y="-124"/>
         </scene>
-        <!--DrivePlan-->
-        <scene sceneID="B3K-bI-v4g">
+        <!--Choose Popup Plan Activites View Controller-->
+        <scene sceneID="Bi6-O5-AhP">
             <objects>
-                <viewControllerPlaceholder storyboardName="DrivePlan" id="J9q-8w-MGi" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1RW-IS-wMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="sbShowChoosePlanID" modalPresentationStyle="pageSheet" id="h4c-Qv-MXb" customClass="ChoosePopupPlanActivitesViewController" customModule="InfoNetPm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="top" id="Acb-WT-y9z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="uGM-wa-cQY"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oV1-gL-5H0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="246" y="-19"/>
+            <point key="canvasLocation" x="-696" y="699"/>
         </scene>
     </scenes>
 </document>

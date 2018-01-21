@@ -82,5 +82,14 @@ class ViewController: UITableViewController {
     }
     */
 
+    @IBAction func choosePlan(_ sender: Any) {
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbShowChoosePlanID") as! ChoosePopupPlanActivitesViewController
+        //popOverVC.modalPresentationStyle = .pageSheet
+        //self.present(popOverVC, animated: false, completion: nil)
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+    }
 }
 

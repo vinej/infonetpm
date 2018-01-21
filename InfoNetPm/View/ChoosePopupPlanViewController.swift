@@ -22,11 +22,13 @@ class ChoosePopupPlanViewController: BasePopupViewController {
     }
     
     override func actionOnClose() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "DefineActivity", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ActivityViewController") as! ActivityViewController
-        let plan = DB.getObject(Plan.self, "code = %@", currentPlan) as! Plan
-        vc.setPlan(plan)
-        self.navigationController?.pushViewController(vc)
+        if (currentPlan != "") {
+            let plan = DB.getObject(Plan.self, "code = %@", currentPlan) as! Plan
+            let storyboard: UIStoryboard = UIStoryboard(name: "DefineActivity", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ActivityViewController") as! ActivityViewController
+            vc.setPlan(plan)
+            self.navigationController?.pushViewController(vc)
+        }
     }
     
     override func viewDidLoad() {

@@ -23,22 +23,26 @@ class ChoosePopupLaunchPlanViewController: BasePopupViewController {
     }
     
     func actionOK() {
-        let plan = DB.getObject(Plan.self, "code = %@", currentPlan) as! Plan
-        let fields : [String] = ["scheduleStartDate", "status"]
-        let tmpPlan = Plan()
-        tmpPlan.status = "Started"
-        tmpPlan.scheduleStartDate = startDate
-        DB.updateRecord(plan, fields, tmpPlan)
-        let alert = UIAlertController(title: "Plan started!", message: "Enter the plan chat room to follow the activities", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
-            (_)in
-            //self.view.removeFromSuperview()
-            //self.dismiss(animated: true, completion: nil)
+        if (currentPlan != "") {
+            let plan = DB.getObject(Plan.self, "code = %@", currentPlan) as! Plan
+            let fields : [String] = ["scheduleStartDate", "status"]
+            let tmpPlan = Plan()
+            tmpPlan.status = "Started"
+            tmpPlan.scheduleStartDate = startDate
+            DB.updateRecord(plan, fields, tmpPlan)
+            let alert = UIAlertController(title: "Plan started!", message: "Enter the plan chat room to follow the activities", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+                (_)in
+                //self.view.removeFromSuperview()
+                //self.dismiss(animated: true, completion: nil)
+                self.performSegue(withIdentifier: "unwindToMenuFromLaunchPlan", sender: self)
+            })
+            
+            alert.addAction(OKAction)
+            self.present(alert, animated: true, completion: nil)
+        } else {
             self.performSegue(withIdentifier: "unwindToMenuFromLaunchPlan", sender: self)
-        })
-        
-        alert.addAction(OKAction)
-        self.present(alert, animated: true, completion: nil)
+        }
     }
     
     override func viewDidLoad() {

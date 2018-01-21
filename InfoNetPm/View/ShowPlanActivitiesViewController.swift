@@ -16,7 +16,21 @@ import UIKit
 import RealmSwift
 
 class ShowPlanActivitiesViewController: BaseShowTableViewController, InternalObjectProtocol {
-
+    var plan : Plan? = nil
+    
+    public func setPlan(_ plan : Plan) {
+        self.plan = plan
+        self.title = "Activities for plan : \(plan.code)"
+    }
+    
+    override func setInternalObject() {
+        self.objectType = Activity.self
+    }
+    
+    override public func loadData() {
+        list = DB.allByOrder(self.objectType, "plan.code = %@", (self.plan?.code)!)
+    }
+    
     @IBAction func startedAtChanged(_ sender: Any) {
         let swStartedAt : UISwitch = sender as! UISwitch
         let indexPath = tableView.indexPath(for: swStartedAt.superview?.superview as! UITableViewCell)
@@ -68,21 +82,13 @@ class ShowPlanActivitiesViewController: BaseShowTableViewController, InternalObj
         tableView.reloadData()
     }
     
-    override public func loadData() {
-        list = DB.all(self.objectType).sorted(byKeyPath: "order", ascending: false)
-    }
-    
+
     @IBAction func endedAtChanged(_ sender: Any) {
     }
     
     @IBAction func successChanged(_ sender: Any) {
     }
 
-    
-    override func setInternalObject() {
-        self.objectType = Activity.self
-    }
-    
     func configureCell(_ cell : UITableViewCell, _ row: Int) {
         let swStartedAt = cell.contentView.viewWithTag(1) as! UISwitch
         let swEndedAt = cell.contentView.viewWithTag(2) as! UISwitch
@@ -172,7 +178,6 @@ class ShowPlanActivitiesViewController: BaseShowTableViewController, InternalObj
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableView.contentSize.height = 130
-        
     }
 }
 
