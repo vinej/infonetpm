@@ -7,6 +7,7 @@
 //
 
 import Foundation
-public class Status: IPM {
-    @objc dynamic var database_version = 1
+public class Status: BaseRec {
+    @objc dynamic var databaseVersion = 1
+    @objc dynamic var lastSyncDate = dateMin()
 }

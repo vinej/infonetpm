@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import RealmSwift
 import Eureka
 import SwiftyBeaver
+import RealmSwift
 
 class ChoosePopupLaunchPlanViewController: BasePopupViewController {
     

@@ -11,6 +11,6 @@ import Foundation
 import RealmSwift
 
 // Define your models like regular Swift classes
-public class Document: IPM {
+public class Document: BaseRec {
     @objc dynamic var name = ""
 }

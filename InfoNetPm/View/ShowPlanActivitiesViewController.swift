@@ -7,12 +7,8 @@
 //
 
 import UIKit
-import RealmSwift
 import Eureka
 import SwiftyBeaver
-
-import Foundation
-import UIKit
 import RealmSwift
 
 class ShowPlanActivitiesViewController: BaseShowTableViewController, InternalObjectProtocol {

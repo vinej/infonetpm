@@ -28,7 +28,7 @@ class BaseTableViewController: UITableViewController {
         }
     
         public func loadData() {
-            list = DB.all(self.objectType).sorted(byKeyPath: "updatedDate", ascending: false)
+            list = DB.filter(self.objectType, "isDeleted = %@", false).sorted(byKeyPath: "updatedDate", ascending: false)
         }
     
         func internalReloadData(_ forceLoad: Bool) {

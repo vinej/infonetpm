@@ -16,7 +16,7 @@ class PlanViewController: BaseTableViewController, InternalObjectProtocol {
     }
     
     override func loadData() {
-        list = DB.filter(self.objectType, "isTemplate = %@", true).sorted(byKeyPath: "updatedDate", ascending: false)
+        list = DB.filter(self.objectType, "isDeleted", false).sorted(byKeyPath: "updatedDate", ascending: false)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

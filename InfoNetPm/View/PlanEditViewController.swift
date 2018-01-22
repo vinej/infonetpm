@@ -6,9 +6,9 @@
 //  Copyright © 2017 Info JYV Inc. All rights reserved.
 //
 import UIKit
-import RealmSwift
 import Eureka
 import SwiftyBeaver
+import RealmSwift
 
 class PlanEditViewController: BaseEditViewController {
     
@@ -23,7 +23,7 @@ class PlanEditViewController: BaseEditViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        projectList = DB.all(Project.self)
+        projectList = DB.filter(Project.self, "isDeleted = %@", false)
         
         form +++ Section("Section Resoure")
             <<< PopoverSelectorRow<String>() { row in

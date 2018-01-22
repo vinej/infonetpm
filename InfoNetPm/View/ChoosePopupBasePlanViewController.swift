@@ -8,9 +8,9 @@
 
 
 import UIKit
-import RealmSwift
 import Eureka
 import SwiftyBeaver
+import RealmSwift
 
 class ChoosePopupBasePlanViewController: BasePopupViewController {
     
@@ -24,7 +24,7 @@ class ChoosePopupBasePlanViewController: BasePopupViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        planList = DB.all(Plan.self)
+        planList = DB.filter(Plan.self, "isDeleted = %@", false)
         
         form +++ Section("Choose a plan to design")
             

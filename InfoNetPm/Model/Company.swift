@@ -8,7 +8,7 @@ protocol BaseCompany {
 }
 */
 
-public class Company: IPM {
+public class Company: BaseRec {
 
     @objc dynamic var code = ""
     @objc dynamic var name = ""

@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 // Define your models like regular Swift classes
-public class Order: IPM {
+public class Order: BaseRec {
     @objc dynamic var activity = 1000.0
     @objc dynamic var role = 1000.0
     @objc dynamic var addres = 1000.0

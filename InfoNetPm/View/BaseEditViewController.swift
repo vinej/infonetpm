@@ -8,8 +8,8 @@
 
 import Foundation
 import UIKit
-import RealmSwift
 import Eureka
+import RealmSwift
 
 class BaseEditViewController: FormViewController {
 

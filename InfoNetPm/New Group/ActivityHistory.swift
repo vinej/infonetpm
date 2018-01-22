@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 // Define your models like regular Swift classes
-public class ActivityHistory: IPM {
+public class ActivityHistory: BaseRec {
     @objc dynamic var startDate = Date()
     @objc dynamic var endDate = Date()
     @objc dynamic var workFlow = "\(ActivityWorkflow.NotStarted)"

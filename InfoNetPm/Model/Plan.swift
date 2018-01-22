@@ -10,7 +10,7 @@
 import Foundation
 import RealmSwift
 
-public class Plan: IPM {
+public class Plan: BaseRec {
     @objc dynamic var status = "NotStarted" //
     @objc dynamic var project : Project?
     @objc dynamic var isTemplate = false

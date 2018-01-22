@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 
-public class Resource: IPM {
+public class Resource: BaseRec {
     @objc dynamic var code = ""
     @objc dynamic var lastName = ""
     @objc dynamic var firstName = ""

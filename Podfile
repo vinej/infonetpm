@@ -12,4 +12,5 @@ target 'InfoNetPm' do
   pod 'SwifterSwift'
   pod 'FontAwesome'
   pod 'FontAwesome.swift'
+  pod 'Alamofire'
 end
