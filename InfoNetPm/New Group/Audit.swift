@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 // Define your models like regular Swift classes
-public class Audit: IPM {
+public class Audit: BaseRec {
     @objc dynamic var objectId = ""
     @objc dynamic var objectName = ""
     @objc dynamic var objectDate = Date()

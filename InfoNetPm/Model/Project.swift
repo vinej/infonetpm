@@ -17,7 +17,7 @@ protocol BaseProject {
 
  
 // Define your models like regular Swift classes
-public class Project: IPM {
+public class Project: BaseRec {
     @objc dynamic var status = "NotStarted"
     @objc dynamic var company : Company?
     @objc dynamic var defaultTimeZone = 0.0

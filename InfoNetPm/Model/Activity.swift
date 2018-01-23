@@ -26,7 +26,7 @@ public enum ActivityWorkflow {
 }
 
 // Define your models like regular Swift classes
-public class Activity: IPM {
+public class Activity: BaseRec {
 
     @objc dynamic var status = "\(ActivitiyStatus.NotSet)"
     @objc dynamic var workFlow = "\(ActivityWorkflow.NotStarted)"

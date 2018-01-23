@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import RealmSwift
 import Eureka
 import SwiftyBeaver
+import RealmSwift
 
 class ResourceEditViewController: BaseEditViewController {
     
@@ -23,7 +23,7 @@ class ResourceEditViewController: BaseEditViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        companyList = DB.all(Company.self)
+        companyList = DB.filter(Company.self,"isDeleted = %@", false)
         
         form +++ Section("Section Resoure")
             

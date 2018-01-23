@@ -36,6 +36,8 @@ public class DB {
     public static let  VERSION = "version"
     public static let  ORDER = "order"
     public static let  IS_SYNC = "isSync"
+    public static let  IS_NEW = "isNew"
+    public static let  IS_DELETED = "isDeleted"
 
     public static let orderIncrement = 10.0 // default increment for order field
     /*************/
@@ -60,8 +62,17 @@ public class DB {
     public static let defaultSelection : [String] = [DB.empty,DB.cancel]
     /*************/
 
-
-    
+    public static func addSubObjectActivityHistory<T>(_ objectType : T.Type,_ object: Object, _ subObjectName : String, _ subObject : Object, _ isSetDirty: Bool = true) {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            let tmp = object[subObjectName] as! List<ActivityHistory>
+            tmp.append(subObject as! ActivityHistory)
+            if (isSetDirty) {
+                DB.setDirty("\(type(of: object))", true)
+            }
+        }
+    }
     
     public static func all<T>(_ object : T.Type) ->  Results<Object> {
         let realm = try! Realm()
@@ -129,7 +140,14 @@ public class DB {
         let realm = try! Realm()
         try! realm.write {
             realm.add(DB.getAudit(object, AuditAction.Del, Date()))
-            realm.delete(object)
+            if (object[IS_NEW] as! Bool == true) {
+                // the object has been created by the current user, so physical delete is possible
+                realm.delete(object)
+            } else {
+                // soft delete needed to synchronize with the server
+                DB.setField(object, "isDeleted", true)
+                updateInternalFields(object)
+            }
             if (isSetDirty) {
                 DB.setDirty("\(type(of: object))", true)
             }
@@ -143,18 +161,6 @@ public class DB {
     
     public static func get<T>(_ object : T.Type, id : String) -> Object {
         return DB.filter(object.self, "id = %@", id).first!
-    }
-    
-    public static func addSubObjectActivityHistory<T>(_ objectType : T.Type,_ object: Object, _ subObjectName : String, _ subObject : Object, _ isSetDirty: Bool = true) {
-        let realm = try! Realm()
-        
-        try! realm.write {
-            let tmp = object[subObjectName] as! List<ActivityHistory>
-            tmp.append(subObject as! ActivityHistory)
-            if (isSetDirty) {
-                DB.setDirty("\(type(of: object))", true)
-            }
-        }
     }
     
     public static func getAudit(_ object : Object, _ auditAction: AuditAction, _ date : Date) -> Audit
@@ -230,6 +236,7 @@ public class DB {
             object[UPDATE_BY] = NSUserName()
             object[VERSION] = -1
             object[ORDER] = nextOrder
+            object[IS_NEW] = true
             updateInternalFields(object)
             if (isSetDirty) {
                 DB.setDirty("\(type(of: object))", true)

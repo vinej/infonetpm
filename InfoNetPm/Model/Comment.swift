@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 // Define your models like regular Swift classes
-public class Comment: IPM {
+public class Comment: BaseRec {
     @objc dynamic var name = ""
 }
 

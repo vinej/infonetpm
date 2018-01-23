@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 // Define your models like regular Swift classes
-public class Role: IPM {
+public class Role: BaseRec {
     @objc dynamic var name = ""
     @objc dynamic var desc = ""
     @objc dynamic var rateByHour = 0.0

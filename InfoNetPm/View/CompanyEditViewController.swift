@@ -6,9 +6,9 @@
 //  Copyright © 2017 Info JYV Inc. All rights reserved.
 //
 import UIKit
-import RealmSwift
 import Eureka
 import SwiftyBeaver
+import RealmSwift
 
 class CompanyEditViewController: BaseEditViewController {
 

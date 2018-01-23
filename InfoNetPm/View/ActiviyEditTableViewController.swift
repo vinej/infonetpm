@@ -6,9 +6,9 @@
 //  Copyright © 2017 Info JYV Inc. All rights reserved.
 //
 import UIKit
-import RealmSwift
 import Eureka
 import SwiftyBeaver
+import RealmSwift
 
 
 class ActivityEditViewController: BaseEditViewController {
@@ -25,7 +25,7 @@ class ActivityEditViewController: BaseEditViewController {
         super.viewDidLoad()
         
         roleList = DB.all(Role.self)
-        ressourceList = DB.all(Resource.self)
+        ressourceList = DB.filter(Resource.self, "isDeleted = %@", false)
         
         form +++ Section("Section Activity")
             <<< TextRow(){ row in

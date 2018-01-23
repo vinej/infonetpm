@@ -8,9 +8,9 @@
 
 import Foundation
 import UIKit
-import RealmSwift
 import Eureka
 import SwifterSwift
+import RealmSwift
 
 class ProjectEditViewController: BaseEditViewController {
     
@@ -25,7 +25,7 @@ class ProjectEditViewController: BaseEditViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        companyList = DB.all(Company.self)
+        companyList = DB.filter(Company.self,"isDeleted = %@", false)
         
         form +++ Section("Section Project")
             <<< PopoverSelectorRow<String>() { row in

@@ -23,3 +23,9 @@ func dateFromJd(jd : Double) -> NSDate {
     let JD_JAN_1_1970_0000GMT = 2440587.5
     return  NSDate(timeIntervalSince1970: (jd - JD_JAN_1_1970_0000GMT) * 86400)
 }
+
+func dateMin() -> Date {
+    var components = DateComponents()
+    components.year = -100
+    return Calendar.current.date(byAdding: components, to: Date())!
+}

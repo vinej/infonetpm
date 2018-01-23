@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-public class Issue: IPM {
+public class Issue: BaseRec {
     @objc dynamic var status = "not started" //
     @objc dynamic var task : Task?
     
