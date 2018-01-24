@@ -138,7 +138,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="078-1h-P7Q" customClass="FontAwesomeImageView" customModule="FontAwesome_swift">
-                                                    <rect key="frame" x="0.0" y="5" width="248" height="45"/>
+                                                    <rect key="frame" x="0.0" y="5" width="45" height="45"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="cssCode" value="fa-check"/>
@@ -147,7 +147,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLl-DA-2sE">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLl-DA-2sE">
                                                     <rect key="frame" x="45" y="5" width="330" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                     <state key="normal" title="Activities">
@@ -159,13 +159,13 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="078-1h-P7Q" firstAttribute="top" secondItem="WLl-DA-2sE" secondAttribute="top" id="LYy-gb-5w9"/>
-                                                <constraint firstItem="WLl-DA-2sE" firstAttribute="leading" secondItem="078-1h-P7Q" secondAttribute="trailing" constant="1" id="P95-WR-6zb"/>
-                                                <constraint firstItem="078-1h-P7Q" firstAttribute="leading" secondItem="Wow-Ca-h2O" secondAttribute="leading" id="dh4-xE-oM4"/>
-                                                <constraint firstAttribute="trailing" secondItem="WLl-DA-2sE" secondAttribute="trailing" id="eYu-x3-63l"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="078-1h-P7Q" secondAttribute="bottom" constant="-2" id="gZJ-T2-CPX"/>
-                                                <constraint firstItem="078-1h-P7Q" firstAttribute="top" secondItem="Wow-Ca-h2O" secondAttribute="topMargin" constant="-6" id="mde-AV-yUw"/>
-                                                <constraint firstItem="078-1h-P7Q" firstAttribute="bottom" secondItem="WLl-DA-2sE" secondAttribute="bottom" id="mnu-pd-F48"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="078-1h-P7Q" secondAttribute="bottom" constant="-2" id="3dP-rL-ym2"/>
+                                                <constraint firstItem="078-1h-P7Q" firstAttribute="bottom" secondItem="WLl-DA-2sE" secondAttribute="bottom" id="8op-wH-LP4"/>
+                                                <constraint firstItem="078-1h-P7Q" firstAttribute="top" secondItem="WLl-DA-2sE" secondAttribute="top" id="Ye3-Md-a4a"/>
+                                                <constraint firstAttribute="trailing" secondItem="WLl-DA-2sE" secondAttribute="trailing" id="dts-sR-odr"/>
+                                                <constraint firstItem="WLl-DA-2sE" firstAttribute="leading" secondItem="078-1h-P7Q" secondAttribute="trailing" id="pe3-4K-2gp"/>
+                                                <constraint firstItem="078-1h-P7Q" firstAttribute="top" secondItem="Wow-Ca-h2O" secondAttribute="topMargin" constant="-6" id="so4-mB-rDa"/>
+                                                <constraint firstItem="078-1h-P7Q" firstAttribute="leading" secondItem="Wow-Ca-h2O" secondAttribute="leading" id="syZ-Gl-9eU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <userDefinedRuntimeAttributes>
@@ -181,14 +181,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Audit Log" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hCu-Ps-AVN">
+                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Audit Log" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hCu-Ps-AVN">
                                                     <rect key="frame" x="45" y="5" width="330" height="45"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7aN-AS-pCZ" customClass="FontAwesomeImageView" customModule="FontAwesome_swift">
-                                                    <rect key="frame" x="0.0" y="5" width="242" height="45"/>
+                                                    <rect key="frame" x="0.0" y="5" width="46" height="45"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="cssCode" value="fa-file"/>
@@ -199,13 +199,13 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="hCu-Ps-AVN" firstAttribute="leading" secondItem="7aN-AS-pCZ" secondAttribute="trailing" id="0dp-w3-qOL"/>
-                                                <constraint firstItem="7aN-AS-pCZ" firstAttribute="top" secondItem="zFD-rp-GO5" secondAttribute="topMargin" constant="-6" id="9uk-B7-Xd5"/>
-                                                <constraint firstItem="7aN-AS-pCZ" firstAttribute="top" secondItem="hCu-Ps-AVN" secondAttribute="top" id="OBQ-Hs-Ar6"/>
-                                                <constraint firstItem="7aN-AS-pCZ" firstAttribute="bottom" secondItem="hCu-Ps-AVN" secondAttribute="bottom" id="XER-Ko-IuU"/>
-                                                <constraint firstItem="7aN-AS-pCZ" firstAttribute="leading" secondItem="zFD-rp-GO5" secondAttribute="leading" id="gwF-rf-SpE"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="hCu-Ps-AVN" secondAttribute="trailing" constant="-15" id="xEb-5B-wSW"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="7aN-AS-pCZ" secondAttribute="bottom" constant="-1" id="zoH-zT-Eqq"/>
+                                                <constraint firstItem="7aN-AS-pCZ" firstAttribute="top" secondItem="hCu-Ps-AVN" secondAttribute="top" id="ISB-re-BJD"/>
+                                                <constraint firstItem="7aN-AS-pCZ" firstAttribute="top" secondItem="zFD-rp-GO5" secondAttribute="topMargin" constant="-6" id="YVR-d1-Tzz"/>
+                                                <constraint firstItem="7aN-AS-pCZ" firstAttribute="bottom" secondItem="hCu-Ps-AVN" secondAttribute="bottom" id="YoQ-Yu-gPF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="7aN-AS-pCZ" secondAttribute="bottom" constant="-1" id="diJ-Nz-kSE"/>
+                                                <constraint firstItem="hCu-Ps-AVN" firstAttribute="leading" secondItem="zFD-rp-GO5" secondAttribute="leadingMargin" constant="29" id="jh8-qd-0Fc"/>
+                                                <constraint firstItem="7aN-AS-pCZ" firstAttribute="leading" secondItem="zFD-rp-GO5" secondAttribute="leading" id="kvL-pD-XY6"/>
+                                                <constraint firstAttribute="trailing" secondItem="hCu-Ps-AVN" secondAttribute="trailing" id="rvO-xp-oHa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

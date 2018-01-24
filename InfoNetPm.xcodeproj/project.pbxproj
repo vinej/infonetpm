@@ -69,7 +69,7 @@
 		B2BF25641FCCBD6A001C65EB /* CompanyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25631FCCBD6A001C65EB /* CompanyEditViewController.swift */; };
 		B2DA62211FCDE2440040803A /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA62201FCDE2440040803A /* ProjectViewController.swift */; };
 		B2DA62231FCDEFF40040803A /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA62221FCDEFF40040803A /* BaseTableViewController.swift */; };
-		B2DDC2151FCDCBDE00119895 /* EurekaHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDC2141FCDCBDE00119895 /* EurekaHelper.swift */; };
+		B2DDC2151FCDCBDE00119895 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDC2141FCDCBDE00119895 /* Helper.swift */; };
 		B2E30F941FD1AA5B0098031F /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E30F911FD1AA5A0098031F /* Activity.swift */; };
 		B2E30F951FD1AA5B0098031F /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E30F921FD1AA5B0098031F /* Role.swift */; };
 		B2E30F961FD1AA5B0098031F /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E30F931FD1AA5B0098031F /* Document.swift */; };
@@ -140,7 +140,7 @@
 		B2BF25631FCCBD6A001C65EB /* CompanyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyEditViewController.swift; sourceTree = "<group>"; };
 		B2DA62201FCDE2440040803A /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		B2DA62221FCDEFF40040803A /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
-		B2DDC2141FCDCBDE00119895 /* EurekaHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaHelper.swift; sourceTree = "<group>"; };
+		B2DDC2141FCDCBDE00119895 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		B2E30F911FD1AA5A0098031F /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Activity.swift; path = InfoNetPm/Model/Activity.swift; sourceTree = SOURCE_ROOT; };
 		B2E30F921FD1AA5B0098031F /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Role.swift; path = InfoNetPm/Model/Role.swift; sourceTree = SOURCE_ROOT; };
 		B2E30F931FD1AA5B0098031F /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = InfoNetPm/Model/Document.swift; sourceTree = SOURCE_ROOT; };
@@ -295,7 +295,7 @@
 		B2DDC2131FCDCBB600119895 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				B2DDC2141FCDCBDE00119895 /* EurekaHelper.swift */,
+				B2DDC2141FCDCBDE00119895 /* Helper.swift */,
 				5E47F3F11FEF49B6008E484A /* DateHelper.swift */,
 			);
 			path = Helper;
@@ -436,6 +436,7 @@
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -447,6 +448,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -487,7 +489,7 @@
 				B25427B01FCF311A0057A3F2 /* RoleEditViewController.swift in Sources */,
 				5E136FFF1FD308BC004F2180 /* Audit.swift in Sources */,
 				5E1370011FD30FBE004F2180 /* AuditViewController.swift in Sources */,
-				B2DDC2151FCDCBDE00119895 /* EurekaHelper.swift in Sources */,
+				B2DDC2151FCDCBDE00119895 /* Helper.swift in Sources */,
 				5EDBA2781FFBDF01006A65E1 /* ShowPlanActivitiesViewController.swift in Sources */,
 				B2DA62211FCDE2440040803A /* ProjectViewController.swift in Sources */,
 				5E0FADDB2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift in Sources */,

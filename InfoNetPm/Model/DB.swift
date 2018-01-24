@@ -19,8 +19,7 @@ public enum AuditAction {
     case Update
 }
 
-public class DB {
-    
+public class DB {    
     /* to deal with Audit when the user quit the application */
     public static var objectDirtyArray = [String: Bool]()
     public static var lastObject : Object? = nil
@@ -230,14 +229,13 @@ public class DB {
             nextOrder = DB.getNextOrder(objectType)
         }
         try! realm.write {
-            realm.add(object)
-            realm.add(DB.getAudit(object, AuditAction.New, Date()))
             object[CREATE_DATE] = Date.init(timeIntervalSinceNow: 0)
-            object[UPDATE_BY] = NSUserName()
-            object[VERSION] = -1
+            object[CREATE_BY] = NSUserName()
             object[ORDER] = nextOrder
             object[IS_NEW] = true
             updateInternalFields(object)
+            realm.add(object)
+            realm.add(DB.getAudit(object, AuditAction.New, Date()))
             if (isSetDirty) {
                 DB.setDirty("\(type(of: object))", true)
             }

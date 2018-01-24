@@ -29,3 +29,12 @@ func dateMin() -> Date {
     components.year = -100
     return Calendar.current.date(byAdding: components, to: Date())!
 }
+
+extension Date {
+    public func str() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:SSX"
+        return formatter.string(from: self)
+    }
+}
+

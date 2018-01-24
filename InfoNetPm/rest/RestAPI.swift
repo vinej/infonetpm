@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import Alamofire
+import SwiftyJSON
 
 /*************/
 //HTTP Verb    CRUD    Entire Collection (e.g. /customers)    Specific Item (e.g. /customers/{id})
@@ -38,25 +39,25 @@ import Alamofire
 
 //Alamofire.request("http://\(ipAddr)/YamahaRemoteControl/ctrl", method: .post, parameters: [:], encoding: .custom({ (convertible, params) in var mutableRequest = convertible.urlRequest as URLRequest mutableRequest.httpBody = "<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Input><Input_Sel>\(input)</Input_Sel></Input></Main_Zone></YAMAHA_AV>".data(using: String.Encoding.utf8, allowLossyConversion: false) return (mutableRequest, nil) } ))
 
-public let API_URL = "https://127.0.0.1:5000/"
+public let API_URL = "http://192.168.242.1:80/"
+
+/*
+extension String: ParameterEncoding {
+    public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+        var request = try urlRequest.asURLRequest()
+        request.httpBody = data(using: .utf8, allowLossyConversion: false)
+        return request
+    }
+}
+*/
+
 
 public class RestAPI {
 
-    public static func paramsFromJSON(jsonData: NSData) -> [String : AnyObject]?
-    {
-        do {
-            return try JSONSerialization.jsonObject(with: jsonData as Data, options: .mutableContainers) as? [ String : AnyObject]
-        } catch {
-            print("JSON serialization failed:  \(error)")
-            return nil
-        }
-    }
-    
     public static func SyncBaseRec(_ baseRec : BaseRec, _ objectName: String) {
         
         if (baseRec.isNew) {
-            
-            
+            Post(baseRec, objectName)
         } else if (baseRec.isDeleted) {
             // DELETE
             // delete the record
@@ -71,56 +72,70 @@ public class RestAPI {
     }
     
     public static func Delete(_ baseRec : BaseRec, _ objectName: String) {
-        let jsonEncoder = JSONEncoder()
-        do {
-            let jsonData = try jsonEncoder.encode(baseRec)
-            let parameters: Parameters = paramsFromJSON(jsonData: jsonData as NSData)!
-            Alamofire.request("\(API_URL)/\(objectName)", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: [:]).responseJSON { response in
-                //
-            }
-        } catch {
-                //
+        Alamofire.request("\(API_URL)/\(objectName)", method: .post, parameters: baseRec.encode(), encoding: URLEncoding.default, headers: [:]).responseJSON { response in
+            //
         }
     }
 
     public static func Put(_ baseRec : BaseRec, _ objectName: String)  {
-        let jsonEncoder = JSONEncoder()
-        do {
-            let jsonData = try jsonEncoder.encode(baseRec)
-            let parameters: Parameters = paramsFromJSON(jsonData: jsonData as NSData)!
-            Alamofire.request("\(API_URL)/\(objectName)", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: [:]).responseJSON { response in
-                //
-            }
-        } catch {
-                //
-        }
-    }
-
-    public static func Post(_ baseRec : BaseRec, _ objectName: String)  {
-        let jsonEncoder = JSONEncoder()
-        do {
-            let jsonData = try jsonEncoder.encode(baseRec)
-            let parameters: Parameters = paramsFromJSON(jsonData: jsonData as NSData)!
-            Alamofire.request("\(API_URL)/\(objectName)", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: [:]).responseJSON { response in
-                print("Request: \(String(describing: response.request))")   // original url request
-                print("Response: \(String(describing: response.response))") // http url response
-                print("Result: \(response.result)")                         // response serialization result
-                
-                if let json = response.result.value {
-                    print("JSON: \(json)") // serialized json response
-                }
-                
-                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                    print("Data: \(utf8Text)") // original server data as UTF8 string
-                }
-            }
-        } catch {
+        Alamofire.request("\(API_URL)/\(objectName)", method: .post, parameters: baseRec.encode(), encoding: URLEncoding.default, headers: [:]).responseJSON { response in
             //
         }
+    }
+    
+    /*
+     encoding: .Custom({
+     (convertible, params) in
+     var mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
+     mutableRequest.HTTPBody = jsons!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+     return (mutableRequest, nil)
 
+     "\(API_URL)\(objectName)", method: .post, parameters: [:],
+     encoding: "[ 'json':'data']"
+    */
+    
+
+
+    public static func Post(_ baseRec : BaseRec, _ objectName: String)  {
+        let parameters = baseRec.encode()
+        //let json = JSON(parameters)
+        /*
+        let parameters: [String: Any] = [
+            "IdQuiz" : 102,
+            "IdUser" : "iosclient",
+            "User" : "iosclient",
+            "List": [
+                [
+                    "IdQuestion" : 5,
+                    "IdProposition": 2,
+                    "Time" : 32
+                ],
+                [
+                    "IdQuestion" : 4,
+                    "IdProposition": 3,
+                    "Time" : 9
+                ]
+            ]
+        ]
+         */
+        Alamofire.request("\(API_URL)\(objectName)", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            
+            let swiftyJsonVar = JSON(response.result.value!)
+            
+            if let data = swiftyJsonVar["result"].dictionaryObject {
+                baseRec.decode(data)
+            }
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)") // original server data as UTF8 string
+            }
+        }
     }
 
-    public static func SyncObject<T>(_ object : T.Type) {
+    public static func SyncObject<T>(_ objectType : T.Type, _ objectName : String) {
         
         // (1) get the modification from the server
         // for each record
@@ -146,13 +161,15 @@ public class RestAPI {
         //      else, do a PUT VERB
         //
         //
-        //et list = DB.filter(Company.self, "isSync = %@", false)
-        //for obj in list {
-        //    SyncBaseRec(obj as! BaseRec)
-        //}
+        let list = DB.filter(objectType, "isSync = %@", false)
+        for obj in list {
+            SyncBaseRec(obj as! BaseRec, objectName)
+        }
     }
 
     public static func Sync() {
+        SyncObject(Company.self, "company")
+/*
         SyncObject(Activity.self)
         SyncObject(Document.self)
         SyncObject(Role.self)
@@ -167,5 +184,6 @@ public class RestAPI {
         SyncObject(Order.self)
         SyncObject(ActivityHistory.self)
         SyncObject(Status.self)
+ */
     }
 }
