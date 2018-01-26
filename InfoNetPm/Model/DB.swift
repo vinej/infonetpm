@@ -89,6 +89,13 @@ public class DB {
         return realm.objects(object.self as! Object.Type).filter(field, filter ).sorted(byKeyPath: "order", ascending: true)
     }
     
+    public static func audit(_ object : Object, _ date: Date) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(DB.getAudit(object, AuditAction.Update, date))
+        }
+    }
+    
     public static func changedOrder<T>(_ objectType : T.Type, _ src : Object, _ dest : Object?, _ destNext : Object?, _ isSetDirty : Bool = true) {
         let realm = try! Realm()
         var orderDest = 0.0
@@ -122,13 +129,7 @@ public class DB {
         DB.audit(src, Date())
         DB.lastObject = nil
     }
-    
-    public static func audit(_ object : Object, _ date: Date) {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(DB.getAudit(object, AuditAction.Update, date))
-        }
-    }
+
     
     public static func count<T>(_ object : T.Type) ->  Int {
         let realm = try! Realm()
@@ -158,8 +159,13 @@ public class DB {
         return realm.objects(object.self as! Object.Type).filter(field, filter )
     }
     
-    public static func get<T>(_ object : T.Type, id : String) -> Object {
-        return DB.filter(object.self, "id = %@", id).first!
+    public static func get<T>(_ objectType : T.Type, _ id : String) -> BaseRec? {
+        let records = DB.filter(objectType, "id = %@", id)
+        if (records.count == 0) {
+            return nil
+        } else {
+            return records.first as? BaseRec
+        }
     }
     
     public static func getAudit(_ object : Object, _ auditAction: AuditAction, _ date : Date) -> Audit
@@ -218,6 +224,41 @@ public class DB {
         if (value == self.cancel) { return 1 }
         let index = value.index(of: ":") ?? value.endIndex
         return Int(value[..<index])! + 1
+    }
+    
+    public static func new(_ objectName : String) -> BaseRec {
+        switch objectName {
+            case "Activity" :
+                return Activity()
+            case "Document" :
+                return Document()
+            case "Role" :
+                return Role()
+            case "Comment" :
+                return Comment()
+            case "Company" :
+                return Company()
+            case "Issue" :
+                return Issue()
+            case "Plan" :
+                return Plan()
+            case "Project" :
+                return Project()
+            case "Resource" :
+                return Resource()
+            case "Tssk" :
+                return Task()
+            case "Audit" :
+                return Audit()
+            case "Order" :
+                return Order()
+            case "ActivityHistory" :
+                return ActivityHistory()
+            case "Status" :
+                return Status()
+            default :
+                return BaseRec()
+        }
     }
     
     public static func new<T>(_ objectType : T.Type,_ object: Object, _ isSetDirty: Bool = true) -> Object{

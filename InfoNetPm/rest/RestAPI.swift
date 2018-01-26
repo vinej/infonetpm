@@ -48,8 +48,10 @@ public class RestAPI {
         }
     }
     
-    public static func get<T>(_ object : T.Type) -> Results<Object>? {
-        return nil
+    public static func get<T>(_ objectType : T.Type, _ objectName: String, _ lastUpdated: Date) {
+        Alamofire.request("\(API_URL)\(objectName)/\(lastUpdated.str())").responseJSON { response in
+            pull(objectType, objectName, JSON(response.result.value!))
+        }
     }
     
     public static func api(_ baseRec : BaseRec, _ objectName: String, _ method : HTTPMethod) {
@@ -63,31 +65,45 @@ public class RestAPI {
     }
 
     public static func syncObject<T>(_ objectType : T.Type, _ objectName : String) {
+        //-------------
+        // Algorithme used to synchronized the mobile device with the server
+        // pull latest modification from the server first. Only records with no conflit will be managed by the pull.
+        // if there is a conflic, the resolution will be done by the server during the push.
+        //-------------
         
-        // (1) get the modification from the server
-        // for each record
-        // (2) if record does not exist on the mobile device
-        //      add it on mobile
-        //      isSync = true
-        // (3) if record exist on mobile and is dirty (isSync == false) and updatedDateFromServer are different
-        //      merge both records
-        //      update server with the result
-        //      update the mobile device with the result
-        //      send a email to the manager for a conflit resolution
-        //      isSync = true
-        // (4) if record exist on mobile and is dirty (isSync == false) and updatedDateFromServer are equal
-        //      // do nothing. The record will be treated on step 6
-        // (5) if record exist on mobile and isSync = true and updatedDate are different
-        //      update mobile with the server version
-        //      isSync = true
-        // (6) update server with mobile modifications : get dirty records (isSync = false)
-        //      set updateDateOnServer = updateDate
-        //      set updateByOnServer = updateBy
-        //      if isNew == true  do a POST verb
-        //      if isDeleted == true, do a DELETED verb
-        //      else, do a PUT VERB
-        //
-        //
+        // note: the pull function will be caled by the get function
+        let status = DB.all(Status.self).first as! Status
+        get(objectType, objectName, status.lastSyncDate)
+        
+        // push the dirty field to the server
+        push(objectType, objectName)
+    }
+
+    public static func pull<T>(_ objectType : T.Type, _ objectName : String, _ json: JSON) {
+        for (_,subJson) : (String, JSON) in json {
+            let id = subJson[#keyPath(BaseRec.id)].string
+            if let rec = DB.get(objectType, id!) {
+                if (rec.isSync) { // keep the server version, because it<s newer
+                    // - if record exist on mobile and its not dirty
+                    //      update the mobile record
+                    //      isSync = true
+                    rec.decode(subJson.dictionaryObject!, true)
+                }
+                // if the record is dirty, do nothing, because the merge/override will be done during the push
+            } else {
+                // -  if record does not exist on the mobile device
+                //      add it on mobile
+                //      isSync = true
+                let newRec = DB.new(objectName)
+                newRec.decode(subJson.dictionaryObject!)
+                _ = DB.new(objectType, newRec)
+            }
+        }
+    }
+
+    public static func push<T>(_ objectType : T.Type, _ objectName : String) {
+        // PUSH modifications to server
+        // - get all dirty record from mobile and call post, put or delete
         let list = DB.filter(objectType, "isSync = %@", false)
         for obj in list {
             syncBaseRec(obj as! BaseRec, objectName)
@@ -95,20 +111,20 @@ public class RestAPI {
     }
 
     public static func sync() {
-        syncObject(Company.self,            BaseRec.objectName(Company.self))
-        syncObject(Activity.self,           BaseRec.objectName(Activity.self))
+        // Note: The order is important
+        syncObject(Status.self,             BaseRec.objectName(Status.self))
+        syncObject(Order.self,              BaseRec.objectName(Order.self))
         syncObject(Document.self,           BaseRec.objectName(Document.self))
-        syncObject(Role.self,               BaseRec.objectName(Role.self))
         syncObject(Comment.self,            BaseRec.objectName(Comment.self))
         syncObject(Company.self,            BaseRec.objectName(Company.self))
-        syncObject(Issue.self,              BaseRec.objectName(Issue.self))
+        syncObject(Resource.self,           BaseRec.objectName(Resource.self))
+        syncObject(Role.self,               BaseRec.objectName(Role.self))
         syncObject(Plan.self,               BaseRec.objectName(Plan.self))
         syncObject(Project.self,            BaseRec.objectName(Project.self))
-        syncObject(Resource.self,           BaseRec.objectName(Resource.self))
-        syncObject(Task.self,               BaseRec.objectName(Task.self))
+        syncObject(Activity.self,           BaseRec.objectName(Activity.self))
+        //syncObject(Task.self,               BaseRec.objectName(Task.self))
+        syncObject(Issue.self,              BaseRec.objectName(Issue.self))
         syncObject(Audit.self,              BaseRec.objectName(Audit.self))
-        syncObject(Order.self,              BaseRec.objectName(Order.self))
         syncObject(ActivityHistory.self,    BaseRec.objectName(ActivityHistory.self))
-        syncObject(Status.self,             BaseRec.objectName(Status.self))
     }
 }

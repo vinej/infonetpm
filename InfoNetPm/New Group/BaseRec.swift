@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-public class BaseRec: Object, Codable {
+public class BaseRec: Object {
     @objc dynamic var id = UUID().uuidString
     
     // system fields
@@ -49,35 +49,46 @@ public class BaseRec: Object, Codable {
             #keyPath(BaseRec.isSync)                : self.isSync,
             #keyPath(BaseRec.isNew)                 : self.isNew,
             #keyPath(BaseRec.isDeleted)             : self.isDeleted
-
         ]
     }
     
-    public func decodeString(_ value: Any?)  -> String  {
+    public func decode(_ data: [String: Any], _ setIsSync : Bool = false) {
+        self.id                     = BaseRec.decodeString(data[#keyPath(BaseRec.id)])
+        self.order                  = BaseRec.decodeDouble([#keyPath(BaseRec.order)])
+        self.createdBy              = BaseRec.decodeString(data[#keyPath(BaseRec.createdBy)])
+        self.createdDate            = data[#keyPath(BaseRec.createdDate)] as! Date
+        self.updatedBy              = BaseRec.decodeString(data[#keyPath(BaseRec.updatedBy)])
+        self.updatedDate            = data[#keyPath(BaseRec.updatedDate)] as! Date
+        self.updatedDateOnServer    = data[#keyPath(BaseRec.updatedDateOnServer)] as! Date
+        self.updatedByOnServer      = BaseRec.decodeString(data[#keyPath(BaseRec.updatedByOnServer)])
+        self.version                = BaseRec.decodeInt(data[#keyPath(BaseRec.version)])
+        self.isSync                 = BaseRec.decodeBool(data[#keyPath(BaseRec.isSync)])
+        self.isNew                  = BaseRec.decodeBool(data[#keyPath(BaseRec.isNew)])
+        self.isDeleted              = BaseRec.decodeBool(data[#keyPath(BaseRec.isDeleted)])
+    }
+    
+    public static func decodeString(_ value: Any?)  -> String  {
         return value as? String ?? ""
     }
     
-    public func decodeInt(_ value: Any?) -> Int  {
+    public static func decodeInt(_ value: Any?) -> Int  {
         return Int((value as? String)!) ?? 0
     }
-   
-    public func decodeBool(_ value: Any?) -> Bool  {
+    
+    public static func decodeBool(_ value: Any?) -> Bool  {
         return (Int((value as? String)!)! == 0 ? false : true) ?? false
     }
+   
+    public static func decodeDouble(_ value: Any?) -> Double  {
+        return Double((value as? String)!) ?? 0.0
+    }
+
+    public static func decodeObjectId(_ value: Any?) -> String {
+        return value as? String ?? ""
+    }
     
-    public func decode(_ data: [String: Any]) {
-        self.id                     = data[#keyPath(BaseRec.id)] as! String
-        self.order                  = data[#keyPath(BaseRec.order)] as! Double
-        self.createdBy              = data[#keyPath(BaseRec.createdBy)] as! String
-        self.createdDate            = data[#keyPath(BaseRec.createdDate)] as! Date
-        self.updatedBy              = data[#keyPath(BaseRec.updatedBy)] as! String
-        self.updatedDate            = data[#keyPath(BaseRec.updatedDate)] as! Date
-        self.updatedDateOnServer    = data[#keyPath(BaseRec.updatedDateOnServer)] as! Date
-        self.updatedByOnServer      = data[#keyPath(BaseRec.updatedByOnServer)] as! String
-        self.version                = decodeInt(data[#keyPath(BaseRec.version)])
-        self.isSync                 = decodeBool(data[#keyPath(BaseRec.isSync)])
-        self.isNew                  = data[#keyPath(BaseRec.isNew)] as! Bool
-        self.isDeleted              = data[#keyPath(BaseRec.isDeleted)] as! Bool
+    public static func decodeDate(_ value: Any?) -> Date {
+        return Date()
     }
     
     public static func objectName(_ object : Object.Type) -> String {
@@ -88,5 +99,7 @@ public class BaseRec: Object, Codable {
             return parts[1]
         }
     }
+    
+    
 }
 
