@@ -19,123 +19,50 @@ import SwiftyJSON
 //PATCH    Update/Modify    405 (Method Not Allowed), unless you want to modify the collection itself.    200 (OK) or 204 (No Content). 404 (Not Found), if ID not found or invalid.
 //DELETE    Delete    405 (Method Not Allowed), unless you want to delete the whole collection—not often desirable.    200 (OK). 404 (Not Found), if ID not found or invalid.
 
-
-//Alamofire.request("https://httpbin.org/xxx") // method defaults to `.get`
-//Alamofire.request("https://httpbin.org/xxx", method: .post)
-//Alamofire.request("https://httpbin.org/xxx", method: .put)
-//Alamofire.request("https://httpbin.org/xxx", method: .delete)
-
-//print("Request: \(String(describing: response.request))")   // original url request
-//print("Response: \(String(describing: response.response))") // http url response
-//print("Result: \(response.result)")                         // response serialization result
-
-//if let json = response.result.value {
-//print("JSON: \(json)") // serialized json response
-//}
-
-//if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+//Alamofire.request("\(API_URL)\(objectName)", method: method, parameters: baseRec.encode(), encoding: JSONEncoding.default).responseJSON { response in
+//  print("Request: \(String(describing: response.request))")   // original url request
+//  print("Response: \(String(describing: response.response))") // http url response
+//  print("Result: \(response.result)")                         // response serialization result
+//  if let json = response.result.value {
+//    print("JSON: \(json)") // serialized json response
+//  }
+//  if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
 //    print("Data: \(utf8Text)") // original server data as UTF8 string
+//  }
 //}
-
-//Alamofire.request("http://\(ipAddr)/YamahaRemoteControl/ctrl", method: .post, parameters: [:], encoding: .custom({ (convertible, params) in var mutableRequest = convertible.urlRequest as URLRequest mutableRequest.httpBody = "<YAMAHA_AV cmd=\"PUT\"><Main_Zone><Input><Input_Sel>\(input)</Input_Sel></Input></Main_Zone></YAMAHA_AV>".data(using: String.Encoding.utf8, allowLossyConversion: false) return (mutableRequest, nil) } ))
 
 public let API_URL = "http://192.168.242.1:80/"
 
-/*
-extension String: ParameterEncoding {
-    public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
-        var request = try urlRequest.asURLRequest()
-        request.httpBody = data(using: .utf8, allowLossyConversion: false)
-        return request
-    }
-}
-*/
-
-
 public class RestAPI {
-
-    public static func SyncBaseRec(_ baseRec : BaseRec, _ objectName: String) {
-        
-        if (baseRec.isNew) {
-            Post(baseRec, objectName)
+    
+    public static func syncBaseRec(_ baseRec : BaseRec, _ objectName: String) {
+        if (baseRec.isNew) {  // could be UpdatedDate == CreatedDate
+            // add a new record on the server
+            api(baseRec, objectName, HTTPMethod.post)
         } else if (baseRec.isDeleted) {
-            // DELETE
-            // delete the record
+            // soft delete a record
+            api(baseRec, objectName, HTTPMethod.delete)
         } else {
-            // PUT
-            // update the record
+            // update a record
+            api(baseRec, objectName, HTTPMethod.put)
         }
     }
     
-    public static func Get<T>(_ object : T.Type) -> Results<Object>? {
+    public static func get<T>(_ object : T.Type) -> Results<Object>? {
         return nil
     }
     
-    public static func Delete(_ baseRec : BaseRec, _ objectName: String) {
-        Alamofire.request("\(API_URL)/\(objectName)", method: .post, parameters: baseRec.encode(), encoding: URLEncoding.default, headers: [:]).responseJSON { response in
-            //
-        }
-    }
-
-    public static func Put(_ baseRec : BaseRec, _ objectName: String)  {
-        Alamofire.request("\(API_URL)/\(objectName)", method: .post, parameters: baseRec.encode(), encoding: URLEncoding.default, headers: [:]).responseJSON { response in
-            //
-        }
-    }
-    
-    /*
-     encoding: .Custom({
-     (convertible, params) in
-     var mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-     mutableRequest.HTTPBody = jsons!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-     return (mutableRequest, nil)
-
-     "\(API_URL)\(objectName)", method: .post, parameters: [:],
-     encoding: "[ 'json':'data']"
-    */
-    
-
-
-    public static func Post(_ baseRec : BaseRec, _ objectName: String)  {
-        let parameters = baseRec.encode()
-        //let json = JSON(parameters)
-        /*
-        let parameters: [String: Any] = [
-            "IdQuiz" : 102,
-            "IdUser" : "iosclient",
-            "User" : "iosclient",
-            "List": [
-                [
-                    "IdQuestion" : 5,
-                    "IdProposition": 2,
-                    "Time" : 32
-                ],
-                [
-                    "IdQuestion" : 4,
-                    "IdProposition": 3,
-                    "Time" : 9
-                ]
-            ]
-        ]
-         */
-        Alamofire.request("\(API_URL)\(objectName)", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
-            print("Request: \(String(describing: response.request))")   // original url request
-            print("Response: \(String(describing: response.response))") // http url response
-            print("Result: \(response.result)")                         // response serialization result
-            
+    public static func api(_ baseRec : BaseRec, _ objectName: String, _ method : HTTPMethod) {
+        Alamofire.request("\(API_URL)\(objectName)", method: method, parameters: baseRec.encode(), encoding: JSONEncoding.default).responseJSON { response in
             let swiftyJsonVar = JSON(response.result.value!)
-            
+    
             if let data = swiftyJsonVar["result"].dictionaryObject {
                 baseRec.decode(data)
             }
-            
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)") // original server data as UTF8 string
-            }
         }
     }
 
-    public static func SyncObject<T>(_ objectType : T.Type, _ objectName : String) {
+    public static func syncObject<T>(_ objectType : T.Type, _ objectName : String) {
         
         // (1) get the modification from the server
         // for each record
@@ -163,27 +90,25 @@ public class RestAPI {
         //
         let list = DB.filter(objectType, "isSync = %@", false)
         for obj in list {
-            SyncBaseRec(obj as! BaseRec, objectName)
+            syncBaseRec(obj as! BaseRec, objectName)
         }
     }
 
-    public static func Sync() {
-        SyncObject(Company.self, "company")
-/*
-        SyncObject(Activity.self)
-        SyncObject(Document.self)
-        SyncObject(Role.self)
-        SyncObject(Comment.self)
-        SyncObject(Company.self)
-        SyncObject(Issue.self)
-        SyncObject(Plan.self)
-        SyncObject(Project.self)
-        SyncObject(Resource.self)
-        SyncObject(Task.self)
-        SyncObject(Audit.self)
-        SyncObject(Order.self)
-        SyncObject(ActivityHistory.self)
-        SyncObject(Status.self)
- */
+    public static func sync() {
+        syncObject(Company.self,            BaseRec.objectName(Company.self))
+        syncObject(Activity.self,           BaseRec.objectName(Activity.self))
+        syncObject(Document.self,           BaseRec.objectName(Document.self))
+        syncObject(Role.self,               BaseRec.objectName(Role.self))
+        syncObject(Comment.self,            BaseRec.objectName(Comment.self))
+        syncObject(Company.self,            BaseRec.objectName(Company.self))
+        syncObject(Issue.self,              BaseRec.objectName(Issue.self))
+        syncObject(Plan.self,               BaseRec.objectName(Plan.self))
+        syncObject(Project.self,            BaseRec.objectName(Project.self))
+        syncObject(Resource.self,           BaseRec.objectName(Resource.self))
+        syncObject(Task.self,               BaseRec.objectName(Task.self))
+        syncObject(Audit.self,              BaseRec.objectName(Audit.self))
+        syncObject(Order.self,              BaseRec.objectName(Order.self))
+        syncObject(ActivityHistory.self,    BaseRec.objectName(ActivityHistory.self))
+        syncObject(Status.self,             BaseRec.objectName(Status.self))
     }
 }

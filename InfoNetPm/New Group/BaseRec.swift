@@ -66,18 +66,27 @@ public class BaseRec: Object, Codable {
     }
     
     public func decode(_ data: [String: Any]) {
-        //self.id                     = data[#keyPath(BaseRec.id)] as! String
-        //self.order                  = data[#keyPath(BaseRec.order)] as! Double
-        //self.createdBy              = data[#keyPath(BaseRec.createdBy)] as! String
-        //self.createdDate            = data[#keyPath(BaseRec.createdDate)] as! Date
-        //self.updatedBy              = data[#keyPath(BaseRec.updatedBy)] as! String
-        //self.updatedDate            = data[#keyPath(BaseRec.updatedDate)] as! Date
-        //self.updatedDateOnServer    = data[#keyPath(BaseRec.updatedDateOnServer)] as! Date
-        //self.updatedByOnServer      = data[#keyPath(BaseRec.updatedByOnServer)] as! String
-        self.version                  = decodeInt(data[#keyPath(BaseRec.version)])
-        self.isSync                   = decodeBool(data[#keyPath(BaseRec.isSync)])
-        //self.isNew                  = data[#keyPath(BaseRec.isNew)] as! Bool
-        //self.isDeleted              = data[#keyPath(BaseRec.isDeleted)] as! Bool
+        self.id                     = data[#keyPath(BaseRec.id)] as! String
+        self.order                  = data[#keyPath(BaseRec.order)] as! Double
+        self.createdBy              = data[#keyPath(BaseRec.createdBy)] as! String
+        self.createdDate            = data[#keyPath(BaseRec.createdDate)] as! Date
+        self.updatedBy              = data[#keyPath(BaseRec.updatedBy)] as! String
+        self.updatedDate            = data[#keyPath(BaseRec.updatedDate)] as! Date
+        self.updatedDateOnServer    = data[#keyPath(BaseRec.updatedDateOnServer)] as! Date
+        self.updatedByOnServer      = data[#keyPath(BaseRec.updatedByOnServer)] as! String
+        self.version                = decodeInt(data[#keyPath(BaseRec.version)])
+        self.isSync                 = decodeBool(data[#keyPath(BaseRec.isSync)])
+        self.isNew                  = data[#keyPath(BaseRec.isNew)] as! Bool
+        self.isDeleted              = data[#keyPath(BaseRec.isDeleted)] as! Bool
+    }
+    
+    public static func objectName(_ object : Object.Type) -> String {
+        let parts = object.description().splitted(by : ".")
+        if (parts.count == 1) {
+            return parts[0]
+        } else {
+            return parts[1]
+        }
     }
 }
 

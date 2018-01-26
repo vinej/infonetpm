@@ -52,7 +52,7 @@ class BaseTableViewController: UITableViewController {
                 log.debug("Caught NSError: \(error.localizedDescription), \(error.domain), \(error.code)")
                 exit(01)
             }
-            self.objectName = objectType.description().splitted(by : ".")[1]
+            self.objectName = BaseRec.objectName(objectType)
             self.navigationController?.setToolbarHidden(false, animated: true)
             super.viewDidLoad()
             self.internalReloadData(true)
