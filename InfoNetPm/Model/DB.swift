@@ -425,6 +425,7 @@ public class DB {
         resource.firstName = "Jean-Yves"
         resource.company = company
         resource.email = "jyvinet@hotmail.ca"
+        resource.company = company
         resource = DB.new(Resource.self, resource) as! Resource
         
         var role = Role()

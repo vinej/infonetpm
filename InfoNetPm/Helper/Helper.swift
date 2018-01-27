@@ -5,6 +5,8 @@
 //  Created by Jean-Yves Vinet on 2017-11-28.
 //  Copyright © 2017 Info JYV Inc. All rights reserved.
 //
+import Foundation
+
 extension Dictionary {
     func merge(_ dict: Dictionary<Key,Value>) -> Dictionary<Key,Value> {
         var mutableCopy = self
@@ -16,3 +18,8 @@ extension Dictionary {
     }
 }
 
+extension String {
+    var doubleValue: Double {
+        return Double((self.replacingOccurrences(of: ",", with: ".") as NSString).doubleValue)
+    }
+}

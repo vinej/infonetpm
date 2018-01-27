@@ -35,15 +35,15 @@ public class Address: Object {
     }
     
     public func decode(_ data: [String: Any], _ setIsSync : Bool = false) {
-        self.country = BaseRec.decodeString(data[#keyPath(Address.country)])
-        self.state = BaseRec.decodeString(data[#keyPath(Address.state)])
-        self.city = BaseRec.decodeString(data[#keyPath(Address.city)])
-        self.street = BaseRec.decodeString(data[#keyPath(Address.street)])
-        self.postalcode = BaseRec.decodeString(data[#keyPath(Address.postalcode)])
-        self.phone = BaseRec.decodeString(data[#keyPath(Address.phone)])
-        self.email = BaseRec.decodeString(data[#keyPath(Address.email)])
-        self.phoneHome = BaseRec.decodeString(data[#keyPath(Address.phoneHome)])
-        self.emailHome = BaseRec.decodeString(data[#keyPath(Address.emailHome)])
+        self.country = data[#keyPath(Address.country)] as! String
+        self.state = data[#keyPath(Address.state)] as! String
+        self.city = data[#keyPath(Address.city)] as! String
+        self.street = data[#keyPath(Address.street)] as! String
+        self.postalcode = data[#keyPath(Address.postalcode)] as! String
+        self.phone = data[#keyPath(Address.phone)] as! String
+        self.email = data[#keyPath(Address.email)] as! String
+        self.phoneHome = data[#keyPath(Address.phoneHome)] as! String
+        self.emailHome = data[#keyPath(Address.emailHome)] as! String
     }
 }
 

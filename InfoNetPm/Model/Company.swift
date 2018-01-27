@@ -24,10 +24,10 @@ public class Company: BaseRec {
         let realm = try! Realm()
         try! realm.write {
             super.decode(data)
-            self.address?.decode(data)
-            self.code                     = BaseRec.decodeString(data[#keyPath(Company.code)])
-            self.name                     = BaseRec.decodeString(data[#keyPath(Company.name)])
-            self.type                     = BaseRec.decodeString(data[#keyPath(Company.type)])
+            self.address?.decode(data[#keyPath(Company.address)] as! [String : Any] )
+            self.code                     = data[#keyPath(Company.code)] as! String
+            self.name                     = data[#keyPath(Company.name)] as! String
+            self.type                     = data[#keyPath(Company.type)] as! String
             
             if (isSync) {
                 self.isSync = true

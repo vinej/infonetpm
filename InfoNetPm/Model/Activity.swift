@@ -86,20 +86,20 @@ public class Activity: BaseRec {
         let realm = try! Realm()
         try! realm.write {
             super.decode(data)
-            self.code       = BaseRec.decodeString(data[#keyPath(Activity.code)])
-            self.name       = BaseRec.decodeString(data[#keyPath(Activity.name)])
-            self.workFlow   = BaseRec.decodeString(data[#keyPath(Activity.workFlow)])
+            self.code       = data[#keyPath(Activity.code)] as! String
+            self.name       = data[#keyPath(Activity.name)] as! String
+            self.workFlow   = data[#keyPath(Activity.workFlow)] as! String
 
             //self.plan = BaseRec.decodeObject(#keyPath(data[Activity.plan)])
-            self.type = BaseRec.decodeString(data[#keyPath(Activity.type)])
-            self.typeInfo =  BaseRec.decodeString(data[#keyPath(Activity.typeInfo)])
-            self.maxType =  BaseRec.decodeDouble(data[#keyPath(Activity.maxType)])
-            self.minType = BaseRec.decodeDouble(data[#keyPath(Activity.minType)])
-            self.incrType = BaseRec.decodeDouble(data[#keyPath(Activity.incrType)])
-            self.expectedDuration =    BaseRec.decodeDouble(data[#keyPath(Activity.expectedDuration)])
-            self.totalDuration =  BaseRec.decodeDouble(data[#keyPath(Activity.totalDuration)])
-            self.fixeStartDate =  BaseRec.decodeDate(data[#keyPath(Activity.fixeStartDate)])
-            self.startDate =  BaseRec.decodeDate(data[#keyPath(Activity.startDate)])
+            self.type = data[#keyPath(Activity.type)] as! String
+            self.typeInfo =  data[#keyPath(Activity.typeInfo)] as! String
+            self.maxType =  data[#keyPath(Activity.maxType)] as! Double
+            self.minType = data[#keyPath(Activity.minType)] as! Double
+            self.incrType = data[#keyPath(Activity.incrType)] as! Double
+            self.expectedDuration =  data[#keyPath(Activity.expectedDuration)] as! Double
+            self.totalDuration =  data[#keyPath(Activity.totalDuration)] as! Double
+            self.fixeStartDate =  dateToString(data[#keyPath(Activity.fixeStartDate)])
+            self.startDate =  dateToString(data[#keyPath(Activity.startDate)])
             //self.role =  BaseRec.decodeObject(data[#keyPath(Activity.role)])
             //self.resource =  BaseRec.decodeObject(data[#keyPath(Activity.resource)])
             //self.backupResource =  BaseRec.decodeObject(data[#keyPath(Activity.backupResource)])

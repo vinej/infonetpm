@@ -55,7 +55,9 @@ public class RestAPI {
     }
     
     public static func api(_ baseRec : BaseRec, _ objectName: String, _ method : HTTPMethod) {
-        Alamofire.request("\(API_URL)\(objectName)", method: method, parameters: baseRec.encode(), encoding: JSONEncoding.default).responseJSON { response in
+        let parameters = baseRec.encode()
+        
+        Alamofire.request("\(API_URL)\(objectName)", method: method, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
             let swiftyJsonVar = JSON(response.result.value!)
     
             if let data = swiftyJsonVar["result"].dictionaryObject {
@@ -76,18 +78,19 @@ public class RestAPI {
         get(objectType, objectName, status.lastSyncDate)
         
         // push the dirty field to the server
-        push(objectType, objectName)
+        //push(objectType, objectName)
     }
 
     public static func pull<T>(_ objectType : T.Type, _ objectName : String, _ json: JSON) {
         for (_,subJson) : (String, JSON) in json {
-            let id = subJson[#keyPath(BaseRec.id)].string
+            let serverRec = subJson[0]
+            let id = serverRec[#keyPath(BaseRec.id)].string
             if let rec = DB.get(objectType, id!) {
                 if (rec.isSync) { // keep the server version, because it<s newer
                     // - if record exist on mobile and its not dirty
                     //      update the mobile record
                     //      isSync = true
-                    rec.decode(subJson.dictionaryObject!, true)
+                    rec.decode(serverRec.dictionaryObject!, true)
                 }
                 // if the record is dirty, do nothing, because the merge/override will be done during the push
             } else {
@@ -95,7 +98,7 @@ public class RestAPI {
                 //      add it on mobile
                 //      isSync = true
                 let newRec = DB.new(objectName)
-                newRec.decode(subJson.dictionaryObject!)
+                newRec.decode(serverRec.dictionaryObject!)
                 _ = DB.new(objectType, newRec)
             }
         }
@@ -112,12 +115,15 @@ public class RestAPI {
 
     public static func sync() {
         // Note: The order is important
+        syncObject(Company.self,            BaseRec.objectName(Company.self))
+        syncObject(Resource.self,           BaseRec.objectName(Resource.self))
+        /*
         syncObject(Status.self,             BaseRec.objectName(Status.self))
         syncObject(Order.self,              BaseRec.objectName(Order.self))
         syncObject(Document.self,           BaseRec.objectName(Document.self))
         syncObject(Comment.self,            BaseRec.objectName(Comment.self))
-        syncObject(Company.self,            BaseRec.objectName(Company.self))
-        syncObject(Resource.self,           BaseRec.objectName(Resource.self))
+        //syncObject(Company.self,            BaseRec.objectName(Company.self))
+
         syncObject(Role.self,               BaseRec.objectName(Role.self))
         syncObject(Plan.self,               BaseRec.objectName(Plan.self))
         syncObject(Project.self,            BaseRec.objectName(Project.self))
@@ -126,5 +132,6 @@ public class RestAPI {
         syncObject(Issue.self,              BaseRec.objectName(Issue.self))
         syncObject(Audit.self,              BaseRec.objectName(Audit.self))
         syncObject(ActivityHistory.self,    BaseRec.objectName(ActivityHistory.self))
+         */
     }
 }

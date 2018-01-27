@@ -33,9 +33,6 @@ public class BaseRec: Object {
     }
     
     public func encode() -> [String: Any] {
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:SS"
         return [
             #keyPath(BaseRec.id)                    : self.id,
             #keyPath(BaseRec.order)                 : self.order,
@@ -53,42 +50,18 @@ public class BaseRec: Object {
     }
     
     public func decode(_ data: [String: Any], _ setIsSync : Bool = false) {
-        self.id                     = BaseRec.decodeString(data[#keyPath(BaseRec.id)])
-        self.order                  = BaseRec.decodeDouble([#keyPath(BaseRec.order)])
-        self.createdBy              = BaseRec.decodeString(data[#keyPath(BaseRec.createdBy)])
-        self.createdDate            = data[#keyPath(BaseRec.createdDate)] as! Date
-        self.updatedBy              = BaseRec.decodeString(data[#keyPath(BaseRec.updatedBy)])
-        self.updatedDate            = data[#keyPath(BaseRec.updatedDate)] as! Date
-        self.updatedDateOnServer    = data[#keyPath(BaseRec.updatedDateOnServer)] as! Date
-        self.updatedByOnServer      = BaseRec.decodeString(data[#keyPath(BaseRec.updatedByOnServer)])
-        self.version                = BaseRec.decodeInt(data[#keyPath(BaseRec.version)])
-        self.isSync                 = BaseRec.decodeBool(data[#keyPath(BaseRec.isSync)])
-        self.isNew                  = BaseRec.decodeBool(data[#keyPath(BaseRec.isNew)])
-        self.isDeleted              = BaseRec.decodeBool(data[#keyPath(BaseRec.isDeleted)])
-    }
-    
-    public static func decodeString(_ value: Any?)  -> String  {
-        return value as? String ?? ""
-    }
-    
-    public static func decodeInt(_ value: Any?) -> Int  {
-        return Int((value as? String)!) ?? 0
-    }
-    
-    public static func decodeBool(_ value: Any?) -> Bool  {
-        return (Int((value as? String)!)! == 0 ? false : true) ?? false
-    }
-   
-    public static func decodeDouble(_ value: Any?) -> Double  {
-        return Double((value as? String)!) ?? 0.0
-    }
-
-    public static func decodeObjectId(_ value: Any?) -> String {
-        return value as? String ?? ""
-    }
-    
-    public static func decodeDate(_ value: Any?) -> Date {
-        return Date()
+        self.id                     = data[#keyPath(BaseRec.id)] as! String
+        self.order                  = data[#keyPath(BaseRec.order)] as! Double
+        self.createdBy              = data[#keyPath(BaseRec.createdBy)] as! String
+        self.createdDate            = dateToString(data[#keyPath(BaseRec.createdDate)])
+        self.updatedBy              = data[#keyPath(BaseRec.updatedBy)] as! String
+        self.updatedDate            = dateToString(data[#keyPath(BaseRec.updatedDate)])
+        self.updatedDateOnServer    = dateToString(data[#keyPath(BaseRec.updatedDateOnServer)])
+        self.updatedByOnServer      = data[#keyPath(BaseRec.updatedByOnServer)] as! String
+        self.version                = data[#keyPath(BaseRec.version)] as! Int
+        self.isSync                 = data[#keyPath(BaseRec.isSync)] as! Bool
+        self.isNew                  = data[#keyPath(BaseRec.isNew)] as! Bool
+        self.isDeleted              = data[#keyPath(BaseRec.isDeleted)] as! Bool
     }
     
     public static func objectName(_ object : Object.Type) -> String {
@@ -99,7 +72,5 @@ public class BaseRec: Object {
             return parts[1]
         }
     }
-    
-    
 }
 
