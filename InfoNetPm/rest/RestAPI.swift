@@ -74,14 +74,18 @@ public class RestAPI {
         //-------------
         
         // note: the pull function will be caled by the get function
-        let status = DB.all(Status.self).first as! Status
-        get(objectType, objectName, status.lastSyncDate)
-        
+        //let status = DB.all(Status.self).first as! Status
+        //get(objectType, objectName, status.lastSyncDate)
+        //
         // push the dirty field to the server
-        //push(objectType, objectName)
+        push(objectType, objectName)
     }
 
     public static func pull<T>(_ objectType : T.Type, _ objectName : String, _ json: JSON) {
+        if (json.count == 0) {
+            return
+        }
+        
         for (_,subJson) : (String, JSON) in json {
             let serverRec = subJson[0]
             let id = serverRec[#keyPath(BaseRec.id)].string

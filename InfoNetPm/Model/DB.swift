@@ -412,6 +412,12 @@ public class DB {
         company.name = "CGI"
         company.type = "Service"
         company = DB.new(Company.self, company) as! Company
+        
+        var company2 = Company()
+        company2.code = "SNC"
+        company2.name = "SNC Lavalin inc."
+        company2.type = "Client"
+        company2 = DB.new(Company.self, company2) as! Company
 
         var project = Project()
         project.code = "prj1"
@@ -425,8 +431,15 @@ public class DB {
         resource.firstName = "Jean-Yves"
         resource.company = company
         resource.email = "jyvinet@hotmail.ca"
-        resource.company = company
         resource = DB.new(Resource.self, resource) as! Resource
+
+        var resource2 = Resource()
+        resource2.code = "beaud"
+        resource2.lastName = "Beaulieu"
+        resource2.firstName = "Daniel"
+        resource2.company = company2
+        resource2.email = "daniel@hotmail.ca"
+        resource2 = DB.new(Resource.self, resource2) as! Resource
         
         var role = Role()
         role.name = "Analyst"
@@ -459,7 +472,7 @@ public class DB {
         act2.status = "\(ActivitiyStatus.NotSet)"
         act2.workFlow = "\(ActivityWorkflow.NotStarted)"
         act2.role = role
-        act2.resource = resource
+        act2.resource = resource2
         act2.order = 1100
         act2 = DB.new(Activity.self, act2) as! Activity
     }

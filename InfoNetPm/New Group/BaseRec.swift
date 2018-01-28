@@ -50,7 +50,6 @@ public class BaseRec: Object {
     }
     
     public func decode(_ data: [String: Any], _ setIsSync : Bool = false) {
-        self.id                     = data[#keyPath(BaseRec.id)] as! String
         self.order                  = data[#keyPath(BaseRec.order)] as! Double
         self.createdBy              = data[#keyPath(BaseRec.createdBy)] as! String
         self.createdDate            = dateToString(data[#keyPath(BaseRec.createdDate)])
