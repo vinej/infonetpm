@@ -13,7 +13,6 @@ import RealmSwift
 public class Plan: BaseRec {
     @objc dynamic var status = "NotStarted" //
     @objc dynamic var project : Project?
-    @objc dynamic var isTemplate = false
     @objc dynamic var code = ""
     @objc dynamic var name = ""
     @objc dynamic var desc = ""
@@ -36,7 +35,6 @@ public class Plan: BaseRec {
                 #keyPath(Plan.name) : self.name,
                 #keyPath(Plan.desc) : self.desc,
                 #keyPath(Plan.status) : self.status,
-                #keyPath(Plan.isTemplate) : self.isTemplate,
                 #keyPath(Plan.scheduleStartDate) : self.scheduleStartDate.str(),
                 #keyPath(Plan.scheduleEndDate) : self.scheduleEndDate.str(),
                 #keyPath(Plan.initialBudget) : self.initialBudget,
@@ -57,16 +55,15 @@ public class Plan: BaseRec {
             self.name = data[#keyPath(Plan.name)] as! String
             self.desc = data[#keyPath(Plan.desc)] as! String
             self.status = data[#keyPath(Plan.status)] as! String
-            self.isTemplate = data[#keyPath(Plan.isTemplate)] as! Bool
-            self.scheduleStartDate = dateToString(data[#keyPath(Plan.scheduleStartDate)])
-            self.scheduleEndDate = dateToString(data[#keyPath(Plan.scheduleEndDate)])
+            self.scheduleStartDate = toDate(data[#keyPath(Plan.scheduleStartDate)])
+            self.scheduleEndDate = toDate(data[#keyPath(Plan.scheduleEndDate)])
             self.initialBudget = data[#keyPath(Plan.initialBudget)] as! Double
             self.contingencyBudget = data[#keyPath(Plan.contingencyBudget)] as! Double
             self.expectedMargin = data[#keyPath(Plan.expectedMargin)] as! Double
             self.risk = data[#keyPath(Plan.risk)] as! Double
             self.timezone = data[#keyPath(Plan.timezone)] as! Double
             let dProjectId = data[#keyPath(Plan.project)] as! String
-            self.project = dProjectId == "" ? nil : DB.get(Company.self, dProjectId) as? Project
+            self.project = dProjectId == "" ? nil : DB.get(Project.self, dProjectId) as? Project
             if (isSync) {
                 self.isSync = true
             }

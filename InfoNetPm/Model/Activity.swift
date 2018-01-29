@@ -95,8 +95,8 @@ public class Activity: BaseRec {
             self.incrType = data[#keyPath(Activity.incrType)] as! Double
             self.expectedDuration =  data[#keyPath(Activity.expectedDuration)] as! Double
             self.totalDuration =  data[#keyPath(Activity.totalDuration)] as! Double
-            self.fixeStartDate =  dateToString(data[#keyPath(Activity.fixeStartDate)])
-            self.startDate =  dateToString(data[#keyPath(Activity.startDate)])
+            self.fixeStartDate =  toDate(data[#keyPath(Activity.fixeStartDate)])
+            self.startDate =  toDate(data[#keyPath(Activity.startDate)])
             let dPlanId = data[#keyPath(Activity.plan)] as! String
             self.plan = dPlanId == "" ? nil : DB.get(Plan.self, dPlanId) as? Plan
             let dRoleId = data[#keyPath(Activity.role)] as! String

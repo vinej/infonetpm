@@ -119,23 +119,20 @@ public class RestAPI {
 
     public static func sync() {
         // Note: The order is important
-        syncObject(Company.self,            BaseRec.objectName(Company.self))
-        syncObject(Resource.self,           BaseRec.objectName(Resource.self))
-        /*
-        syncObject(Status.self,             BaseRec.objectName(Status.self))
-        syncObject(Order.self,              BaseRec.objectName(Order.self))
-        syncObject(Document.self,           BaseRec.objectName(Document.self))
-        syncObject(Comment.self,            BaseRec.objectName(Comment.self))
-        //syncObject(Company.self,            BaseRec.objectName(Company.self))
+        syncObject(Company.self,            BaseRec.objectNameLower(Company.self))
+        syncObject(Resource.self,           BaseRec.objectNameLower(Resource.self))
+        syncObject(Status.self,             BaseRec.objectNameLower(Status.self))
+        syncObject(Order.self,              BaseRec.objectNameLower(Order.self))
+        //syncObject(Document.self,           BaseRec.objectName(Document.self))
+        //syncObject(Comment.self,            BaseRec.objectName(Comment.self))
 
-        syncObject(Role.self,               BaseRec.objectName(Role.self))
-        syncObject(Plan.self,               BaseRec.objectName(Plan.self))
-        syncObject(Project.self,            BaseRec.objectName(Project.self))
-        syncObject(Activity.self,           BaseRec.objectName(Activity.self))
+        syncObject(Role.self,               BaseRec.objectNameLower(Role.self))
+        syncObject(Plan.self,               BaseRec.objectNameLower(Plan.self))
+        syncObject(Project.self,            BaseRec.objectNameLower(Project.self))
+        syncObject(Activity.self,           BaseRec.objectNameLower(Activity.self))
         //syncObject(Task.self,               BaseRec.objectName(Task.self))
-        syncObject(Issue.self,              BaseRec.objectName(Issue.self))
-        syncObject(Audit.self,              BaseRec.objectName(Audit.self))
-        syncObject(ActivityHistory.self,    BaseRec.objectName(ActivityHistory.self))
-         */
+        //syncObject(Issue.self,              BaseRec.objectNameLower(Issue.self))
+        syncObject(Audit.self,              BaseRec.objectNameLower(Audit.self))
+        syncObject(ActivityHistory.self,    BaseRec.objectNameLower(ActivityHistory.self))
     }
 }

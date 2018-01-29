@@ -52,10 +52,10 @@ public class BaseRec: Object {
     public func decode(_ data: [String: Any], _ setIsSync : Bool = false) {
         self.order                  = data[#keyPath(BaseRec.order)] as! Double
         self.createdBy              = data[#keyPath(BaseRec.createdBy)] as! String
-        self.createdDate            = dateToString(data[#keyPath(BaseRec.createdDate)])
+        self.createdDate            = toDate(data[#keyPath(BaseRec.createdDate)])
         self.updatedBy              = data[#keyPath(BaseRec.updatedBy)] as! String
-        self.updatedDate            = dateToString(data[#keyPath(BaseRec.updatedDate)])
-        self.updatedDateOnServer    = dateToString(data[#keyPath(BaseRec.updatedDateOnServer)])
+        self.updatedDate            = toDate(data[#keyPath(BaseRec.updatedDate)])
+        self.updatedDateOnServer    = toDate(data[#keyPath(BaseRec.updatedDateOnServer)])
         self.updatedByOnServer      = data[#keyPath(BaseRec.updatedByOnServer)] as! String
         self.version                = data[#keyPath(BaseRec.version)] as! Int
         self.isSync                 = data[#keyPath(BaseRec.isSync)] as! Bool
@@ -70,6 +70,10 @@ public class BaseRec: Object {
         } else {
             return parts[1]
         }
+    }
+    
+    public static func objectNameLower(_ object : Object.Type) -> String {
+        return objectName(object).lowercased()
     }
 }
 

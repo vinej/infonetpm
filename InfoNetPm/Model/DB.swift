@@ -173,6 +173,8 @@ public class DB {
         // transaction must be created by the caller
         let audit = Audit()
         audit.createdDate = Date.init(timeIntervalSinceNow: 0)
+        audit.isNew = true
+        audit.isSync = false
         audit.createdBy = NSUserName()
         audit.auditAction = "\(auditAction)"
         audit.objectName = "\(type(of: object))"
@@ -246,7 +248,7 @@ public class DB {
                 return Project()
             case "Resource" :
                 return Resource()
-            case "Tssk" :
+            case "Task" :
                 return Task()
             case "Audit" :
                 return Audit()
@@ -449,7 +451,6 @@ public class DB {
         
         var plan = Plan()
         plan.project = project
-        plan.isTemplate = true;
         plan.code = "Plan01"
         plan.desc = "Plan01"
         plan = DB.new(Plan.self, plan) as! Plan

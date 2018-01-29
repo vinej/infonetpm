@@ -38,7 +38,7 @@ extension Date {
     }
 }
 
-func dateToString(_ dateStr: Any?)-> Date
+func toDate(_ dateStr: Any?) -> Date
 {
     let sdate = dateStr as! String
     let dateFormatter = DateFormatter()
