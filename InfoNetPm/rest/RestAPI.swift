@@ -35,38 +35,65 @@ public let API_URL = "http://192.168.242.1:80/"
 
 public class RestAPI {
     
-    public static func syncBaseRec(_ baseRec : BaseRec, _ objectName: String) {
+    static var asynlist : [ (Any.Type, String) ] = [
+        (Company.self,            BaseRec.objectNameLower(Company.self)),
+        (Resource.self,           BaseRec.objectNameLower(Resource.self)),
+        (Status.self,             BaseRec.objectNameLower(Status.self)),
+        (Order.self,              BaseRec.objectNameLower(Order.self)),
+        //syncObject(Document.self,           BaseRec.objectName(Document.self))
+        //syncObject(Comment.self,            BaseRec.objectName(Comment.self))
+        (Role.self,               BaseRec.objectNameLower(Role.self)),
+        (Plan.self,               BaseRec.objectNameLower(Plan.self)),
+        (Project.self,            BaseRec.objectNameLower(Project.self)),
+        (Activity.self,           BaseRec.objectNameLower(Activity.self)),
+        //syncObject(Task.self,               BaseRec.objectName(Task.self))
+        //syncObject(Issue.self,              BaseRec.objectNameLower(Issue.self))
+        (Audit.self,              BaseRec.objectNameLower(Audit.self)),
+        (ActivityHistory.self,    BaseRec.objectNameLower(ActivityHistory.self))
+    ]
+    
+    static var listToSync : Results<Object> = DB.all(Status.self)
+    static var currentObjectName = ""
+    static var currentNextFunc = doNext
+    static var currentNext = 0
+    
+    public static func syncBaseRec(_ baseRec : BaseRec, _ objectName: String,
+                                   _ nextFunc : @escaping (Int) -> (), _ next : Int) {
         if (baseRec.isNew) {  // could be UpdatedDate == CreatedDate
             // add a new record on the server
-            api(baseRec, objectName, HTTPMethod.post)
+            api(baseRec, objectName, HTTPMethod.post, nextFunc, next)
         } else if (baseRec.isDeleted) {
             // soft delete a record
-            api(baseRec, objectName, HTTPMethod.delete)
+            api(baseRec, objectName, HTTPMethod.delete, nextFunc, next)
         } else {
             // update a record
-            api(baseRec, objectName, HTTPMethod.put)
+            api(baseRec, objectName, HTTPMethod.put, nextFunc, next)
         }
     }
     
-    public static func get<T>(_ objectType : T.Type, _ objectName: String, _ lastUpdated: Date) {
+    public static func get<T>(_ objectType : T.Type, _ objectName: String, _ lastUpdated: Date,
+                              _ nextFunc : @escaping (Int) -> (), _ next: Int) {
         Alamofire.request("\(API_URL)\(objectName)/\(lastUpdated.str())").responseJSON { response in
             pull(objectType, objectName, JSON(response.result.value!))
+            nextFunc(next)
         }
     }
     
-    public static func api(_ baseRec : BaseRec, _ objectName: String, _ method : HTTPMethod) {
+    public static func api(_ baseRec : BaseRec, _ objectName: String, _ method : HTTPMethod,
+                           _ nextFunc : @escaping (Int) -> (), _ next: Int) {
         let parameters = baseRec.encode()
         
         Alamofire.request("\(API_URL)\(objectName)", method: method, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
-            let swiftyJsonVar = JSON(response.result.value!)
-    
-            if let data = swiftyJsonVar["result"].dictionaryObject {
-                baseRec.decode(data)
-            }
+            //let swiftyJsonVar = JSON(response.result.value!)
+            //if let data = swiftyJsonVar["result"].dictionaryObject {
+            //    baseRec.decode(data)
+            //}
+            nextFunc(next)
         }
     }
 
-    public static func syncObject<T>(_ objectType : T.Type, _ objectName : String) {
+    public static func asyncPush<T>(_ objectType : T.Type, _ objectName : String,
+                                    _ nextFunc : @escaping (Int) -> (), _ next : Int) {
         //-------------
         // Algorithme used to synchronized the mobile device with the server
         // pull latest modification from the server first. Only records with no conflit will be managed by the pull.
@@ -78,7 +105,24 @@ public class RestAPI {
         //get(objectType, objectName, status.lastSyncDate)
         //
         // push the dirty field to the server
-        push(objectType, objectName)
+        listToSync = DB.filter(objectType, "isSync = %@", false)
+        if (listToSync.count == 0) {
+            // next objecy
+            nextFunc(next)
+            return
+        }
+        currentObjectName = objectName
+        currentNextFunc = nextFunc
+        currentNext = next
+        syncBaseRec(listToSync[0] as! BaseRec, currentObjectName, nextToPush, 1)
+    }
+    
+    public static func nextToPush( _ next : Int) {
+        if (next == listToSync.count) {
+            currentNextFunc(currentNext)
+            return
+        }
+        syncBaseRec(listToSync[next] as! BaseRec, currentObjectName, nextToPush, next + 1)
     }
 
     public static func pull<T>(_ objectType : T.Type, _ objectName : String, _ json: JSON) {
@@ -107,32 +151,23 @@ public class RestAPI {
             }
         }
     }
+    
+    
 
-    public static func push<T>(_ objectType : T.Type, _ objectName : String) {
+
+    public static func push<T>(_ objectType : T.Type, _ objectName : String, _ nextFunc : @escaping (Int, @escaping (Int) -> ()) -> (), _ next : Int) {
         // PUSH modifications to server
         // - get all dirty record from mobile and call post, put or delete
-        let list = DB.filter(objectType, "isSync = %@", false)
-        for obj in list {
-            syncBaseRec(obj as! BaseRec, objectName)
-        }
     }
 
     public static func sync() {
-        // Note: The order is important
-        syncObject(Company.self,            BaseRec.objectNameLower(Company.self))
-        syncObject(Resource.self,           BaseRec.objectNameLower(Resource.self))
-        syncObject(Status.self,             BaseRec.objectNameLower(Status.self))
-        syncObject(Order.self,              BaseRec.objectNameLower(Order.self))
-        //syncObject(Document.self,           BaseRec.objectName(Document.self))
-        //syncObject(Comment.self,            BaseRec.objectName(Comment.self))
-
-        syncObject(Role.self,               BaseRec.objectNameLower(Role.self))
-        syncObject(Plan.self,               BaseRec.objectNameLower(Plan.self))
-        syncObject(Project.self,            BaseRec.objectNameLower(Project.self))
-        syncObject(Activity.self,           BaseRec.objectNameLower(Activity.self))
-        //syncObject(Task.self,               BaseRec.objectName(Task.self))
-        //syncObject(Issue.self,              BaseRec.objectNameLower(Issue.self))
-        syncObject(Audit.self,              BaseRec.objectNameLower(Audit.self))
-        syncObject(ActivityHistory.self,    BaseRec.objectNameLower(ActivityHistory.self))
+        doNext(0)
+    }
+    
+    public static func doNext(_ next : Int) {
+        if (next == asynlist.count) {
+            return
+        }
+        asyncPush(asynlist[next].0 as! Object.Type, asynlist[next].1, doNext,  next + 1)
     }
 }
