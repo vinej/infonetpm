@@ -53,12 +53,11 @@ public class Activity: BaseRec {
     @objc dynamic var resource : Resource?
     @objc dynamic var backupResource : Resource?
 
-    let dependentActivities = List<Activity>()
-    let issues = List<Issue>()
-    @objc dynamic var document : Document?
-    @objc dynamic var comment : Comment?
+    //let dependentActivities = List<Activity>()
+    //let issues = List<Issue>()
+    //@objc dynamic var document : Document?
+    //@objc dynamic var comment : Comment?
 
-    
     public override func encode() -> [String: Any] {
         return super.encode().merge([
             #keyPath(Activity.workFlow) : self.workFlow,
@@ -77,8 +76,8 @@ public class Activity: BaseRec {
             #keyPath(Activity.role) : self.role != nil ? self.role!.id : "",
             #keyPath(Activity.resource) : self.resource != nil ? resource!.id : "" ,
             #keyPath(Activity.backupResource) : self.backupResource != nil ? self.backupResource!.id : "",
-            #keyPath(Activity.document) : self.document != nil ? self.document!.id : "",
-            #keyPath(Activity.comment) : self.comment != nil ? self.comment!.id : ""
+            //#keyPath(Activity.document) : self.document != nil ? self.document!.id : "",
+            //#keyPath(Activity.comment) : self.comment != nil ? self.comment!.id : ""
         ])
     }
     
@@ -89,8 +88,6 @@ public class Activity: BaseRec {
             self.code       = data[#keyPath(Activity.code)] as! String
             self.name       = data[#keyPath(Activity.name)] as! String
             self.workFlow   = data[#keyPath(Activity.workFlow)] as! String
-
-            //self.plan = BaseRec.decodeObject(#keyPath(data[Activity.plan)])
             self.type = data[#keyPath(Activity.type)] as! String
             self.typeInfo =  data[#keyPath(Activity.typeInfo)] as! String
             self.maxType =  data[#keyPath(Activity.maxType)] as! Double
@@ -100,11 +97,18 @@ public class Activity: BaseRec {
             self.totalDuration =  data[#keyPath(Activity.totalDuration)] as! Double
             self.fixeStartDate =  dateToString(data[#keyPath(Activity.fixeStartDate)])
             self.startDate =  dateToString(data[#keyPath(Activity.startDate)])
-            //self.role =  BaseRec.decodeObject(data[#keyPath(Activity.role)])
-            //self.resource =  BaseRec.decodeObject(data[#keyPath(Activity.resource)])
-            //self.backupResource =  BaseRec.decodeObject(data[#keyPath(Activity.backupResource)])
-            //self.document = BaseRec.decodeObject(data[#keyPath(Activity.document)])
-            //self.comment = BaseRec.decodeObject(data[#keyPath(Activity.comment)])
+            let dPlanId = data[#keyPath(Activity.plan)] as! String
+            self.plan = dPlanId == "" ? nil : DB.get(Plan.self, dPlanId) as? Plan
+            let dRoleId = data[#keyPath(Activity.role)] as! String
+            self.role = dRoleId == "" ? nil : DB.get(Role.self, dRoleId) as? Role
+            let dResourceId = data[#keyPath(Activity.resource)] as! String
+            self.resource = dResourceId == "" ? nil : DB.get(Resource.self, dResourceId) as? Resource
+            let dBackuoResourceId = data[#keyPath(Activity.backupResource)] as! String
+            self.backupResource = dBackuoResourceId == "" ? nil : DB.get(Resource.self, dBackuoResourceId) as? Resource
+            //let dDocumentId = data[#keyPath(Activity.document)] as! String
+            //self.document = dDocumentId == "" ? nil : DB.get(Document.self, dDocumentId) as? Document
+            //let dCommentId = data[#keyPath(Activity.comment)] as! String
+            //self.comment = dCommentId == "" ? nil : DB.get(Comment.self, dCommentId) as? Comment
             if (isSync) {
                 self.isSync = true
             }
