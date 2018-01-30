@@ -61,7 +61,7 @@ public class RestAPI {
         listToSync = DB.all(Status.self)
         lastSyncDate = Date()
         currentObjectName = ""
-        currentNextFunc = nil
+        currentNextFunc = RestAPI.staticPull
         currentNext = 0
     }
     
@@ -182,6 +182,16 @@ public class RestAPI {
         //pull(0)
         push(0, self)
     }
+
+    public static func staticPull(_ next : Int, _ restApi: RestAPI) {
+        if (next == restApi.asyncList.count) {
+            // push the remainding record not sync yes
+            restApi.push(0, restApi)
+            return
+        }
+        restApi.get(restApi.asyncList[next].0 as! Object.Type, restApi.asyncList[next].1, restApi.lastSyncDate, restApi.pull,  next + 1, restApi)
+    }
+
     
     public func pull(_ next : Int, _ restApi: RestAPI) {
         if (next == asyncList.count) {
