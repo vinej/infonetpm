@@ -182,7 +182,7 @@ public class RestAPI {
     public func sync(_ view: SynchronizeViewController) {
         // strats to pull all new records
         self.view = view
-        UI({ self.view.setCurrentObject("Starting synchronization") } )
+         _ = UI({ self.view.setCurrentObject("Starting synchronization") } )
 
         pull(0, self)
     }
@@ -194,7 +194,7 @@ public class RestAPI {
             restApi.push(0, restApi)
             return
         }
-        UI({ restApi.view.setCurrentObject(restApi.asyncList[next].1) } )
+        _ = UI({ restApi.view.setCurrentObject(restApi.asyncList[next].1) } )
         restApi.get(restApi.asyncList[next].0 as! Object.Type, restApi.asyncList[next].1, restApi.lastSyncDate, restApi.pull,  next + 1, restApi)
     }
 
@@ -204,7 +204,7 @@ public class RestAPI {
             push(0, restApi)
             return
         }
-        UI({ restApi.view.setCurrentObject("Pulling:  \(restApi.asyncList[next].1)") } )
+        _ = UI({ restApi.view.setCurrentObject("Pulling:  \(restApi.asyncList[next].1)") } )
         get(asyncList[next].0 as! Object.Type, asyncList[next].1, lastSyncDate, pull,  next + 1, restApi)
     }
     
@@ -212,7 +212,7 @@ public class RestAPI {
         if (next == restApi.asyncList.count) {
             return
         }
-        UI({ restApi.view.setCurrentObject("Pushing:  \(restApi.asyncList[next].1)") } )
+        _ = UI({ restApi.view.setCurrentObject("Pushing:  \(restApi.asyncList[next].1)") } )
         asyncPush(asyncList[next].0 as! Object.Type, asyncList[next].1, push,  next + 1, restApi)
     }
 }

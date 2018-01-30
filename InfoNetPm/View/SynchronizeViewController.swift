@@ -17,10 +17,14 @@ public class SynchronizeViewController: UIViewController {
     @IBOutlet weak var progress: UIActivityIndicatorView!
     @IBOutlet weak var lblCurrentProgress: UILabel!
     
+    let numberOfObjectToSynchronize : Float = 10.0
+    var isStop : Bool = false
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        progressView.progress = 0
+        isStop = false
     }
 
     public override func didReceiveMemoryWarning() {
@@ -30,10 +34,10 @@ public class SynchronizeViewController: UIViewController {
     
 
     @IBAction func doStartSynchro(_ sender: UIButton) {
-        BG(  {
-            print("This is run on the background queue")
-            RestAPI().sync(self)
-        } )
+        BG( {
+                print("This is run on the background queue")
+                RestAPI().sync(self)
+            } )
     }
     
     @IBAction func doEndSynchro(_ sender: UIButton) {
@@ -42,8 +46,12 @@ public class SynchronizeViewController: UIViewController {
     @IBAction func doReset(_ sender: UIButton) {
     }
     
-    public func setCurrentObject(_ objectName: String) {
+    public func setCurrentObject(_ objectName: String) -> Bool {
         lblCurrentProgress.text = objectName + "\r\n" + lblCurrentProgress.text!
+        
+        progressView.progress = progressView.progress + (1.0 / (numberOfObjectToSynchronize * 2.0) )
+        
+        return isStop
     }
     
     /*
