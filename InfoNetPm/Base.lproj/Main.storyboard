@@ -188,7 +188,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7aN-AS-pCZ" customClass="FontAwesomeImageView" customModule="FontAwesome_swift">
-                                                    <rect key="frame" x="0.0" y="5" width="46" height="45"/>
+                                                    <rect key="frame" x="0.0" y="5" width="45" height="45"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="cssCode" value="fa-file"/>
@@ -218,7 +218,30 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="APN-I3-gRc" id="A3H-qW-11G">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HQt-Vi-o4Z" customClass="FontAwesomeImageView" customModule="FontAwesome_swift">
+                                                    <rect key="frame" x="0.0" y="5" width="45" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="cssCode" value="fa-cloud"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="imageColor">
+                                                            <color key="value" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Synchronize" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QMO-Ej-RMA">
+                                                    <rect key="frame" x="45" y="5" width="330" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="jal-oe-TN8" kind="show" id="Lbv-AM-MpT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -240,7 +263,15 @@
                 <viewControllerPlaceholder storyboardName="Administration" id="QND-9v-q8Q" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIe-wh-IhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216" y="104"/>
+            <point key="canvasLocation" x="253" y="-158"/>
+        </scene>
+        <!--Synchonize-->
+        <scene sceneID="EvS-gW-v8e">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Synchonize" id="jal-oe-TN8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vcf-2z-AFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="235" y="-96"/>
         </scene>
         <!--DefineData-->
         <scene sceneID="Vxq-Mm-j0p">
@@ -256,7 +287,7 @@
                 <viewControllerPlaceholder storyboardName="LaunchPlan" id="LhE-KR-sg4" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDH-Xw-C5V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="233" y="-124"/>
+            <point key="canvasLocation" x="238" y="-216"/>
         </scene>
         <!--Choose Popup Plan Activites View Controller-->
         <scene sceneID="Bi6-O5-AhP">

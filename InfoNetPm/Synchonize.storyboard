@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YMd-DI-4GA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YMd-DI-4GA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,26 +14,118 @@
         <!--Synchronize-->
         <scene sceneID="G5n-v8-eVX">
             <objects>
-                <viewController title="Synchronize" id="YMd-DI-4GA" sceneMemberID="viewController">
+                <viewController title="Synchronize" id="YMd-DI-4GA" customClass="SynchronizeViewController" customModule="InfoNetPm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t57-ks-TWu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sync" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ge0-5d-eCX">
-                                <rect key="frame" x="166" y="323" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jJA-eo-7UE">
+                                <rect key="frame" x="16" y="126" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-Po-ftY">
+                                <rect key="frame" x="57" y="137" width="302" height="2.5"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFR-OY-CQw">
+                                <rect key="frame" x="23" y="20" width="114" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MDB-0y-gVC"/>
+                                </constraints>
+                                <state key="normal" title="Start Synchro"/>
+                                <connections>
+                                    <action selector="doStartSynchro:" destination="YMd-DI-4GA" eventType="touchUpInside" id="7ls-5D-NZW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21q-x7-iU8">
+                                <rect key="frame" x="16" y="170" width="129" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="6PC-jo-nf0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwq-N5-92X">
+                                <rect key="frame" x="245" y="19" width="114" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="3sk-s1-grt"/>
+                                </constraints>
+                                <state key="normal" title="Stop Synchro"/>
+                                <connections>
+                                    <action selector="doEndSynchro:" destination="YMd-DI-4GA" eventType="touchUpInside" id="ksl-O5-c62"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." lineBreakMode="tailTruncation" numberOfLines="999" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBz-B0-1m4">
+                                <rect key="frame" x="16" y="208" width="343" height="373"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.58095420369999995" green="0.7680626331" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cH-lF-pkI">
+                                <rect key="frame" x="16" y="596" width="215" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ulF-uM-Vc9"/>
+                                </constraints>
+                                <state key="normal" title="Resynchronize all from server"/>
+                                <connections>
+                                    <action selector="doReset:" destination="YMd-DI-4GA" eventType="touchUpInside" id="R2g-FI-NWx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XBz-B0-1m4" firstAttribute="leading" secondItem="0cH-lF-pkI" secondAttribute="leading" id="0mF-Li-0Y9"/>
+                            <constraint firstItem="jJA-eo-7UE" firstAttribute="top" secondItem="kFR-OY-CQw" secondAttribute="bottom" constant="76" id="E9T-ph-P9N"/>
+                            <constraint firstItem="21q-x7-iU8" firstAttribute="leading" secondItem="XBz-B0-1m4" secondAttribute="leading" id="EBm-UI-y8Z"/>
+                            <constraint firstItem="JMB-Po-ftY" firstAttribute="top" secondItem="Vwq-N5-92X" secondAttribute="bottom" constant="88" id="Hmc-Uz-f74"/>
+                            <constraint firstItem="JMB-Po-ftY" firstAttribute="leading" secondItem="t57-ks-TWu" secondAttribute="leadingMargin" constant="41" id="Quf-ya-0m5"/>
+                            <constraint firstItem="21q-x7-iU8" firstAttribute="top" secondItem="jJA-eo-7UE" secondAttribute="bottom" constant="24" id="Rrr-28-Y7w"/>
+                            <constraint firstItem="kFR-OY-CQw" firstAttribute="centerX" secondItem="21q-x7-iU8" secondAttribute="centerX" id="XHe-NF-81v"/>
+                            <constraint firstItem="jJA-eo-7UE" firstAttribute="leading" secondItem="t57-ks-TWu" secondAttribute="leadingMargin" id="Z4v-4r-upb"/>
+                            <constraint firstItem="jJA-eo-7UE" firstAttribute="leading" secondItem="21q-x7-iU8" secondAttribute="leading" id="ZUZ-Gj-HVn"/>
+                            <constraint firstItem="kFR-OY-CQw" firstAttribute="top" secondItem="Ges-1U-Tcw" secondAttribute="top" id="b6T-dR-U64"/>
+                            <constraint firstItem="21q-x7-iU8" firstAttribute="top" secondItem="JMB-Po-ftY" secondAttribute="bottom" constant="31.5" id="cbl-CH-pqc"/>
+                            <constraint firstItem="XBz-B0-1m4" firstAttribute="top" secondItem="21q-x7-iU8" secondAttribute="bottom" constant="17" id="cw9-d9-3kd"/>
+                            <constraint firstItem="Ges-1U-Tcw" firstAttribute="bottom" secondItem="0cH-lF-pkI" secondAttribute="bottom" constant="41" id="gG4-xI-9ks"/>
+                            <constraint firstItem="Ges-1U-Tcw" firstAttribute="trailing" secondItem="21q-x7-iU8" secondAttribute="trailing" constant="230" id="ibw-Nd-K4w"/>
+                            <constraint firstItem="kFR-OY-CQw" firstAttribute="leading" secondItem="Ges-1U-Tcw" secondAttribute="leading" constant="23" id="nYW-Sv-5oz"/>
+                            <constraint firstItem="Ges-1U-Tcw" firstAttribute="trailing" secondItem="0cH-lF-pkI" secondAttribute="trailing" constant="144" id="pqa-VD-dH1"/>
+                            <constraint firstItem="Vwq-N5-92X" firstAttribute="trailing" secondItem="t57-ks-TWu" secondAttribute="trailingMargin" id="wGL-Lc-cCc"/>
+                            <constraint firstItem="JMB-Po-ftY" firstAttribute="trailing" secondItem="XBz-B0-1m4" secondAttribute="trailing" id="wlg-dx-q9O"/>
+                            <constraint firstItem="0cH-lF-pkI" firstAttribute="top" secondItem="XBz-B0-1m4" secondAttribute="bottom" constant="15" id="zgy-RD-22w"/>
+                            <constraint firstItem="Vwq-N5-92X" firstAttribute="trailing" secondItem="JMB-Po-ftY" secondAttribute="trailing" id="zlQ-iV-Tci"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ges-1U-Tcw"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="btnEnd" destination="Vwq-N5-92X" id="fLM-Mm-fm2"/>
+                        <outlet property="btnReset" destination="0cH-lF-pkI" id="rey-57-iBz"/>
+                        <outlet property="btnStart" destination="kFR-OY-CQw" id="Uz3-ge-LUe"/>
+                        <outlet property="lblCurrentProgress" destination="XBz-B0-1m4" id="Pvw-pW-hDG"/>
+                        <outlet property="progress" destination="jJA-eo-7UE" id="Or2-J7-FaA"/>
+                        <outlet property="progressView" destination="JMB-Po-ftY" id="U9k-fQ-L38"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dBE-cL-phZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2" y="45"/>
+            <point key="canvasLocation" x="-2.3999999999999999" y="44.527736131934034"/>
         </scene>
     </scenes>
 </document>

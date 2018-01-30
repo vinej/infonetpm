@@ -48,6 +48,7 @@
 		B25427AC1FCE06A00057A3F2 /* BaseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */; };
 		B25427AE1FCF2EF00057A3F2 /* RoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AD1FCF2EF00057A3F2 /* RoleViewController.swift */; };
 		B25427B01FCF311A0057A3F2 /* RoleEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AF1FCF311A0057A3F2 /* RoleEditViewController.swift */; };
+		B27382B42020E0EE0075BA8B /* SynchronizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27382B32020E0EE0075BA8B /* SynchronizeViewController.swift */; };
 		B27AF4821FD88E6300B42E57 /* DefinePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27AF4811FD88E6300B42E57 /* DefinePlan.storyboard */; };
 		B27AF4841FD88F1F00B42E57 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27AF4831FD88F1F00B42E57 /* PlanViewController.swift */; };
 		B27AF4861FD8938600B42E57 /* PlanEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27AF4851FD8938600B42E57 /* PlanEditViewController.swift */; };
@@ -119,6 +120,7 @@
 		B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditViewController.swift; sourceTree = "<group>"; };
 		B25427AD1FCF2EF00057A3F2 /* RoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleViewController.swift; sourceTree = "<group>"; };
 		B25427AF1FCF311A0057A3F2 /* RoleEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleEditViewController.swift; sourceTree = "<group>"; };
+		B27382B32020E0EE0075BA8B /* SynchronizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizeViewController.swift; sourceTree = "<group>"; };
 		B27AF4811FD88E6300B42E57 /* DefinePlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DefinePlan.storyboard; sourceTree = "<group>"; };
 		B27AF4831FD88F1F00B42E57 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
 		B27AF4851FD8938600B42E57 /* PlanEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanEditViewController.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				5E3916B91FFBF19F0093E43A /* BaseShowTableViewController.swift */,
 				5E0FADD82014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift */,
 				5E0FADDA2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift */,
+				B27382B32020E0EE0075BA8B /* SynchronizeViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				B29846B31FE04360000B6A7F /* BasePopupViewController.swift in Sources */,
 				5E47F3F21FEF49B6008E484A /* DateHelper.swift in Sources */,
 				5EC59BAB1FCB43FC005841BB /* Issue.swift in Sources */,
+				B27382B42020E0EE0075BA8B /* SynchronizeViewController.swift in Sources */,
 				B25427AC1FCE06A00057A3F2 /* BaseEditViewController.swift in Sources */,
 				5E85DAA41FED621D00573088 /* ActiviyEditTableViewController.swift in Sources */,
 				B20C675620165CC00029DE2D /* RestAPI.swift in Sources */,
