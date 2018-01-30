@@ -33,7 +33,7 @@ func dateMin() -> Date {
 extension Date {
     public func str() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssX"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         return formatter.string(from: self)
     }
 }
@@ -42,7 +42,7 @@ func toDate(_ dateStr: Any?) -> Date
 {
     let sdate = dateStr as! String
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssX"
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
     dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC") as TimeZone!
     let dataDate = dateFormatter.date(from: sdate )!
     return dataDate
