@@ -17,13 +17,14 @@ public class SynchronizeViewController: UIViewController {
     @IBOutlet weak var progress: UIActivityIndicatorView!
     @IBOutlet weak var lblCurrentProgress: UILabel!
     
-    let numberOfObjectToSynchronize : Float = 10.0
+    let numberOfObjectToSynchronize : Float = 9.0
     var isStop : Bool = false
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         progressView.progress = 0
+        progress.stopAnimating()
         isStop = false
     }
 
@@ -34,6 +35,9 @@ public class SynchronizeViewController: UIViewController {
     
 
     @IBAction func doStartSynchro(_ sender: UIButton) {
+        lblCurrentProgress.text = ""
+        progressView.progress = 0
+        progress.startAnimating()
         BG( {
                 print("This is run on the background queue")
                 RestAPI().sync(self)
@@ -41,20 +45,20 @@ public class SynchronizeViewController: UIViewController {
     }
     
     @IBAction func doEndSynchro(_ sender: UIButton) {
+        progress.stopAnimating()
     }
     
     @IBAction func doReset(_ sender: UIButton) {
     }
     
-    public func setCurrentObject(_ objectName: String) -> Bool {
+    public func setCurrentObject(_ objectName: String) {
         lblCurrentProgress.text = objectName + "\r\n" + lblCurrentProgress.text!
-        
         progressView.progress = progressView.progress + (1.0 / (numberOfObjectToSynchronize * 2.0) )
-        
-        return isStop
     }
     
-    /*
+    public func stop() {
+        progress.stopAnimating()
+    }    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

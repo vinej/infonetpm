@@ -356,7 +356,6 @@ public class DB {
         let realm = try! Realm()
         try! realm.write {
             DB.setField(object, field, value, isAllowNil)
-            DB.setField(object, field, value, isAllowNil)
             updateInternalFields(object)
             if (isSetDirty) {
                 DB.setDirty("\(type(of: object))", true)

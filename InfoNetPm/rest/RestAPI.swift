@@ -37,7 +37,7 @@ public class RestAPI {
     var asyncList : [ (Any.Type, String) ] = [
         (Company.self,            BaseRec.objectNameLower(Company.self)),
         (Resource.self,           BaseRec.objectNameLower(Resource.self)),
-        (Status.self,             BaseRec.objectNameLower(Status.self)),
+        //(Status.self,             BaseRec.objectNameLower(Status.self)),
         (Order.self,              BaseRec.objectNameLower(Order.self)),
         //syncObject(Document.self,           BaseRec.objectName(Document.self))
         //syncObject(Comment.self,            BaseRec.objectName(Comment.self))
@@ -54,13 +54,13 @@ public class RestAPI {
     var listToSync : Results<Object>
     var lastSyncDate :  Date
     var currentObjectName = ""
-    var currentNextFunc : (Int, RestAPI) -> ()
+    var currentNextFunc : (Int) -> ()
     var currentNext = 0
     var view : SynchronizeViewController
     
     init() {
         listToSync = DB.all(Status.self)
-        lastSyncDate = Date()
+        lastSyncDate = (listToSync[0] as! Status).lastSyncDate
         currentObjectName = ""
         currentNextFunc = RestAPI.staticPull
         currentNext = 0
@@ -68,41 +68,45 @@ public class RestAPI {
     }
     
     public func syncBaseRec(_ baseRec : BaseRec, _ objectName: String,
-                            _ nextFunc : @escaping (Int, RestAPI) -> (), _ next : Int, _ restApi : RestAPI) {
+                            _ nextFunc : @escaping (Int) -> (), _ next : Int) {
         if (baseRec.isNew) {  // could be UpdatedDate == CreatedDate
             // add a new record on the server
-            api(baseRec, objectName, HTTPMethod.post, nextFunc, next, restApi)
+            api(baseRec, objectName, HTTPMethod.post, nextFunc, next)
         } else if (baseRec.isDeleted) {
             // soft delete a record
-            api(baseRec, objectName, HTTPMethod.delete, nextFunc, next, restApi)
+            api(baseRec, objectName, HTTPMethod.delete, nextFunc, next)
         } else {
             // update a record
-            api(baseRec, objectName, HTTPMethod.put, nextFunc, next, restApi)
+            api(baseRec, objectName, HTTPMethod.put, nextFunc, next)
         }
     }
     
     public func get<T>(_ objectType : T.Type, _ objectName: String, _ lastUpdated: Date,
-                       _ nextFunc : @escaping (Int, RestAPI) -> (), _ next: Int,  _ restApi : RestAPI) {
+                       _ nextFunc : @escaping (Int) -> (), _ next: Int) {
         Alamofire.request("\(API_URL)\(objectName)/\(lastUpdated.str())").responseJSON { response in
-            restApi.asyncPull(objectType, objectName, JSON(response.result.value!), nextFunc, next, restApi)
+            self.asyncPull(objectType, objectName, JSON(response.result.value!), nextFunc, next)
         }
     }
     
     public func api(_ baseRec : BaseRec, _ objectName: String, _ method : HTTPMethod,
-                    _ nextFunc : @escaping (Int, RestAPI) -> (), _ next: Int, _ restApi: RestAPI) {
+                    _ nextFunc : @escaping (Int) -> (), _ next: Int) {
         let parameters = baseRec.encode()
         
         Alamofire.request("\(API_URL)\(objectName)", method: method, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
-            let swiftyJsonVar = JSON(response.result.value!)
-            if let data = swiftyJsonVar["result"].dictionaryObject {
-                baseRec.decode(data)
+            // the current context is lost, reset the current values
+            if (response.result.value != nil) {
+                let swiftyJsonVar = JSON(response.result.value!)
+                if let data = swiftyJsonVar["result"].dictionaryObject {
+                    // listToSync will decrease by one, because now isSync = true for this record
+                    baseRec.decode(data)
+                }
             }
-            nextFunc(next, restApi)
+            nextFunc(next)
         }
     }
 
     public func asyncPush<T>(_ objectType : T.Type, _ objectName : String,
-                             _ nextFunc : @escaping (Int, RestAPI) -> (), _ next : Int, _ restApi: RestAPI) {
+                             _ nextFunc : @escaping (Int) -> (), _ next : Int) {
         //-------------
         // Algorithme used to synchronized the mobile device with the server
         // pull latest modification from the server first. Only records with no conflit will be managed by the pull.
@@ -114,39 +118,39 @@ public class RestAPI {
         //get(objectType, objectName, status.lastSyncDate)
         //
         // push the dirty field to the server
-        restApi.listToSync = DB.filter(objectType, "isSync = %@", false)
-        if (restApi.listToSync.count == 0) {
+        // note : listToSync will decrease themself when we decode the data and the field isSync = true
+        listToSync = DB.filter(objectType, "isSync = %@", false)
+        
+        if (listToSync.count == 0) {
             // next objecy
-            nextFunc(next, restApi)
+            nextFunc(next)
             return
         }
-        restApi.currentObjectName = objectName
-        restApi.currentNextFunc = nextFunc
-        restApi.currentNext = next
-        syncBaseRec(restApi.listToSync[0] as! BaseRec, restApi.currentObjectName, nextToPush, 1, restApi)
+        currentObjectName = objectName
+        currentNextFunc = nextFunc
+        currentNext = next
+        // push in the reverse order, because Real will remove the push record from
+        // the listtoSync, becasue a filter is dynamic and change when record fields changes
+        syncBaseRec(listToSync[listToSync.count - 1] as! BaseRec, currentObjectName, nextToPush, listToSync.count - 2)
     }
     
-    public func nextToPush( _ next : Int, _ restApi: RestAPI) {
-        if (restApi.listToSync.count == 0) {
-           return
-        }
-        
-        if (next == restApi.listToSync.count) {
-            restApi.currentNextFunc(restApi.currentNext, restApi)
+    public func nextToPush( _ next : Int) {
+        if (listToSync.count == 0 || next == -1) {
+            currentNextFunc(currentNext)
             return
         }
-        syncBaseRec(listToSync[next] as! BaseRec, currentObjectName, nextToPush, next + 1, restApi)
+        syncBaseRec(listToSync[next] as! BaseRec, currentObjectName, nextToPush, next - 1)
     }
 
-    public func asyncPull<T>(_ objectType : T.Type, _ objectName : String, _ json: JSON, _ nextFunc : (Int, RestAPI) -> (), _ next : Int, _ restApi: RestAPI) {
+    public func asyncPull<T>(_ objectType : T.Type, _ objectName : String, _ json: JSON, _ nextFunc : (Int) -> (), _ next : Int) {
         if (json.count == 0) {
-            nextFunc(next,restApi)
+            nextFunc(next)
             return
         }
         
         for (_,subJson) : (String, JSON) in json {
             if (subJson.count == 0) {
-                nextFunc(next, restApi)
+                nextFunc(next)
                 return
             }
             for serverRec in subJson.array!  {
@@ -173,7 +177,7 @@ public class RestAPI {
             }
         }
         
-        nextFunc(next,restApi)
+        nextFunc(next)
     }
 
     // synchronize the mobile db with the server
@@ -182,37 +186,31 @@ public class RestAPI {
     public func sync(_ view: SynchronizeViewController) {
         // strats to pull all new records
         self.view = view
-         _ = UI({ self.view.setCurrentObject("Starting synchronization") } )
-
-        pull(0, self)
+        UI({ self.view.setCurrentObject("Starting synchronization") } )
+        pull(0)
     }
 
-    // dummy
-    public static func staticPull(_ next : Int, _ restApi: RestAPI) {
-        if (next == restApi.asyncList.count) {
-            // push the remainding record not sync yes
-            restApi.push(0, restApi)
-            return
-        }
-        _ = UI({ restApi.view.setCurrentObject(restApi.asyncList[next].1) } )
-        restApi.get(restApi.asyncList[next].0 as! Object.Type, restApi.asyncList[next].1, restApi.lastSyncDate, restApi.pull,  next + 1, restApi)
+    // dummy to init the var
+    public static func staticPull(_ next : Int) {
     }
 
-    public func pull(_ next : Int, _ restApi: RestAPI) {
+    public func pull(_ next : Int) {
         if (next == asyncList.count) {
             // push the remainding record not sync yes
-            push(0, restApi)
+            push(0)
             return
         }
-        _ = UI({ restApi.view.setCurrentObject("Pulling:  \(restApi.asyncList[next].1)") } )
-        get(asyncList[next].0 as! Object.Type, asyncList[next].1, lastSyncDate, pull,  next + 1, restApi)
+        UI({ self.view.setCurrentObject("Pulling:  \(self.asyncList[next].1)") } )
+        get(asyncList[next].0 as! Object.Type, asyncList[next].1, lastSyncDate, pull,  next + 1)
     }
     
-    public func push(_ next : Int, _ restApi: RestAPI) {
-        if (next == restApi.asyncList.count) {
+    public func push(_ next : Int) {
+        if (next == asyncList.count) {
+            DB.update(DB.all(Status.self)[0], "lastSyncDate", Date())
+            UI({ self.view.stop() })
             return
         }
-        _ = UI({ restApi.view.setCurrentObject("Pushing:  \(restApi.asyncList[next].1)") } )
-        asyncPush(asyncList[next].0 as! Object.Type, asyncList[next].1, push,  next + 1, restApi)
+        UI({ self.view.setCurrentObject("Pushing:  \(self.asyncList[next].1)") } )
+        asyncPush(asyncList[next].0 as! Object.Type, asyncList[next].1, push,  next + 1)
     }
 }

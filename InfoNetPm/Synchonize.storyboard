@@ -20,10 +20,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jJA-eo-7UE">
-                                <rect key="frame" x="16" y="126" width="20" height="20"/>
+                                <rect key="frame" x="16" y="58" width="20" height="20"/>
                             </activityIndicatorView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="JMB-Po-ftY">
-                                <rect key="frame" x="57" y="137" width="302" height="2.5"/>
+                                <rect key="frame" x="50" y="69" width="302" height="2"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
                                         <size key="value" width="0.0" height="0.0"/>
@@ -31,36 +31,30 @@
                                 </userDefinedRuntimeAttributes>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFR-OY-CQw">
-                                <rect key="frame" x="23" y="20" width="114" height="30"/>
+                                <rect key="frame" x="16" y="20" width="114" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="MDB-0y-gVC"/>
+                                    <constraint firstAttribute="height" constant="30" id="D32-gY-mt5"/>
+                                    <constraint firstAttribute="width" constant="114" id="ss1-rc-2Jl"/>
                                 </constraints>
                                 <state key="normal" title="Start Synchro"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="doStartSynchro:" destination="YMd-DI-4GA" eventType="touchUpInside" id="7ls-5D-NZW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21q-x7-iU8">
-                                <rect key="frame" x="16" y="170" width="129" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="6PC-jo-nf0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwq-N5-92X">
-                                <rect key="frame" x="245" y="19" width="114" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="3sk-s1-grt"/>
-                                </constraints>
+                                <rect key="frame" x="138" y="20" width="114" height="30"/>
                                 <state key="normal" title="Stop Synchro"/>
                                 <connections>
                                     <action selector="doEndSynchro:" destination="YMd-DI-4GA" eventType="touchUpInside" id="ksl-O5-c62"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." lineBreakMode="tailTruncation" numberOfLines="999" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBz-B0-1m4">
-                                <rect key="frame" x="16" y="208" width="343" height="373"/>
+                                <rect key="frame" x="16" y="121" width="343" height="460"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -76,36 +70,45 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cH-lF-pkI">
                                 <rect key="frame" x="16" y="596" width="215" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ulF-uM-Vc9"/>
+                                    <constraint firstAttribute="height" constant="30" id="aPh-VT-CcW"/>
                                 </constraints>
                                 <state key="normal" title="Resynchronize all from server"/>
                                 <connections>
                                     <action selector="doReset:" destination="YMd-DI-4GA" eventType="touchUpInside" id="R2g-FI-NWx"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21q-x7-iU8">
+                                <rect key="frame" x="16" y="92" width="129" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="nIn-7a-uS2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="XBz-B0-1m4" firstAttribute="leading" secondItem="0cH-lF-pkI" secondAttribute="leading" id="0mF-Li-0Y9"/>
-                            <constraint firstItem="jJA-eo-7UE" firstAttribute="top" secondItem="kFR-OY-CQw" secondAttribute="bottom" constant="76" id="E9T-ph-P9N"/>
-                            <constraint firstItem="21q-x7-iU8" firstAttribute="leading" secondItem="XBz-B0-1m4" secondAttribute="leading" id="EBm-UI-y8Z"/>
-                            <constraint firstItem="JMB-Po-ftY" firstAttribute="top" secondItem="Vwq-N5-92X" secondAttribute="bottom" constant="88" id="Hmc-Uz-f74"/>
-                            <constraint firstItem="JMB-Po-ftY" firstAttribute="leading" secondItem="t57-ks-TWu" secondAttribute="leadingMargin" constant="41" id="Quf-ya-0m5"/>
-                            <constraint firstItem="21q-x7-iU8" firstAttribute="top" secondItem="jJA-eo-7UE" secondAttribute="bottom" constant="24" id="Rrr-28-Y7w"/>
-                            <constraint firstItem="kFR-OY-CQw" firstAttribute="centerX" secondItem="21q-x7-iU8" secondAttribute="centerX" id="XHe-NF-81v"/>
-                            <constraint firstItem="jJA-eo-7UE" firstAttribute="leading" secondItem="t57-ks-TWu" secondAttribute="leadingMargin" id="Z4v-4r-upb"/>
-                            <constraint firstItem="jJA-eo-7UE" firstAttribute="leading" secondItem="21q-x7-iU8" secondAttribute="leading" id="ZUZ-Gj-HVn"/>
-                            <constraint firstItem="kFR-OY-CQw" firstAttribute="top" secondItem="Ges-1U-Tcw" secondAttribute="top" id="b6T-dR-U64"/>
-                            <constraint firstItem="21q-x7-iU8" firstAttribute="top" secondItem="JMB-Po-ftY" secondAttribute="bottom" constant="31.5" id="cbl-CH-pqc"/>
-                            <constraint firstItem="XBz-B0-1m4" firstAttribute="top" secondItem="21q-x7-iU8" secondAttribute="bottom" constant="17" id="cw9-d9-3kd"/>
-                            <constraint firstItem="Ges-1U-Tcw" firstAttribute="bottom" secondItem="0cH-lF-pkI" secondAttribute="bottom" constant="41" id="gG4-xI-9ks"/>
-                            <constraint firstItem="Ges-1U-Tcw" firstAttribute="trailing" secondItem="21q-x7-iU8" secondAttribute="trailing" constant="230" id="ibw-Nd-K4w"/>
-                            <constraint firstItem="kFR-OY-CQw" firstAttribute="leading" secondItem="Ges-1U-Tcw" secondAttribute="leading" constant="23" id="nYW-Sv-5oz"/>
-                            <constraint firstItem="Ges-1U-Tcw" firstAttribute="trailing" secondItem="0cH-lF-pkI" secondAttribute="trailing" constant="144" id="pqa-VD-dH1"/>
-                            <constraint firstItem="Vwq-N5-92X" firstAttribute="trailing" secondItem="t57-ks-TWu" secondAttribute="trailingMargin" id="wGL-Lc-cCc"/>
-                            <constraint firstItem="JMB-Po-ftY" firstAttribute="trailing" secondItem="XBz-B0-1m4" secondAttribute="trailing" id="wlg-dx-q9O"/>
-                            <constraint firstItem="0cH-lF-pkI" firstAttribute="top" secondItem="XBz-B0-1m4" secondAttribute="bottom" constant="15" id="zgy-RD-22w"/>
-                            <constraint firstItem="Vwq-N5-92X" firstAttribute="trailing" secondItem="JMB-Po-ftY" secondAttribute="trailing" id="zlQ-iV-Tci"/>
+                            <constraint firstItem="Ges-1U-Tcw" firstAttribute="trailing" secondItem="0cH-lF-pkI" secondAttribute="trailing" constant="144" id="0to-yT-gxo"/>
+                            <constraint firstItem="Ges-1U-Tcw" firstAttribute="bottom" secondItem="0cH-lF-pkI" secondAttribute="bottom" constant="41" id="8iq-Xe-UCm"/>
+                            <constraint firstItem="JMB-Po-ftY" firstAttribute="leading" secondItem="t57-ks-TWu" secondAttribute="leadingMargin" constant="34" id="E4N-P8-TP3"/>
+                            <constraint firstItem="21q-x7-iU8" firstAttribute="leading" secondItem="XBz-B0-1m4" secondAttribute="leading" id="Nns-ff-Mur"/>
+                            <constraint firstItem="jJA-eo-7UE" firstAttribute="leading" secondItem="21q-x7-iU8" secondAttribute="leading" id="OuB-9M-mON"/>
+                            <constraint firstItem="Vwq-N5-92X" firstAttribute="leading" secondItem="kFR-OY-CQw" secondAttribute="trailing" constant="8" symbolic="YES" id="PvX-qa-wFu"/>
+                            <constraint firstItem="0cH-lF-pkI" firstAttribute="top" secondItem="XBz-B0-1m4" secondAttribute="bottom" constant="15" id="Pwi-eC-nyb"/>
+                            <constraint firstItem="Ges-1U-Tcw" firstAttribute="trailing" secondItem="Vwq-N5-92X" secondAttribute="trailing" constant="123" id="SUg-fk-I4i"/>
+                            <constraint firstItem="kFR-OY-CQw" firstAttribute="leading" secondItem="jJA-eo-7UE" secondAttribute="leading" id="TEe-7C-lBy"/>
+                            <constraint firstItem="kFR-OY-CQw" firstAttribute="baseline" secondItem="Vwq-N5-92X" secondAttribute="baseline" id="TXD-Cz-EJS"/>
+                            <constraint firstItem="JMB-Po-ftY" firstAttribute="top" secondItem="kFR-OY-CQw" secondAttribute="bottom" constant="19" id="UiL-ao-YRa"/>
+                            <constraint firstItem="XBz-B0-1m4" firstAttribute="leading" secondItem="0cH-lF-pkI" secondAttribute="leading" id="Ulp-rz-20E"/>
+                            <constraint firstItem="Ges-1U-Tcw" firstAttribute="trailing" secondItem="21q-x7-iU8" secondAttribute="trailing" constant="230" id="XtJ-Pk-hDd"/>
+                            <constraint firstItem="jJA-eo-7UE" firstAttribute="top" secondItem="kFR-OY-CQw" secondAttribute="bottom" constant="8" symbolic="YES" id="iWW-99-MRl"/>
+                            <constraint firstItem="21q-x7-iU8" firstAttribute="top" secondItem="jJA-eo-7UE" secondAttribute="bottom" constant="14" id="kkO-TW-BcL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JMB-Po-ftY" secondAttribute="trailing" constant="7" id="m89-GV-bEp"/>
+                            <constraint firstItem="XBz-B0-1m4" firstAttribute="top" secondItem="21q-x7-iU8" secondAttribute="bottom" constant="8" symbolic="YES" id="n9P-de-jHn"/>
+                            <constraint firstItem="kFR-OY-CQw" firstAttribute="top" secondItem="Ges-1U-Tcw" secondAttribute="top" id="rEE-dn-YEF"/>
+                            <constraint firstItem="XBz-B0-1m4" firstAttribute="trailing" secondItem="t57-ks-TWu" secondAttribute="trailingMargin" id="uPS-Ae-n0F"/>
+                            <constraint firstItem="kFR-OY-CQw" firstAttribute="leading" secondItem="t57-ks-TWu" secondAttribute="leadingMargin" id="yM8-1L-eXA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ges-1U-Tcw"/>
                         <userDefinedRuntimeAttributes>
