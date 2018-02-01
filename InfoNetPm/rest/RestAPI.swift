@@ -176,7 +176,6 @@ public class RestAPI {
                 }
             }
         }
-        
         nextFunc(next)
     }
 

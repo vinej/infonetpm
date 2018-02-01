@@ -44,6 +44,7 @@
 		B23376F21FD1ADE8006CD61F /* Resource.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23376F11FD1ADE8006CD61F /* Resource.storyboard */; };
 		B23376F41FD1AE93006CD61F /* ResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23376F31FD1AE93006CD61F /* ResourceViewController.swift */; };
 		B23376F61FD1AF49006CD61F /* ResourceEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23376F51FD1AF49006CD61F /* ResourceEditViewController.swift */; };
+		B24FD55C2023A709007C62EC /* flask-jwt-auth in Resources */ = {isa = PBXBuildFile; fileRef = B24FD55B2023A709007C62EC /* flask-jwt-auth */; };
 		B25427AA1FCDFEF30057A3F2 /* ProjectEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427A91FCDFEF30057A3F2 /* ProjectEditViewController.swift */; };
 		B25427AC1FCE06A00057A3F2 /* BaseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */; };
 		B25427AE1FCF2EF00057A3F2 /* RoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AD1FCF2EF00057A3F2 /* RoleViewController.swift */; };
@@ -116,6 +117,7 @@
 		B23376F11FD1ADE8006CD61F /* Resource.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resource.storyboard; sourceTree = "<group>"; };
 		B23376F31FD1AE93006CD61F /* ResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
 		B23376F51FD1AF49006CD61F /* ResourceEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceEditViewController.swift; sourceTree = "<group>"; };
+		B24FD55B2023A709007C62EC /* flask-jwt-auth */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "flask-jwt-auth"; sourceTree = "<group>"; };
 		B25427A91FCDFEF30057A3F2 /* ProjectEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditViewController.swift; sourceTree = "<group>"; };
 		B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditViewController.swift; sourceTree = "<group>"; };
 		B25427AD1FCF2EF00057A3F2 /* RoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		5EC59B7A1FCB40CC005841BB = {
 			isa = PBXGroup;
 			children = (
+				B24FD55B2023A709007C62EC /* flask-jwt-auth */,
 				5E0ABF231FCB57F80011897E /* README.md */,
 				5EC59B851FCB40CC005841BB /* InfoNetPm */,
 				5EC59B841FCB40CC005841BB /* Products */,
@@ -382,6 +385,7 @@
 				B2BF254F1FCC6518001C65EB /* DefineData.storyboard in Resources */,
 				B27AF4821FD88E6300B42E57 /* DefinePlan.storyboard in Resources */,
 				5EC59B991FCB4116005841BB /* Podfile in Resources */,
+				B24FD55C2023A709007C62EC /* flask-jwt-auth in Resources */,
 				5ED3C2891FF97E8B00E14139 /* LaunchPlan.storyboard in Resources */,
 				5EC59B8C1FCB40CC005841BB /* Main.storyboard in Resources */,
 				B23376F21FD1ADE8006CD61F /* Resource.storyboard in Resources */,
