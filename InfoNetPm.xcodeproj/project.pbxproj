@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E0137A92001379500A2A65A /* ActivityHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0137A82001379500A2A65A /* ActivityHistory.swift */; };
 		5E0ABF241FCB57F80011897E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5E0ABF231FCB57F80011897E /* README.md */; };
 		5E0FADD92014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FADD82014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift */; };
 		5E0FADDB2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FADDA2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift */; };
-		5E0FADDD201533D10062F2E6 /* BaseRec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FADDC201533D10062F2E6 /* BaseRec.swift */; };
-		5E0FADDF20153FC20062F2E6 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FADDE20153FC20062F2E6 /* Status.swift */; };
-		5E136FFF1FD308BC004F2180 /* Audit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E136FFE1FD308BC004F2180 /* Audit.swift */; };
 		5E1370011FD30FBE004F2180 /* AuditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1370001FD30FBE004F2180 /* AuditViewController.swift */; };
 		5E17D5331FF2038D008B457E /* DefineDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E17D5321FF2038D008B457E /* DefineDataViewController.swift */; };
 		5E3916BA1FFBF19F0093E43A /* BaseShowTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3916B91FFBF19F0093E43A /* BaseShowTableViewController.swift */; };
@@ -38,7 +34,6 @@
 		5ED3C2871FF953C600E14139 /* ChoosePopupLaunchPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED3C2861FF953C600E14139 /* ChoosePopupLaunchPlan.swift */; };
 		5ED3C2891FF97E8B00E14139 /* LaunchPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ED3C2881FF97E8B00E14139 /* LaunchPlan.storyboard */; };
 		5EDBA2781FFBDF01006A65E1 /* ShowPlanActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDBA2771FFBDF01006A65E1 /* ShowPlanActivitiesViewController.swift */; };
-		5EE2C21A1FF17DFA00FE00E2 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE2C2191FF17DFA00FE00E2 /* Order.swift */; };
 		9A338E0B981DA06054C4EC8B /* Pods_InfoNetPm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */; };
 		B20C675620165CC00029DE2D /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20C675520165CC00029DE2D /* RestAPI.swift */; };
 		B23376F21FD1ADE8006CD61F /* Resource.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23376F11FD1ADE8006CD61F /* Resource.storyboard */; };
@@ -69,6 +64,11 @@
 		B2BF255D1FCC710C001C65EB /* Project.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF255C1FCC710C001C65EB /* Project.storyboard */; };
 		B2BF25621FCC7423001C65EB /* CompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25611FCC7423001C65EB /* CompanyViewController.swift */; };
 		B2BF25641FCCBD6A001C65EB /* CompanyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BF25631FCCBD6A001C65EB /* CompanyEditViewController.swift */; };
+		B2C5C20E2023AF9700A1330A /* BaseRec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C5C2092023AF9600A1330A /* BaseRec.swift */; };
+		B2C5C20F2023AF9700A1330A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C5C20A2023AF9700A1330A /* Status.swift */; };
+		B2C5C2102023AF9700A1330A /* Audit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C5C20B2023AF9700A1330A /* Audit.swift */; };
+		B2C5C2112023AF9700A1330A /* ActivityHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C5C20C2023AF9700A1330A /* ActivityHistory.swift */; };
+		B2C5C2122023AF9700A1330A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C5C20D2023AF9700A1330A /* Order.swift */; };
 		B2DA62211FCDE2440040803A /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA62201FCDE2440040803A /* ProjectViewController.swift */; };
 		B2DA62231FCDEFF40040803A /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA62221FCDEFF40040803A /* BaseTableViewController.swift */; };
 		B2DDC2151FCDCBDE00119895 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DDC2141FCDCBDE00119895 /* Helper.swift */; };
@@ -79,13 +79,9 @@
 
 /* Begin PBXFileReference section */
 		113DD52B34E47BD0B431CA86 /* Pods_InfoNetPm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InfoNetPm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E0137A82001379500A2A65A /* ActivityHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityHistory.swift; sourceTree = "<group>"; };
 		5E0ABF231FCB57F80011897E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5E0FADD82014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePopupPlanActivitiesViewController.swift; sourceTree = "<group>"; };
 		5E0FADDA2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePopupBasePlanViewController.swift; sourceTree = "<group>"; };
-		5E0FADDC201533D10062F2E6 /* BaseRec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRec.swift; sourceTree = "<group>"; };
-		5E0FADDE20153FC20062F2E6 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
-		5E136FFE1FD308BC004F2180 /* Audit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audit.swift; sourceTree = "<group>"; };
 		5E1370001FD30FBE004F2180 /* AuditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditViewController.swift; sourceTree = "<group>"; };
 		5E17D5321FF2038D008B457E /* DefineDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineDataViewController.swift; sourceTree = "<group>"; };
 		5E3916B91FFBF19F0093E43A /* BaseShowTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShowTableViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +108,6 @@
 		5ED3C2861FF953C600E14139 /* ChoosePopupLaunchPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePopupLaunchPlan.swift; sourceTree = "<group>"; };
 		5ED3C2881FF97E8B00E14139 /* LaunchPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchPlan.storyboard; sourceTree = "<group>"; };
 		5EDBA2771FFBDF01006A65E1 /* ShowPlanActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPlanActivitiesViewController.swift; sourceTree = "<group>"; };
-		5EE2C2191FF17DFA00FE00E2 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		B20C675520165CC00029DE2D /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
 		B23376F11FD1ADE8006CD61F /* Resource.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resource.storyboard; sourceTree = "<group>"; };
 		B23376F31FD1AE93006CD61F /* ResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +137,11 @@
 		B2BF255C1FCC710C001C65EB /* Project.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Project.storyboard; sourceTree = "<group>"; };
 		B2BF25611FCC7423001C65EB /* CompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyViewController.swift; sourceTree = "<group>"; };
 		B2BF25631FCCBD6A001C65EB /* CompanyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyEditViewController.swift; sourceTree = "<group>"; };
+		B2C5C2092023AF9600A1330A /* BaseRec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseRec.swift; path = InfoNetPm/Model/BaseRec.swift; sourceTree = SOURCE_ROOT; };
+		B2C5C20A2023AF9700A1330A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Status.swift; path = InfoNetPm/Model/Status.swift; sourceTree = SOURCE_ROOT; };
+		B2C5C20B2023AF9700A1330A /* Audit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Audit.swift; path = InfoNetPm/Model/Audit.swift; sourceTree = SOURCE_ROOT; };
+		B2C5C20C2023AF9700A1330A /* ActivityHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityHistory.swift; path = InfoNetPm/Model/ActivityHistory.swift; sourceTree = SOURCE_ROOT; };
+		B2C5C20D2023AF9700A1330A /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Order.swift; path = InfoNetPm/Model/Order.swift; sourceTree = SOURCE_ROOT; };
 		B2DA62201FCDE2440040803A /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		B2DA62221FCDEFF40040803A /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		B2DDC2141FCDCBDE00119895 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -236,6 +236,11 @@
 		5EC59B9D1FCB43CF005841BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B2C5C20C2023AF9700A1330A /* ActivityHistory.swift */,
+				B2C5C20B2023AF9700A1330A /* Audit.swift */,
+				B2C5C2092023AF9600A1330A /* BaseRec.swift */,
+				B2C5C20D2023AF9700A1330A /* Order.swift */,
+				B2C5C20A2023AF9700A1330A /* Status.swift */,
 				B2E30F911FD1AA5A0098031F /* Activity.swift */,
 				B2E30F931FD1AA5B0098031F /* Document.swift */,
 				B2E30F921FD1AA5B0098031F /* Role.swift */,
@@ -248,11 +253,6 @@
 				5EC59BA61FCB43FC005841BB /* DB.swift */,
 				5EC59BA41FCB43FC005841BB /* Resource.swift */,
 				5EC59BA01FCB43FC005841BB /* Task.swift */,
-				5E136FFE1FD308BC004F2180 /* Audit.swift */,
-				5EE2C2191FF17DFA00FE00E2 /* Order.swift */,
-				5E0137A82001379500A2A65A /* ActivityHistory.swift */,
-				5E0FADDC201533D10062F2E6 /* BaseRec.swift */,
-				5E0FADDE20153FC20062F2E6 /* Status.swift */,
 			);
 			name = Model;
 			path = "New Group";
@@ -484,8 +484,9 @@
 				5E85DAA41FED621D00573088 /* ActiviyEditTableViewController.swift in Sources */,
 				B20C675620165CC00029DE2D /* RestAPI.swift in Sources */,
 				5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */,
+				B2C5C2122023AF9700A1330A /* Order.swift in Sources */,
+				B2C5C20F2023AF9700A1330A /* Status.swift in Sources */,
 				5E85DAA21FED61A700573088 /* ActivityViewController.swift in Sources */,
-				5E0FADDD201533D10062F2E6 /* BaseRec.swift in Sources */,
 				5ED3C2871FF953C600E14139 /* ChoosePopupLaunchPlan.swift in Sources */,
 				B2E30F961FD1AA5B0098031F /* Document.swift in Sources */,
 				B2E30F951FD1AA5B0098031F /* Role.swift in Sources */,
@@ -495,7 +496,6 @@
 				5EC59BA91FCB43FC005841BB /* Task.swift in Sources */,
 				B25427AA1FCDFEF30057A3F2 /* ProjectEditViewController.swift in Sources */,
 				B25427B01FCF311A0057A3F2 /* RoleEditViewController.swift in Sources */,
-				5E136FFF1FD308BC004F2180 /* Audit.swift in Sources */,
 				5E1370011FD30FBE004F2180 /* AuditViewController.swift in Sources */,
 				B2DDC2151FCDCBDE00119895 /* Helper.swift in Sources */,
 				5EDBA2781FFBDF01006A65E1 /* ShowPlanActivitiesViewController.swift in Sources */,
@@ -503,19 +503,19 @@
 				5E0FADDB2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift in Sources */,
 				5EC59BA71FCB43FC005841BB /* Plan.swift in Sources */,
 				B27AF4861FD8938600B42E57 /* PlanEditViewController.swift in Sources */,
+				B2C5C20E2023AF9700A1330A /* BaseRec.swift in Sources */,
 				5EC59BAF1FCB43FC005841BB /* DB.swift in Sources */,
 				B29846B11FE032D2000B6A7F /* ChoosePopupPlanViewController.swift in Sources */,
 				5E17D5331FF2038D008B457E /* DefineDataViewController.swift in Sources */,
 				B23376F41FD1AE93006CD61F /* ResourceViewController.swift in Sources */,
-				5E0137A92001379500A2A65A /* ActivityHistory.swift in Sources */,
 				5EC59BA81FCB43FC005841BB /* Comment.swift in Sources */,
-				5E0FADDF20153FC20062F2E6 /* Status.swift in Sources */,
+				B2C5C2102023AF9700A1330A /* Audit.swift in Sources */,
 				5EC59BAA1FCB43FC005841BB /* Company.swift in Sources */,
 				5E0FADD92014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift in Sources */,
-				5EE2C21A1FF17DFA00FE00E2 /* Order.swift in Sources */,
 				B29846B51FE0708A000B6A7F /* DesignPlanViewController.swift in Sources */,
 				B2E30F941FD1AA5B0098031F /* Activity.swift in Sources */,
 				5EC59BAC1FCB43FC005841BB /* Project.swift in Sources */,
+				B2C5C2112023AF9700A1330A /* ActivityHistory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
