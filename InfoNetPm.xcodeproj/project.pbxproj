@@ -44,6 +44,7 @@
 		B23376F21FD1ADE8006CD61F /* Resource.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23376F11FD1ADE8006CD61F /* Resource.storyboard */; };
 		B23376F41FD1AE93006CD61F /* ResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23376F31FD1AE93006CD61F /* ResourceViewController.swift */; };
 		B23376F61FD1AF49006CD61F /* ResourceEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23376F51FD1AF49006CD61F /* ResourceEditViewController.swift */; };
+		B24FD55E2023AB8B007C62EC /* project in Resources */ = {isa = PBXBuildFile; fileRef = B24FD55D2023AB8A007C62EC /* project */; };
 		B25427AA1FCDFEF30057A3F2 /* ProjectEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427A91FCDFEF30057A3F2 /* ProjectEditViewController.swift */; };
 		B25427AC1FCE06A00057A3F2 /* BaseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */; };
 		B25427AE1FCF2EF00057A3F2 /* RoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AD1FCF2EF00057A3F2 /* RoleViewController.swift */; };
@@ -116,6 +117,7 @@
 		B23376F11FD1ADE8006CD61F /* Resource.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resource.storyboard; sourceTree = "<group>"; };
 		B23376F31FD1AE93006CD61F /* ResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
 		B23376F51FD1AF49006CD61F /* ResourceEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceEditViewController.swift; sourceTree = "<group>"; };
+		B24FD55D2023AB8A007C62EC /* project */ = {isa = PBXFileReference; lastKnownFileType = folder; path = project; sourceTree = "<group>"; };
 		B25427A91FCDFEF30057A3F2 /* ProjectEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditViewController.swift; sourceTree = "<group>"; };
 		B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditViewController.swift; sourceTree = "<group>"; };
 		B25427AD1FCF2EF00057A3F2 /* RoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 		5EC59B851FCB40CC005841BB /* InfoNetPm */ = {
 			isa = PBXGroup;
 			children = (
+				B24FD55D2023AB8A007C62EC /* project */,
 				B20C6754201657F80029DE2D /* rest */,
 				B2DDC2131FCDCBB600119895 /* Helper */,
 				B2BF255E1FCC73D0001C65EB /* View */,
@@ -368,6 +371,7 @@
 			files = (
 				B2BF255D1FCC710C001C65EB /* Project.storyboard in Resources */,
 				B2BF25591FCC70EC001C65EB /* Company.storyboard in Resources */,
+				B24FD55E2023AB8B007C62EC /* project in Resources */,
 				B2BF25531FCC6539001C65EB /* DrivePlan.storyboard in Resources */,
 				B2BF254B1FCC64C3001C65EB /* ChatRoom.storyboard in Resources */,
 				B2BF25511FCC6526001C65EB /* DefineActivity.storyboard in Resources */,
