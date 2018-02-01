@@ -8,7 +8,7 @@
 
 import Foundation
 import RealmSwift
-
+ 
 public class Address: Object {
     @objc dynamic var country = ""
     @objc dynamic var state = ""        // state, region, province

@@ -5,7 +5,6 @@
 //  Created by jyv on 12/25/17.
 //  Copyright © 2017 Info JYV Inc. All rights reserved.
 //
-
 import Foundation
 import RealmSwift
 
