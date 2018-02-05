@@ -9,6 +9,45 @@ from project.server.models import User, BlacklistToken
 
 auth_blueprint = Blueprint('auth', __name__)
 
+def isBadtoken(token):
+    return resp[0:9] == "BadToken:"
+#def
+
+
+# check token before each request
+@app.before_request
+def before_req():
+    # not not check token for authorization call
+    if (request.url[0:5] == '/auth':
+        return
+    
+    post_data = request.get_json()
+    
+    auth_token = post_data.get('auth_token')
+    if auth_token == None:
+        abort(401)
+        responseObject = {
+            'status': 'fail',
+            'message': 'need an auth_token',
+            'redirect': request.url
+        }
+        return make_response(jsonify(responseObject)), 401
+    #if
+        
+    # try to decode the token
+    resp = User.decode_auth_token(auth_token)
+    if isBadtoken(resp):
+        # response 401, to retry to get a new token
+        responseObject = {
+            'status': 'fail',
+            'message': 'BadToken',
+            'redirect': request.url
+            }
+        return make_response(jsonify(responseObject)), 401
+    #if
+#def
+
+
 class RegisterAPI(MethodView):
     """
     User Registration Resource
@@ -100,7 +139,7 @@ class UserAPI(MethodView):
 
         if auth_token:
             resp = User.decode_auth_token(auth_token)
-            if not resp[0:6] == "Token:":
+            if not isBadToken(resp):
                 user = User.get_user_by_id(resp)
                 responseObject = {
                     'status': 'success',
@@ -138,7 +177,7 @@ class LogoutAPI(MethodView):
             auth_token = ''
         if auth_token:
             resp = User.decode_auth_token(auth_token)
-            if not resp[0:6] == "Token:":
+            if not isBadToken(resp):
                 try:
                     # insert the token
                     blacklist_token = BlacklistToken.post_blacklist(auth_token)

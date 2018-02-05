@@ -14,4 +14,5 @@ target 'InfoNetPm' do
   pod 'FontAwesome.swift'
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'p2.OAuth2'
 end

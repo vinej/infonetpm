@@ -44,6 +44,7 @@
 		B25427AC1FCE06A00057A3F2 /* BaseEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */; };
 		B25427AE1FCF2EF00057A3F2 /* RoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AD1FCF2EF00057A3F2 /* RoleViewController.swift */; };
 		B25427B01FCF311A0057A3F2 /* RoleEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25427AF1FCF311A0057A3F2 /* RoleEditViewController.swift */; };
+		B272418D2028A21000F0A950 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B272418C2028A21000F0A950 /* Authorization.swift */; };
 		B27382B42020E0EE0075BA8B /* SynchronizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27382B32020E0EE0075BA8B /* SynchronizeViewController.swift */; };
 		B27AF4821FD88E6300B42E57 /* DefinePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27AF4811FD88E6300B42E57 /* DefinePlan.storyboard */; };
 		B27AF4841FD88F1F00B42E57 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27AF4831FD88F1F00B42E57 /* PlanViewController.swift */; };
@@ -117,6 +118,7 @@
 		B25427AB1FCE06A00057A3F2 /* BaseEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEditViewController.swift; sourceTree = "<group>"; };
 		B25427AD1FCF2EF00057A3F2 /* RoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleViewController.swift; sourceTree = "<group>"; };
 		B25427AF1FCF311A0057A3F2 /* RoleEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleEditViewController.swift; sourceTree = "<group>"; };
+		B272418C2028A21000F0A950 /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		B27382B32020E0EE0075BA8B /* SynchronizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizeViewController.swift; sourceTree = "<group>"; };
 		B27AF4811FD88E6300B42E57 /* DefinePlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DefinePlan.storyboard; sourceTree = "<group>"; };
 		B27AF4831FD88F1F00B42E57 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				B20C675520165CC00029DE2D /* RestAPI.swift */,
+				B272418C2028A21000F0A950 /* Authorization.swift */,
 			);
 			path = rest;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/p2.OAuth2/p2_OAuth2.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -456,6 +460,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/p2_OAuth2.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -484,6 +489,7 @@
 				5E85DAA41FED621D00573088 /* ActiviyEditTableViewController.swift in Sources */,
 				B20C675620165CC00029DE2D /* RestAPI.swift in Sources */,
 				5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */,
+				B272418D2028A21000F0A950 /* Authorization.swift in Sources */,
 				B2C5C2122023AF9700A1330A /* Order.swift in Sources */,
 				B2C5C20F2023AF9700A1330A /* Status.swift in Sources */,
 				5E85DAA21FED61A700573088 /* ActivityViewController.swift in Sources */,

@@ -144,12 +144,12 @@ class User():
             payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'))
             is_blacklisted_token = BlacklistToken.check_blacklist(auth_token)
             if is_blacklisted_token:
-                return 'Token: blacklisted. Please log in again.'
+                return 'BadToken: blacklisted. Please log in again.'
             else:
                 return payload['sub']
         except jwt.ExpiredSignatureError:
-            return 'Token: Signature expired. Please log in again.'
+            return 'BadToken: Signature expired. Please log in again.'
         except jwt.InvalidTokenError:
-            return 'Token: Invalid token. Please log in again.'
+            return 'BadToken: Invalid token. Please log in again.'
     #def
 #class

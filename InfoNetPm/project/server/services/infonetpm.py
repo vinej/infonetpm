@@ -4,8 +4,6 @@ from flask import jsonify
 from flask import request
 from project.server import app
 
-# model less services for iOS
-
 def date(datestr="", format="%Y-%m-%dT%H:%M:%S%z"):
   from datetime import datetime
   if not datestr:
@@ -14,8 +12,10 @@ def date(datestr="", format="%Y-%m-%dT%H:%M:%S%z"):
 #def
 
 def get(documents, sdate) :
-  #start = date(sdate)
-  #print(start)
+  if check_token(request.headers['auth_token']) == False:
+    return Response401(request)
+  #if
+  
   output = []
   for d in documents.find({'updatedDate': {'$gte': sdate}}):
     d.pop('_id')
@@ -25,11 +25,36 @@ def get(documents, sdate) :
   return jsonify({'result' : output})
 #def
 
+def Response401(request):
+    return # response 401, to retry to get a new token
+    responseObject = {
+    'status': 'fail',
+    'message': 'BadToken or no auth_token',
+    'redirect': request.url
+    }
+    return make_response(jsonify(responseObject)), 401
+}
+
+def check_token(auth_token):
+  if auth_token == None:
+    return False
+    
+  resp = User.decode_auth_token(auth_token)
+  if isBadtoken(resp):
+    return False
+
+  return True
+#def
+
 def post(request, documents) :
   print(request.json)
   if (request.json is None):
     return
   #if
+  if check_token(request.headers['auth_token']) == False:
+    return Response401(request)
+  #if
+  
   request.json['isNew'] = False
   request.json['isSync'] = True
   mongo_id = documents.insert(request.json)
@@ -41,167 +66,16 @@ def post(request, documents) :
 
 def put(request, documents) :
   print(request.json)
+      if check_token(request.headers['auth_token']) == False:
+      return Response401(request)
+  #if
+  
   request.json['isNew'] = False
   request.json['isSync'] = True
   old = documents.find_one({'id': json["id"] })
   output = documents.replace_one(old, request.json)
   print(output)
   return jsonify({'result' : output})
-#def
-
-@app.route('/auth/register', methods=['POST'])
-def register():
-	# get the post data
-	post_data = request.get_json()
-	# check if user already exists
-	user = get_user(email)
-	if not user:
-		try:
-			user_id = user_post(post_data.get('email'),post_data.get('password'),True)['_id']
-			# generate the auth token
-			auth_token = encode_auth_token(user_id)
-			responseObject = {
-				'status': 'success',
-				'message': 'Successfully registered.',
-				'auth_token': auth_token.decode()
-			}
-			return make_response(jsonify(responseObject)), 201
-		except Exception as e:
-			responseObject = {
-				'status': 'fail',
-				'message': 'Some error occurred. Please try again.'
-			}
-			return make_response(jsonify(responseObject)), 401
-	else:
-		responseObject = {
-			'status': 'fail',
-			'message': 'User already exists. Please Log in.',
-		}
-		return make_response(jsonify(responseObject)), 202
-	#if
-#def
-
-@app.route('/auth/login', methods=['POST'])
-def login():
-	# get the post data
-	post_data = request.get_json()
-	try:
-		# fetch the user data
-		user = user_get(email)
-		if user and bcrypt.check_password_hash(
-			user['password'], post_data.get('password')
-		):
-			auth_token = encode_auth_token(user['_id'])
-			if auth_token:
-				responseObject = {
-					'status': 'success',
-					'message': 'Successfully logged in.',
-					'auth_token': auth_token.decode()
-				}
-				return make_response(jsonify(responseObject)), 200
-		else:
-			responseObject = {
-				'status': 'fail',
-				'message': 'User does not exist.'
-			}
-			return make_response(jsonify(responseObject)), 404
-	except Exception as e:
-		print(e)
-		responseObject = {
-			'status': 'fail',
-			'message': 'Try again'
-		}
-		return make_response(jsonify(responseObject)), 500
-	#try
-#def
-
-'/auth/status'
-@app.route('/auth/status', methods=['GET'])
-def get(self):
-	# get the auth token
-	auth_header = request.headers.get('Authorization')
-	if auth_header:
-		try:
-			auth_token = auth_header.split(" ")[1]
-		except IndexError:
-			responseObject = {
-				'status': 'fail',
-				'message': 'Bearer token malformed.'
-			}
-			return make_response(jsonify(responseObject)), 401
-	else:
-		auth_token = ''
-
-	if auth_token:
-		resp = decode_auth_token(auth_token)
-		if not isinstance(resp, str):
-			# fetch the user data
-			user = user_get(email)
-			responseObject = {
-				'status': 'success',
-				'data': {
-					'user_id': user.id,
-					'email': user.email,
-					'admin': user.admin,
-					'registered_on': user.registered_on
-				}
-			}
-			return make_response(jsonify(responseObject)), 200
-		responseObject = {
-			'status': 'fail',
-			'message': resp
-		}
-		return make_response(jsonify(responseObject)), 401
-	else:
-		responseObject = {
-			'status': 'fail',
-			'message': 'Provide a valid auth token.'
-		}
-		return make_response(jsonify(responseObject)), 401
-	#if
-#def
-
-@app.route('/auth/logout', methods=['POST'])
-def post(self):
-	# get auth token
-	auth_header = request.headers.get('Authorization')
-	if auth_header:
-		auth_token = auth_header.split(" ")[1]
-	else:
-		auth_token = ''
-	if auth_token:
-		resp = decode_auth_token(auth_token)
-		if not isinstance(resp, str):
-			# mark the token as blacklisted
-			#blacklist_token = BlacklistToken(token=auth_token)
-			try:
-				# insert the token
-				#db.session.add(blacklist_token)
-				#db.session.commit()
-				responseObject = {
-					'status': 'success',
-					'message': 'Successfully logged out.'
-				}
-				return make_response(jsonify(responseObject)), 200
-			except Exception as e:
-				responseObject = {
-					'status': 'fail',
-					'message': e
-				}
-				return make_response(jsonify(responseObject)), 200
-		else:
-			responseObject = {
-				'status': 'fail',
-				'message': resp
-			}
-			return make_response(jsonify(responseObject)), 401
-	else:
-		responseObject = {
-			'status': 'fail',
-			'message': 'Provide a valid auth token.'
-		}
-		return make_response(jsonify(responseObject)), 403
-	#if
 #def
 
 

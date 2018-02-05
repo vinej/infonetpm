@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import Alamofire
+import p2_OAuth2
 import SwiftyJSON
 
 /*************/
@@ -30,8 +31,15 @@ import SwiftyJSON
 //    print("Data: \(utf8Text)") // original server data as UTF8 string
 //  }
 //}
+//https://salesforce.stackexchange.com/questions/42445/whats-the-difference-between-these-authentication-endpoints
+
 
 public let API_URL = "http://192.168.242.1:80/"
+public let AUTH_URL = "http://192.168.242.1:80/auth/login"
+public let TOKEN_URL = "http://192.168.242.1:80/auth/USER"
+public let CLIENT_ID = "vinej"
+public let CLIENT_SECRET = "test"
+
 
 public class RestAPI {
     var asyncList : [ (Any.Type, String) ] = [
@@ -57,8 +65,17 @@ public class RestAPI {
     var currentNextFunc : (Int) -> ()
     var currentNext = 0
     var view : SynchronizeViewController
+    fileprivate var alamofireManager: SessionManager?
     
     init() {
+        
+        let sessionManager = SessionManager()
+        let retrier = OAuth2RetryHandler()
+        sessionManager.adapter = retrier
+        sessionManager.retrier = retrier
+        self.alamofireManager = sessionManager   // you must hold on to this somewhere
+        retrier.setManager(alamofireManager)
+        
         listToSync = DB.all(Status.self)
         lastSyncDate = (listToSync[0] as! Status).lastSyncDate
         currentObjectName = ""
@@ -83,7 +100,7 @@ public class RestAPI {
     
     public func get<T>(_ objectType : T.Type, _ objectName: String, _ lastUpdated: Date,
                        _ nextFunc : @escaping (Int) -> (), _ next: Int) {
-        Alamofire.request("\(API_URL)\(objectName)/\(lastUpdated.str())").responseJSON { response in
+        alamofireManager?.request("\(API_URL)\(objectName)/\(lastUpdated.str())").responseJSON { response in
             self.asyncPull(objectType, objectName, JSON(response.result.value!), nextFunc, next)
         }
     }
@@ -92,7 +109,7 @@ public class RestAPI {
                     _ nextFunc : @escaping (Int) -> (), _ next: Int) {
         let parameters = baseRec.encode()
         
-        Alamofire.request("\(API_URL)\(objectName)", method: method, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
+        alamofireManager?.request("\(API_URL)\(objectName)", method: method, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
             // the current context is lost, reset the current values
             if (response.result.value != nil) {
                 let swiftyJsonVar = JSON(response.result.value!)
