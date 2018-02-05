@@ -1,8 +1,10 @@
 # project/server/auth/views.py
 
+
 from flask import Blueprint, request, make_response, jsonify
 from flask.views import MethodView
-from project.server import bcrypt, db
+
+from project.server import bcrypt
 from project.server.models import User, BlacklistToken
 
 auth_blueprint = Blueprint('auth', __name__)
@@ -16,19 +18,13 @@ class RegisterAPI(MethodView):
         # get the post data
         post_data = request.get_json()
         # check if user already exists
-        user = User.query.filter_by(email=post_data.get('email')).first()
+        user = User.get_user(post_data.get('email'))
         if not user:
             try:
-                user = User(
-                    email=post_data.get('email'),
-                    password=post_data.get('password')
-                )
-
                 # insert the user
-                db.session.add(user)
-                db.session.commit()
+                user = User.post_user(post_data.get('email'),post_data.get('password'),True)
                 # generate the auth token
-                auth_token = user.encode_auth_token(user.id)
+                auth_token = User.encode_auth_token(user.id)
                 responseObject = {
                     'status': 'success',
                     'message': 'Successfully registered.',
@@ -58,12 +54,9 @@ class LoginAPI(MethodView):
         post_data = request.get_json()
         try:
             # fetch the user data
-            user = User.query.filter_by(
-                email=post_data.get('email')
-            ).first()
-            if user and bcrypt.check_password_hash(
-                user.password, post_data.get('password')):
-                auth_token = user.encode_auth_token(user.id)
+            user = User.get_user(post_data.get('email'))
+            if user and bcrypt.check_password_hash(user.password, post_data.get('password')):
+                auth_token = User.encode_auth_token(user.id)
                 if auth_token:
                     responseObject = {
                         'status': 'success',
@@ -94,13 +87,21 @@ class UserAPI(MethodView):
         # get the auth token
         auth_header = request.headers.get('Authorization')
         if auth_header:
-            auth_token = auth_header.split(" ")[1]
+            try:
+                auth_token = auth_header.split(" ")[1]
+            except IndexError:
+                responseObject = {
+                    'status': 'fail',
+                    'message': 'Bearer token malformed.'
+                }
+                return make_response(jsonify(responseObject)), 401
         else:
             auth_token = ''
+
         if auth_token:
             resp = User.decode_auth_token(auth_token)
-            if not isinstance(resp, str):
-                user = User.query.filter_by(id=resp).first()
+            if not resp[0:6] == "Token:":
+                user = User.get_user_by_id(resp)
                 responseObject = {
                     'status': 'success',
                     'data': {
@@ -123,6 +124,7 @@ class UserAPI(MethodView):
             }
             return make_response(jsonify(responseObject)), 401
 
+
 class LogoutAPI(MethodView):
     """
     Logout Resource
@@ -136,13 +138,10 @@ class LogoutAPI(MethodView):
             auth_token = ''
         if auth_token:
             resp = User.decode_auth_token(auth_token)
-            if not isinstance(resp, str):
-                # mark the token as blacklisted
-                blacklist_token = BlacklistToken(token=auth_token)
+            if not resp[0:6] == "Token:":
                 try:
                     # insert the token
-                    db.session.add(blacklist_token)
-                    db.session.commit()
+                    blacklist_token = BlacklistToken.post_blacklist(auth_token)
                     responseObject = {
                         'status': 'success',
                         'message': 'Successfully logged out.'
@@ -167,14 +166,11 @@ class LogoutAPI(MethodView):
             }
             return make_response(jsonify(responseObject)), 403
 
-
-
-## define the API resources
+# define the API resources
 registration_view = RegisterAPI.as_view('register_api')
 login_view = LoginAPI.as_view('login_api')
 user_view = UserAPI.as_view('user_api')
 logout_view = LogoutAPI.as_view('logout_api')
-
 
 # add Rules for API Endpoints
 auth_blueprint.add_url_rule(
@@ -182,19 +178,16 @@ auth_blueprint.add_url_rule(
     view_func=registration_view,
     methods=['POST']
 )
-
 auth_blueprint.add_url_rule(
     '/auth/login',
     view_func=login_view,
     methods=['POST']
 )
-
 auth_blueprint.add_url_rule(
     '/auth/status',
     view_func=user_view,
     methods=['GET']
 )
-
 auth_blueprint.add_url_rule(
     '/auth/logout',
     view_func=logout_view,

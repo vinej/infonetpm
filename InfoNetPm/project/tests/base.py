@@ -1,9 +1,9 @@
-# project/server/tests/base.py
+# project/tests/base.py
 
 
 from flask_testing import TestCase
 
-from project.server import app, dbß
+from project.server import app, mongo
 
 class BaseTestCase(TestCase):
     """ Base Tests """
@@ -13,9 +13,8 @@ class BaseTestCase(TestCase):
         return app
 
     def setUp(self):
-        db.create_all()
-        db.session.commit()
+	    pass
 
     def tearDown(self):
-        db.session.remove()
-        db.drop_all()
+        mongo.db.users.drop()
+        mongo.db.blacklists.drop()
