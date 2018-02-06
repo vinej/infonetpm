@@ -35,8 +35,8 @@ import SwiftyJSON
 
 
 public let API_URL = "http://192.168.242.1:80/"
-public let AUTH_URL = "http://192.168.242.1:80/auth/login"
-public let TOKEN_URL = "http://192.168.242.1:80/auth/USER"
+
+public let TOKEN_URL = "http://192.168.242.1:80/auth/user"
 public let CLIENT_ID = "vinej"
 public let CLIENT_SECRET = "test"
 
@@ -69,12 +69,13 @@ public class RestAPI {
     
     init() {
         
-        let sessionManager = SessionManager()
+        let sessionManager = SessionManager.default
         let retrier = OAuth2RetryHandler()
         sessionManager.adapter = retrier
         sessionManager.retrier = retrier
         self.alamofireManager = sessionManager   // you must hold on to this somewhere
         retrier.setManager(alamofireManager)
+
         
         listToSync = DB.all(Status.self)
         lastSyncDate = (listToSync[0] as! Status).lastSyncDate
@@ -100,7 +101,7 @@ public class RestAPI {
     
     public func get<T>(_ objectType : T.Type, _ objectName: String, _ lastUpdated: Date,
                        _ nextFunc : @escaping (Int) -> (), _ next: Int) {
-        alamofireManager?.request("\(API_URL)\(objectName)/\(lastUpdated.str())").responseJSON { response in
+        alamofireManager?.request("\(API_URL)\(objectName)/\(lastUpdated.str())").validate().responseJSON { response in
             self.asyncPull(objectType, objectName, JSON(response.result.value!), nextFunc, next)
         }
     }
