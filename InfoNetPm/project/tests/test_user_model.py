@@ -1,11 +1,10 @@
 # project/tests/test_user_model.py
 import unittest
-
 from project.server.models import User
 from project.tests.base import BaseTestCase
 
-class TestUserModel(BaseTestCase):
 
+class TestUserModel(BaseTestCase):
     def test_encode_auth_token(self):
         user = User(
             id='123456',
@@ -25,7 +24,7 @@ class TestUserModel(BaseTestCase):
         self.assertTrue(isinstance(auth_token, bytes))
 
         self.assertTrue(User.decode_auth_token(
-            auth_token.decode("utf-8") ) == '123456')
+            auth_token.decode("utf-8")) == '123456')
 
 
 if __name__ == '__main__':

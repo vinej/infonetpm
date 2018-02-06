@@ -1,14 +1,12 @@
 # project/server/models.py
 
 import jwt
-from flask import jsonify
 import datetime
-import json
 from bson.objectid import ObjectId
-
 from project.server import app, bcrypt, mongo
 
-class BlacklistToken():
+
+class BlacklistToken:
     """
     Token Model for storing JWT tokens
     """
@@ -48,24 +46,23 @@ class BlacklistToken():
         except Exception as inst:
             print(inst)
             raise
-        #try
-#class
 
-class User():
+
+class User:
     """ User Model for storing user related details """
     __tablename__ = "users"
 
-    id = '' #db.Column(db.Integer, primary_key=True, autoincrement=True)
-    email = '' #db.Column(db.String(255), unique=True, nullable=False)
-    password = '' #db.Column(db.String(255), nullable=False)
-    registered_on = '' #db.Column(db.DateTime, nullable=False)
-    admin = '' #db.Column(db.Boolean, nullable=False, default=False)
+    id = ''
+    email = ''
+    password = ''
+    registered_on = ''
+    admin = ''
 
     @staticmethod
     def get_user(email):
         mongo_user =  mongo.db.users.find_one({'email': {'$eq': email}})
         if mongo_user:
-            user = User(str(mongo_user['_id']),mongo_user['email'], mongo_user['password'])
+            user = User(str(mongo_user['_id']), mongo_user['email'], mongo_user['password'])
             return user
         else:
             return None
@@ -79,7 +76,6 @@ class User():
             return user
         else:
             return None
-    #def
 
     @staticmethod
     def post_user(email, password, admin) :
@@ -95,14 +91,11 @@ class User():
         except Exception as inst:
             print(inst)
             raise
-        #try
-	#def
 
     @staticmethod
     def put_user(json) :
-	    old = users.find_one({'id': json["_id"] })
-	    users.replace_one(old, json)
-	#def
+        old = mongo.db.users.find_one({'id': json["_id"] })
+        mongo.db.users.replace_one(old, json)
 
     def __init__(self, id, email, password, admin=False):
         self.id = id
@@ -151,5 +144,3 @@ class User():
             return 'BadToken: Signature expired. Please log in again.'
         except jwt.InvalidTokenError:
             return 'BadToken: Invalid token. Please log in again.'
-    #def
-#class
