@@ -80,198 +80,198 @@ def put(request, documents) :
 
 @app.route('/company/<string:the_date>', methods=['GET'])
 def get_company(the_date):
-  return get(mongo.db.companies,the_date)
-#def
+    print("get company")
+    return ipm_get(mongo.db.companies, the_date)
+
 
 @app.route('/company', methods=['POST'])
 def add_company():
-  return post(request,mongo.db.companies)
-#def
+    return ipm_post(request, mongo.db.companies)
+
 
 @app.route('/company', methods=['PUT'])
 def update_company():
-  return put(request,mongo.db.companies)
-#def
+    return ipm_put(request, mongo.db.companies)
+
 
 @app.route('/resource/<string:the_date>', methods=['GET'])
 def get_resource(the_date):
-  return get(mongo.db.resources,the_date)
-#def
+    return ipm_get(mongo.db.resources, the_date)
+
 
 @app.route('/resource', methods=['POST'])
 def add_resource():
-  return post(request, mongo.db.resources)
-#def
+    return ipm_post(request, mongo.db.resources)
+
 
 @app.route('/resource', methods=['PUT'])
 def update_resource():
-  return put(request, mongo.db.resources)
-#def
+    return ipm_put(request, mongo.db.resources)
+
 
 @app.route('/activity/<string:the_date>', methods=['GET'])
 def get_activity(the_date):
-  return get(mongo.db.activities,the_date)
-#def
+    return ipm_get(mongo.db.activities, the_date)
+
 
 @app.route('/activity', methods=['POST'])
 def add_activity():
-  return post(request, mongo.db.activities)
-#def
+    return ipm_post(request, mongo.db.activities)
+
 
 @app.route('/activity', methods=['PUT'])
 def update_activity():
-  return put(request, mongo.db.activities)
-#def
+    return ipm_put(request, mongo.db.activities)
+
 
 @app.route('/project/<string:the_date>', methods=['GET'])
 def get_project(the_date):
-  return get(mongo.db.project,the_date)
-#def
+    return ipm_get(mongo.db.project, the_date)
+
 
 @app.route('/project', methods=['POST'])
 def add_project():
-  return post(request, mongo.db.plans)
-#def
+    return ipm_post(request, mongo.db.plans)
+
 
 @app.route('/project', methods=['PUT'])
 def update_project():
-  return put(request, mongo.db.project)
-#def
+    return ipm_put(request, mongo.db.project)
+
 
 @app.route('/plan/<string:the_date>', methods=['GET'])
 def get_plan(the_date):
-  return get(mongo.db.plans,the_date)
-#def
+    return ipm_get(mongo.db.plans, the_date)
+
 
 @app.route('/plan', methods=['POST'])
 def add_plan():
-  return post(request, mongo.db.plans)
-#def
+    return ipm_post(request, mongo.db.plans)
+
 
 @app.route('/plan', methods=['PUT'])
 def update_plan():
-  return put(request, mongo.db.plans)
-#def
+    return ipm_put(request, mongo.db.plans)
+
 
 @app.route('/issue/<string:the_date>', methods=['GET'])
 def get_issue(the_date):
-  return get(mongo.db.issues,the_date)
-#def
+    return ipm_get(mongo.db.issues, the_date)
+
 
 @app.route('/issue', methods=['POST'])
 def add_issue():
-  return post(request, mongo.db.issues)
-#def
+    return ipm_post(request, mongo.db.issues)
+
 
 @app.route('/issue', methods=['PUT'])
 def update_issue():
-  return put(request, mongo.db.issues)
-#def
+    return ipm_put(request, mongo.db.issues)
+
 
 @app.route('/role/<string:the_date>', methods=['GET'])
 def get_role(the_date):
-  return get(mongo.db.roles,the_date)
-#def
+    return ipm_get(mongo.db.roles, the_date)
+
 
 @app.route('/role', methods=['POST'])
 def add_role():
-  return post(request, mongo.db.roles)
-#def
+    return ipm_post(request, mongo.db.roles)
+
 
 @app.route('/role', methods=['PUT'])
 def update_role():
-  return put(request, mongo.db.roles)
-#def
+    return ipm_put(request, mongo.db.roles)
+
 
 @app.route('/order/<string:the_date>', methods=['GET'])
 def get_order(the_date):
-  return get(mongo.db.orders,the_date)
-#def
+    return ipm_get(mongo.db.orders, the_date)
+
 
 @app.route('/order', methods=['POST'])
 def add_order():
-  return post(request, mongo.db.orders)
-#def
+    return ipm_post(request, mongo.db.orders)
+
 
 @app.route('/order', methods=['PUT'])
 def update_order():
-  return put(request, mongo.db.orders)
-#def
+    return ipm_put(request, mongo.db.orders)
+
 
 @app.route('/status/<string:the_date>', methods=['GET'])
 def get_status(the_date):
-  return get(mongo.db.status,the_date)
-#def
+    return ipm_get(mongo.db.status, the_date)
+
 
 @app.route('/status', methods=['POST'])
 def add_status():
-  return post(request, mongo.db.status)
-#def
+    return ipm_post(request, mongo.db.status)
+
 
 @app.route('/status', methods=['PUT'])
 def update_status():
-  return put(request, mongo.db.status)
-#def
+    return ipm_put(request, mongo.db.status)
+
 
 @app.route('/document/<string:the_date>', methods=['GET'])
 def get_document(the_date):
-  return get(mongo.db.documents,the_date)
-#def
+    return ipm_get(mongo.db.documents, the_date)
+
 
 @app.route('/document', methods=['POST'])
 def add_document():
-  return post(request, mongo.db.documents)
-#def
+    return ipm_post(request, mongo.db.documents)
+
 
 @app.route('/document', methods=['PUT'])
 def update_document():
-  return put(request, mongo.db.documents)
-#def
+    return ipm_put(request, mongo.db.documents)
+
 
 @app.route('/comment/<string:the_date>', methods=['GET'])
 def get_comment(the_date):
-  return get(mongo.db.comments,the_date)
-#def
+    return ipm_get(mongo.db.comments, the_date)
+
 
 @app.route('/comment', methods=['POST'])
 def add_comment():
-  return post(request, mongo.db.comments)
-#def
+    return ipm_post(request, mongo.db.comments)
+
 
 @app.route('/comment', methods=['PUT'])
 def update_comment():
-  return put(request, mongo.db.comments)
-#def
+    return ipm_put(request, mongo.db.comments)
+
 
 @app.route('/audit/<string:the_date>', methods=['GET'])
 def get_audit(the_date):
-  return get(mongo.db.audits,the_date)
-#def
+    return ipm_get(mongo.db.audits, the_date)
+
 
 @app.route('/audit', methods=['POST'])
 def add_audit():
-  return post(request, mongo.db.audits)
-#def
+    return ipm_post(request, mongo.db.audits)
+
 
 @app.route('/audit', methods=['PUT'])
 def update_audit():
-  return put(request, mongo.db.audits)
-#def
+    return ipm_put(request, mongo.db.audits)
+
 
 @app.route('/activityhistory/<string:the_date>', methods=['GET'])
 def get_activityhistory(the_date):
-  return get(mongo.db.activityhistories,the_date)
-#def
+    return ipm_get(mongo.db.activityhistories, the_date)
+
 
 @app.route('/activityhistory', methods=['POST'])
 def add_activityhistory():
-  return post(request, mongo.db.activityhistories)
-#def
+    return ipm_post(request, mongo.db.activityhistories)
+
 
 @app.route('/activityhistory', methods=['PUT'])
 def update_activityhistory():
-  return put(request, mongo.db.activityhistories)
-#def
+    return ipm_put(request, mongo.db.activityhistories)
 
 
 if __name__ == '__main__':
