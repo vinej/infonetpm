@@ -15,7 +15,6 @@ def get(documents, sdate) :
   if check_token(request.headers['auth_token']) == False:
     return Response401(request)
   #if
-  
   output = []
   for d in documents.find({'updatedDate': {'$gte': sdate}}):
     d.pop('_id')
