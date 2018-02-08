@@ -8,20 +8,20 @@ from project.server import app, bcrypt, mongo
 
 class BlacklistToken:
     """
-    Token Model for storing JWT tokens
-    """
+        Token Model for storing JWT tokens
+        """
     id = ''
     token = ''
     blacklisted_on = ''
-
+    
     def __init__(self, id, token, blacklisted_on):
         self.id = id
         self.token = token
         self.blacklisted_on = blacklisted_on
-
+    
     def __repr__(self):
         return '<id: token: {}'.format(self.token)
-
+    
     @staticmethod
     def check_blacklist(auth_token):
         # check whether auth token has been blacklisted
@@ -31,7 +31,7 @@ class BlacklistToken:
         else:
             return False
 
-    @staticmethod
+@staticmethod
     def post_blacklist(auth_token):
         # check whether auth token has been blacklisted
         try:
@@ -51,13 +51,13 @@ class BlacklistToken:
 class User:
     """ User Model for storing user related details """
     __tablename__ = "users"
-
+    
     id = ''
     email = ''
     password = ''
     registered_on = ''
     admin = ''
-
+    
     @staticmethod
     def get_user(email):
         mongo_user =  mongo.db.users.find_one({'email': {'$eq': email}})
@@ -96,22 +96,22 @@ class User:
     def put_user(json) :
         old = mongo.db.users.find_one({'id': json["_id"] })
         mongo.db.users.replace_one(old, json)
-
+    
     def __init__(self, id, email, password, admin=False):
         self.id = id
         self.email = email
         self.password = bcrypt.generate_password_hash(
-            password, app.config.get('BCRYPT_LOG_ROUNDS')
-        ).decode()
-        self.registered_on = datetime.datetime.now()
-        self.admin = admin
+                                                      password, app.config.get('BCRYPT_LOG_ROUNDS')
+                                                      ).decode()
+                                                      self.registered_on = datetime.datetime.now()
+                                                      self.admin = admin
 
     @staticmethod
     def encode_auth_token(user_id):
         """
-        Generates the Auth Token
-        :return: string
-        """
+            Generates the Auth Token
+            :return: string
+            """
         try:
             payload = {
                 'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=5),
@@ -119,20 +119,20 @@ class User:
                 'sub': user_id
             }
             return jwt.encode(
-                payload,
-                app.config.get('SECRET_KEY'),
-                algorithm='HS256'
-            )
-        except Exception as e:
-            return e
+                              payload,
+                              app.config.get('SECRET_KEY'),
+                              algorithm='HS256'
+                              )
+    except Exception as e:
+        return e
 
     @staticmethod
     def decode_auth_token(auth_token):
         """
-        Validates the auth token
-        :param auth_token:
-        :return: integer|string
-        """
+            Validates the auth token
+            :param auth_token:
+            :return: integer|string
+            """
         try:
             payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'))
             is_blacklisted_token = BlacklistToken.check_blacklist(auth_token)
@@ -144,3 +144,5 @@ class User:
             return 'BadToken: Signature expired. Please log in again.'
         except jwt.InvalidTokenError:
             return 'BadToken: Invalid token. Please log in again.'
+
+

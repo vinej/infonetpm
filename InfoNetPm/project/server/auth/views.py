@@ -16,9 +16,9 @@ def is_bad_token(resp):
 
 class RegisterAPI(MethodView):
     """
-    User Registration Resource
-    """
-
+        User Registration Resource
+        """
+    
     def post(self):
         # get the post data
         post_data = request.get_json()
@@ -52,8 +52,8 @@ class RegisterAPI(MethodView):
 
 class LoginAPI(MethodView):
     """
-    User Login Resource
-    """
+        User Login Resource
+        """
     def post(self):
         # get the post data
         post_data = request.get_json()
@@ -86,8 +86,8 @@ class LoginAPI(MethodView):
 
 class UserAPI(MethodView):
     """
-    User Resource
-    """
+        User Resource
+        """
     def get(self):
         # get the auth token
         auth_header = request.headers.get('Authorization')
@@ -102,7 +102,7 @@ class UserAPI(MethodView):
                 return make_response(jsonify(response_object)), 401
         else:
             auth_token = ''
-
+    
         if auth_token:
             resp = User.decode_auth_token(auth_token)
             if not is_bad_token(resp):
@@ -114,7 +114,7 @@ class UserAPI(MethodView):
                         'email': user.email,
                         'admin': user.admin,
                         'registered_on': user.registered_on
-                    }
+                }
                 }
                 return make_response(jsonify(response_object)), 200
             else:
@@ -123,18 +123,18 @@ class UserAPI(MethodView):
                     'message': resp
                 }
                 return make_response(jsonify(response_object)), 401
-        else:
-            response_object = {
-                'status': 'fail',
-                'message': 'Provide a valid auth token.'
+else:
+    response_object = {
+        'status': 'fail',
+            'message': 'Provide a valid auth token.'
             }
             return make_response(jsonify(response_object)), 401
 
 
 class LogoutAPI(MethodView):
     """
-    Logout Resource
-    """
+        Logout Resource
+        """
     def post(self):
         # get auth token
         auth_header = request.headers.get('Authorization')
@@ -181,22 +181,24 @@ logout_view = LogoutAPI.as_view('logout_api')
 
 # add Rules for API Endpoints
 auth_blueprint.add_url_rule(
-    '/auth/register',
-    view_func=registration_view,
-    methods=['POST']
-)
+                            '/auth/register',
+                            view_func=registration_view,
+                            methods=['POST']
+                            )
 auth_blueprint.add_url_rule(
-    '/auth/login',
-    view_func=login_view,
-    methods=['POST']
-)
+                            '/auth/login',
+                            view_func=login_view,
+                            methods=['POST']
+                            )
 auth_blueprint.add_url_rule(
-    '/auth/status',
-    view_func=user_view,
-    methods=['GET']
-)
+                            '/auth/status',
+                            view_func=user_view,
+                            methods=['GET']
+                            )
 auth_blueprint.add_url_rule(
-    '/auth/logout',
-    view_func=logout_view,
-    methods=['POST']
-)
+                            '/auth/logout',
+                            view_func=logout_view,
+                            methods=['POST']
+                            )
+
+

@@ -4,7 +4,7 @@ from sanic import (
 )
 from websockets.exceptions import ConnectionClosed
 
-from .room import RoomManager
+from InfoNetPm.chatserver.room_manager import RoomManager
 
 
 app = Sanic()
