@@ -41,7 +41,7 @@
                                 <rect key="frame" x="16" y="527" width="343" height="77"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="77" id="wg2-oP-JM5"/>
+                                    <constraint firstAttribute="height" constant="77" id="pkH-fr-Pro"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -54,16 +54,29 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPH-xO-RfF">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Disconnect" id="ROb-I2-LzW">
+                                        <connections>
+                                            <action selector="disconnect:" destination="T81-LT-nF7" id="Sge-ep-rTn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="1aL-xh-CjY" firstAttribute="leading" secondItem="hWI-z2-tdo" secondAttribute="leading" id="B15-h4-L99"/>
-                            <constraint firstItem="oLq-hK-AS4" firstAttribute="bottom" secondItem="hWI-z2-tdo" secondAttribute="bottom" constant="63" id="Csq-IK-dWS"/>
-                            <constraint firstItem="1aL-xh-CjY" firstAttribute="top" secondItem="oLq-hK-AS4" secondAttribute="top" id="T9r-Uy-MDt"/>
-                            <constraint firstItem="hWI-z2-tdo" firstAttribute="top" secondItem="1aL-xh-CjY" secondAttribute="bottom" constant="8" symbolic="YES" id="e81-sO-PqD"/>
-                            <constraint firstItem="1aL-xh-CjY" firstAttribute="trailing" secondItem="6GF-1p-vnh" secondAttribute="trailingMargin" id="f7u-OH-imh"/>
-                            <constraint firstItem="1aL-xh-CjY" firstAttribute="trailing" secondItem="hWI-z2-tdo" secondAttribute="trailing" id="kMs-vH-9x2"/>
-                            <constraint firstItem="1aL-xh-CjY" firstAttribute="leading" secondItem="6GF-1p-vnh" secondAttribute="leadingMargin" id="q8v-ZS-VbY"/>
+                            <constraint firstItem="hWI-z2-tdo" firstAttribute="centerX" secondItem="bPH-xO-RfF" secondAttribute="centerX" id="1bd-oL-lgf"/>
+                            <constraint firstItem="hWI-z2-tdo" firstAttribute="top" secondItem="1aL-xh-CjY" secondAttribute="bottom" constant="8" symbolic="YES" id="7bV-zu-OSB"/>
+                            <constraint firstItem="1aL-xh-CjY" firstAttribute="trailing" secondItem="hWI-z2-tdo" secondAttribute="trailing" id="CRD-Nc-2lK"/>
+                            <constraint firstItem="1aL-xh-CjY" firstAttribute="leading" secondItem="6GF-1p-vnh" secondAttribute="leadingMargin" id="Ilg-U7-4os"/>
+                            <constraint firstItem="bPH-xO-RfF" firstAttribute="leading" secondItem="6GF-1p-vnh" secondAttribute="leading" id="MYS-HM-m2Q"/>
+                            <constraint firstItem="1aL-xh-CjY" firstAttribute="top" secondItem="oLq-hK-AS4" secondAttribute="top" id="SgF-Fg-90u"/>
+                            <constraint firstItem="bPH-xO-RfF" firstAttribute="top" secondItem="hWI-z2-tdo" secondAttribute="bottom" constant="19" id="UZM-bj-MRb"/>
+                            <constraint firstItem="1aL-xh-CjY" firstAttribute="leading" secondItem="hWI-z2-tdo" secondAttribute="leading" id="WQc-gc-ygY"/>
+                            <constraint firstAttribute="trailing" secondItem="bPH-xO-RfF" secondAttribute="trailing" id="dEe-Sp-aOM"/>
+                            <constraint firstItem="bPH-xO-RfF" firstAttribute="bottom" secondItem="oLq-hK-AS4" secondAttribute="bottom" id="nUD-Z3-sBc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oLq-hK-AS4"/>
                     </view>
