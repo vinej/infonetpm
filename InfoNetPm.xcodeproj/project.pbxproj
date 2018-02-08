@@ -56,6 +56,8 @@
 		B2AC6328202B9ED800EF5809 /* server.py in Resources */ = {isa = PBXBuildFile; fileRef = B2AC6324202B9ED700EF5809 /* server.py */; };
 		B2AC6329202B9ED800EF5809 /* static in Resources */ = {isa = PBXBuildFile; fileRef = B2AC6325202B9ED700EF5809 /* static */; };
 		B2AC632A202B9ED800EF5809 /* tests.py in Resources */ = {isa = PBXBuildFile; fileRef = B2AC6326202B9ED700EF5809 /* tests.py */; };
+		B2AC632C202C914300EF5809 /* ChatClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AC632B202C914300EF5809 /* ChatClient.swift */; };
+		B2AC632E202C97E300EF5809 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AC632D202C97E300EF5809 /* ChatRoomViewController.swift */; };
 		B2BF25491FCC64AE001C65EB /* Synchonize.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25481FCC64AE001C65EB /* Synchonize.storyboard */; };
 		B2BF254B1FCC64C3001C65EB /* ChatRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF254A1FCC64C3001C65EB /* ChatRoom.storyboard */; };
 		B2BF254D1FCC64DB001C65EB /* Administration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF254C1FCC64DB001C65EB /* Administration.storyboard */; };
@@ -134,6 +136,8 @@
 		B2AC6324202B9ED700EF5809 /* server.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = server.py; sourceTree = "<group>"; };
 		B2AC6325202B9ED700EF5809 /* static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = static; sourceTree = "<group>"; };
 		B2AC6326202B9ED700EF5809 /* tests.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tests.py; sourceTree = "<group>"; };
+		B2AC632B202C914300EF5809 /* ChatClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatClient.swift; sourceTree = "<group>"; };
+		B2AC632D202C97E300EF5809 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		B2BF25481FCC64AE001C65EB /* Synchonize.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Synchonize.storyboard; sourceTree = "<group>"; };
 		B2BF254A1FCC64C3001C65EB /* ChatRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRoom.storyboard; sourceTree = "<group>"; };
 		B2BF254C1FCC64DB001C65EB /* Administration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Administration.storyboard; sourceTree = "<group>"; };
@@ -274,6 +278,7 @@
 			children = (
 				B20C675520165CC00029DE2D /* RestAPI.swift */,
 				B272418C2028A21000F0A950 /* Authorization.swift */,
+				B2AC632B202C914300EF5809 /* ChatClient.swift */,
 			);
 			path = rest;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				5E0FADD82014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift */,
 				5E0FADDA2014EDEF0062F2E6 /* ChoosePopupBasePlanViewController.swift */,
 				B27382B32020E0EE0075BA8B /* SynchronizeViewController.swift */,
+				B2AC632D202C97E300EF5809 /* ChatRoomViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -468,6 +474,7 @@
 				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -481,6 +488,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -515,6 +523,7 @@
 				5EC59B871FCB40CC005841BB /* AppDelegate.swift in Sources */,
 				B272418D2028A21000F0A950 /* Authorization.swift in Sources */,
 				B2C5C2122023AF9700A1330A /* Order.swift in Sources */,
+				B2AC632E202C97E300EF5809 /* ChatRoomViewController.swift in Sources */,
 				B2C5C20F2023AF9700A1330A /* Status.swift in Sources */,
 				5E85DAA21FED61A700573088 /* ActivityViewController.swift in Sources */,
 				5ED3C2871FF953C600E14139 /* ChoosePopupLaunchPlan.swift in Sources */,
@@ -539,6 +548,7 @@
 				5E17D5331FF2038D008B457E /* DefineDataViewController.swift in Sources */,
 				B23376F41FD1AE93006CD61F /* ResourceViewController.swift in Sources */,
 				5EC59BA81FCB43FC005841BB /* Comment.swift in Sources */,
+				B2AC632C202C914300EF5809 /* ChatClient.swift in Sources */,
 				B2C5C2102023AF9700A1330A /* Audit.swift in Sources */,
 				5EC59BAA1FCB43FC005841BB /* Company.swift in Sources */,
 				5E0FADD92014ED330062F2E6 /* ChoosePopupPlanActivitiesViewController.swift in Sources */,

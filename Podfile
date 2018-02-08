@@ -15,4 +15,5 @@ target 'InfoNetPm' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'p2.OAuth2'
+  pod 'Starscream'
 end

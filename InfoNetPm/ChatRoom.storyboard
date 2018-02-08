@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T81-LT-nF7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T81-LT-nF7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,26 +14,67 @@
         <!--Chat Room-->
         <scene sceneID="ce8-T8-5IR">
             <objects>
-                <viewController title="Chat Room" id="T81-LT-nF7" sceneMemberID="viewController">
+                <viewController title="Chat Room" id="T81-LT-nF7" customClass="ChatRoomViewController" customModule="InfoNetPm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6GF-1p-vnh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gm6-Bh-V4E">
-                                <rect key="frame" x="166" y="323" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1aL-xh-CjY">
+                                <rect key="frame" x="16" y="20" width="343" height="499"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="edit" id="5CZ-vZ-VBJ">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5CZ-vZ-VBJ" id="qr5-4s-rcK">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="T81-LT-nF7" id="eBg-wH-p1C"/>
+                                    <outlet property="delegate" destination="T81-LT-nF7" id="vtX-Xa-PMA"/>
+                                </connections>
+                            </tableView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hWI-z2-tdo">
+                                <rect key="frame" x="16" y="527" width="343" height="77"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="wg2-oP-JM5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1aL-xh-CjY" firstAttribute="leading" secondItem="hWI-z2-tdo" secondAttribute="leading" id="B15-h4-L99"/>
+                            <constraint firstItem="oLq-hK-AS4" firstAttribute="bottom" secondItem="hWI-z2-tdo" secondAttribute="bottom" constant="63" id="Csq-IK-dWS"/>
+                            <constraint firstItem="1aL-xh-CjY" firstAttribute="top" secondItem="oLq-hK-AS4" secondAttribute="top" id="T9r-Uy-MDt"/>
+                            <constraint firstItem="hWI-z2-tdo" firstAttribute="top" secondItem="1aL-xh-CjY" secondAttribute="bottom" constant="8" symbolic="YES" id="e81-sO-PqD"/>
+                            <constraint firstItem="1aL-xh-CjY" firstAttribute="trailing" secondItem="6GF-1p-vnh" secondAttribute="trailingMargin" id="f7u-OH-imh"/>
+                            <constraint firstItem="1aL-xh-CjY" firstAttribute="trailing" secondItem="hWI-z2-tdo" secondAttribute="trailing" id="kMs-vH-9x2"/>
+                            <constraint firstItem="1aL-xh-CjY" firstAttribute="leading" secondItem="6GF-1p-vnh" secondAttribute="leadingMargin" id="q8v-ZS-VbY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="oLq-hK-AS4"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="1aL-xh-CjY" id="i3m-k7-IjZ"/>
+                        <outlet property="viewMessage" destination="hWI-z2-tdo" id="TkN-SU-hHJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ThA-JE-LHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="26"/>
+            <point key="canvasLocation" x="136.80000000000001" y="25.637181409295355"/>
         </scene>
     </scenes>
 </document>
