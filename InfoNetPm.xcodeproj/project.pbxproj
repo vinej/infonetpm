@@ -52,6 +52,10 @@
 		B29846B11FE032D2000B6A7F /* ChoosePopupPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29846B01FE032D2000B6A7F /* ChoosePopupPlanViewController.swift */; };
 		B29846B31FE04360000B6A7F /* BasePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29846B21FE04360000B6A7F /* BasePopupViewController.swift */; };
 		B29846B51FE0708A000B6A7F /* DesignPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29846B41FE0708A000B6A7F /* DesignPlanViewController.swift */; };
+		B2AC6327202B9ED800EF5809 /* room.py in Resources */ = {isa = PBXBuildFile; fileRef = B2AC6323202B9ED700EF5809 /* room.py */; };
+		B2AC6328202B9ED800EF5809 /* server.py in Resources */ = {isa = PBXBuildFile; fileRef = B2AC6324202B9ED700EF5809 /* server.py */; };
+		B2AC6329202B9ED800EF5809 /* static in Resources */ = {isa = PBXBuildFile; fileRef = B2AC6325202B9ED700EF5809 /* static */; };
+		B2AC632A202B9ED800EF5809 /* tests.py in Resources */ = {isa = PBXBuildFile; fileRef = B2AC6326202B9ED700EF5809 /* tests.py */; };
 		B2BF25491FCC64AE001C65EB /* Synchonize.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF25481FCC64AE001C65EB /* Synchonize.storyboard */; };
 		B2BF254B1FCC64C3001C65EB /* ChatRoom.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF254A1FCC64C3001C65EB /* ChatRoom.storyboard */; };
 		B2BF254D1FCC64DB001C65EB /* Administration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BF254C1FCC64DB001C65EB /* Administration.storyboard */; };
@@ -126,6 +130,10 @@
 		B29846B01FE032D2000B6A7F /* ChoosePopupPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePopupPlanViewController.swift; sourceTree = "<group>"; };
 		B29846B21FE04360000B6A7F /* BasePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopupViewController.swift; sourceTree = "<group>"; };
 		B29846B41FE0708A000B6A7F /* DesignPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignPlanViewController.swift; sourceTree = "<group>"; };
+		B2AC6323202B9ED700EF5809 /* room.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = room.py; sourceTree = "<group>"; };
+		B2AC6324202B9ED700EF5809 /* server.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = server.py; sourceTree = "<group>"; };
+		B2AC6325202B9ED700EF5809 /* static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = static; sourceTree = "<group>"; };
+		B2AC6326202B9ED700EF5809 /* tests.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = tests.py; sourceTree = "<group>"; };
 		B2BF25481FCC64AE001C65EB /* Synchonize.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Synchonize.storyboard; sourceTree = "<group>"; };
 		B2BF254A1FCC64C3001C65EB /* ChatRoom.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatRoom.storyboard; sourceTree = "<group>"; };
 		B2BF254C1FCC64DB001C65EB /* Administration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Administration.storyboard; sourceTree = "<group>"; };
@@ -205,6 +213,7 @@
 		5EC59B851FCB40CC005841BB /* InfoNetPm */ = {
 			isa = PBXGroup;
 			children = (
+				B2AC6320202B9EA700EF5809 /* chatserver */,
 				B24FD55D2023AB8A007C62EC /* project */,
 				B20C6754201657F80029DE2D /* rest */,
 				B2DDC2131FCDCBB600119895 /* Helper */,
@@ -267,6 +276,17 @@
 				B272418C2028A21000F0A950 /* Authorization.swift */,
 			);
 			path = rest;
+			sourceTree = "<group>";
+		};
+		B2AC6320202B9EA700EF5809 /* chatserver */ = {
+			isa = PBXGroup;
+			children = (
+				B2AC6323202B9ED700EF5809 /* room.py */,
+				B2AC6324202B9ED700EF5809 /* server.py */,
+				B2AC6325202B9ED700EF5809 /* static */,
+				B2AC6326202B9ED700EF5809 /* tests.py */,
+			);
+			path = chatserver;
 			sourceTree = "<group>";
 		};
 		B2BF255E1FCC73D0001C65EB /* View */ = {
@@ -373,8 +393,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2BF255D1FCC710C001C65EB /* Project.storyboard in Resources */,
+				B2AC632A202B9ED800EF5809 /* tests.py in Resources */,
 				B2BF25591FCC70EC001C65EB /* Company.storyboard in Resources */,
 				B24FD55E2023AB8B007C62EC /* project in Resources */,
+				B2AC6327202B9ED800EF5809 /* room.py in Resources */,
 				B2BF25531FCC6539001C65EB /* DrivePlan.storyboard in Resources */,
 				B2BF254B1FCC64C3001C65EB /* ChatRoom.storyboard in Resources */,
 				B2BF25511FCC6526001C65EB /* DefineActivity.storyboard in Resources */,
@@ -385,12 +407,14 @@
 				B2BF25571FCC655E001C65EB /* DesignIssue.storyboard in Resources */,
 				B2BF254D1FCC64DB001C65EB /* Administration.storyboard in Resources */,
 				5E0ABF241FCB57F80011897E /* README.md in Resources */,
+				B2AC6328202B9ED800EF5809 /* server.py in Resources */,
 				B2BF255B1FCC70FA001C65EB /* Role.storyboard in Resources */,
 				B2BF254F1FCC6518001C65EB /* DefineData.storyboard in Resources */,
 				B27AF4821FD88E6300B42E57 /* DefinePlan.storyboard in Resources */,
 				5EC59B991FCB4116005841BB /* Podfile in Resources */,
 				5ED3C2891FF97E8B00E14139 /* LaunchPlan.storyboard in Resources */,
 				5EC59B8C1FCB40CC005841BB /* Main.storyboard in Resources */,
+				B2AC6329202B9ED800EF5809 /* static in Resources */,
 				B23376F21FD1ADE8006CD61F /* Resource.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

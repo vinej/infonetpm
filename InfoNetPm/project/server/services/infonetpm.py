@@ -1,86 +1,81 @@
 # mongo.py
-from flask import request, make_response, jsonify
-from project.server.models import User
-from project.server.auth.views import is_bad_token
-from project.server import app, mongo
+from flask import Flask
+from flask import jsonify
+from flask import request
+from project.server import app
 
+def date(datestr="", format="%Y-%m-%dT%H:%M:%S%z"):
+  from datetime import datetime
+  if not datestr:
+    return datetime.today().date()
+  return datetime.strptime(datestr, format).date()
+#def
 
-def get_date(date_str="", the_format="%Y-%m-%dT%H:%M:%S%z"):
-    from datetime import datetime
-    if not date_str:
-        return datetime.today().date()
-    return datetime.strptime(date_str, the_format).date()
+def get(documents, sdate) :
+  if check_token(request.headers['auth_token']) == False:
+    return Response401(request)
+  #if
+  output = []
+  for d in documents.find({'updatedDate': {'$gte': sdate}}):
+    d.pop('_id')
+    output.append(d)
+  #for
+  print(output)
+  return jsonify({'result' : output})
+#def
 
-
-def ipm_get(documents, sdate):
-    print(request.headers)
-    if not check_token(request.headers['Authorization']):
-        return response_401(request)
-    # if
-
-    output = []
-    for d in documents.find({'updatedDate': {'$gte': sdate}}):
-        d.pop('_id')
-        output.append(d)
-    # for
-    print(output)
-    return jsonify({'result': output})
-
-
-def response_401(the_request):
-    response_object = \
-        dict(
-             status='401',
-             redirect=the_request.url,
-             message='BadToken or no auth_token')
-    resp = jsonify(response_object)
-    resp.status_code = 401
-    return resp
-
+def Response401(request):
+    return # response 401, to retry to get a new token
+    responseObject = {
+    'status': 'fail',
+    'message': 'BadToken or no auth_token',
+    'redirect': request.url
+    }
+    return make_response(jsonify(responseObject)), 401
+}
 
 def check_token(auth_token):
-    if not auth_token:
-        return False
+  if auth_token == None:
+    return False
+    
+  resp = User.decode_auth_token(auth_token)
+  if isBadtoken(resp):
+    return False
 
-    # bearer TOKEN
-    auth_token = auth_token[7:]
-    resp = User.decode_auth_token(auth_token)
-    if is_bad_token(resp):
-        return False
+  return True
+#def
 
-    return True
+def post(request, documents) :
+  print(request.json)
+  if (request.json is None):
+    return
+  #if
+  if check_token(request.headers['auth_token']) == False:
+    return Response401(request)
+  #if
+  
+  request.json['isNew'] = False
+  request.json['isSync'] = True
+  mongo_id = documents.insert(request.json)
+  output = documents.find_one({'_id': mongo_id })
+  output.pop("_id")
+  print(output)
+  return jsonify({'result' : output})
+#def
 
-
-def ipm_post(the_request, documents):
-    print(the_request.json)
-    if the_request.json is None:
-        return
-    # if
-    if not check_token(the_request.headers['auth_token']):
-        return response_401(the_request)
-    # if
-
-    the_request.json['isNew'] = False
-    the_request.json['isSync'] = True
-    mongo_id = documents.insert(the_request.json)
-    output = documents.find_one({'_id': mongo_id})
-    output.pop("_id")
-    print(output)
-    return jsonify({'result': output})
-
-
-def ipm_put(the_request, documents):
-    print(the_request.json)
-    if not check_token(the_request.headers['auth_token']):
-        return response_401(the_request)
-    # if
-
-    the_request.json['isNew'] = False
-    the_request.json['isSync'] = True
-    old = documents.find_one({'id': the_request.json["id"]})
-    output = documents.replace_one(old, the_request.json)
-    print(output)
-    return jsonify({'result': output})
+def put(request, documents) :
+  print(request.json)
+      if check_token(request.headers['auth_token']) == False:
+      return Response401(request)
+  #if
+  
+  request.json['isNew'] = False
+  request.json['isSync'] = True
+  old = documents.find_one({'id': json["id"] })
+  output = documents.replace_one(old, request.json)
+  print(output)
+  return jsonify({'result' : output})
+#def
 
 
 @app.route('/company/<string:the_date>', methods=['GET'])
