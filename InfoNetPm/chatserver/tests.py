@@ -1,7 +1,7 @@
 import unittest
 
-from room import Room
-from server import app
+from .room import Room
+from .server import app
 
 
 class Server(unittest.TestCase):
@@ -13,7 +13,7 @@ class Server(unittest.TestCase):
 
 class RoomTest(unittest.TestCase):
     def setUp(self):
-        self.room = Room()
+        self.room = Room("global")
 
     def test_join(self):
         self.room.join(1)
@@ -24,6 +24,7 @@ class RoomTest(unittest.TestCase):
 
         self.room.leave(1)
         assert len(self.room) == 0
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -4,14 +4,14 @@ from sanic import (
 )
 from websockets.exceptions import ConnectionClosed
 
-from room import Room
-from room import RoomManager
+from .room import RoomManager
 
 
 app = Sanic()
 # the default room will be create when the first
 # client send a message
 room_manager = RoomManager()
+
 
 @app.route("/")
 async def test(request):

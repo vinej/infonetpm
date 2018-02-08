@@ -1,13 +1,14 @@
-from pprint import pprint
 from uuid import uuid4
 from collections import deque
+from websockets import ConnectionClosed
+
 
 class Room:
 
     def __init__(self, name):
         self.name = name
         self.clients = []
-        self.messages = deque([],3)
+        self.messages = deque([], 3)
 
     def join(self, client):
         self.clients.append(client)
@@ -40,12 +41,12 @@ class Room:
     def __len__(self):
         return len(self.clients)
 
-''' 
-one room by client 
-By default the client is added to the global room
-'''
-class RoomManager:
 
+class RoomManager:
+    """
+    one room by client
+    By default the client is added to the global room
+    """
     DEFAULT_ROOL = 'global'
     JOIN = '/join'
 
@@ -59,7 +60,6 @@ class RoomManager:
         else:
             return self.join(RoomManager.DEFAULT_ROOL, client)
 
-
     def join(self, name, client):
         if name in self.rooms:
             room = self.rooms[name]
@@ -70,13 +70,12 @@ class RoomManager:
         self.client_room[client.id] = room
         return room
 
-
     async def manage(self, client, message):
         print(message)
         if not hasattr(client, 'id'):
             client.id = uuid4()
 
-        if (message[0] == '/'):
+        if message[0] == '/':
             await self.execute(client, message)
         else:
             room = self.get_room(client)
@@ -109,13 +108,3 @@ class RoomManager:
             if client.id in self.client_room:
                 room = self.client_room[client.id]
                 room.leave(client)
-
-
-
-
-
-
-
-
-
-
