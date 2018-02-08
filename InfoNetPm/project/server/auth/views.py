@@ -3,9 +3,9 @@
 
 from flask import Blueprint, request, make_response, jsonify
 from flask.views import MethodView
-from project.server import bcrypt
+from InfoNetPm.project.server import bcrypt
 
-from project.server.models import User, BlacklistToken
+from InfoNetPm.project.server.models import User, BlacklistToken
 
 auth_blueprint = Blueprint('auth', __name__)
 
@@ -16,10 +16,11 @@ def is_bad_token(resp):
 
 class RegisterAPI(MethodView):
     """
-        User Registration Resource
-        """
-    
-    def post(self):
+    User Registration Resource
+    """
+
+    @staticmethod
+    def post():
         # get the post data
         post_data = request.get_json()
         # check if user already exists
@@ -39,7 +40,8 @@ class RegisterAPI(MethodView):
             except Exception as e:
                 response_object = {
                     'status': 'fail',
-                    'message': 'Some error occurred. Please try again.'
+                    'message': 'Some error occurred. Please try again.',
+                    'error': str(e)
                 }
                 return make_response(jsonify(response_object)), 401
         else:
@@ -52,9 +54,11 @@ class RegisterAPI(MethodView):
 
 class LoginAPI(MethodView):
     """
-        User Login Resource
-        """
-    def post(self):
+    User Login Resource
+    """
+
+    @staticmethod
+    def post():
         # get the post data
         post_data = request.get_json()
         try:
@@ -86,9 +90,11 @@ class LoginAPI(MethodView):
 
 class UserAPI(MethodView):
     """
-        User Resource
-        """
-    def get(self):
+    User Resource
+    """
+
+    @staticmethod
+    def get():
         # get the auth token
         auth_header = request.headers.get('Authorization')
         if auth_header:
@@ -114,7 +120,7 @@ class UserAPI(MethodView):
                         'email': user.email,
                         'admin': user.admin,
                         'registered_on': user.registered_on
-                }
+                    }
                 }
                 return make_response(jsonify(response_object)), 200
             else:
@@ -123,31 +129,34 @@ class UserAPI(MethodView):
                     'message': resp
                 }
                 return make_response(jsonify(response_object)), 401
-else:
-    response_object = {
-        'status': 'fail',
-            'message': 'Provide a valid auth token.'
+        else:
+            response_object = {
+                'status': 'fail',
+                'message': 'Provide a valid auth token.'
             }
             return make_response(jsonify(response_object)), 401
 
 
 class LogoutAPI(MethodView):
     """
-        Logout Resource
-        """
-    def post(self):
+    Logout Resource
+    """
+
+    @staticmethod
+    def post():
         # get auth token
         auth_header = request.headers.get('Authorization')
         if auth_header:
             auth_token = auth_header.split(" ")[1]
         else:
             auth_token = ''
+
         if auth_token:
             resp = User.decode_auth_token(auth_token)
             if not is_bad_token(resp):
                 try:
                     # insert the token
-                    blacklist_token = BlacklistToken.post_blacklist(auth_token)
+                    BlacklistToken.post_blacklist(auth_token)
                     response_object = {
                         'status': 'success',
                         'message': 'Successfully logged out.'
@@ -171,9 +180,9 @@ class LogoutAPI(MethodView):
                 'message': 'Provide a valid auth token.'
             }
             return make_response(jsonify(response_object)), 403
+
+
 # define the API resources
-
-
 registration_view = RegisterAPI.as_view('register_api')
 login_view = LoginAPI.as_view('login_api')
 user_view = UserAPI.as_view('user_api')
@@ -200,5 +209,3 @@ auth_blueprint.add_url_rule(
                             view_func=logout_view,
                             methods=['POST']
                             )
-
-

@@ -1,4 +1,4 @@
-# project/server/__init__.py
+# InfonetPm/project/server/__init__.py
 
 import os
 from flask import Flask
@@ -23,7 +23,7 @@ mongo = PyMongo(app)
 
 bcrypt = Bcrypt(app)
 
-from project.server.auth.views import auth_blueprint
+from InfoNetPm.project.server.auth.views import auth_blueprint
 app.register_blueprint(auth_blueprint)
 
-import project.server.services.infonetpm
+import InfoNetPm.project.server.services.infonetpm

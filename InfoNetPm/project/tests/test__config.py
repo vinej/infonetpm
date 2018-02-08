@@ -1,7 +1,7 @@
 # project/tests/test_config.py
 import unittest
 from flask_testing import TestCase
-from project.server import app
+from InfoNetPm.project.server import app
 
 
 class TestDevelopmentConfig(TestCase):

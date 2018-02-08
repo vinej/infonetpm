@@ -1,8 +1,8 @@
-#mongo.py
-from flask import request, make_response, jsonify
-from project.server.models import User
-from project.server.auth.views import is_bad_token
-from project.server import app, mongo
+
+from flask import request, jsonify
+from InfoNetPm.project.server.models import User
+from InfoNetPm.project.server.auth.views import is_bad_token
+from InfoNetPm.project.server import app, mongo
 
 
 def get_date(date_str="", the_format="%Y-%m-%dT%H:%M:%S%z"):
@@ -281,5 +281,3 @@ def update_activityhistory():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-

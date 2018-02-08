@@ -2,8 +2,8 @@
 import time
 import json
 import unittest
-from project.server.models import User, BlacklistToken
-from project.tests.base import BaseTestCase
+from InfoNetPm.project.server.models import User, BlacklistToken
+from InfoNetPm.project.tests.base import BaseTestCase
 
 
 def register_user(self, email, password):

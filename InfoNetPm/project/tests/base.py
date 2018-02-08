@@ -1,6 +1,6 @@
 # project/tests/base.py
 from flask_testing import TestCase
-from project.server import app, mongo
+from InfoNetPm.project.server import app, mongo
 
 
 class BaseTestCase(TestCase):
