@@ -38,8 +38,8 @@ public class Audit: BaseRec {
             self.objectDate = toDate(data[#keyPath(Audit.objectDate)])
             self.objectString = data[#keyPath(Audit.objectString)] as! String
             
-            if (isSync) {
-                self.isSync = true
+            if (setIsSync) {
+                self.system?.isSync = true
             }
         }
     }

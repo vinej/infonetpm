@@ -56,8 +56,8 @@ public class Resource: BaseRec {
             let dCompanyId = data[#keyPath(Resource.company)] as! String
             self.company = dCompanyId == "" ? nil : DB.get(Company.self, dCompanyId) as? Company
 
-            if (isSync) {
-                self.isSync = true
+            if (setIsSync) {
+                self.system?.isSync = true
             }
         }
     }

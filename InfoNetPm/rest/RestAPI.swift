@@ -1,4 +1,4 @@
-//
+    //
 //  RestAPI.swift
 //  InfoNetPm
 //
@@ -87,10 +87,10 @@ public class RestAPI {
     
     public func syncBaseRec(_ baseRec : BaseRec, _ objectName: String,
                             _ nextFunc : @escaping (Int) -> (), _ next : Int) {
-        if (baseRec.isNew) {  // could be UpdatedDate == CreatedDate
+        if (baseRec.system?.isNew)! {  // could be UpdatedDate == CreatedDate
             // add a new record on the server
             api(baseRec, objectName, HTTPMethod.post, nextFunc, next)
-        } else if (baseRec.isDeleted) {
+        } else if (baseRec.system?.isDeleted)! {
             // soft delete a record
             api(baseRec, objectName, HTTPMethod.delete, nextFunc, next)
         } else {
@@ -174,7 +174,7 @@ public class RestAPI {
             for serverRec in subJson.array!  {
                 let id = serverRec[#keyPath(BaseRec.id)].string
                 if let rec = DB.get(objectType, id!) {
-                    if (rec.isSync) { // keep the server version, because it's newer
+                    if (rec.system?.isSync)! { // keep the server version, because it's newer
                         // - if record exist on mobile and its not dirty
                         //      update the mobile record
                         //      isSync = true

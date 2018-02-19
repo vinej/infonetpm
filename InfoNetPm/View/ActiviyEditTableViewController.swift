@@ -25,7 +25,7 @@ class ActivityEditViewController: BaseEditViewController {
         super.viewDidLoad()
         
         roleList = DB.all(Role.self)
-        ressourceList = DB.filter(Resource.self, "isDeleted = %@", false)
+        ressourceList = DB.filter(Resource.self, "system.isDeleted = %@", false)
         
         form +++ Section("Section Activity")
             <<< TextRow(){ row in
@@ -51,50 +51,7 @@ class ActivityEditViewController: BaseEditViewController {
                 }.onChange { row in
                     DB.update(self.activity!, #keyPath(Activity.expectedDuration), row.value)
             }
-            
-            form +++ Section("Activity type")
-            
-            <<< PopoverSelectorRow<String>() { row in
-                row.title = "Type"
-                row.options = [DB.empty,DB.cancel, "Switch","Slider","Segmented","TextBox","Stepper"]
-                row.value = activity?.type
-                row.selectorTitle = "Choose an activity type"
-                }.onChange { row in
-                    if (row.value != "" && row.value != nil && row.value != DB.cancel && row.value != DB.empty) {
-                        DB.update(self.activity!, #keyPath(Activity.type), row.value)
-                    } else {
-                        // onChange will be called again
-                        if (row.value == DB.empty) {
-                            DB.update(self.activity!, #keyPath(Activity.type), row.value)
-                        }
-                        row.value = self.activity?.type
-                    }
-            }
-
-            <<< DecimalRow(){ row in
-                row.title = "Minimun"
-                row.value = activity?.minType
-                row.placeholder = "Minimum"
-                }.onChange { row in
-                    DB.update(self.activity!, #keyPath(Activity.minType), row.value)
-            }
-  
-            <<< DecimalRow(){ row in
-                row.title = "Maximum"
-                row.value = activity?.minType
-                row.placeholder = "Maximum"
-                }.onChange { row in
-                    DB.update(self.activity!, #keyPath(Activity.maxType), row.value)
-            }
-            
-            <<< DecimalRow(){ row in
-                row.title = "Increment"
-                row.value = activity?.minType
-                row.placeholder = "Increment"
-                }.onChange { row in
-                    DB.update(self.activity!, #keyPath(Activity.incrType), row.value)
-            }
-            
+        
             form +++ Section("Ressources")
         
             <<< PopoverSelectorRow<String>() { row in

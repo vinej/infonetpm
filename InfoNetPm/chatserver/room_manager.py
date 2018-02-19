@@ -69,3 +69,6 @@ class RoomManager:
             if client.id in self.client_room:
                 room = self.client_room[client.id]
                 room.leave(client)
+                if room.len == 0:
+                    self.rooms.pop(room.name)
+                    self.client_room.pop(client.id, None)

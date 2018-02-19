@@ -23,7 +23,7 @@ class PlanEditViewController: BaseEditViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        projectList = DB.filter(Project.self, "isDeleted = %@", false)
+        projectList = DB.filter(Project.self, "system.isDeleted = %@", false)
         
         form +++ Section("Section Resoure")
             <<< PopoverSelectorRow<String>() { row in

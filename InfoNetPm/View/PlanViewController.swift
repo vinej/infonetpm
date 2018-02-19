@@ -16,7 +16,7 @@ class PlanViewController: BaseTableViewController, InternalObjectProtocol {
     }
     
     override func loadData() {
-        list = DB.filter(self.objectType, "isDeleted", false).sorted(byKeyPath: "updatedDate", ascending: false)
+        list = DB.filter(self.objectType, "system.isDeleted  = %@", false).sorted(byKeyPath: "system.updatedDate", ascending: false)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -26,10 +26,6 @@ class PlanViewController: BaseTableViewController, InternalObjectProtocol {
         cell.textLabel?.text = "\(plan.code) : \(plan.name)"
         
         return cell
-    }
-    
-    override func setDataBeforeEdit(_ object: Object) {
-        DB.update(object, "isTemplate", true)
     }
 }
 

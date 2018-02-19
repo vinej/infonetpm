@@ -24,7 +24,7 @@ class ChoosePopupBasePlanViewController: BasePopupViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        planList = DB.filter(Plan.self, "isDeleted = %@", false)
+        planList = DB.filter(Plan.self, "system.isDeleted = %@", false)
         
         form +++ Section("Choose a plan to design")
             

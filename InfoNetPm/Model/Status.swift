@@ -29,8 +29,8 @@ public class Status: BaseRec {
             self.databaseVersion = data[#keyPath(Status.databaseVersion)] as! Int
             self.lastSyncDate = toDate(data[#keyPath(Status.lastSyncDate)])
             
-            if (isSync) {
-                self.isSync = true
+            if (setIsSync) {
+                self.system?.isSync = true
             }
         }
     }

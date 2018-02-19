@@ -34,6 +34,7 @@ public class Project: BaseRec {
     public override func encode() -> [String: Any] {
         return super.encode().merge(
             [
+
                 #keyPath(Project.code) : self.code,
                 #keyPath(Project.name) : self.name,
                 #keyPath(Project.desc) : self.desc,
@@ -67,8 +68,8 @@ public class Project: BaseRec {
             self.defaultTimezone = data[#keyPath(Project.defaultTimezone)] as! Double
             let dCompanyId = data[#keyPath(Project.company)] as! String
             self.company = dCompanyId == "" ? nil : DB.get(Company.self, dCompanyId) as? Company
-            if (isSync) {
-                self.isSync = true
+            if (setIsSync) {
+                self.system?.isSync = true
             }
         }
     }

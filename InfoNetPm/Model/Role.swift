@@ -35,8 +35,8 @@ public class Role: BaseRec {
             self.rateByHour               = data[#keyPath(Role.rateByHour)] as! Double
             self.expectedCostByHour       = data[#keyPath(Role.expectedCostByHour)] as! Double
 
-            if (isSync) {
-                self.isSync = true
+            if (setIsSync) {
+                self.system?.isSync = true
             }
         }
     }

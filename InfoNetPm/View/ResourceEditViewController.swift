@@ -23,7 +23,7 @@ class ResourceEditViewController: BaseEditViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        companyList = DB.filter(Company.self,"isDeleted = %@", false)
+        companyList = DB.filter(Company.self,"system.isDeleted = %@", false)
         
         form +++ Section("Section Resoure")
             

@@ -39,8 +39,8 @@ public class Issue: BaseRec {
             self.type = data[#keyPath(Issue.type)] as! String
             self.severity = data[#keyPath(Issue.severity)] as! String
 
-            if (isSync) {
-                self.isSync = true
+            if (setIsSync) {
+                self.system?.isSync = true
             }
         }
     }

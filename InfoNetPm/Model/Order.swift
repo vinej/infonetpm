@@ -13,13 +13,10 @@ public class Order: BaseRec {
     @objc dynamic var activity = 1000.0
     @objc dynamic var role = 1000.0
     @objc dynamic var addres = 1000.0
-    //@objc dynamic var comment = 1000.0
-    //@objc dynamic var document = 1000.0
     @objc dynamic var plan = 1000.0
     @objc dynamic var company = 1000.0
     @objc dynamic var issue = 1000.0
     @objc dynamic var project = 1000.0
-    //@objc dynamic var task = 1000.0
     @objc dynamic var resource = 1000.0
     @objc dynamic var activityhistory = 1000.0
     @objc dynamic var status = 1000.0
@@ -55,8 +52,8 @@ public class Order: BaseRec {
             self.activityhistory  = data[#keyPath(Order.activityhistory)] as! Double
             self.status  = data[#keyPath(Order.status)] as! Double
 
-            if (isSync) {
-                self.isSync = true
+            if (setIsSync) {
+                self.system?.isSync = true
             }
         }
     }

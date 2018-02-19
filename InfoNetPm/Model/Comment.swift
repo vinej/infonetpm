@@ -27,8 +27,8 @@ public class Comment: BaseRec {
             super.decode(data)
             self.name                     = data[#keyPath(Comment.name)] as! String
             
-            if (isSync) {
-                self.isSync = true
+            if (setIsSync) {
+                self.system?.isSync = true
             }
         }
     }

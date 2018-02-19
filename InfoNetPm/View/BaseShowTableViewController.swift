@@ -24,7 +24,7 @@ class BaseShowTableViewController: UITableViewController {
     }
     
     public func loadData() {
-        list = DB.filter(self.objectType, "isDeleted = %@", false).sorted(byKeyPath: "updatedDate", ascending: false)
+        list = DB.filter(self.objectType, "system.isDeleted = %@", false).sorted(byKeyPath: "system.updatedDate", ascending: false)
     }
     
     override func viewDidLoad() {

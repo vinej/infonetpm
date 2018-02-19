@@ -23,6 +23,7 @@ public class DB {
     public static let fieldAuditSeperator = "|"
     
     @objc dynamic var order = 0.0
+    public static let  SYSTEM = "system"
     public static let  CREATE_BY = "createdBy"
     public static let  CREATE_DATE = "createdDate"
     public static let  UPDATE_BY = "updatedBy"
@@ -76,12 +77,12 @@ public class DB {
     // get all record order by the order field
     public static func allByOrder<T>(_ object : T.Type) ->  Results<Object> {
         let realm = try! Realm()
-        return realm.objects(object.self as! Object.Type).sorted(byKeyPath: "order", ascending: true)
+        return realm.objects(object.self as! Object.Type).sorted(byKeyPath: "system.order", ascending: true)
     }
     
     public static func allByOrder<T>(_ object : T.Type, _ field : String, _ filter: String) ->  Results<Object> {
         let realm = try! Realm()
-        return realm.objects(object.self as! Object.Type).filter(field, filter ).sorted(byKeyPath: "order", ascending: true)
+        return realm.objects(object.self as! Object.Type).filter(field, filter ).sorted(byKeyPath: "system.order", ascending: true)
     }
     
     public static func audit(_ object : Object, _ date: Date) {
@@ -167,10 +168,10 @@ public class DB {
     {
         // transaction must be created by the caller
         let audit = Audit()
-        audit.createdDate = Date.init(timeIntervalSinceNow: 0)
-        audit.isNew = true
-        audit.isSync = false
-        audit.createdBy = NSUserName()
+        audit.system?.createdDate = Date.init(timeIntervalSinceNow: 0)
+        audit.system?.isNew = true
+        audit.system?.isSync = false
+        audit.system?.createdBy = NSUserName()
         audit.auditAction = "\(auditAction)"
         audit.objectName = "\(type(of: object))"
         audit.objectId = object["id"] as! String
@@ -267,10 +268,12 @@ public class DB {
             nextOrder = DB.getNextOrder(objectType)
         }
         try! realm.write {
-            object[CREATE_DATE] = Date.init(timeIntervalSinceNow: 0)
-            object[CREATE_BY] = NSUserName()
-            object[ORDER] = nextOrder
-            object[IS_NEW] = true
+            let objsystem = object[SYSTEM] as! Base
+            
+            objsystem[CREATE_DATE] = Date.init(timeIntervalSinceNow: 0)
+            objsystem[CREATE_BY] = NSUserName()
+            objsystem[ORDER] = nextOrder
+            objsystem[IS_NEW] = true
             updateInternalFields(object)
             realm.add(object)
             realm.add(DB.getAudit(object, AuditAction.New, Date()))
@@ -359,10 +362,11 @@ public class DB {
     }
     
     public static func updateInternalFields(_ object : Object) {
-        object[UPDATE_DATE] = Date.init(timeIntervalSinceNow: 0)
-        object[UPDATE_BY] = NSUserName()
-        object[VERSION] = (object[VERSION] as! Int) + 1
-        object[IS_SYNC] = false
+        let objsystem = object[SYSTEM] as! Base
+        objsystem[UPDATE_DATE] = Date.init(timeIntervalSinceNow: 0)
+        objsystem[UPDATE_BY] = NSUserName()
+        objsystem[VERSION] = (objsystem[VERSION] as! Int) + 1
+        objsystem[IS_SYNC] = false
         
         DB.setLastObject(object)
     }
@@ -457,7 +461,7 @@ public class DB {
         act1.workFlow = "\(ActivityWorkflow.NotStarted)"
         act1.role = role
         act1.resource = resource
-        act1.order = 1000
+        act1.system?.order = 1000
         act1 = DB.new(Activity.self, act1) as! Activity
         
         var act2 = Activity()
@@ -468,7 +472,7 @@ public class DB {
         act2.workFlow = "\(ActivityWorkflow.NotStarted)"
         act2.role = role
         act2.resource = resource2
-        act2.order = 1100
+        act2.system?.order = 1100
         act2 = DB.new(Activity.self, act2) as! Activity
     }
 }

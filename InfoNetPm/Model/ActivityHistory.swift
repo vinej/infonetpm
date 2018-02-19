@@ -44,8 +44,8 @@ public class ActivityHistory: BaseRec {
             let dResource2Id = data[#keyPath(ActivityHistory.resourceEnd)] as! String
             self.resourceEnd = dResource2Id == "" ? nil : DB.get(Resource.self, dResource2Id) as? Resource
 
-            if (isSync) {
-                self.isSync = true
+            if (setIsSync) {
+                self.system?.isSync = true
             }
         }
     }

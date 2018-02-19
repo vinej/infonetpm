@@ -22,10 +22,6 @@ public class Plan: BaseRec {
     @objc dynamic var expectedMargin = 0.0
     @objc dynamic var risk = 0.0
     @objc dynamic var timezone = 0.0
-    //@objc dynamic var document : Document?
-    //@objc dynamic var comment : Comment?
-    
-    let dependantPlans = List<Plan>()
     
     public override func encode() -> [String: Any] {
         return super.encode().merge(
@@ -63,8 +59,8 @@ public class Plan: BaseRec {
             self.timezone = data[#keyPath(Plan.timezone)] as! Double
             let dProjectId = data[#keyPath(Plan.project)] as! String
             self.project = dProjectId == "" ? nil : DB.get(Project.self, dProjectId) as? Project
-            if (isSync) {
-                self.isSync = true
+            if (setIsSync) {
+                self.system?.isSync = true
             }
         }
     }

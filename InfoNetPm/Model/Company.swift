@@ -1,8 +1,7 @@
 import Foundation
 import RealmSwift
  
-public class Company: BaseRec {
-
+public class Company : BaseRec {
     @objc dynamic var code = ""
     @objc dynamic var name = ""
     @objc dynamic var type = ""  // client, service provider, thirs party service
@@ -29,8 +28,8 @@ public class Company: BaseRec {
             self.name                     = data[#keyPath(Company.name)] as! String
             self.type                     = data[#keyPath(Company.type)] as! String
             
-            if (isSync) {
-                self.isSync = true
+            if (setIsSync) {
+                self.system?.isSync = true
             }
         }
     }

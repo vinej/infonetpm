@@ -49,7 +49,7 @@ class ActivityViewController: BaseTableViewController, InternalObjectProtocol {
         let cell = tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath)
         
         let act = (list![indexPath.row] as! Activity)
-        cell.textLabel?.text = "\(act.code) : \(act.order) : \(act.expectedDuration)"
+        cell.textLabel?.text = "\(act.code) : \(act.system?.order ?? 0) : \(act.expectedDuration)"
         
         return cell
     }
