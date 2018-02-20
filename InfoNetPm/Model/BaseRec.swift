@@ -58,17 +58,17 @@ public class Base : Object {
 }
 
 public class BaseRec: Object {
-    @objc dynamic var id = UUID().uuidString
+    @objc dynamic var _id = UUID().uuidString
     @objc dynamic var system: Base? = Base()
     
     override public static func primaryKey() -> String? {
-        return "id"
+        return "_id"
     }
     
     public func encode() -> [String: Any] {
         let system = self.system?.encode()
         return [
-            #keyPath(BaseRec.id)                    : self.id,
+            #keyPath(BaseRec._id)                   : self._id,
             #keyPath(BaseRec.system)                : system!
         ]
     }

@@ -25,8 +25,8 @@ public class ActivityHistory: BaseRec {
                 #keyPath(ActivityHistory.endDate) : self.endDate.str(),
                 #keyPath(ActivityHistory.workFlow) : self.workFlow,
                 #keyPath(ActivityHistory.duration) : self.duration,
-                #keyPath(ActivityHistory.resourceStart) : self.resourceStart != nil ? self.resourceStart!.id : "" ,
-                #keyPath(ActivityHistory.resourceEnd) : self.resourceEnd != nil ? self.resourceEnd!.id : ""
+                #keyPath(ActivityHistory.resourceStart) : self.resourceStart != nil ? self.resourceStart!._id : "" ,
+                #keyPath(ActivityHistory.resourceEnd) : self.resourceEnd != nil ? self.resourceEnd!._id : ""
             ]
         )
     }

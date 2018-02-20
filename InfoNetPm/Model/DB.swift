@@ -141,7 +141,7 @@ public class DB {
                 realm.delete(object)
             } else {
                 // soft delete needed to synchronize with the server
-                DB.setField(object, "isDeleted", true)
+                DB.setField(object, "system.isDeleted", true)
                 updateInternalFields(object)
             }
             if (isSetDirty) {
@@ -156,7 +156,7 @@ public class DB {
     }
     
     public static func get<T>(_ objectType : T.Type, _ id : String) -> BaseRec? {
-        let records = DB.filter(objectType, "id = %@", id)
+        let records = DB.filter(objectType, "_id = %@", id)
         if (records.count == 0) {
             return nil
         } else {
@@ -174,7 +174,7 @@ public class DB {
         audit.system?.createdBy = NSUserName()
         audit.auditAction = "\(auditAction)"
         audit.objectName = "\(type(of: object))"
-        audit.objectId = object["id"] as! String
+        audit.objectId = object["_id"] as! String
         audit.objectString = object.description.replacingOccurrences(of: "\n\t", with: fieldAuditSeperator)
         return audit
     }

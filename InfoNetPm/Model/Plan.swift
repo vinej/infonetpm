@@ -37,7 +37,7 @@ public class Plan: BaseRec {
                 #keyPath(Plan.expectedMargin) : self.expectedMargin,
                 #keyPath(Plan.risk) : self.risk,
                 #keyPath(Plan.timezone) : self.timezone,
-                #keyPath(Plan.project) : self.project == nil ? "" : self.project!.id,
+                #keyPath(Plan.project) : self.project == nil ? "" : self.project!._id,
             ]
         )
     }

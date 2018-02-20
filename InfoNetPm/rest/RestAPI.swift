@@ -172,7 +172,7 @@ public class RestAPI {
                 return
             }
             for serverRec in subJson.array!  {
-                let id = serverRec[#keyPath(BaseRec.id)].string
+                let id = serverRec[#keyPath(BaseRec._id)].string
                 if let rec = DB.get(objectType, id!) {
                     if (rec.system?.isSync)! { // keep the server version, because it's newer
                         // - if record exist on mobile and its not dirty

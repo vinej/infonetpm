@@ -48,16 +48,16 @@ public class Activity: BaseRec {
     public override func encode() -> [String: Any] {
         return super.encode().merge([
             #keyPath(Activity.workFlow) : self.workFlow,
-            #keyPath(Activity.plan) : self.plan != nil ? self.plan!.id : "",
+            #keyPath(Activity.plan) : self.plan != nil ? self.plan!._id : "",
             #keyPath(Activity.code) : self.code,
             #keyPath(Activity.name) : self.name,
             #keyPath(Activity.expectedDuration) : self.expectedDuration,
             #keyPath(Activity.totalDuration) : self.totalDuration,
             #keyPath(Activity.fixeStartDate) : self.fixeStartDate.str(),
             #keyPath(Activity.startDate) : self.startDate.str(),
-            #keyPath(Activity.role) : self.role != nil ? self.role!.id : "",
-            #keyPath(Activity.resource) : self.resource != nil ? resource!.id : "" ,
-            #keyPath(Activity.backupResource) : self.backupResource != nil ? self.backupResource!.id : "",
+            #keyPath(Activity.role) : self.role != nil ? self.role!._id : "",
+            #keyPath(Activity.resource) : self.resource != nil ? resource!._id : "" ,
+            #keyPath(Activity.backupResource) : self.backupResource != nil ? self.backupResource!._id : "",
         ])
     }
     

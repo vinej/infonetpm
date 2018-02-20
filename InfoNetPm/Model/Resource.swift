@@ -35,7 +35,7 @@ public class Resource: BaseRec {
             #keyPath(Resource.email) : self.email,
             #keyPath(Resource.telephone) : self.telephone,
             #keyPath(Resource.address) : address!,
-            #keyPath(Resource.company) : self.company == nil ? "" : self.company!.id,
+            #keyPath(Resource.company) : self.company == nil ? "" : self.company!._id,
         ])
     }
     

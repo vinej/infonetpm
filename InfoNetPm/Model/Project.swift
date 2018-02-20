@@ -46,7 +46,7 @@ public class Project: BaseRec {
                 #keyPath(Project.expectedMargin) : self.expectedMargin,
                 #keyPath(Project.timezone) : self.timezone,
                 #keyPath(Project.defaultTimezone) : self.defaultTimezone,
-                #keyPath(Project.company) : self.company == nil ? "" : self.company!.id,
+                #keyPath(Project.company) : self.company == nil ? "" : self.company!._id,
             ]
         )
     }
